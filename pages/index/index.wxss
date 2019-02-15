@@ -1,0 +1,44 @@
+/**index.wxss**/
+@import '/static/icon/icon.wxss'; 
+
+.menusPanel{
+padding: 20rpx;
+ flex-wrap: wrap;
+ justify-content: space-between
+}
+
+.menusPanel .menusBlock{
+  width: 33.3%;
+  text-align: center;
+   /* background: red; */
+   padding: 20rpx 0;
+}
+.menusPanel .menusBlockItem{
+  margin: 0 auto;
+  /* background: red; */
+  position: relative
+  /* flex-direction: column */
+}
+.menusPanel .menusBlockItem .badge{
+  position: absolute;
+  right: -18rpx;
+  top: 0;
+  color: #fff;
+  background: red;
+  border-radius: 50%;
+  width: 36rpx;
+  height: 36rpx;
+  font-size: 20rpx;
+  line-height: 36rpx
+}
+
+.menusPanel .menusBlock .menusItem_icon{
+  font-size: 60rpx;
+  /* font-weight: 600; */
+  color: #28B8A1;
+ 
+}
+.menusPanel .menusBlock .menusItem_text{
+  font-size: 28rpx;
+  color: #404040
+}

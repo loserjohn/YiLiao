@@ -1,0 +1,5 @@
+<!--pages/components/blocktitle/blocktitle.wxml-->
+  <view class='cm_block_title'>
+     <icon class="{{'iconfont  cm_icon '+ icon}}"  slot="right"  ></icon>
+     <text class='cm_block_text'>{{title}}</text>    
+  </view>    

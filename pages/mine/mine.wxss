@@ -1,0 +1,41 @@
+/* pages/mine.wxss */
+.loginOut{
+  color: red;
+  text-align: center
+}
+.userBox{
+  /* background: red; */
+  background:#49c7a4;
+  padding: 30rpx;
+  color: #fff
+}
+.userBox .avatar{
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+  border: 8rpx solid rgb(245, 223, 129)
+}
+.userBox .msg_p{
+  font-size: 24rpx;
+  text-align: center;
+  color: rgb(249, 250, 217)
+}
+.panel{
+  background: #fff;
+  padding: 20rpx
+}
+.panel .blocks{
+  flex: 1;
+  text-align: center;
+  font-size: 28rpx;
+  color: #404040
+}
+.panel .blocks .mark{
+  font-size: 40rpx;
+  color: #404040;
+  padding: 0 10rpx;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+  
+}

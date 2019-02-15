@@ -1,0 +1,34 @@
+<!--index.wxml-->
+<view class="">
+  <van-nav-bar title="首页" class="cm_navBar">
+    <icon class="iconfont icon-icon_zhanghao cm_icon" slot="right"></icon>
+  </van-nav-bar>
+  <blocktitle icon="icon-fuwuxunhuanguanli" title="故障报修"></blocktitle>
+  <view class='cm_blocks'>
+    <view class='cm_menus'>
+      <!-- 菜单循环 -->
+      <view wx:for="{{meuns}}"   wx:key="index"  class='cm_menusItem'>
+        <view class='flex' hover-class="cm_hover">
+          <icon class="{{'iconfont  cm_menusItem_icon ' + item.icon}}"></icon>
+          <view class='cm_menusItem_content '>
+            <text>{{item.title}}</text>
+          </view>
+          <icon class="iconfont icon-jiantou_liebiaoxiangyou arrow-right"></icon>
+        </view>
+      </view>  
+    </view>
+  </view>
+  <blocktitle icon="icon-jinzhidengji" title="维修管理"></blocktitle>
+  <view class='cm_blocks'>
+    <!-- 菜单循环 -->
+    <view class='menusPanel  flex' >
+      <view class='menusBlock flex' wx:for="{{panels}}"   wx:key="index"  hover-class="cm_hover">
+        <view class='menusBlockItem'>
+          <icon class="{{'iconfont  menusItem_icon ' + item.icon}}"></icon>
+          <view class='menusItem_text'>{{item.title}}</view>
+          <view wx:if="{{item.badge && item.badge>0}}" class='badge' >{{ item.badge}}</view>
+        </view>     
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,69 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/accessory/accessory",
+    "pages/facility/facility",
+    "pages/mine/mine",
+    "pages/mine/subpages/set/set"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#28B8A1",
+    "color": "#bfbfbf",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "./static/img/menus/tab1.png",
+        "selectedIconPath": "./static/img/menus/tab1_cover.png"
+      },
+      {
+        "pagePath": "pages/accessory/accessory",
+        "text": "设备",
+        "iconPath": "./static/img/menus/tab2.png",
+        "selectedIconPath": "./static/img/menus/tab2_cover.png"
+      },
+      {
+        "pagePath": "pages/facility/facility",
+        "text": "备件",
+        "iconPath": "./static/img/menus/tab3.png",
+        "selectedIconPath": "./static/img/menus/tab3_cover.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "./static/img/menus/tab4.png",
+        "selectedIconPath": "./static/img/menus/tab4_cover.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-button": "./pages/vant/button/index",
+    "van-card": "./pages/vant/card/index",
+    "van-row": "./pages/vant/row/index",
+    "van-col": "./pages/vant/col/index",
+    "van-tag": "./pages/vant/tag/index",
+    "van-panel": "./pages/vant/panel/index",
+    "van-dialog": "./pages/vant/dialog/index",
+    "van-field": "./pages/vant/field/index",
+    "van-nav-bar": "./pages/vant/nav-bar/index",
+    "van-search": "./pages/vant/search/index",
+    "van-cell": "./pages/vant/cell/index",
+    "van-cell-group": "./pages/vant/cell-group/index",
+    "van-icon": "./pages/vant/icon/index",
+    "van-tab": "./pages/vant/tab/index",
+    "van-tabs": "./pages/vant/tabs/index",
+    "van-popup": "./pages/vant/popup/index",
+    "van-goods-action": "./pages/vant/goods-action/index",
+    "van-goods-action-icon": "./pages/vant/goods-action-icon/index",
+    "van-goods-action-button": "./pages/vant/goods-action-button/index",
+    "van-badge": "./pages/vant/badge/index",
+    "van-badge-group": "./pages/vant/badge-group/index",
+    "van-transition": "./pages/vant/transition/index"
+  }
+}

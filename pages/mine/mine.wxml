@@ -1,0 +1,70 @@
+<!--pages/accessory/accessory.wxml-->
+<view class="">
+  <view class='userBox'>
+    <view class='msgBox '>
+      <view class='avatar'>
+        <open-data type="userAvatarUrl" class=""></open-data>
+      </view>
+      <view class='cor_w cm_h3 cm_c'>{{userInfo.nickName}}</view>
+      <view class=''>
+        <view>
+           <!-- <open-data type="userNickName" class=""></open-data> -->        
+          <view class=' msg_p'>所属部门：{{userInfo.level}}</view>
+          <view class=' msg_p'>性别：{{userInfo.gender==0?'男':'女'}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='panel flex'>
+    <view class='blocks' >
+        <view><text class='mark'>3</text>年</view>
+        <view>维修经验</view> 
+    </view>
+     <view class='blocks' >
+        <view><text class='mark'>3</text>次</view>
+        <view>完成维修</view> 
+    </view>
+  </view>
+  <view class='cm_blank'></view>
+  <view class='cm_menus'>
+    <!-- 菜单循环 -->
+    <navigator class='cm_menusItem' url="./subpages/set/set">
+      <view class='flex' hover-class="cm_hover">
+        <icon class="iconfont cm_menusItem_icon icon-jiesuo "></icon>
+        <view class='cm_menusItem_content '>
+          <text>密码修改</text>
+        </view>
+        <icon class="iconfont icon-jiantou_liebiaoxiangyou arrow-right"></icon>
+      </view>
+    </navigator>
+   <navigator class='cm_menusItem' url="./subpages/set/set">
+      <view class='flex' hover-class="cm_hover">
+        <icon class="iconfont cm_menusItem_icon icon-fuwuxunhuanguanli "></icon>
+        <view class='cm_menusItem_content '>
+          <text>个人设置</text>
+        </view>
+        <icon class="iconfont icon-jiantou_liebiaoxiangyou arrow-right"></icon>
+      </view>
+    </navigator>
+    <navigator class='cm_menusItem' url="./subpages/set/set">
+      <view class='flex' hover-class="cm_hover">
+        <icon class="iconfont cm_menusItem_icon icon-gerentouxiang "></icon>
+        <view class='cm_menusItem_content '>
+          <text>关于我们</text>
+        </view>
+        <icon class="iconfont icon-jiantou_liebiaoxiangyou arrow-right"></icon>
+      </view>
+    </navigator>
+  </view>
+</view>
+<view class='cm_blank'></view>
+<view class='cm_menus'>
+  <!-- 菜单循环 -->
+  <view class='cm_menusItem'>
+    <view class='flex' hover-class="cm_hover">
+      <view class='cm_menusItem_content '>
+        <view class='loginOut'>退出登录</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,6 @@
+/* pages/components/menusItem/menusItem.wxss */
+@import '/static/icon/icon.wxss'; 
+.menusItem{
+  display: flex;
+  display: -webkit-flex;
+}
