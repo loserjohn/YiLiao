@@ -1,0 +1,6 @@
+/* pages/index/orders/orders.wxss */
+.tabs{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden
+}

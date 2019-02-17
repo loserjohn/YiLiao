@@ -1,0 +1,19 @@
+<!--pages/components/accessoryItem/accessoryItem.wxml-->
+<!-- 备件item -->
+
+<!--pages/components/orderItem/orderItem.wxml-->
+<van-card title="{{item.title}}" thumb="{{item.thumb?item.thumb:'/static/img/noPic.jpg'}}" price="使用数量:" currency='' custom-class="orderItem" lazy-load num="{{item.num}}">
+  
+  <view slot="desc">
+    <view class='orderDesc'>备件编号：{{item.facilityId}}</view>
+    <view class='orderDesc'>规格型号{{item.model}}</view>  
+  </view>
+  <view slot="tags">
+    <block wx:for="{{item.type}}" wx:key="index" wx:for-item="its">
+      <van-tag type="danger" custom-class="tags">{{its.text}}</van-tag>
+    </block>
+  </view>
+  <view slot="footer">
+    <van-button plain type="danger" size="mini">删除配件</van-button>
+  </view>
+</van-card>

@@ -15,12 +15,12 @@
   border-radius: 50%;
   overflow: hidden;
   margin: 0 auto;
-  border: 8rpx solid rgb(245, 223, 129)
+  border: 8rpx solid #b9ebdd
 }
 .userBox .msg_p{
   font-size: 24rpx;
   text-align: center;
-  color: rgb(249, 250, 217)
+  color: #b9ebdd
 }
 .panel{
   background: #fff;

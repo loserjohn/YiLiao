@@ -1,0 +1,35 @@
+<!--pages/index/components/complete/complete.wxml-->
+<!-- 更新维修进度 -->
+<van-cell-group>
+  <van-cell
+    title="待修设备编号"
+    value="215965254"
+  />
+   <van-cell
+    title="设备状态"
+    value="维修中"
+  />
+   <van-cell
+    title="完成时间"
+    value="2017-12-1"
+  />
+   <van-cell
+    title="维修人员"
+    value="内容"
+  />
+  <van-cell
+    title="是否更换备件"
+    value="是"
+  />
+
+  <van-field
+    value=""
+    label="维修内容简述"
+    type="textarea"
+    placeholder="请输入文字信息"
+    autosize
+    border="{{ false }}"
+    input-align="right"
+  />
+  
+</van-cell-group>

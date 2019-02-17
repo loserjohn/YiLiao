@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "faultMsg": "../../../components/faultMsg/faultMsg",
+    "swichAccessory": "../../components/swichAccessory/swichAccessory",
+    "complete": "../../components/complete/complete"
+  },
+  "navigationBarTitleText": "设备报修工单"
+}

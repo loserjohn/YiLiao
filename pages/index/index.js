@@ -14,7 +14,8 @@ Page({
         icon:'icon-dici',
         title:'快速报修',
         badge:1,
-        roles:[]
+        roles:[],
+        path:'repairs'
       },
       {
         icon: 'icon-gaojing',
@@ -38,20 +39,48 @@ Page({
         icon: 'icon-ceshishenqing',
         title: '待维修',
         badge: 0,
-        roles: []
+        roles: [],
+        path: 'order1'
       },
       {
         icon: 'icon-renjijiaohu',
         title: '维修中',
         badge: 1,
-        roles: []
+        roles: [],
+        path: 'order2'
       },
       {
         icon: 'icon-changjingguanli',
         title: '历史记录',
-        roles: []
+        roles: [],
+        path: 'record'
       }
     ]
+  },
+  // 跳转
+  linkTo:function(event){
+    let to = event.currentTarget.dataset['to'];
+
+    let url = ''
+    switch (to) {
+      case 'repairs':
+        url = '../facility/subpages/repairs/repairs'
+        break;
+      case 'order1':
+        url = './subpages/orders/orders?active=0'
+        break;
+      case 'order2':
+        url = './subpages/orders/orders?active=1'
+        break;
+      case 'record':
+        url = './subpages/record/record'
+        break;
+      default:
+
+    }
+    wx.navigateTo({
+      url: url
+    })
   },
   //事件处理函数
   bindViewTap: function() {

@@ -1,0 +1,19 @@
+/* pages/components/scan/scan.wxss */
+
+.scanBox {
+  width: 88rpx;
+  height: 88rpx;
+  text-align: center;
+  /* background: red; */
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center; 
+  background: transparent
+}
+
+.scanIcon {
+  /* display: inline-block; */
+  /* background: blue; */
+  line-height: 88rpx
+}

@@ -1,0 +1,5 @@
+<!--pages/index/subpages/repairMsg/repairMsg.wxml-->
+<view>
+  <faultMsg></faultMsg>
+</view>
+

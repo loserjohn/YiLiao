@@ -1,0 +1,44 @@
+<!--pages/components/fault /fault .wxml-->
+<!-- 故障信息组件 -->
+<van-cell-group>
+  <van-cell
+    title="工单单号"
+    value="内容"
+  />
+   <van-cell
+    title="报修设备"
+    value="内容"
+  />
+   <van-cell
+    title="发生时间"
+    value="内容"
+  />
+   <van-cell
+    title="报修人"
+    value="内容"
+  />
+   <van-cell
+    title="设备位置"
+    label="是打发第三方第三方撒地方第三方撒地方单方事故"
+
+  />
+   <van-cell
+    title="联系方式"
+    value="内容"
+  />
+   <van-cell
+    title="故障等级"
+    value="内容"
+  />
+   <van-cell
+    title="故障图片"
+    is-link
+  />
+  <van-cell
+    title="故障描述"
+    label="是打发第三方第三方撒地是打发第三方第三方撒地方第三方撒地方单方事故是打发第三方第三方撒地方第三方撒地方单方事故是打发第三方第三方撒地方第三方撒地方单方事故方第三方撒地方单方事故"
+  />
+  
+  
+</van-cell-group>
+

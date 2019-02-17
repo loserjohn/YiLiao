@@ -1,0 +1,6 @@
+/* pages/index/subpages/record/record.wxss */
+.orderItem{
+  background: #fff!important;
+  border-bottom: 1px solid #eee;
+  
+}

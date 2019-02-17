@@ -1,0 +1,11 @@
+<!--pages/components/moreReminder/moreReminder.wxml-->
+<!-- 上拉刷新地下的文字提示组件 -->
+<view class='restBar'> 
+  <view wx:if="{{loading}}">
+    <van-loading size="24px" type="circular" color="#bcbcbc" />
+  </view>
+  <block wx:else>  
+    <view class='restText' wx:if="{{nomore}}">没有更多数据了</view>
+    <view class='restText' wx:else>上拉加载更多</view>
+  </block> 
+</view>

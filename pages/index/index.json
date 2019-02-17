@@ -1,7 +1,6 @@
 {
   "usingComponents": {
-      "blocktitle": "../components/blocktitle/blocktitle",
-      "menusItem": "../components/menusItem/menusItem"
+      "blocktitle": "../components/blocktitle/blocktitle"
   },
   "navigationBarBackgroundColor": "#ffffff",
   "navigationBarTextStyle": "black",

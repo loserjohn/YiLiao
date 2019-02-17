@@ -4,12 +4,19 @@
     "pages/accessory/accessory",
     "pages/facility/facility",
     "pages/mine/mine",
-    "pages/mine/subpages/set/set"
+    "pages/mine/subpages/set/set",
+    "pages/index/subpages/orders/orders",
+    "pages/index/subpages/repairMsg/repairMsg",
+    "pages/facility/subpages/repairs/repairs",
+    "pages/index/subpages/record/record",
+    "pages/components/moreReminder/moreReminder",
+    "pages/index/subpages/repairOrder/repairOrder",
+    "pages/facility/subpages/facilityList/facilityList"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "医疗报修",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
@@ -23,13 +30,13 @@
         "selectedIconPath": "./static/img/menus/tab1_cover.png"
       },
       {
-        "pagePath": "pages/accessory/accessory",
+        "pagePath": "pages/facility/facility",
         "text": "设备",
         "iconPath": "./static/img/menus/tab2.png",
         "selectedIconPath": "./static/img/menus/tab2_cover.png"
       },
       {
-        "pagePath": "pages/facility/facility",
+        "pagePath": "pages/accessory/accessory",
         "text": "备件",
         "iconPath": "./static/img/menus/tab3.png",
         "selectedIconPath": "./static/img/menus/tab3_cover.png"
@@ -64,6 +71,9 @@
     "van-goods-action-button": "./pages/vant/goods-action-button/index",
     "van-badge": "./pages/vant/badge/index",
     "van-badge-group": "./pages/vant/badge-group/index",
-    "van-transition": "./pages/vant/transition/index"
+    "van-transition": "./pages/vant/transition/index",
+    "van-picker": "./pages/vant/picker/index",
+    "van-loading": "./pages/vant/loading/index",
+    "van-swipe-cell": "./pages/vant/swipe-cell/index"
   }
 }

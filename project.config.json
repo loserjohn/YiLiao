@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 8,
 			"list": [
 				{
 					"id": -1,
@@ -50,7 +50,49 @@
 					"id": -1,
 					"name": "我的",
 					"pathName": "pages/mine/mine",
+					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人设置",
+					"pathName": "pages/mine/subpages/set/set",
+					"query": ""
+				},
+				{
+					"id": 3,
+					"name": "保修工单",
+					"pathName": "pages/index/subpages/orders/orders",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "保修故障信息",
+					"pathName": "pages/index/subpages/repairMsg/repairMsg",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "设备保修",
+					"pathName": "pages/accessory/subpages/addRepair/addRepair",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "保修历史",
+					"pathName": "pages/index/subpages/record/record",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "报修工单详情",
+					"pathName": "pages/index/subpages/repairOrder/repairOrder",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "设备列表",
+					"pathName": "pages/facility/subpages/facilityList/facilityList"
 				}
 			]
 		}

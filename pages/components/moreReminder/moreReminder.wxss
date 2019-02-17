@@ -1,0 +1,10 @@
+/* pages/components/moreReminder/moreReminder.wxss */
+.restBar{
+  text-align: center;
+  padding: 20rpx 0;
+}
+.restText{
+  font-size: 24rpx;
+  color: #bcbcbc;
+  line-height: 2
+}

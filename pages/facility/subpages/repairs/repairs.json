@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "QrScan":"../../../components/scan/scan"
+  },
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "设备报修",
+  "backgroundColor": "#ddd",
+  "backgroundTextStyle": "light"
+}

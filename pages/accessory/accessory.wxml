@@ -1,33 +1,14 @@
 <!--pages/accessory/accessory.wxml-->
-<view class="">
-  <van-nav-bar title="设备" class="cm_navBar"></van-nav-bar>
+  <van-nav-bar title="备件" class="cm_navBar"></van-nav-bar>
   <view class='cm_menus'>
     <!-- 菜单循环 -->
     <view class='cm_menusItem'>
       <view class='flex' hover-class="cm_hover">
-        <icon class="iconfont  cm_menusItem_icon icon-liebiao"></icon>
+        <icon class="iconfont cm_menusItem_icon icon-biaodanzujian-shurukuang "></icon>
         <view class='cm_menusItem_content '>
-          <text>设备列表</text>
+          <text>备件列表</text>
         </view>
         <icon class="iconfont icon-jiantou_liebiaoxiangyou arrow-right"></icon>
       </view>
     </view>
   </view>
-
-  <view class='cm_blank'></view> 
-  <view class='cm_blocks'>
-    <view class='cm_menus'>
-      <!-- 菜单循环 -->
-      <view wx:for="{{meuns}}" wx:key="index" class='cm_menusItem'>
-        <view class='flex' hover-class="cm_hover">
-          <icon class="{{'iconfont  cm_menusItem_icon ' + item.icon}}"></icon>
-          <view class='cm_menusItem_content '>
-            <text>{{item.title}}</text>
-          </view>
-          <icon class="iconfont icon-jiantou_liebiaoxiangyou arrow-right"></icon>
-        </view>
-      </view>
-    </view>
-  </view>
-
-</view>

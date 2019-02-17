@@ -5,26 +5,30 @@ VantComponent({
     type: 'ancestor'
   },
   props: {
+    dot: Boolean,
+    info: null,
     title: String,
-    disabled: Boolean
+    disabled: Boolean,
+    titleStyle: String
   },
   data: {
+    width: null,
     inited: false,
-    active: false
+    active: false,
+    animated: false
   },
   watch: {
-    disabled: function disabled() {
+    title: 'update',
+    disabled: 'update',
+    dot: 'update',
+    info: 'update',
+    titleStyle: 'update'
+  },
+  methods: {
+    update: function update() {
       var parent = this.getRelationNodes('../tabs/index')[0];
 
       if (parent) {
-        parent.updateTabs();
-      }
-    },
-    title: function title() {
-      var parent = this.getRelationNodes('../tabs/index')[0];
-
-      if (parent) {
-        parent.setLine();
         parent.updateTabs();
       }
     }

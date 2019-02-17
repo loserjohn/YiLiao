@@ -1,0 +1,15 @@
+/* pages/components/facilityItem/facilityItem.wxss */
+.orderItem{
+  background: #fff!important;
+  border-bottom: 1px solid #eee;
+  
+}
+.orderTitle{
+  font-size: 32rpx;
+  /* font-weight: 600; */
+  color: #404040;
+  line-height: 2
+}
+.orderDesc{
+  color: #bcbcbc
+}

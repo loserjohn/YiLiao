@@ -5,7 +5,20 @@ Page({
    * 页面的初始数据
    */
   data: {
+    meuns: [
+      {
+        icon: 'icon-guanfangbanben',
+        title: '报修设备',
+        roles: [],
+        path: 'addRepair'
+      },
+      {
+        icon: 'icon-guize',
+        title: '添加设备',
+        roles: [],
 
+      }
+    ],
   },
 
   /**

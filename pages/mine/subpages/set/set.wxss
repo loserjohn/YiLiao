@@ -1,1 +1,20 @@
 /* pages/mine/subpages/set/set.wxss */
+.avatarBar{
+  background: #49c7a4;
+  color: #fff;
+  padding: 20rpx 54rpx;
+  font-size: 24rpx;
+  line-height: 40rpx;
+  position: relative;
+  /* border-radius: 0 0 20rpx 20rpx */
+  }
+.avatar{
+  position: absolute;
+  right:27rpx;
+  bottom: -40rpx;
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 10rpx;
+  border: 8rpx solid #fff;
+  box-shadow: 0 0 4rpx #ddd
+}

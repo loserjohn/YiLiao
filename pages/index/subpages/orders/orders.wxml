@@ -1,0 +1,23 @@
+<!--pages/index/orders/orders.wxml-->
+<view class='main' >
+  <van-tabs color="#28B8A1" custom-class="tabs" animated="true" swipeable="false" active="{{active}}">
+    <van-tab title="待维修">
+      <scroll-view scroll-y style="height: 92vh;" >
+        <block wx:for="{{list.repair}}" wx:key="index">
+          <navigator url="../repairMsg/repairMsg">
+            <orderItem item="{{item}}"></orderItem>
+          </navigator>
+        </block>
+      </scroll-view>
+    </van-tab>
+    <van-tab title="维修中">
+       <scroll-view scroll-y style="height: 92vh;" >
+        <block wx:for="{{list.inRepair}}" wx:key="index">
+          <navigator url="../repairOrder/repairOrder">
+            <orderItem item="{{item}}"></orderItem>
+          </navigator>
+        </block>
+      </scroll-view>
+    </van-tab>
+  </van-tabs>
+</view>

@@ -1,0 +1,21 @@
+<!--pages/index/subpages/repairOrder/repairOrder.wxml-->
+<!-- 设备保修工单 -->
+
+
+  <view class=''>
+    <van-tabs color="#28B8A1" custom-class="tabs" animated="true" swipeable="false" active="{{active}}">
+      <van-tab title="故障信息">
+        <scroll-view scroll-y style="height: 93vh;">
+          <faultMsg></faultMsg>
+        </scroll-view>
+      </van-tab>
+      <van-tab title="更换配件">       
+        <swichAccessory></swichAccessory>
+      </van-tab>
+      <van-tab title="维修进度">
+        <scroll-view scroll-y style="height: 93vh;">
+            <complete></complete>  
+        </scroll-view>
+      </van-tab>
+    </van-tabs>
+  </view>
