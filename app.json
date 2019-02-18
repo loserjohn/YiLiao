@@ -11,7 +11,12 @@
     "pages/index/subpages/record/record",
     "pages/components/moreReminder/moreReminder",
     "pages/index/subpages/repairOrder/repairOrder",
-    "pages/facility/subpages/facilityList/facilityList"
+    "pages/facility/subpages/facilityList/facilityList",
+    "pages/facility/subpages/facilityDetail/facilityDetail",
+    "pages/facility/subpages/facilityEdite/facilityEdite",
+    "pages/accessory/subpages/accessoryList/accessoryList",
+    "pages/accessory/subpages/accessoryDetail/accessoryDetail",
+    "pages/accessory/subpages/addAccessory/addAccessory"
   ],
   "window": {
     "backgroundTextStyle": "light",

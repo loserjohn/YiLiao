@@ -1,0 +1,19 @@
+/* pages/accessory/subpages/accessory/accessoryList.wxss */
+.scroll_view{
+  /* background: #f1f1f1; */
+  white-space: nowrap;
+  padding: 20rpx 0;
+  border-top: 1epx solid #eee;
+  border-bottom: 1epx solid #eee;
+}
+.typeBar{
+  height: 88rpx;
+}
+.typeItem{
+  display: inline-block;
+  margin: 0 10rpx
+}
+.numTip{
+  line-height: 3;
+  text-align: center
+}

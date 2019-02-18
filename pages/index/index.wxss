@@ -42,3 +42,15 @@ padding: 20rpx;
   font-size: 28rpx;
   color: #404040
 }
+
+.msgBox{
+  background:#49c7a4; 
+  color: #fff;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 40rpx
+}
+.permission{
+  font-size: 40rpx;
+  /* font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif */
+}

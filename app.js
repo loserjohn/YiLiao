@@ -1,4 +1,5 @@
 //app.js
+
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -34,6 +35,10 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: {
+      // role:'inspector', //巡检人员身份
+      role: 'maintain' //维修人员身份
+
+    },
   }
 })

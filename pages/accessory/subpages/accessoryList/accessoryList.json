@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "accessoryItem": "../../../components/accessoryItem/accessoryItem",
+    "moreReminder": "../../../components/moreReminder/moreReminder",
+    "QrScan": "../../../components/scan/scan"
+  },
+  "navigationBarTitleText": "备件列表"
+}

@@ -1,0 +1,10 @@
+<!--pages/facility/components/relevant/relevant.wxml-->
+<!-- <van-cell-group > -->
+  <scroll-view scroll-y class='cm_scroll_y overflow' >
+    <block wx:for="{{list}}" wx:key="index">
+      <navigator url="../repairOrder/repairOrder">
+        <accessoryItem item="{{item}}" delectabled="{{false}}"></accessoryItem>
+      </navigator>
+    </block>
+  </scroll-view>
+<!-- </van-cell-group> -->

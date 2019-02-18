@@ -1,6 +1,8 @@
 //index.js
 //获取应用实例
+import { MainMenus, permisionFilter } from '../../utils/permision.js';
 const app = getApp()
+
 
 Page({
   data: {
@@ -8,32 +10,8 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-
-    meuns:[
-      {
-        icon:'icon-dici',
-        title:'快速报修',
-        badge:1,
-        roles:[],
-        path:'repairs'
-      },
-      {
-        icon: 'icon-gaojing',
-        title: '备件查询',
-        
-        roles: []
-      },
-      {
-        icon: 'icon-wumoxing',
-        title: '扫码识别',
-        roles: []
-      },
-      {
-        icon: 'icon-yunyingguanli',
-        title: '备件登记',
-        roles: []
-      }
-    ],
+    role:-1,
+    meuns:[],
     panels:[
       {
         icon: 'icon-ceshishenqing',
@@ -72,6 +50,12 @@ Page({
       case 'order2':
         url = './subpages/orders/orders?active=1'
         break;
+      case 'accessoryList':
+        url = '/pages/accessory/subpages/accessoryList/accessoryList'
+        break;
+      case 'facilityList':
+        url = '/pages/facility/subpages/facilityList/facilityList'
+        break;
       case 'record':
         url = './subpages/record/record'
         break;
@@ -89,6 +73,17 @@ Page({
     })
   },
   onLoad: function () {
+    let role = app.globalData.userInfo.role;
+    if (!role) return
+    this.setData({
+      role: role
+    })
+    permisionFilter(role, (res) => {
+      this.setData({
+        role: role,
+        meuns: res
+      })
+    })
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -116,6 +111,13 @@ Page({
       })
     }
   },
+  /**
+  * 生命周期函数--监听页面初次渲染完成
+  */
+  onShow: function () {
+    // console.log(1111)
+   
+  }, 
   getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo

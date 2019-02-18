@@ -2,27 +2,28 @@
 <!-- 更换备件选择 -->
 <view>
   <view class='cm_menus'>
-    <view class='cm_menusItem'>
-      <view class='flex' hover-class="cm_hover">
-        <icon class="iconfont  cm_menusItem_icon icon-gongnengdingyi"></icon>
-        <view class='cm_menusItem_content '>
-          <text>设备列表</text>
+    <navigator url="/pages/accessory/subpages/accessoryList/accessoryList?action=choose">
+      <view class='cm_menusItem'>
+        <view class='flex' hover-class="cm_hover">
+          <icon class="iconfont  cm_menusItem_icon icon-gongnengdingyi"></icon>
+          <view class='cm_menusItem_content '>
+            <text>设备列表</text>
+          </view>
+          <van-icon name="plus" class="arrow-right" />
         </view>
-        <!-- <icon class="iconfont icon-jiantou_liebiaoxiangyou arrow-right"></icon> -->
-        <van-icon name="plus" class="arrow-right" />
       </view>
-    </view>
+    </navigator>
   </view>
   <view class='cm_blank'></view>
   <view class='main'>
-   <van-cell-group>
-    <scroll-view scroll-y style="height: 84vh;">
-      <block wx:for="{{list}}" wx:key="index">
-        <navigator url="../repairOrder/repairOrder">
-          <accessoryItem item="{{item}}"></accessoryItem> 
-        </navigator>
-      </block>
-    </scroll-view>
+    <van-cell-group>
+      <scroll-view scroll-y style="height: 84vh;">
+        <block wx:for="{{list}}" wx:key="index">
+          <navigator url="/pages/accessory/subpages/accessoryDetail/accessoryDetail">
+            <accessoryItem item="{{item}}"></accessoryItem>
+          </navigator>
+        </block>
+      </scroll-view>
     </van-cell-group>
   </view>
 

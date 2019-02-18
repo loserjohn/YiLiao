@@ -1,0 +1,10 @@
+
+{
+  "usingComponents": {
+    "facilityMsg": "../../../components/facilityMsg/facilityMsg",
+    "relevant": "../../components/relevant/relevant",
+    "repairHistory": "../../components/repairHistory/repairHistory"
+    
+  },
+  "navigationBarTitleText": "设备详情"
+}

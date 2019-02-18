@@ -1,0 +1,40 @@
+/* pages/components/preImgGallery/preImgGallery.wxss */
+.galleryBar{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #eee;
+  justify-content: flex-start;
+  flex-wrap: wrap
+}
+.prePics{
+  /* width: 160rpx;
+  height: 160rpx; */
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 10rpx
+}
+.prePicsImg{
+  width: 100%;
+  height:100%;
+  border: 1rpx solid #eee;
+   background: #f3f3f3;
+}
+.start{
+  align-self: flex-start!important
+}
+.addNew{
+  height: 100%;
+  /* box-sizing: border-box; */
+  border: 4rpx dashed #eee;
+  /* text-align: center; */
+  border-radius: 8rpx;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background: pink */
+}
+.addIcon{
+  display: inline-block;
+  /* background: red */
+}

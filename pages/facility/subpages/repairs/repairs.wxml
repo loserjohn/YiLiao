@@ -30,7 +30,11 @@
   <van-popup show="{{ show }}" position="bottom" overlay="{{ true }}" bind:close="onClose" close-on-click-overlay safe-area-inset-bottom>
     <van-picker show-toolbar title="标题" columns="{{ columns }}" bind:cancel="onCancel" bind:confirm="onConfirm" />
   </van-popup>
-  <van-goods-action>
+  <!-- <van-goods-action>
     <van-goods-action-button text="提交报修设备" bind:click="onClickButton" loading="true" custom-class="cm_btn" />
-  </van-goods-action>
+  </van-goods-action> -->
+  <view class='cm_menus pd_bt'>
+    <van-button size="normal" custom-class="cm_btn" block >报修设备</van-button>
+  </view>
+
 </view>

@@ -1,0 +1,28 @@
+<!--pages/components/facilityMsg/facilityMsg.wxml-->
+<!-- 设备参数资料 -->
+<van-cell-group>
+  <view class='pics'>
+    <scroll-view class="scroll_view" scroll-x style="width: 100%">
+      <block wx:for="{{prePic}}" wx:key="index">
+        <view class='prePics'>
+          <image class='prePicsImg' src="{{item}}" mode="aspectFit"></image>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+  <van-cell title="设备名称" value="内容" />
+  <van-cell title="设备编号" value="内容" />
+  <van-cell title="设备型号" value="内容" />
+  <van-cell title="设备状态" value="内容" />
+  <van-cell title="设备位置" label="是打发第三方第三方撒地方第三方撒地方单方事故" />
+  <van-cell title="使用部门" value="内容" />
+  <van-cell title="使用状况" value="内容" />
+  <van-cell title="操作人员" value="内容" />
+  <van-cell title="生产产商" value="内容" />
+  <van-cell title="备注" label="是打发第三方第三方撒地是打发第三方第三方撒地方第三方撒地方单方事故是打发第三方第三方撒地方第三方撒地方单方事故是打发第三方第三方撒地方第三方撒地方单方事故方第三方撒地方单方事故" />
+</van-cell-group>
+<view class='cm_menus'>
+  <van-button square type="primary" size="normal" block custom-class="cm_btn" bind:click="toEdite">
+      <van-icon name="edit" color="#fff" size="16px" /> 编辑
+  </van-button>
+</view>

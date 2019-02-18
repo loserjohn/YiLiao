@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "accessoryItem":"/pages/components/accessoryItem/accessoryItem"
+  }
+}

@@ -1,0 +1,29 @@
+/* pages/accessory/subpages/accessoryDetail/accessoryDetail.wxss */
+
+.cm_btn {
+  background: #28b8a1 !important;
+  border-color: #28b8a1 !important;
+  vertical-align: middle
+}
+.scroll_view{
+  width: 100%;
+  height:200rpx;
+  /* background: red; */
+  box-sizing: border-box;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #eee;
+  white-space: nowrap
+}
+.prePics{
+  width: 160rpx;
+  height: 160rpx;
+  margin: 0 10rpx;
+  display: inline-block;
+  border: 1rpx solid #eee;
+  overflow: hidden;
+  background: #f3f3f3
+}
+.prePicsImg{
+  width: 100%;
+  height:100%
+}

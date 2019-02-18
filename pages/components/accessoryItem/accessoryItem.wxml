@@ -2,8 +2,8 @@
 <!-- 备件item -->
 
 <!--pages/components/orderItem/orderItem.wxml-->
-<van-card title="{{item.title}}" thumb="{{item.thumb?item.thumb:'/static/img/noPic.jpg'}}" price="使用数量:" currency='' custom-class="orderItem" lazy-load num="{{item.num}}">
-  
+
+<van-card title="{{item.title}}" thumb="{{item.thumb?item.thumb:'/static/img/noPic.jpg'}}" price="{{dosagabled?'使用数量:':''}}" currency='' custom-class="orderItem" lazy-load num="{{dosagabled?'item.num':''}}">
   <view slot="desc">
     <view class='orderDesc'>备件编号：{{item.facilityId}}</view>
     <view class='orderDesc'>规格型号{{item.model}}</view>  
@@ -13,7 +13,9 @@
       <van-tag type="danger" custom-class="tags">{{its.text}}</van-tag>
     </block>
   </view>
-  <view slot="footer">
-    <van-button plain type="danger" size="mini">删除配件</van-button>
+  <view slot="footer" >
+    <van-button  type="primary" size="mini" wx:if="{{choosabled}}" catchtap="choose">选用备件</van-button>  
+    <van-button plain type="danger" size="mini" wx:if="{{delectabled}}">删除备件</van-button>
   </view>
 </van-card>
+

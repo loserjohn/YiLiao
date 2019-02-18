@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "blocktitle": "/pages/components/blocktitle/blocktitle"
+  }
+}

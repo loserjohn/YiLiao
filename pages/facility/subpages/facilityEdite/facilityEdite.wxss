@@ -1,0 +1,4 @@
+/* pages/facility/subpages/facilityEdite/facilityEdite.wxss */
+.pd_bt{
+  padding-bottom: 20rpx
+}

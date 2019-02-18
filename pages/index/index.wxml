@@ -1,14 +1,14 @@
 <!--index.wxml-->
 <view class="">
-  <van-nav-bar title="首页" class="cm_navBar">
-    <icon class="iconfont icon-icon_zhanghao cm_icon" slot="right"></icon>
-  </van-nav-bar>
+  <view class='msgBox'>
+    <view class='permission' wx:if="role">{{role=='maintain'?'维修人员':'巡检员'}}</view>
+  </view>
   <blocktitle icon="icon-fuwuxunhuanguanli" title="故障报修"></blocktitle>
   <view class='cm_blocks'>
     <view class='cm_menus'>
       <!-- 菜单循环 -->
       <view wx:for="{{meuns}}"   wx:key="index"  class='cm_menusItem'>
-        <view class='flex' hover-class="cm_hover" data-to="{{item.path}}" bindtap="linkTo">
+        <view class='flex' hover-class="cm_hover" data-to="{{item.handler}}" bindtap="linkTo">
           <icon class="{{'iconfont  cm_menusItem_icon ' + item.icon}}"></icon>
           <view class='cm_menusItem_content '>
             <text>{{item.title}}</text>
@@ -18,8 +18,8 @@
       </view>  
     </view>
   </view>
-  <blocktitle icon="icon-jinzhidengji" title="维修管理"></blocktitle>
-  <view class='cm_blocks'>
+  <blocktitle icon="icon-jinzhidengji" title="维修管理" wx:if="{{role=='maintain'}}"></blocktitle>
+  <view class='cm_blocks' wx:if="{{role=='maintain'}}">
     <!-- 菜单循环 -->
     <view class='menusPanel  flex' >
       <view class='menusBlock flex' wx:for="{{panels}}"   wx:key="index"  hover-class="cm_hover">

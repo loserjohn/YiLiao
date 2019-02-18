@@ -110,6 +110,7 @@ view {
 .cm_btn {
   background: #28b8a1 !important;
   border-color: #28b8a1 !important;
+  color: #fff!important
 }
 
 .red {
@@ -134,3 +135,9 @@ view {
 .f1 {
   flex: 1;
 }
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+ 

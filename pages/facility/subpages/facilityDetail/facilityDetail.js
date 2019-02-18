@@ -1,41 +1,13 @@
-// pages/facility/facility.js
+// pages/facility/subpages/facilityDetail/facilityDetail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    meuns: [
-      {
-        icon: 'icon-guanfangbanben',
-        title: '报修设备',
-        roles: [],
-        path: 'repair'
-      },
-      // {
-      //   icon: 'icon-guize',
-      //   title: '添加设备',
-      //   roles: [],
 
-      // }
-    ],
   },
-  linkTo: function (event) {
-    let to = event.currentTarget.dataset['to'];
 
-    let url = ''
-    switch (to) {
-      case 'repair':
-        url = './subpages/repairs/repairs'
-        break;
-
-      default:
-
-    }
-    wx.navigateTo({
-      url: url
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */

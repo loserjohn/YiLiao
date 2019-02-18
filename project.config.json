@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": 11,
 			"list": [
 				{
 					"id": -1,
@@ -92,7 +92,43 @@
 				{
 					"id": -1,
 					"name": "设备列表",
-					"pathName": "pages/facility/subpages/facilityList/facilityList"
+					"pathName": "pages/facility/subpages/facilityList/facilityList",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "设备详情",
+					"pathName": "pages/facility/subpages/facilityDetail/facilityDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "编辑设备详情",
+					"pathName": "pages/facility/subpages/facilityEdite/facilityEdite",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 11,
+					"name": "设备选择备件",
+					"pathName": "pages/accessory/subpages/accessoryList/accessoryList",
+					"query": "action=choose",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "备件详情",
+					"pathName": "pages/accessory/subpages/accessoryDetail/accessoryDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "备件列表",
+					"pathName": "pages/accessory/subpages/accessoryList/accessoryList",
+					"query": "",
+					"scene": null
 				}
 			]
 		}
