@@ -1,0 +1,27 @@
+<!--pages/login/login.wxml-->
+<view>
+  <view class='msgBox'>
+    <view class="user_avatar">
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
+    <view class="user_name">
+      <open-data type="userNickName"></open-data>
+    </view>
+  </view>
+  <van-cell-group>
+    <van-field value="{{ username }}" required clearable label="用户名" icon="question-o" placeholder="请输入用户名" bind:click-icon="onClickIcon" />
+    <van-field value="{{ password }}" type="password" label="密码" placeholder="请输入密码" required border="{{ false }}" />
+  </van-cell-group>
+  <view class='cm_menus'>
+    
+    <van-button size="normal" block custom-class='cm_btn' bind:click="login" loading="{{loading}}">登录</van-button>
+  </view>
+</view>
+
+<van-popup show="{{ show }}"   overlay="{{ true }}" bind:close="onClose">
+  <view class='authrizeBox'>
+    <view class='authrizeText'>欢迎登录XXXX
+    快速绑定微信</view>
+    <van-button size="normal" block open-type="getUserInfo" custom-class='cm_btn' bindgetuserinfo="bindGetUserInfo">用户授权</van-button>
+  </view>
+</van-popup>

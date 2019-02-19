@@ -31,7 +31,6 @@ export const MainMenus = [
 export function permisionFilter(role,callback){
   let arr = []
   MainMenus.forEach(item=>{
-    // console.log(item.roles.indexOf(role))
       if(item.roles.indexOf(role) >= 0){
 
         arr.push(item)

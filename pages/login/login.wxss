@@ -1,0 +1,26 @@
+/* pages/login/login.wxss */
+.msgBox{
+  padding-bottom: 160rpx
+}
+.user_avatar{
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  border: 8rpx solid rgb(163, 252, 182);
+  margin: 100rpx auto;
+  overflow: hidden
+}
+.user_name{
+  text-align: center;
+}
+.cm_menus{
+  margin-top: 40rpx
+}
+.authrizeBox{
+  box-sizing: border-box;
+  padding: 30rpx;
+  border-radius: 40rpx
+}
+.authrizeText{
+  line-height: 4
+}

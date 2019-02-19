@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/index/index",
     "pages/accessory/accessory",
     "pages/facility/facility",
@@ -17,6 +18,7 @@
     "pages/accessory/subpages/accessoryList/accessoryList",
     "pages/accessory/subpages/accessoryDetail/accessoryDetail",
     "pages/accessory/subpages/addAccessory/addAccessory"
+   
   ],
   "window": {
     "backgroundTextStyle": "light",
