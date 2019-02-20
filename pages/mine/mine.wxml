@@ -28,7 +28,7 @@
   <view class='cm_blank'></view>
   <view class='cm_menus'>
     <!-- 菜单循环 -->
-    <navigator class='cm_menusItem' url="./subpages/set/set">
+    <navigator class='cm_menusItem' url="./subpages/updatedPass/updatedPass">
       <view class='flex' hover-class="cm_hover">
         <icon class="iconfont cm_menusItem_icon icon-jiesuo "></icon>
         <view class='cm_menusItem_content '>

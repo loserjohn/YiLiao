@@ -2,7 +2,7 @@
 //获取应用实例
 import { MainMenus, permisionFilter } from '../../utils/permision.js';
 const app = getApp()
-
+const Utils = require('../../utils/util.js')
 
 Page({
   data: {
@@ -59,12 +59,30 @@ Page({
       case 'record':
         url = './subpages/record/record'
         break;
+      case 'scanCode':
+      //  扫描二维码
+        Utils.scanCode().then(res=>{
+          url = `/pages/facility/subpages/facilityDetail/facilityDetail?facilityId=${res}`
+          wx.navigateTo({
+            url: url
+          })
+        }).catch(err=>{
+          wx.showToast({
+            title: '扫码错误，请到设备列表手动查找',
+            icon:none
+          })  ;
+          
+          return false
+        })
+        break;       
       default:
-
     }
-    wx.navigateTo({
-      url: url
-    })
+    if(url){
+      wx.navigateTo({
+        url: url
+      })
+    }
+   
   },
   //事件处理函数
   bindViewTap: function() {

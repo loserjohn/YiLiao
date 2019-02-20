@@ -20,4 +20,7 @@
       </scroll-view>
     </van-tab>
   </van-tabs>
+   <view class='cm_menus pd_bt'>
+    <van-button size="normal" custom-class="cm_btn" block >完成报修 </van-button>
+  </view>
 </view>

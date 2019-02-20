@@ -17,8 +17,8 @@
     "pages/facility/subpages/facilityEdite/facilityEdite",
     "pages/accessory/subpages/accessoryList/accessoryList",
     "pages/accessory/subpages/accessoryDetail/accessoryDetail",
-    "pages/accessory/subpages/addAccessory/addAccessory"
-   
+    "pages/accessory/subpages/addAccessory/addAccessory",
+    "pages/mine/subpages/updatedPass/updatedPass"
   ],
   "window": {
     "backgroundTextStyle": "light",

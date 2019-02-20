@@ -21,7 +21,7 @@ export const MainMenus = [
   {
     icon: 'icon-saoma',
     title: '扫码识别',
-    handler: 'scanQR',
+    handler: 'scanCode',
     roles: ['inspector', 'maintain'],
   }
 ]

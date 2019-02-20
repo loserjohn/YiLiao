@@ -7,9 +7,8 @@
         <view slot="action" bind:tap="onSearch">搜索</view>
       </van-search>
     </view>
-   
   </view>
-  <view class='typeBar'>
+  <!-- <view class='typeBar'>
     <scroll-view class="scroll_view" scroll-x style="width: 100%">
       <block wx:for="{{typeList}}" wx:key="index">
           <view class='typeItem'>
@@ -17,6 +16,14 @@
           </view>           
       </block>
     </scroll-view>
+  </view> -->
+  <view calass="typeBar">
+      <view class='typeItem'>
+         <van-tag plain="false" size="large" color="#28b8a1" round >关联配件</van-tag>
+      </view>   
+      <view class='typeItem'>
+         <van-tag plain size="large" color="#bcbcbc" round >全部</van-tag>
+      </view> 
   </view>
   <view class='f1 overhidden ' >
     <scroll-view scroll-y class='cm_scroll_y'>

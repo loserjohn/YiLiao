@@ -3,7 +3,7 @@
 <view class="">
   <view class='flex'>
     <view class='f1'>
-      <van-field clearable use-icon-slot label="选择设备" value="s932174825" placeholder="请输入设备标号" border="{{ false }}" bind:change="onChange" required>
+      <van-field clearable use-icon-slot label="设备编码" value="s932174825" placeholder="请输入设备标号" border="{{ false }}" bind:change="onChange" required>
         <!-- <icon class="iconfont  cm_menusItem_icon icon-fuwuxunhuanguanli}}" slot="icon"></icon> -->
 
       </van-field>
@@ -16,13 +16,13 @@
   <van-cell-group>
     <van-field label="报修时间" readonly value="xcvz " input-class="cm_input" border="{{ false }}" bind:change="onChange" />
     <van-field label="报修人" readonly value="xczx" input-class="cm_input" border="{{ false }}" bind:change="onChange" />
-    <van-field label="设备位置" required input-class="cm_input" value="" placeholder="请输入用户名" border="{{ false }}" bind:change="onChange" />
+    <van-field label="设备位置" required readonly input-class="cm_input" value="" placeholder="请输入用户名" border="{{ false }}" bind:change="onChange" />
     <van-field label="联系电话" required readonly value="1505925485" input-class="cm_input" placeholder="请输入用户名" border="{{ false }}" bind:change="onChange" />
   </van-cell-group>
   <view class='cm_blank'></view>
   <van-cell-group>
     <van-cell title="紧急程度" value="4" is-link bind:click="handler" />
-    <van-cell title="故障等级" value="4" is-link bind:click="handler" />
+    <van-cell title="是否停机" value="4" is-link bind:click="handler" />
     <van-cell title="紧急类别" value="4" is-link bind:click="handler" />
     <van-cell title="故障图片" value="4" is-link bind:click="handler" />
     <van-field value="" label="故障描述" type="textarea" placeholder="请输入故障描述" autosize border="{{ false }}" input-align="right" />
