@@ -48,51 +48,52 @@ Page({
     this.setData({
       loading: true
     })
-    // 登录操作
-    let data = {
-      useraccount: this.data.form.userName.value,
-      userpassword: this.data.form.userPass.value,
-    }
-    this.bouding()
-    // accountLogin(data).then(res => {
-    //   console.log('promiser成功', res);
-    //   // 保存全局的用户身份
-    //   app.globalData.userInfo = res.userInfo
-    //   // 快速绑定微信账户
-    //   this.bouding()
-    // }).catch(err => {
-    //   console.log('err', err);
-    // })
+    // 快速绑定微信账户
+    this.bouding(() => {
+      let data = {
+        useraccount: this.data.form.userName.value,
+        userpassword: this.data.form.userPass.value,
+        code: app.globalData.code
+      }
+      // 登录api
+      accountLogin(data).then(res => {
+        console.log('promiser成功', res);
+        app.globalData.sessionKey = res.sessionKey
+        wx.setStorageSync('openId', res.openId)
+        wx.setStorageSync('sessionKey', res.sessionKey);
+        this.setData({
+          loading: false
+        });
+        // 微信获取公共信息
+        this.getUserMsg()
 
+      }).catch(err => {
+        // 登录失败
+        this.setData({
+          loading: false
+        });
+        console.log('err', err);
+      })
+    })
   },
   // 快速绑定微信账号
-  bouding() {
+  bouding(callback) {
     wx.login({
       success: res => {
+        app.globalData.code = res.code;
         // 发送 res.code 到后台换取 openId, sessionKey, unionId;储存在全局
         // getIdentity(res.code).then(res => {
-        //   console.log(111, res);
-        //   app.globalData.sessionKey = res.sessionKey
-        //   wx.setStorageSync('openId', res.openId)
-        //   wx.setStorageSync('sessionKey', res.sessionKey);
-        //   this.setData({
-        //     loading: false
-        //   });
-        //   wx.reLaunch({
-        //     url: '/pages/index/index',
-        //   })
+        //   // console.log(111, res);   
         // })
-        wx.reLaunch({
-          url: '/pages/index/index',
-        })
+        if (callback) callback()
       }
     })
   },
   // 表单验证
-  valid(e) {   
+  valid(e) {
     let key = e.target.id;
     let val = e.detail.value;
-  
+
     switch (key) {
       case 'userName':
         this.data.form.userName.value = val;
@@ -119,10 +120,10 @@ Page({
           form: Utils.copyObj(this.data.form)
         })
         break;
-    }   
+    }
   },
   // 清除重写
-  clear(e){
+  clear(e) {
     let key = e.target.id;
     switch (key) {
       case 'userName':
@@ -139,45 +140,115 @@ Page({
           form: Utils.copyObj(this.data.form)
         })
         break;
-    }  
+    }
+  },
+  // 获取微信公共的用户信息
+  getUserMsg() {
+    let that = this
+    //判断授权状态
+    wx.getSetting({
+      success(res) {
+       
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success(res) {
+              console.log('授权', res);
+              app.globalData.userInfo = res;
+              wx.reLaunch({
+                url: '/pages/index/index',
+              })
+            }
+          })
+        } else {
+          console.log('未授权');
+          // 唤醒用户的手动授权按钮
+          that.setData({
+            show: true
+          });
+        }
+      }
+    })
   },
   bindGetUserInfo(e) {
-    // console.log(e.detail);
     // 授权后解密获取电话号码
-    this.decodeNumber(e.detail.encryptedData);
+    console.log('用户基本信息', e);
+    app.globalData.userInfo = e.detail
     this.setData({
       show: false
     });
+    wx.reLaunch({
+      url: '/pages/index/index',
+    })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function(options) {
-    // let that = this
-    // //判断授权状态
-    // wx.getSetting({
-    //   success(res) {
-    //     // console.log('授权状态', res)
-    //     if (res.authSetting['scope.userInfo']) {
-    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-    //       // wx.getUserInfo({
-    //       //   success(res) {
-    //       //     console.log('用户基本信息', res)
-    //       //   }
-    //       // })
-    //       that.decodeNumber()
-    //     } else {
-    //       console.log('未授权');
-    //       this.setData({
-    //         show: true
-    //       });
-    //     }
-    //   }
-    // })
+ 
+  autoLoin(openId, sessionKey) {
+    let that = this
+    wx.checkSession({
+      success() {
+        // session_key 未过期，并且在本生命周期一直有效
+        console.log('有效');
+        that.globalData.sessionKey = sessionKey;
+        that.globalData.openId = openId;
+        let data = {
+          sessionKey: sessionKey,
+          openId: openId
+        }
+        wxLogin(data).then(res => {
+          console.log('自动登录', res.role);
+          that.globalData.userInfo = res.role;
+          // that.globalData.userInfo = { role: 'maintain'}
+          // that.globalData.userInfo = {
+          //   role: 'inspector'
+          // }
+          wx.reLaunch({
+            url: '/pages/index/index',
+          })
+        }).catch(err => {
+          wx.showToast({
+            title: '自动登录失败',
+            duration: 1000
+          })
+        })
+      },
+      fail() {
+        // session_key 已经失效，需要重新执行登录流程
+        console.log('无效');
+        wx.showToast({
+          title: '登录状态过期，请手动登录',
+          duration: 1000
+        })
+      }
+    })
   },
-  // 解密电话
-  decodeNumber: function() {
 
+  /**
+  * 生命周期函数--监听页面加载
+  */
+  onLoad: function (options) {
+    // 判断是否是自动登录
+    let autoLogin = wx.getStorageSync('autoLogin') || false;
+    if (autoLogin) {
+      console.log('自动开启')
+      try {
+        let openId = wx.getStorageSync('openId')
+        let sessionKey = wx.getStorageSync('sessionKey');
+        if (openId && sessionKey) {
+          // Do something with return value;
+          // 调用自动登录接口
+          this.autoLoin(openId, sessionKey)
+        }
+      } catch (e) {
+        // Do something when catch error
+        wx.showToast({
+          title: '自动登录失败,请手动登录',
+          // icon: 'success',
+          duration: 1000
+        })
+      }
+    }else{
+      console.log('自动未开启')
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

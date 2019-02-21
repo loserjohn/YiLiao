@@ -10,17 +10,17 @@
   </view>
   <van-cell-group>
     <van-field value="{{ form.userName.value }}" id="userName" type="number" clearable label="用户手机号" placeholder="请输入手机号" error-message="{{ form.userName.valid?'':'手机号码输入错误' }}" bind:clear="clear" bind:blur="valid" />
-    <van-field value="{{ form.userPass.value  }}" id="userPass" clearable error-message="{{ form.userPass.valid?'':'密码格式错误' }}"   type="password" label="密码" placeholder="6-20个字母、数字、下划线组成" bind:clear="clear" bind:blur="valid"  />
+    <van-field value="{{ form.userPass.value  }}" id="userPass" clearable error-message="{{ form.userPass.valid?'':'密码格式错误' }}" type="password" label="密码" placeholder="6-20个字母、数字、下划线组成" bind:clear="clear" bind:blur="valid" />
   </van-cell-group>
   <view class='cm_menus'>
     <van-button size="normal" block custom-class='cm_btn' bind:click="login" loading="{{loading}}">登录</van-button>
   </view>
 </view>
 
-<van-popup show="{{ show }}" overlay="{{ true }}" bind:close="onClose">
+<van-popup show="{{ show }}" overlay="{{ true }}" bind:close="onClose" custom-class="authrize">
   <view class='authrizeBox'>
-    <view class='authrizeText'>欢迎登录XXXX 快速绑定微信
+    <view class='authrizeText'>欢迎登录医疗设备报修系统
     </view>
-    <van-button size="normal" block open-type="getUserInfo" custom-class='cm_btn' bindgetuserinfo="bindGetUserInfo">用户授权</van-button>
+    <van-button size="normal" block open-type="getUserInfo" custom-class='cm_btn' bindgetuserinfo="bindGetUserInfo">立即同步微信</van-button>
   </view>
 </van-popup>

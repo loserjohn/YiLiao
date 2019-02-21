@@ -5,7 +5,8 @@
 }
 .userBox{
   /* background: red; */
-  background:#49c7a4;
+  /* background:#49c7a4;#dcf3af */
+   background-image: -webkit-linear-gradient(top, #c2eeb9, #6de2ce); 
   padding: 30rpx;
   color: #fff
 }

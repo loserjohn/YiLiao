@@ -12,7 +12,8 @@
   text-align: center;
   position: fixed;
   right: 60rpx;
-  bottom: 60rpx
+  bottom: 60rpx;
+  z-index: 100
 }
 .tipIcon{
   /* background: red; */
@@ -25,4 +26,8 @@
 .tipHover{
   background: #35ceb4;
   box-shadow: 0 0 8rpx #28b8a1;
+}
+.modal{
+  width: 80%;
+  height: 100%
 }

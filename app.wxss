@@ -2,7 +2,7 @@
 @import './static/icon/icon.wxss';
 
 page {
-  background: #f7f7f7;
+  background: #f2f2f2;
   /* background: #ddd; */
   font-size: 32rpx;
   box-sizing: border-box;
@@ -10,7 +10,6 @@ page {
 
 view {
   box-sizing: border-box;
-  
 }
 
 .container {

@@ -1,4 +1,7 @@
 /* pages/login/login.wxss */
+page {
+  background: #fff;
+}
 .msgBox{
   padding-bottom: 160rpx
 }
@@ -16,10 +19,14 @@
 .cm_menus{
   margin-top: 40rpx
 }
+.authrize{
+ border-radius: 40rpx;
+  overflow: hidden;
+}
 .authrizeBox{
   box-sizing: border-box;
   padding: 30rpx;
-  border-radius: 40rpx
+ 
 }
 .authrizeText{
   line-height: 4

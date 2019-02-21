@@ -2,8 +2,8 @@
   "usingComponents": {
       "blocktitle": "../components/blocktitle/blocktitle"
   },
-  "navigationBarBackgroundColor": "#ffffff",
-  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#c2eeb9",
+  "navigationBarTextStyle": "white",
   "navigationBarTitleText": "医疗设备报修",
   "backgroundColor": "#ddd",
   "backgroundTextStyle": "light"

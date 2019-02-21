@@ -9,9 +9,10 @@
     <view class='orderDesc'>规格型号{{item.model}}</view>  
   </view>
   <view slot="tags">
-    <block wx:for="{{item.type}}" wx:key="index" wx:for-item="its">
+    <!-- <block wx:for="{{item.type}}" wx:key="index" wx:for-item="its">
       <van-tag type="danger" custom-class="tags">{{its.text}}</van-tag>
-    </block>
+    </block> -->
+    <van-tag type="danger" custom-class="tags">{{'￥23.5'}}</van-tag>
   </view>
   <view slot="footer" >
     <van-button  type="primary" size="mini" wx:if="{{choosabled}}" catchtap="choose">选用备件</van-button>  

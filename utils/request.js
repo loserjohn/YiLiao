@@ -11,13 +11,13 @@ const wxRequest =  function (method, url, data) {
       },
       dataType: 'json',
       success: function (res) {
-        // console.log('请求success', res.data) 
+        console.log('请求success', res.data)  
         resolve(res.data) 
       },
       fail: function (err) {
         console.log('请求错误处理')
         reject(err)
-        // errFun(res);
+        // errFun(res); 
       }
     }) 
   })

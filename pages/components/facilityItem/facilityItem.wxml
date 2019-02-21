@@ -1,13 +1,15 @@
 <!--pages/components/orderItem/orderItem.wxml-->
-<van-card title="{{item.title}}" thumb="{{item.thumb}}"  custom-class="orderItem" lazy-load>
+<van-card title="{{item.DEVICE_NAME}}" thumb="{{item.thumb}}"  custom-class="orderItem" lazy-load>
   <view slot="tags">
-    <van-tag   color="#8956ec" wx:if="{{item.status==0}}" >{{item.statusText}}</van-tag>
-    <van-tag   color="#56ec99" wx:if="{{item.status==1}}">{{item.statusText}}</van-tag>
-    <van-tag   color="#f38868" wx:if="{{item.status==2}}">{{item.statusText}}</van-tag>
+    <van-tag   color="#8956ec" wx:if="{{item.DEVICE_STATUS==0}}" >待维修</van-tag>
+    <van-tag   color="#56ec99" wx:if="{{item.DEVICE_STATUS==1}}">维修中</van-tag>
+    <van-tag   color="#f38868" wx:if="{{item.DEVICE_STATUS==2}}">运行正常</van-tag>
+    <!-- <van-tag   color="#f38868" wx:if="{{item.status==2}}">{{item.statusText}}</van-tag> -->
   </view>
+  
   <view slot="desc">
-    <view class='orderDesc'>设备编号：{{item.facilityId}}</view>
-    <view class='orderDesc'>使用部门：{{item.department }}</view>
-    <view class='orderDesc'>设备位置：{{item.position}}</view>
+    <view class='orderDesc'>设备编号：{{item.DEVICE_NUM}}</view>
+    <view class='orderDesc'>使用型号：{{item.DEVICE_SPCE }}</view>
+    <view class='orderDesc'>设备位置：{{item.SOURCE_UNIT}}</view> 
   </view>
-</van-card>
+</van-card> 

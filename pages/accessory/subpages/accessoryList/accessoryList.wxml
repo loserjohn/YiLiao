@@ -1,60 +1,41 @@
 <!--pages/accessory/subpages/accessory/accessoryList.wxml-->
 <view class='cm_container flex'>
   <view class='flex searchBar'>
-    
     <view class='f1'>
       <van-search value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot bind:search="onSearch" background="#fff">
         <view slot="action" bind:tap="onSearch">搜索</view>
       </van-search>
     </view>
   </view>
-  <!-- <view class='typeBar'>
-    <scroll-view class="scroll_view" scroll-x style="width: 100%">
-      <block wx:for="{{typeList}}" wx:key="index">
-          <view class='typeItem'>
-            <van-tag plain="{{item.key==currentType?false:true}}" size="large" color="{{item.key==currentType?'#28b8a1':'#bcbcbc'}}" round >{{item.text}}</van-tag>
-          </view>           
-      </block>
-    </scroll-view>
-  </view> -->
-  <view calass="typeBar">
-      <view class='typeItem'>
-         <van-tag plain="false" size="large" color="#28b8a1" round >关联配件</van-tag>
-      </view>   
-      <view class='typeItem'>
-         <van-tag plain size="large" color="#bcbcbc" round >全部</van-tag>
-      </view> 
-  </view>
-  <view class='f1 overhidden ' >
-    <scroll-view scroll-y class='cm_scroll_y'>
-      <van-cell-group>
-        <view class="">
-          <block wx:for="{{list}}" wx:key="index">
-            <navigator url="../accessoryDetail/accessoryDetail">
-              <accessoryItem item="{{item}}" delectabled="{{false}}" dosagabled="{{false}}" choosabled="{{typeAction=='choose'?true:false}}"  bind:choose="setNum"></accessoryItem>
-            </navigator>
-          </block>
-           <moreReminder loading="{{loading}}" nomore="{{nomore}}"></moreReminder>
+  <view class='f1 overhidden ' id="scrollBox">
+    <van-tabs color="#28B8A1" custom-class="tabs red" animated="true" swipeable="false" active="{{active}}">
+      <van-tab title="相关备件"  wx:if="{{typeAction=='choose'}}" >
+        <view style= "{{'height:'+height}}" >
+          <relevant></relevant>
         </view>
-      </van-cell-group>    
-    </scroll-view>
+      </van-tab>
+      <van-tab title="全部备件">
+        <scroll-view scroll-y class='cm_scroll_y ' style= "{{'height:'+height}}">
+          <van-cell-group>
+            <view class="">
+              <block wx:for="{{list}}" wx:key="index">
+                <navigator url="../accessoryDetail/accessoryDetail">
+                  <accessoryItem item="{{item}}" delectabled="{{false}}" dosagabled="{{false}}" choosabled="{{typeAction=='choose'?true:false}}" bind:choose="setNum"></accessoryItem>
+                </navigator>
+              </block>
+              <moreReminder loading="{{loading}}" nomore="{{nomore}}"></moreReminder>
+            </view>
+          </van-cell-group>
+        </scroll-view>
+      </van-tab>
+    </van-tabs>
   </view>
-   <van-button wx:if="{{typeAction=='choose'}}" bind:click="addAccessory"  type="primary" size="normal" block custom-class="cm_btn">添加其他备件</van-button>  
+  <van-button wx:if="{{typeAction=='choose'}}" bind:click="addAccessory" type="primary" size="normal" block custom-class="cm_btn">添加其他备件</van-button>
 </view>
-<van-dialog
-  use-slot
-  async-close
-  show="{{ show }}"
-  show-cancel-button
-  confirm-button-open-type="getUserInfo"
-  bind:close="onClose"
-  bind:getuserinfo="getUserInfo"
->
-<view class="numTip">请确认数量</view>    
-<van-field
-  value="{{num}}"
-  label="数量："
-  placeholder="请输入数量"
-/>
+
+
+<van-dialog use-slot async-close show="{{ show }}" show-cancel-button confirm-button-open-type="getUserInfo" bind:close="onClose" bind:getuserinfo="getUserInfo">
+  <view class="numTip">请确认数量</view>
+  <van-field value="{{num}}" label="数量：" placeholder="请输入数量" />
 
 </van-dialog>

@@ -12,28 +12,7 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     role:-1,
     meuns:[],
-    panels:[
-      {
-        icon: 'icon-ceshishenqing',
-        title: '待维修',
-        badge: 0,
-        roles: [],
-        path: 'order1'
-      },
-      {
-        icon: 'icon-renjijiaohu',
-        title: '维修中',
-        badge: 1,
-        roles: [],
-        path: 'order2'
-      },
-      {
-        icon: 'icon-changjingguanli',
-        title: '历史记录',
-        roles: [],
-        path: 'record'
-      }
-    ]
+    panels:[]
   },
   // 跳转
   linkTo:function(event){
@@ -91,15 +70,17 @@ Page({
     })
   },
   onLoad: function () {
-    let role = app.globalData.userInfo.role;
+    let role = app.globalData.role;
     if (!role) return
     this.setData({
       role: role
     })
     permisionFilter(role, (res) => {
+      console.log(res)
       this.setData({
         role: role,
-        meuns: res
+        meuns: MainMenus,
+        panels: res
       })
     })
     if (app.globalData.userInfo) {

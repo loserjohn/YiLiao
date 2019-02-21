@@ -15,7 +15,7 @@
       </view>
     </view>
   </view>
-  <view class='panel flex'>
+  <!-- <view class='panel flex'>
     <view class='blocks' >
         <view><text class='mark'>3</text>年</view>
         <view>维修经验</view> 
@@ -23,8 +23,9 @@
      <view class='blocks' >
         <view><text class='mark'>3</text>次</view>
         <view>完成维修</view> 
+        
     </view>
-  </view>
+  </view> -->
   <view class='cm_blank'></view>
   <view class='cm_menus'>
     <!-- 菜单循环 -->
@@ -55,6 +56,16 @@
         <icon class="iconfont icon-jiantou_liebiaoxiangyou arrow-right"></icon>
       </view>
     </navigator>
+    <view class='cm_menusItem'>
+     <view class='flex ' >
+        <icon class="iconfont cm_menusItem_icon icon-lanya "></icon>
+        <view class='cm_menusItem_content '>
+          <text>自动登录</text>
+        </view>
+        <!-- <icon class="iconfont icon-jiantou_liebiaoxiangyou arrow-right"></icon> -->
+        <van-switch checked="{{ checked }}" bind:change="onChange" custom-class="arrow-right"  size="18px"/>
+      </view>
+    </view>
   </view>
 </view>
 <view class='cm_blank'></view>

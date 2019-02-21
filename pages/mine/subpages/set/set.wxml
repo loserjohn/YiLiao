@@ -1,16 +1,11 @@
 <!--pages/mine/subpages/set/set.wxml-->
 <view>
-  <view class='avatarBar '>
-    <view class='f1'>所属部门：设备维修部门</view>
-    <view class='f1'>所属职位：维修人员</view>
-   
-    <view class='avatar'>
-      <!-- <open-data type="userAvatarUrl" class=""></open-data> -->
-      <image src='/static/img/defaultAvatar.jpg' class='cover'></image>
-    </view>
-  </view>
-  <view class='cm_nopading' style="padding-top:100rpx">
+
+  <view class='cm_nopading' >
     <van-cell-group>
+    <van-field left-icon="manager" input-align="right" value="设备维修" clearable label="所属部门" placeholder="请输入用户名" bind:click-icon="onClickIcon">
+      </van-field>
+      <van-field left-icon="phone" input-align="right" value="维修人员" clearable label="所属职位" placeholder="请输入用户名" bind:click-icon="onClickIcon"></van-field>
       <van-field left-icon="manager" input-align="right" value="{{ username }}" clearable label="昵称" placeholder="请输入用户名" bind:click-icon="onClickIcon">
       </van-field>
       <van-field left-icon="phone" input-align="right" value="{{ username }}" clearable label="手机号" placeholder="请输入用户名" bind:click-icon="onClickIcon">
@@ -31,6 +26,7 @@
     <van-cell-group>
       <van-cell icon="star" title="推荐朋友" is-link />
       <van-cell icon="award" title="关于我们" is-link />
+    
     </van-cell-group>
   </view>
 

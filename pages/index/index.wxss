@@ -1,8 +1,10 @@
 /**index.wxss**/
 @import '/static/icon/icon.wxss'; 
-
+page {
+  background: #fff;
+}
 .menusPanel{
-padding: 20rpx;
+ padding: 20rpx;
  flex-wrap: wrap;
  justify-content: space-between
 }
@@ -44,13 +46,43 @@ padding: 20rpx;
 }
 
 .msgBox{
-  background:#49c7a4; 
-  color: #fff;
+  /* background:pink;  */
+  /* color: #fff; */
   text-align: center;
   box-sizing: border-box;
-  padding: 40rpx
+  padding: 40rpx;
+  position: relative;
+  height: 380rpx;
+  margin-bottom: 40rpx
+}
+.bg{
+  width: 100%;
+  height: 360rpx;
+  border-radius:0 0  100rpx 100rpx;
+  position: absolute;
+  left: 0;
+  /* background:#28b8a1;  */
+   background-image: -webkit-linear-gradient(top, #c2eeb9, #6de2dc); 
+  z-index: -1;
+  top: 0
+}
+.orderBox{
+  width: 96%;
+  height: 180rpx;
+  border-radius:20rpx;
+  position: absolute;
+  left: 50%;
+  margin-left: -48%;
+  background:#fff; 
+  z-index: 1;
+  bottom: 0;
+  box-shadow: 0 0 6rpx #bcbcbc;
+  /* border: 1px solid red; */
+  overflow: hidden
 }
 .permission{
   font-size: 40rpx;
+  line-height: 3;
+  color: #fff
   /* font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif */
 }

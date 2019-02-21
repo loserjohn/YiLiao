@@ -10,7 +10,7 @@
       </van-search>
     </view>
   </view>
-  <view class='f1 overhidden' >
+  <view class='f1 overhidden'>
     <scroll-view scroll-y class='cm_scroll_y'>
       <van-cell-group>
         <view class="">
@@ -19,14 +19,26 @@
               <facilityItem item="{{item}}"></facilityItem>
             </navigator>
           </block>
-           <moreReminder loading="{{loading}}" nomore="{{nomore}}"></moreReminder>
+          <moreReminder loading="{{false}}" nomore="{{nomore}}"></moreReminder>
         </view>
-      </van-cell-group>    
+      </van-cell-group>
     </scroll-view>
   </view>
   <!-- 小工具 -->
-  <view class='tip' hover-class='tipHover'>
-    <van-icon name="filter-o" size="40rpx" custom-class="tipIcon"/>
+  <view class='tip' hover-class='tipHover' bindtap="modalToggle">
+    <van-icon name="filter-o" size="40rpx" custom-class="tipIcon" />
     <view class='tipText'>筛选</view>
   </view>
 </view>
+<van-popup show="{{ show }}" position="left" overlay="{{ true }}" bind:close="onClose" custom-class="modal">
+  <van-cell-group>
+    <van-cell title="设备类型" value="4" is-link bind:click="handler" />
+    <van-cell title="科室" value="4" is-link bind:click="handler" />
+    <van-cell title="设备状态" value="4" is-link bind:click="handler" />
+    <!-- <van-cell title="生产厂商" value="4" is-link bind:click="handler" /> -->
+  </van-cell-group>
+</van-popup>
+
+<van-popup show="{{ showoption }}" position="bottom" overlay="{{ true }}" catichclose="onClose" safe-area-inset-bottom>
+  <van-picker show-toolbar title="标题" columns="{{ columns }}" bind:cancel="onCancel" bind:confirm="onConfirm" />
+</van-popup>

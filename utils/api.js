@@ -17,3 +17,11 @@ export const wxLogin = function (data){
 export const getIdentity = function (data) {
   return wxRequest('POST', '/api/getIdentity', data)
 } 
+
+
+// 设备部分
+
+// 获取设备列表
+export const getFacilityList = function (data) {
+  return wxRequest('POST', '/api/facilityList', data)
+} 

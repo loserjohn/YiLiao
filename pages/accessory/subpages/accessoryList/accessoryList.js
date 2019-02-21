@@ -8,34 +8,7 @@ Page({
     num:0,
     show:false,
     typeAction:'',
-    typeList: [{
-      key: 0,
-      text: '全部'
-    }, {
-      key: 1,
-      text: '二极sda管'
-    }, {
-      key: 2,
-      text: '二a第三方极管'
-    }, {
-      key: 3,
-      text: '二极第三方管'
-    }, {
-      key: 4,
-      text: '二士大夫极管'
-    }, {
-      key: 5,
-      text: '二十大发极管'
-    }, {
-      key: 6,
-      text: '二电饭锅极管'
-    }, {
-      key: 7,
-      text: '二极管'
-    }, {
-      key: 8,
-      text: '二极管'
-    }],
+    height:'300px',
     currentType:2,
     list: [
       {
@@ -122,6 +95,19 @@ Page({
     this.setData({
       typeAction:action
     })
+    let  that = this
+    const query = wx.createSelectorQuery()
+    query.select('#scrollBox').boundingClientRect()
+    query.selectViewport().scrollOffset()
+    query.exec(function (res) {
+     
+      let H = res[0].height;
+      that.setData({
+        height: H -44 + 'px'
+      })
+      console.log(H + 'px')
+    })
+    
   },
 
   /**

@@ -37,12 +37,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 14,
+			"current": 16,
 			"list": [
 				{
-					"id": -1,
-					"name": "设备",
-					"pathName": "pages/accessory/accessory",
+					"id": 0,
+					"name": "备件列表",
+					"pathName": "pages/accessory/subpages/accessoryList/accessoryList",
 					"query": "",
 					"scene": null
 				},
@@ -134,6 +134,20 @@
 					"id": 14,
 					"name": "修改密码",
 					"pathName": "pages/mine/subpages/updatedPass/updatedPass",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "备件列表",
+					"pathName": "pages/accessory/subpages/accessoryList/accessoryList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "首页",
+					"pathName": "pages/index/index",
 					"query": "",
 					"scene": null
 				}
