@@ -3,10 +3,10 @@
 
   <view class='cm_nopading' >
     <van-cell-group>
-    <van-field left-icon="manager" input-align="right" value="设备维修" clearable label="所属部门" placeholder="请输入用户名" bind:click-icon="onClickIcon">
+    <van-field left-icon="friends" color="red" input-align="right" value="设备维修" clearable label="所属部门" placeholder="请输入用户名" bind:click-icon="onClickIcon">
       </van-field>
-      <van-field left-icon="phone" input-align="right" value="维修人员" clearable label="所属职位" placeholder="请输入用户名" bind:click-icon="onClickIcon"></van-field>
-      <van-field left-icon="manager" input-align="right" value="{{ username }}" clearable label="昵称" placeholder="请输入用户名" bind:click-icon="onClickIcon">
+      <van-field left-icon="manager" input-align="right" value="维修人员" clearable label="所属职位" placeholder="请输入用户名" bind:click-icon="onClickIcon"></van-field>
+      <van-field left-icon="label" input-align="right" value="{{ username }}" clearable label="昵称" placeholder="请输入用户名" bind:click-icon="onClickIcon">
       </van-field>
       <van-field left-icon="phone" input-align="right" value="{{ username }}" clearable label="手机号" placeholder="请输入用户名" bind:click-icon="onClickIcon">
       </van-field>

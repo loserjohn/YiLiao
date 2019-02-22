@@ -1,6 +1,8 @@
 {
-  "usingComponents": {},
-  "navigationBarBackgroundColor": "#c2eeb9",
+  "usingComponents": {
+    "menusBlock": "../components/menusBlock/menusBlock"
+  },
+  "navigationBarBackgroundColor": "#3dd8ad",
   "navigationBarTextStyle": "white",
   "navigationBarTitleText": "医疗设备报修",
   "backgroundColor": "#ddd",

@@ -57,7 +57,8 @@ Page({
       }
       // 登录api
       accountLogin(data).then(res => {
-        console.log('promiser成功', res);
+        console.log('promise成功');
+        app.globalData.role = res.role;
         app.globalData.sessionKey = res.sessionKey
         wx.setStorageSync('openId', res.openId)
         wx.setStorageSync('sessionKey', res.sessionKey);
@@ -80,7 +81,20 @@ Page({
   bouding(callback) {
     wx.login({
       success: res => {
-        app.globalData.code = res.code;
+        app.globalData.code = res.code; 
+        // var l = 'https://api.weixin.qq.com/sns/jscode2session?appid=wxd463568812190ae4&secret=35a59467027fe0bdcced80a4994d3b9d&js_code=' + res.code + '&grant_type=authorization_code';
+        // wx.request({
+        //   url: l,
+        //   data: {},
+        //   method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT  
+        //   // header: {}, // 设置请求的 header  
+        //   success: function (res) {
+            
+        //     console.log('结果', res);
+        //     // wx.setStorageSync('user', obj);//存储openid  
+        //   }
+        // });
+        console.log('code '+res.code)
         // 发送 res.code 到后台换取 openId, sessionKey, unionId;储存在全局
         // getIdentity(res.code).then(res => {
         //   // console.log(111, res);   
@@ -153,8 +167,12 @@ Page({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称
           wx.getUserInfo({
             success(res) {
-              console.log('授权', res);
+              console.log('授权');
               app.globalData.userInfo = res;
+              wx.showToast({
+                title: '欢迎登录',
+                duration: 1000
+              })
               wx.reLaunch({
                 url: '/pages/index/index',
               })
@@ -188,25 +206,27 @@ Page({
       success() {
         // session_key 未过期，并且在本生命周期一直有效
         console.log('有效');
-        that.globalData.sessionKey = sessionKey;
-        that.globalData.openId = openId;
+        app.globalData.sessionKey = sessionKey;
+        app.globalData.openId = openId;
         let data = {
           sessionKey: sessionKey,
           openId: openId
         }
         wxLogin(data).then(res => {
           console.log('自动登录', res.role);
-          that.globalData.userInfo = res.role;
+          app.globalData.role = res.role;
           // that.globalData.userInfo = { role: 'maintain'}
           // that.globalData.userInfo = {
           //   role: 'inspector'
           // }
-          wx.reLaunch({
-            url: '/pages/index/index',
-          })
+          that.getUserMsg()
+          // wx.reLaunch({
+          //   url: '/pages/index/index',
+          // })
         }).catch(err => {
           wx.showToast({
-            title: '自动登录失败',
+            title: '自动登录失效,请手动登录',
+            icon:'none',
             duration: 1000
           })
         })
@@ -235,6 +255,7 @@ Page({
         let sessionKey = wx.getStorageSync('sessionKey');
         if (openId && sessionKey) {
           // Do something with return value;
+          console.log(openId +'------'+ sessionKey)
           // 调用自动登录接口
           this.autoLoin(openId, sessionKey)
         }

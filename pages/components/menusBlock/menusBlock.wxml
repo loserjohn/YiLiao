@@ -1,0 +1,16 @@
+<!--pages/components/menusBlock/menusBlock.wxml-->
+
+<view hover-class="cm_hover" wx:if="{{block}}">
+  <view class='menusBlockItem flex' bindtap="link">
+    <icon class="{{'iconfont  menusItem_icon ' + current.icon}}"></icon>
+    <view class='menusItem_text f1'>{{current.title}}</view>
+    <icon class="iconfont icon-jiantou_liebiaoxiangyou arrow-right"></icon>
+  </view>
+</view>
+<view hover-class="cm_hover" wx:else>
+  <view class='menusPanelItem '  bindtap="link">
+    <icon class="{{'iconfont  menusItem_icon ' + current.icon}}"></icon>
+    <view class='menusItem_text'>{{current.title}}</view>
+    <view wx:if="{{badge && badge>0}}" class='badge'>{{badge}}</view>
+  </view>
+</view>

@@ -11,7 +11,7 @@ const wxRequest =  function (method, url, data) {
       },
       dataType: 'json',
       success: function (res) {
-        console.log('请求success', res.data)  
+        console.log('请求success')  
         resolve(res.data) 
       },
       fail: function (err) {

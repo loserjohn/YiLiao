@@ -1,20 +1,18 @@
 <!--index.wxml-->
 <view class="cm_">
   <view class='msgBox'>
-    <view class='permission' >{{role=='maintain'?'维修人员':'巡检员'}}</view>
+    <view class='permission'>{{role=='maintain'?'维修人员':'巡检员'}}</view>
     <view class="bg"></view>
     <view class='orderBox'>
       <!-- <blocktitle icon="icon-jinzhidengji" title="维修管理" wx:if="{{role=='maintain'}}"></blocktitle> -->
-      <view class='cm_blocks' >
+      <view class='cm_blocks'>
         <!-- 菜单循环 -->
         <view class='menusPanel  flex'>
-          <view class='menusBlock flex' wx:for="{{panels}}" wx:key="index" hover-class="cm_hover">
-            <view class='menusBlockItem' data-to="{{item.handler}}" bindtap="linkTo">
-              <icon class="{{'iconfont  menusItem_icon ' + item.icon}}"></icon>
-              <view class='menusItem_text'>{{item.title}}</view>
-              <view wx:if="{{item.badge && item.badge>0}}" class='badge'>{{ item.badge}}</view>
+          <block wx:for="{{panels}}" wx:key="index">
+            <view class='panelItem'>
+              <menusBlock name="{{item.name}}" badge="{{item.badge}}"> </menusBlock>
             </view>
-          </view>
+          </block>
         </view>
       </view>
     </view>
@@ -23,15 +21,11 @@
   <view class='cm_blocks'>
     <view class='cm_menus'>
       <!-- 菜单循环 -->
-      <view wx:for="{{meuns}}" wx:key="index" class='cm_menusItem'>
-        <view class='flex' hover-class="cm_hover" data-to="{{item.handler}}" bindtap="linkTo">
-          <icon class="{{'iconfont  cm_menusItem_icon ' + item.icon}}"></icon>
-          <view class='cm_menusItem_content '>
-            <text>{{item.title}}</text>
-          </view>
-          <icon class="iconfont icon-jiantou_liebiaoxiangyou arrow-right"></icon>
+      <block wx:for="{{meuns}}" wx:key="index">
+        <view class='cm_menusItem'>
+          <menusBlock name="{{item}}" block> </menusBlock>
         </view>
-      </view>
+      </block>
     </view>
   </view>
 

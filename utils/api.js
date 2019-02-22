@@ -18,6 +18,11 @@ export const getIdentity = function (data) {
   return wxRequest('POST', '/api/getIdentity', data)
 } 
 
+// 获取服务器上的个人信息
+export const getUserMsg = function (data) {
+  return wxRequest('get', '/api/getUserMsg', data)
+} 
+
 
 // 设备部分
 

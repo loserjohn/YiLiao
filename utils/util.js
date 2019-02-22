@@ -51,6 +51,8 @@ const  scanCode = (callback)=>{
   })
 }
 
+
+
 module.exports = {
   formatTime: formatTime,
   checkPhone: checkPhone,

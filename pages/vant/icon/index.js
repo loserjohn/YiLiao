@@ -4,7 +4,10 @@ VantComponent({
     info: null,
     name: String,
     size: String,
-    color: String,
+    color: {
+      type:String,
+      value: '#34495e'
+    },
     customStyle: String,
     classPrefix: {
       type: String,

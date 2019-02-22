@@ -2,15 +2,5 @@
 <van-nav-bar title="备件" class="cm_navBar"></van-nav-bar>
 <view class='cm_menus'>
   <!-- 菜单循环 -->
-  <navigator url="./subpages/accessoryList/accessoryList">
-    <view class='cm_menusItem'>
-      <view class='flex' hover-class="cm_hover">
-        <icon class="iconfont cm_menusItem_icon icon-biaodanzujian-shurukuang "></icon>
-        <view class='cm_menusItem_content '>
-          <text>备件列表</text>
-        </view>
-        <icon class="iconfont icon-jiantou_liebiaoxiangyou arrow-right"></icon>
-      </view>
-    </view>
-  </navigator>
+     <menusBlock name="accessoryList" block> </menusBlock>
 </view>

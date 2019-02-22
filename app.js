@@ -12,7 +12,6 @@ App({
  
   globalData: {
     // 用户身份
-    role: 'maintain',
     userInfo: {},
     openId: '',
     sessionKey: '',

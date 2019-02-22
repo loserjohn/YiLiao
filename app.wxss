@@ -53,33 +53,10 @@ view {
   padding: 0 30rpx;
   background: #fff;
 }
-
-.cm_menusItem {
-  height: 120rpx;
-  line-height: 120rpx;
-  background: #fff;
-  border-bottom: 1rpx solid #f2f2f2;
+.cm_menusItem{
+  width: 100%
 }
 
-.cm_menusItem .cm_menusItem_icon {
-  font-size: 40rpx;
-  /* font-weight: 600; */
-  color: #28b8a1;
-  margin-right: 20rpx;
-}
-
-.cm_menusItem .cm_menusItem_content {
-  flex: 1;
-}
-
-.cm_menusItem .arrow-right {
-  font-size: 32rpx;
-  color: #dcdcdc;
-}
-
-.cm_menusItem:last-child {
-  border-bottom: none;
-}
 
 .cm_c {
   text-align: center;
