@@ -1,4 +1,4 @@
 <!--pages/components/scan/scan.wxml-->
-<view class='scanBox' style="{{'background:'+background}}" >
+<view class='scanBox'  bindtap='handler' hover-class="cm_hover">
   <van-icon name="scan" slot="icon" color="#28B8A1" size='28px'  custom-class="scanIcon" />
 </view>

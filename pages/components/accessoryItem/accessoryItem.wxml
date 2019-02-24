@@ -16,7 +16,7 @@
   </view>
   <view slot="footer" >
     <van-button  type="primary" size="mini" wx:if="{{choosabled}}" catchtap="choose">选用备件</van-button>  
-    <van-button plain type="danger" size="mini" wx:if="{{delectabled}}">删除备件</van-button>
+    <van-button plain type="danger" size="mini" wx:if="{{delectabled}}" catchtap="delect">删除备件</van-button>
   </view>
 </van-card>
 

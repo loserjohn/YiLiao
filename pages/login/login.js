@@ -246,6 +246,18 @@ Page({
   * 生命周期函数--监听页面加载
   */
   onLoad: function (options) {
+    // 记录全局的页面高度
+    let that = this
+    const query = wx.createSelectorQuery()
+    query.select('#scrollBox').boundingClientRect()
+    query.selectViewport().scrollOffset()
+    query.exec(function (res) {
+
+      let H = res[0].height;
+      // console.log(H);
+      app.globalData.winHeight = H
+    })
+
     // 判断是否是自动登录
     let autoLogin = wx.getStorageSync('autoLogin') || false;
     if (autoLogin) {

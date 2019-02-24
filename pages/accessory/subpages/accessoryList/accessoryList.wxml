@@ -8,14 +8,9 @@
     </view>
   </view>
   <view class='f1 overhidden ' id="scrollBox">
-    <van-tabs color="#28B8A1" custom-class="tabs red" animated="true" swipeable="false" active="{{active}}">
-      <van-tab title="相关备件"  wx:if="{{typeAction=='choose'}}" >
-        <view style= "{{'height:'+height}}" >
-          <relevant></relevant>
-        </view>
-      </van-tab>
+    <van-tabs color="#28B8A1" custom-class="tabs" animated="true" swipeable="false" active="{{active}}">
       <van-tab title="全部备件">
-        <scroll-view scroll-y class='cm_scroll_y ' style= "{{'height:'+height}}">
+        <scroll-view scroll-y class='cm_scroll_y ' style="{{'height:'+height}}">
           <van-cell-group>
             <view class="">
               <block wx:for="{{list}}" wx:key="index">
@@ -28,14 +23,25 @@
           </van-cell-group>
         </scroll-view>
       </van-tab>
+
+      <van-tab title="相关备件" wx:if="{{typeAction=='choose'}}">
+        <view style="{{'height:'+height}}">
+          <relevant canchoose="{{true}}" bind:choose="setNum"></relevant>
+        </view>
+      </van-tab>
     </van-tabs>
+
   </view>
   <van-button wx:if="{{typeAction=='choose'}}" bind:click="addAccessory" type="primary" size="normal" block custom-class="cm_btn">添加其他备件</van-button>
 </view>
 
 
-<van-dialog use-slot async-close show="{{ show }}" show-cancel-button confirm-button-open-type="getUserInfo" bind:close="onClose" bind:getuserinfo="getUserInfo">
-  <view class="numTip">请确认数量</view>
-  <van-field value="{{num}}" label="数量：" placeholder="请输入数量" />
+<van-dialog use-slot async-close show="{{ show }}" show-cancel-button bind:close="onClose">
+  <view class='cm_menus flex numModal'>
+    <view class="numTip ">请确认数量</view>
+    <van-stepper value="{{ num }}" custom-class="" bind:change="syncVal" />
+  </view>
+
+  <!-- <van-field value="{{num}}" label="数量：" placeholder="请输入数量"  bind:change="{{syncVal}}"/> -->
 
 </van-dialog>

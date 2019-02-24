@@ -1,4 +1,5 @@
 // pages/index/subpages/repairOrder/repairOrder.js
+const app = getApp()
 Page({
 
   /**
@@ -6,14 +7,21 @@ Page({
    */
   data: {
     orderType: ['故障信息','更换配件','维修进度'],
-    currentType: 0
+    currentType: 0,
+    height: '',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+ 
+    let H = app.globalData.winHeight;
+    // console.log(this.data.height)
+    this.setData({
+      height: H - 44 + 'px'
+    })
+      // console.log(H - 44  + 'px')
   },
 
   /**

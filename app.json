@@ -83,6 +83,7 @@
     "van-loading": "./pages/vant/loading/index",
     "van-swipe-cell": "./pages/vant/swipe-cell/index",
     "van-switch":"./pages/vant/switch/index",
-    "van-switch-cell": "./pages/vant/switch-cell/index"
+    "van-switch-cell": "./pages/vant/switch-cell/index",
+    "van-stepper": "./pages/vant//stepper/index"
   }
 }

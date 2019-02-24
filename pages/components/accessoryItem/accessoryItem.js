@@ -39,8 +39,12 @@ Component({
     // 选用备件
     choose:function(){
       // console.log(1)
-      this.triggerEvent('choose', '135435135')
+      this.triggerEvent('choose', '备件id135435135')
       // this.properties.choosabledHandler('135435135')
+    },
+    // 删除备件
+    delect:function(){
+      this.triggerEvent('delect', '备件id135435135')
     }
   }
 })

@@ -1,5 +1,5 @@
 <!--pages/login/login.wxml-->
-<view>
+<view class='cm_container' id="scrollBox">
   <view class='msgBox'>
     <view class="user_avatar">
       <open-data type="userAvatarUrl"></open-data>

@@ -40,7 +40,7 @@ view {
 
 
 .cm_hover {
-  background: #f1f1f1;
+  background: #f1f1f1!important;
   /* opacity: 0.9 */
 }
 
@@ -71,13 +71,11 @@ view {
   height: 100%;
 }
 
-.main {
-  /* background: #fff; */
-}
 .cm_container{
   flex-direction: column;
   width: 100vw;
   height:100vh;
+  overflow: hidden;
 }
 .cm_input {
   text-align: right !important;
@@ -89,10 +87,10 @@ view {
   color: #fff!important
 }
 
-.red {
+/* .red {
   background: red;
   overflow: hidden;
-}
+} */
 
 .cm_scroll_y {
   width: 100%;
@@ -117,3 +115,7 @@ view {
   color: transparent;
 }
  
+ .cm_pad{
+   box-sizing: border-box;
+   padding: 30rpx
+ }

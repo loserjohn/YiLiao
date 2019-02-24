@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "accessoryItem": "../../../components/accessoryItem/accessoryItem"
+    "accessoryItem": "../../../components/accessoryItem/accessoryItem",
+    "menusBlock":"../../../components/menusBlock/menusBlock"
   }
 }

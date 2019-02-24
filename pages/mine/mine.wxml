@@ -29,7 +29,7 @@
   </view>
 </view>
 <view class='cm_blank'></view>
-<view class='cm_menus'>
+<view class='cm_pad'>
   <van-button  type="danger" size="normal" loading="{{loading}}" block bindtap='loginOut'> 退出登录
   </van-button>
 </view>

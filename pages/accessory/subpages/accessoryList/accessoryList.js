@@ -105,7 +105,7 @@ Page({
       that.setData({
         height: H -44 + 'px'
       })
-      console.log(H + 'px')
+      // console.log(H + 'px')
     })
     
   },
@@ -162,23 +162,28 @@ Page({
   onClose(event) {
     if (event.detail === 'confirm') {
       // 异步关闭弹窗
+      // console.log(event)
+      console.log(this.data.num)
       setTimeout(() => {
         this.setData({
-          show: false
+          show: false,
+          num: 0
         });
+        // api操作，对设备添加备件
         wx.navigateBack({
           delta:1
         })
       }, 1000);
     } else {
       this.setData({
-        show: false
+        show: false,
+        num:0
       });
     }
   },
   // 点击选择备件数量
   setNum:function(res){
-    // console.log(22)
+    console.log(res)
     this.setData({
       show:true
     })
@@ -188,5 +193,12 @@ Page({
     wx.navigateTo({
       url: '../addAccessory/addAccessory',
     })
+  },
+  // 同步选择的数量
+  syncVal(event){
+    console.log(event.detail);
+    this.setData({
+      num: event.detail
+    });
   }
 })

@@ -16,9 +16,16 @@
 }
 .numTip{
   line-height: 3;
-  text-align: center
+  text-align: center;
+  margin-right: 20rpx
 }
 .tabs{
   width: 100%;
   height: 100%
+}
+
+.numModal{
+  line-height: 80rpx;
+  justify-content: center;
+  align-items: center
 }

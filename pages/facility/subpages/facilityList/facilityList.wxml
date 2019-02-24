@@ -2,7 +2,7 @@
 <view class='cm_container flex'>
   <view class='flex searchBar'>
     <view>
-      <QrScan></QrScan>
+      <QrScan bind:scanCode = "scanCode"></QrScan>
     </view>
     <view class='f1'>
       <van-search value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot bind:search="onSearch" background="#fff">
@@ -26,19 +26,19 @@
   </view>
   <!-- 小工具 -->
   <view class='tip' hover-class='tipHover' bindtap="modalToggle">
-    <van-icon name="filter-o" size="40rpx" custom-class="tipIcon" />
+    <van-icon name="filter-o" size="40rpx" color="#fff" custom-class="tipIcon" />
     <view class='tipText'>筛选</view>
   </view>
 </view>
 <van-popup show="{{ show }}" position="left" overlay="{{ true }}" bind:close="onClose" custom-class="modal">
   <van-cell-group>
-    <van-cell title="设备类型" value="4" is-link bind:click="handler" />
-    <van-cell title="科室" value="4" is-link bind:click="handler" />
-    <van-cell title="设备状态" value="4" is-link bind:click="handler" />
+    <van-cell title="设备类型" value="{{condition.type?condition.type.text:'全部'}}" id="type"  is-link bind:click="handler" />
+    <van-cell title="所处科室" value="{{condition.office?condition.office.text:'全部'}}"  id="office" is-link bind:click="handler" />
+    <van-cell title="设备状态" value="{{condition.status?condition.status.text:'全部'}}" id="status"  is-link bind:click="handler" />
     <!-- <van-cell title="生产厂商" value="4" is-link bind:click="handler" /> -->
   </van-cell-group>
 </van-popup>
 
 <van-popup show="{{ showoption }}" position="bottom" overlay="{{ true }}" catichclose="onClose" safe-area-inset-bottom>
-  <van-picker show-toolbar title="标题" columns="{{ columns }}" bind:cancel="onCancel" bind:confirm="onConfirm" />
+  <van-picker show-toolbar title="{{currentOptions.title}}" key="{{currentOptions}}" columns="{{ currentOptions.options }}" bind:cancel="onCancel" bind:confirm="onConfirm" />
 </van-popup>

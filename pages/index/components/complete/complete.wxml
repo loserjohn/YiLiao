@@ -31,5 +31,8 @@
     border="{{ false }}"
     input-align="right"
   />
-  
+ 
 </van-cell-group>
+<view class='cm_pad ' >
+  <van-button size="normal" custom-class="cm_btn" block >完成报修 </van-button>
+</view>

@@ -33,11 +33,11 @@ const copyObj = obj => {
 }
 
 // 扫描二维码
-const  scanCode = (callback)=>{
+const  scanCode = ()=>{
   return new Promise((resolve,reject)=>{
     wx.scanCode({
       success: (res) => {
-        console.log(res.result)
+        // console.log(res.result)
         if(res && res.result){
           resolve(res.result)
         }else{

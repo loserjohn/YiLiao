@@ -164,6 +164,16 @@ Component({
           })
         },
       },
+      "chooseAccessory": {
+        name: 'chooseAccessory',
+        icon: 'icon-gaojing',
+        title: '选择备件',
+        handle: () => {
+          wx.navigateTo({
+            url: '/pages/accessory/subpages/accessoryList/accessoryList?action=choose'
+          })
+        },
+      }, 
     },
     current: {}
   },

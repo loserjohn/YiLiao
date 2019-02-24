@@ -4,12 +4,11 @@
   width: 88rpx;
   height: 88rpx;
   text-align: center;
-  /* background: red; */
+  background: #fff;
   display: flex;
   display: -webkit-flex;
   align-items: center;
-  justify-content: center; 
-  background: transparent
+  justify-content: center;
 }
 
 .scanIcon {

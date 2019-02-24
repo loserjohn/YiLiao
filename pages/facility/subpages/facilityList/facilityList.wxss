@@ -17,7 +17,8 @@
 }
 .tipIcon{
   /* background: red; */
-  margin-top: 16rpx
+  margin-top: 16rpx;
+  color: #fff
 }
 .tipText{
   font-size: 24rpx;
