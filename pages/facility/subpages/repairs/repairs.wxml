@@ -1,15 +1,13 @@
 <!--pages/accessory/subpages/addRepair/addRepair.wxml-->
 
 <view class="">
-  <view class='flex'>
+  <view class='flex' style="background:#fff">
     <view class='f1'>
       <van-field clearable use-icon-slot label="设备编码" value="s932174825" placeholder="请输入设备标号" border="{{ false }}" bind:change="onChange" required>
-        <!-- <icon class="iconfont  cm_menusItem_icon icon-fuwuxunhuanguanli}}" slot="icon"></icon> -->
-
       </van-field>
     </view>
     <view>
-      <QrScan background="#ffffff"></QrScan>
+      <QrScan background="#ffffff" bind:scanCode="scanCode"></QrScan>
     </view>
   </view>
   <view class='cm_blank'></view>
@@ -24,8 +22,19 @@
     <van-cell title="紧急程度" value="4" is-link bind:click="handler" />
     <van-cell title="是否停机" value="4" is-link bind:click="handler" />
     <van-cell title="紧急类别" value="4" is-link bind:click="handler" />
-    <van-cell title="故障图片" value="4" is-link bind:click="handler" />
+    <!-- <van-cell title="故障图片" value="4" is-link /> -->
+    <view class='pics'>
+      <preImgGallery prePic="{{[]}}" clientWidth="{{clientWidth}}" num="{{4}}"></preImgGallery>
+    </view>
     <van-field value="" label="故障描述" type="textarea" placeholder="请输入故障描述" autosize border="{{ false }}" input-align="right" />
+    <!-- <view class='cm_pad '>
+      <van-button size="normal" custom-class="cm_btn" block>报修设备</van-button>
+    </view> -->
+<view class='cm_menus pd_bt'>
+    <van-button square type="primary" size="normal" block custom-class="cm_btn">
+      <van-icon name="edit" color="#fff" size="16px" /> 报修设备
+    </van-button>
+  </view>
   </van-cell-group>
   <van-popup show="{{ show }}" position="bottom" overlay="{{ true }}" bind:close="onClose" close-on-click-overlay safe-area-inset-bottom>
     <van-picker show-toolbar title="标题" columns="{{ columns }}" bind:cancel="onCancel" bind:confirm="onConfirm" />
@@ -33,8 +42,5 @@
   <!-- <van-goods-action>
     <van-goods-action-button text="提交报修设备" bind:click="onClickButton" loading="true" custom-class="cm_btn" />
   </van-goods-action> -->
-  <view class='cm_menus pd_bt'>
-    <van-button size="normal" custom-class="cm_btn" block >报修设备</van-button>
-  </view>
 
 </view>

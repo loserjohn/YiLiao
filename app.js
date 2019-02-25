@@ -1,8 +1,8 @@
 //app.js
+
 import {
   wxLogin
 } from './utils/api.js'
-
 App({
   onLaunch: function() {
 
@@ -12,6 +12,7 @@ App({
  
   globalData: {
     // 用户身份
+    winHeight:559,
     userInfo: {},
     openId: '',
     sessionKey: '',

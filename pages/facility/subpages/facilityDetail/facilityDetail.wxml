@@ -2,20 +2,20 @@
 
 <!-- 设备详情 -->
 
-<view class=''>
+<view class='cm_container '>
   <van-tabs color="#28B8A1" custom-class="tabs" animated="true" swipeable="false" active="{{active}}">
     <van-tab title="设备参数">
-      <scroll-view scroll-y style="height: 93vh;">
+      <scroll-view scroll-y  style="{{'height:'+height}}">
         <facilityMsg></facilityMsg>
       </scroll-view>
     </van-tab>
     <van-tab title="相关备件">
-      <view style="height: 93vh">
+      <view style="{{'height:'+height}}">
         <relevant></relevant>
       </view>
     </van-tab>
     <van-tab title="报修记录">
-      <scroll-view scroll-y style="height: 93vh;">
+      <scroll-view scroll-y style="{{'height:'+height}}">
         <repairHistory></repairHistory>
       </scroll-view>
     </van-tab>

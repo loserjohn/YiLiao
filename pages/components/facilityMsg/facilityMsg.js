@@ -28,6 +28,7 @@ Component({
    */
   methods: {
     toEdite:function(){
+      console.log(1)
       wx.navigateTo({
         url: '/pages/facility/subpages/facilityEdite/facilityEdite',
       })

@@ -5,15 +5,33 @@
   padding: 20rpx 0;
   border-bottom: 1rpx solid #eee;
   justify-content: flex-start;
-  flex-wrap: wrap
+  flex-wrap: wrap;
+  background: #fff
 }
 .prePics{
   /* width: 160rpx;
   height: 160rpx; */
   overflow: hidden;
   box-sizing: border-box;
-  padding: 10rpx
+  padding: 10rpx;
+  position: relative
 }
+.prePics .picDelect{
+  position: absolute;
+  right: -0;
+  top:-0;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 40rpx;
+  /* overflow: hidden; */
+  font-size: 40rpx;
+  background: red;
+  color:#fff
+}
+
+
 .prePicsImg{
   width: 100%;
   height:100%;

@@ -1,18 +1,24 @@
 // pages/facility/subpages/facilityDetail/facilityDetail.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    height: '',
+    
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let H = app.globalData.winHeight;
+    console.log(H - 44 + 'px')
+    this.setData({
+      height: H - 44 + 'px'
+    })
   },
 
   /**

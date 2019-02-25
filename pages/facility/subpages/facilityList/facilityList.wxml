@@ -5,13 +5,13 @@
       <QrScan bind:scanCode = "scanCode"></QrScan>
     </view>
     <view class='f1'>
-      <van-search value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot bind:search="onSearch" background="#fff">
+      <van-search value="{{ keyword }}" bind:change="syncVal" placeholder="请输入搜索关键词" use-action-slot bind:search="onSearch" background="#fff">
         <view slot="action" bind:tap="onSearch">搜索</view>
       </van-search>
     </view>
   </view>
   <view class='f1 overhidden'>
-    <scroll-view scroll-y class='cm_scroll_y'>
+    <scroll-view scroll-y class='cm_scroll_y' bindscrolltolower="loadMore">
       <van-cell-group>
         <view class="">
           <block wx:for="{{list}}" wx:key="index">
@@ -19,7 +19,7 @@
               <facilityItem item="{{item}}"></facilityItem>
             </navigator>
           </block>
-          <moreReminder loading="{{false}}" nomore="{{nomore}}"></moreReminder>
+          <moreReminder loading="{{loading}}" nomore="{{!rest}}"></moreReminder>
         </view>
       </van-cell-group>
     </scroll-view>
@@ -35,10 +35,14 @@
     <van-cell title="设备类型" value="{{condition.type?condition.type.text:'全部'}}" id="type"  is-link bind:click="handler" />
     <van-cell title="所处科室" value="{{condition.office?condition.office.text:'全部'}}"  id="office" is-link bind:click="handler" />
     <van-cell title="设备状态" value="{{condition.status?condition.status.text:'全部'}}" id="status"  is-link bind:click="handler" />
-    <!-- <van-cell title="生产厂商" value="4" is-link bind:click="handler" /> -->
+    <!-- <view class='cm_menus'>
+      <van-button  type="primary" plain ></van-button>
+    </view> -->
   </van-cell-group>
 </van-popup>
 
 <van-popup show="{{ showoption }}" position="bottom" overlay="{{ true }}" catichclose="onClose" safe-area-inset-bottom>
   <van-picker show-toolbar title="{{currentOptions.title}}" key="{{currentOptions}}" columns="{{ currentOptions.options }}" bind:cancel="onCancel" bind:confirm="onConfirm" />
 </van-popup>
+<van-toast id="van-toast" />
+<van-notify id="van-notify" />

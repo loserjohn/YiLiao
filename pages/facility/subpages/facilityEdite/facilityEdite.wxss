@@ -2,3 +2,6 @@
 .pd_bt{
   padding-bottom: 20rpx
 }
+.galleryBar{
+  background: #fff
+}

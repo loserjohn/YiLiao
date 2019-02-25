@@ -1,15 +1,20 @@
 <!--pages/components/preImgGallery/preImgGallery.wxml-->
 <!-- 展示图片的画廊组件 -->
 <blocktitle icon="icon-baoguo_dabao" title="设备图片(6张)"></blocktitle>
+
 <view class="galleryBar flex">
-  <block wx:for="{{prePic}}" wx:key="index">
-    <view class="prePics" style="{{'width:'+width+'px;height:'+width+'px'}}">
+  <block wx:for="{{prePicArr}}" wx:key="index">
+    <view class="prePics" style="{{'width:'+width+'px;height:'+width+'px'}}" data-src="{{item}}" catchtap='preview'>
       <image class='prePicsImg' src="{{item}}" mode="aspectFit" ></image>
+      <view class="picDelect" data-key="{{index}}" catchtap='delect'>
+        -
+      </view>
     </view>  
   </block>
   <view class='prePics' style="{{'width:'+width+'px;height:'+width+'px'}}">
-      <view class='addNew flex'>
+      <view class='addNew flex' bindtap='upload'>
         <van-icon name="plus" size='30px' color='#ddd' custom-class="addIcon"/>
       </view>
   </view>
+
 </view>

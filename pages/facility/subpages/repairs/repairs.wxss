@@ -1,10 +1,5 @@
 /* pages/accessory/subpages/addRepair/addRepair.wxss */
 
-.scanBox{
-  /* background: red; */
-  width: 56rpx;
-  height: 56rpx;
-  text-align: center;
-  margin-right: 30rpx;
-  margin-top: 10rpx
+.pd_bt{
+  padding-bottom: 20rpx
 }

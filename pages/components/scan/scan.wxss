@@ -5,6 +5,7 @@
   height: 88rpx;
   text-align: center;
   background: #fff;
+  /* background: pink; */
   display: flex;
   display: -webkit-flex;
   align-items: center;

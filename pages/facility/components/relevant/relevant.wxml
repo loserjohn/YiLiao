@@ -2,7 +2,7 @@
 <!-- <van-cell-group > -->
   <scroll-view scroll-y class='cm_scroll_y overflow' >
     <block wx:for="{{list}}" wx:key="index">
-      <navigator url="../repairOrder/repairOrder">
+      <navigator url="/pages/index/subpages/repairOrder/repairOrder">
         <accessoryItem item="{{item}}" dosagabled="{{false}}" choosabled="{{canchoose?true:false}}"  bind:choose="setNum"  delectabled="{{false}}" ></accessoryItem>
       </navigator>
     </block>

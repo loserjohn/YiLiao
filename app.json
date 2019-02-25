@@ -84,6 +84,9 @@
     "van-swipe-cell": "./pages/vant/swipe-cell/index",
     "van-switch":"./pages/vant/switch/index",
     "van-switch-cell": "./pages/vant/switch-cell/index",
-    "van-stepper": "./pages/vant//stepper/index"
+    "van-stepper": "./pages/vant/stepper/index",
+    "van-toast": "./pages/vant/toast/index",
+    "van-notify": "./pages/vant/notify/index",
+    "van-steps": "./pages/vant/steps/index"
   }
 }

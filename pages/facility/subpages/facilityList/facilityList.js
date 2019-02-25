@@ -1,4 +1,7 @@
 // pages/facility/subpages/facilityList/facilityList.js
+
+import Toast from '../../../vant/toast/toast';
+import Notify from '../../../vant/notify/notify';
 import {
   getFacilityList,
   facilityOptions
@@ -10,17 +13,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    keyword:'',//搜索关键字
     limit:0,
     size:8,
     list: [],
+    rest:true,//是否有剩余条目
 
     currentOptions:{},//选项数组
     options: [],//数组
     condition:{
-      type:'',
-      office:'',
-      status:''
+      type:{},
+      office: {},
+      status: {}
     },//当前的筛选条件
 
     show: false,
@@ -30,7 +34,6 @@ Page({
   },
   // 显示筛选界面
   modalToggle(){
-    console.log(1)
     this.setData({
       show:true
     })
@@ -38,7 +41,6 @@ Page({
   // 显示选项
   handler(e){    
     let id = e.target.id;
-    console.log(id,this.data.options);
     this.data.options[id].key = id
     this.setData({
       currentOptions:this.data.options[id],
@@ -59,10 +61,10 @@ Page({
   },
   // 选中选项
   onConfirm(e){
-    
     let res = e.detail.value
     let key = this.data.currentOptions.key
     console.log(res, key)
+
     this.data.condition[key] = res
     this.setData({
       condition: this.data.condition,
@@ -84,21 +86,90 @@ Page({
     },1000)
    
   },
-
+  // 同步keyword的值
+  syncVal(e){
+    // console.log(e.detail);
+    this.data.keyword = e.detail
+  },
+  // 开始搜索
+  onSearch(){
+    let condition = this.data.condition  
+    if (!this.data.keyword && !condition.type.key && !condition.office.key && !condition.status.key){
+      Notify({
+        text: '请输入关键字或者选择筛选条件',
+        duration: 1000,
+        selector: '#van-notify',
+        // backgroundColor: '#1989fa'
+      });
+      return 
+    }
+    this.data.list = [];
+    Toast.loading({
+      mask: true,
+      message: '搜索中...'
+    });
+    this.loadData(()=>{
+      Toast.clear();
+    })
+  },
   // 加载设备列表
-  loadData(){
+  loadData(callback){
+    
     let data = {
       limit: this.data.limit,
       size: this.data.size,
     }
+    // 判断是否条件筛选
+    let condition = this.data.condition  
+    if (condition.type && condition.type.length>0){
+      data.DEVICE_TYPE = condition.type.key
+    }
+    if (condition.office && condition.office.length > 0) {
+      data.SOURCE_UNIT = condition.office.key
+    }
+    if (condition.status && condition.status.length > 0) {
+      data.DEVICE_STATUS = condition.status.key
+    }
+    if (this.data.keyword && this.data.keyword.length > 0) {
+      data.keyword = this.data.keyword
+    }
+    this.setData({
+      loading: true
+    })
+    console.log(data)
+    // api请求
     getFacilityList(data).then(res=>{
-      // console.log(res)
-      this.setData({
-        list:res.data
-      })
+      // wx.hideLoading();
+      if(res.rest){
+        // 后面还有数据
+        this.data.list = this.data.list.concat(res.data);
+        
+        this.setData({
+          // 后面没有数据了
+          list: this.data.list,
+          loading:false
+        })
+        // debugger
+      }else{
+        this.setData({
+          // 后面没有数据了
+          loading: false,
+          rest:false
+        })
+      }
+      if (callback) callback()
     }).catch(err=>{
 
     })
+  },
+  // 加载更多
+  loadMore(){
+    console.log(this.data.limit);
+    if (!this.data.rest){
+      return
+    }
+    this.data.limit += this.data.size;
+    this.loadData()
   },
   // 初始化设备列表的筛选条件
   initFilterOption(){

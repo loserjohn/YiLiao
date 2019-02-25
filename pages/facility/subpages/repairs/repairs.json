@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "QrScan":"../../../components/scan/scan"
+    "QrScan":"/pages/components/scan/scan",
+    "preImgGallery": "/pages/components/preImgGallery/preImgGallery"
   },
   "navigationBarBackgroundColor": "#ffffff",
   "navigationBarTextStyle": "black",

@@ -8,16 +8,20 @@
   <van-field label="设备名称" value="内容" required disabled border  input-align="right" />
   <van-field label="设备编号" value="内容" required disabled border  input-align="right" />
   <van-field label="设备型号" value="内容" required disabled border  input-align="right" />
-  <van-field label="设备状态" value="内容" required border placeholder="请输入用户名" input-align="right" />
-  <van-field label="设备位置" type="textarea" autosize input-align="right" value="是打发第三方第三方撒地方第三" />
-  <van-field label="使用部门" value="内容" required border placeholder="请输入用户名" input-align="right" />
+  <van-field label="设备状态" value="内容" required disabled border placeholder="请输入用户名" input-align="right" />
+  <van-field label="设备位置" type="textarea"  disabled autosize input-align="right" value="是打发第三方第三方撒地方第三" />
+  <van-field label="使用部门" value="内容" disabled required border placeholder="请输入用户名" input-align="right" />
   <van-field label="使用状况" value="内容" required disabled border placeholder="请输入用户名" input-align="right" />
   <van-field label="操作人员" value="内容" required disabled border placeholder="请输入用户名" input-align="right" />
   <van-field label="生产产商" value="内容" required disabled border placeholder="请输入用户名" input-align="right" />
-  <van-field label="备注" type="textarea" autosize input-align="right" value="是打发第三方第三方撒地是打发第三方第三方撒地方第三方撒地方单方事故是打发第三方第三方撒地方第三方撒地方单方事故是打发第三方第三方撒地方第三方撒地方单方事故方第三方撒地方单方事故" />
+  <van-field label="备注" disabled type="textarea" autosize input-align="right" value="是打发第三方第三方撒地是打发第三方第三方撒地方第三方撒地方单方事故是打发第三方第三方撒地方第三方撒地方单方事故是打发第三方第三方撒地方第三方撒地方单方事故方第三方撒地方单方事故" />
   <view class='cm_menus pd_bt'>
     <van-button square type="primary" size="normal" block custom-class="cm_btn">
       <van-icon name="edit" color="#fff" size="16px" /> 保存
     </van-button>
   </view>
 </van-cell-group>
+
+
+<van-dialog id="van-dialog" />
+<van-notify id="van-notify" />

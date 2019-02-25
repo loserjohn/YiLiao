@@ -6,14 +6,30 @@ Page({
    */
   data: {
     show: false,
-    columns: ['杭州', '宁波', '温州', '嘉兴', '湖州']
+    columns: ['杭州', '宁波', '温州', '嘉兴', '湖州'],
+    clientWidth:''
   },
-
+  // 二维码扫码回调
+  scanCode(res){
+    console.log(res)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    let that = this
+    wx.getSystemInfo({
+      success: function (res) {
+        let clientHeight = res.windowHeight;
+        let clientWidth = res.windowWidth;
+        let ratio = 750 / clientWidth;
+        let height = clientHeight * ratio;
+        that.setData({
+          clientWidth: clientWidth
+        });
+        // console.log(clientHeight)
+      }
+    });
   },
 
   /**
