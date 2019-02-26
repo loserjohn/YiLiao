@@ -24,3 +24,4 @@
     <van-button size="normal" block open-type="getUserInfo" custom-class='cm_btn' bindgetuserinfo="bindGetUserInfo">立即同步微信</van-button>
   </view>
 </van-popup>
+<van-dialog id="van-dialog" />

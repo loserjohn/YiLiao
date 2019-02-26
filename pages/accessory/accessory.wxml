@@ -1,5 +1,5 @@
 <!--pages/accessory/accessory.wxml-->
-<van-nav-bar title="备件" class="cm_navBar"></van-nav-bar>
+<!-- <van-nav-bar title="备件" class="cm_navBar"></van-nav-bar> -->
 <view class='cm_menus'>
   <!-- 菜单循环 -->
      <menusBlock name="accessoryList" block> </menusBlock>

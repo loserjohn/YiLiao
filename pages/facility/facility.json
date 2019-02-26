@@ -4,7 +4,7 @@
   },
   "navigationBarBackgroundColor": "#ffffff",
   "navigationBarTextStyle": "black",
-  "navigationBarTitleText": "医疗设备报修",
+  "navigationBarTitleText": "设备管理",
   "backgroundColor": "#ddd",
   "backgroundTextStyle": "light"
 }

@@ -2,21 +2,10 @@
 
 <!--pages/accessory/accessory.wxml-->
 <view class="">
-  <van-nav-bar title="设备" class="cm_navBar"></van-nav-bar>
+  <!-- <van-nav-bar title="设备" class="cm_navBar"></van-nav-bar> -->
   <view class='cm_menus'>
     <!-- 菜单循环 -->
-    <!-- <navigator url="./subpages/facilityList/facilityList">
-      <view class='cm_menusItem'>
-        <view class='flex' hover-class="cm_hover">
-          <icon class="iconfont  cm_menusItem_icon icon-liebiao"></icon>
-          <view class='cm_menusItem_content '>
-            <text>设备列表</text>
-          </view>
-          <icon class="iconfont icon-jiantou_liebiaoxiangyou arrow-right"></icon>
-        </view>
-      </view> -->
       <menusBlock name="facilityList" block> </menusBlock>
-    <!-- </navigator> -->
   </view>
 
   <view class='cm_blank'></view>

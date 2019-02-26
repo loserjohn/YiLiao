@@ -27,20 +27,16 @@
       <preImgGallery prePic="{{[]}}" clientWidth="{{clientWidth}}" num="{{4}}"></preImgGallery>
     </view>
     <van-field value="" label="故障描述" type="textarea" placeholder="请输入故障描述" autosize border="{{ false }}" input-align="right" />
-    <!-- <view class='cm_pad '>
-      <van-button size="normal" custom-class="cm_btn" block>报修设备</van-button>
-    </view> -->
-<view class='cm_menus pd_bt'>
-    <van-button square type="primary" size="normal" block custom-class="cm_btn">
-      <van-icon name="edit" color="#fff" size="16px" /> 报修设备
-    </van-button>
-  </view>
+    <view class='cm_blank'></view>
+    <view class='cm_pad cm_bg_w'>
+      <van-button custom-class="cm_btn" size="normal" loading="{{loading}}" block bindtap='loginOut'> 报修设备
+      </van-button>
+    </view>
+
   </van-cell-group>
   <van-popup show="{{ show }}" position="bottom" overlay="{{ true }}" bind:close="onClose" close-on-click-overlay safe-area-inset-bottom>
     <van-picker show-toolbar title="标题" columns="{{ columns }}" bind:cancel="onCancel" bind:confirm="onConfirm" />
   </van-popup>
-  <!-- <van-goods-action>
-    <van-goods-action-button text="提交报修设备" bind:click="onClickButton" loading="true" custom-class="cm_btn" />
-  </van-goods-action> -->
+
 
 </view>

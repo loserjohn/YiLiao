@@ -15,11 +15,12 @@
   <van-field label="操作人员" value="内容" required disabled border placeholder="请输入用户名" input-align="right" />
   <van-field label="生产产商" value="内容" required disabled border placeholder="请输入用户名" input-align="right" />
   <van-field label="备注" disabled type="textarea" autosize input-align="right" value="是打发第三方第三方撒地是打发第三方第三方撒地方第三方撒地方单方事故是打发第三方第三方撒地方第三方撒地方单方事故是打发第三方第三方撒地方第三方撒地方单方事故方第三方撒地方单方事故" />
-  <view class='cm_menus pd_bt'>
-    <van-button square type="primary" size="normal" block custom-class="cm_btn">
-      <van-icon name="edit" color="#fff" size="16px" /> 保存
-    </van-button>
-  </view>
+
+  <view class='cm_blank'></view>
+    <view class='cm_pad cm_bg_w'>
+      <van-button custom-class="cm_btn" size="normal" loading="{{loading}}" block bindtap='loginOut'> 保存
+      </van-button>
+    </view>
 </van-cell-group>
 
 

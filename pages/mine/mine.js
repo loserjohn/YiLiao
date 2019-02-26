@@ -1,5 +1,6 @@
 // pages/mine.js
 import Dialog from '../vant/dialog/dialog';
+const app = getApp()
 Page({
 
   /**

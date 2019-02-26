@@ -12,7 +12,7 @@ view {
   box-sizing: border-box;
 }
 
-.container {
+/* .container {
   width: 100%;
   height: 100%;
   display: flex;
@@ -20,8 +20,13 @@ view {
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
+} */
+.cm_container{
+  flex-direction: column;
+  width: 100vw;
+  height:100vh;
+  overflow: hidden;
 }
-
 .cm_navBar {
   width: 100%;
 }
@@ -53,9 +58,9 @@ view {
   padding: 0 30rpx;
   background: #fff;
 }
-.cm_menusItem{
+/* .cm_menusItem{
   width: 100%
-}
+} */
 
 
 .cm_c {
@@ -71,15 +76,10 @@ view {
   height: 100%;
 }
 
-.cm_container{
-  flex-direction: column;
-  width: 100vw;
-  height:100vh;
-  overflow: hidden;
-}
-.cm_input {
+
+/* .cm_input {
   text-align: right !important;
-}
+} */
 
 .cm_btn {
   background: #28b8a1 !important;
@@ -87,11 +87,13 @@ view {
   color: #fff!important
 }
 
-/* .red {
+.red {
   background: red;
-  overflow: hidden;
-} */
-
+  /* overflow: hidden; */
+}
+.cm_bg_w{
+  background: #fff
+}
 .cm_scroll_y {
   width: 100%;
   height: 100%;

@@ -33,6 +33,8 @@
   />
  
 </van-cell-group>
-<view class='cm_pad ' >
-  <van-button size="normal" custom-class="cm_btn" block >完成报修 </van-button>
-</view>
+<view class='cm_blank'></view>
+    <view class='cm_pad cm_bg_w'>
+      <van-button custom-class="cm_btn" size="normal" loading="{{loading}}" block bindtap='loginOut'> 完成报修
+      </van-button>
+    </view>

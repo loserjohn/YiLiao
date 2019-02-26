@@ -5,22 +5,22 @@ import wxRequest from './request.js';
 
 // 用户密码登录
 export const accountLogin = function (data) {
-  return wxRequest('POST', '/api/accountLogin',data)
+  return wxRequest('POST', '/api/XCXAuth/Login',data)
 } 
 
 // 用户微信登录
 export const wxLogin = function (data){
-  return wxRequest('POST', '/api/wxLogin', data)
+  return wxRequest('POST', '/api/XCXAuth/OpenIdLogin', data)
 } 
 
 // 换取openID 与sessionID
 export const getIdentity = function (data) {
-  return wxRequest('POST', '/api/getIdentity', data)
+  return wxRequest('POST', '/api/XCXAuth/Code2Session', data)
 } 
 
 // 获取服务器上的个人信息
 export const getUserMsg = function (data) {
-  return wxRequest('get', '/api/getUserMsg', data)
+  return wxRequest('GET', '/api/User/GetUserInfo', data)
 } 
 
 

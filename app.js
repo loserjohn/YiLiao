@@ -8,14 +8,17 @@ App({
 
    
   },
-  // 判断是否过期是否直接登录
- 
+  // 判断用户身份
+  UserIdentity(key){
+
+  }, 
   globalData: {
     // 用户身份
     winHeight:559,
-    userInfo: {},
+    userInfo: {}, //本地服务器的用户信息
+    wxUserInfo:{}, //微信服务器的用户信息
     openId: '',
     sessionKey: '',
-    baseURL: 'https://www.oyhdo.com',
+    baseURL: 'http://wx.fjdmll.com',
   }
 })

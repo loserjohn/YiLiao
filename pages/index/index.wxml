@@ -22,9 +22,7 @@
     <view class='cm_menus'>
       <!-- 菜单循环 -->
       <block wx:for="{{meuns}}" wx:key="index">
-        <view class='cm_menusItem'>
           <menusBlock name="{{item}}" block> </menusBlock>
-        </view>
       </block>
     </view>
   </view>

@@ -30,9 +30,8 @@ Page({
     })
   },
   // 处理数组添加badage
-  renderPanels(callback){   
-    getUserMsg().then(res=>{
-      
+  renderPanels(callback){  
+    getUserMsg().then(res=>{    
       if (res.waitingRepair && permissionObj.waitingRepair){
         permissionObj.waitingRepair.badge = res.waitingRepair
       }
@@ -40,8 +39,8 @@ Page({
         permissionObj.inRepair.badge = res.inRepair
       }   
       let permissionArr = Object.values(permissionObj);
-      console.log(permissionArr)
-
+      console.log("用户信息",res)
+      app.globalData.userInfo = res.Data
       if (callback) {
         callback(permissionArr)
       }    

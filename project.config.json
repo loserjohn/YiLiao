@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 18,
 			"list": [
 				{
 					"id": 0,
@@ -149,6 +149,20 @@
 					"id": -1,
 					"name": "首页",
 					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "备件",
+					"pathName": "pages/accessory/accessory",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "设备",
+					"pathName": "pages/facility/facility",
 					"query": "",
 					"scene": null
 				}
