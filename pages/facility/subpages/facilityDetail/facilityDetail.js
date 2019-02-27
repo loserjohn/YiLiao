@@ -1,5 +1,7 @@
 // pages/facility/subpages/facilityDetail/facilityDetail.js
 const app = getApp()
+
+
 Page({
 
   /**
@@ -7,7 +9,7 @@ Page({
    */
   data: {
     height: '',
-    
+    facility:''
   },
 
   /**
@@ -15,10 +17,19 @@ Page({
    */
   onLoad: function (options) {
     let H = app.globalData.winHeight;
-    console.log(H - 44 + 'px')
+    let that = this
     this.setData({
-      height: H - 44 + 'px'
+      height: H - 44 + 'px',
+      facilityId: options.facilityId
     })
+    // 获取facilityId的设备详情
+    // console.log(options.facilityId);
+    if (!options.facilityId){    
+      return 
+    }
+  
+
+    
   },
 
   /**

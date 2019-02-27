@@ -22,7 +22,7 @@ const wxRequest =  function (method, url, data) {
           resolve(res.data) 
         }else{
           console.log('请求success,结果false')
-          resolve(res.Msg ? res : { Msg: '服务器未知错误'})
+          resolve(res.data.Msg ? res.data : { Msg: '服务器未知错误'})
         }      
       },
       fail: function (err) {

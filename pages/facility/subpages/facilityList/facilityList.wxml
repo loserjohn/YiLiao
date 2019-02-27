@@ -15,7 +15,7 @@
       <van-cell-group>
         <view class="">
           <block wx:for="{{list}}" wx:key="index">
-            <navigator url="../facilityDetail/facilityDetail">
+            <navigator url="{{'../facilityDetail/facilityDetail?facilityId='+item.DEVICE_CODE}}">
               <facilityItem item="{{item}}"></facilityItem>
             </navigator>
           </block>

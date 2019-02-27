@@ -20,14 +20,24 @@ page {
   margin-top: 40rpx
 }
 .authrize{
- border-radius: 40rpx;
+ border-radius: 20rpx;
   overflow: hidden;
+  width: 300px!important
 }
 .authrizeBox{
   box-sizing: border-box;
   padding: 30rpx;
- 
+  text-align: center;
+ border-bottom: 1rpx solid #28b8a1
+}
+.authrizeTitle{
+  line-height: 2;
+   font-size: 32rpx;
+  border-bottom: 1rpx solid #eee
 }
 .authrizeText{
-  line-height: 4
+  line-height: 4;
+  font-size: 24rpx;
+  color: #858484;
+    text-align: center
 }

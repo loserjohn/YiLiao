@@ -6,7 +6,8 @@
   <van-tabs color="#28B8A1" custom-class="tabs" animated="true" swipeable="false" active="{{active}}">
     <van-tab title="设备参数">
       <scroll-view scroll-y  style="{{'height:'+height}}">
-        <facilityMsg></facilityMsg>
+        <facilityMsg facilityId="{{facilityId}}"></facilityMsg>
+        
       </scroll-view>
     </van-tab>
     <van-tab title="相关备件">

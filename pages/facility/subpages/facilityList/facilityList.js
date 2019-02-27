@@ -6,6 +6,7 @@ import {
   getFacilityList,
   facilityOptions
 } from '../../../../utils/api.js'
+const app = getApp()
 
 Page({
 
@@ -118,7 +119,10 @@ Page({
     let data = {
       limit: this.data.limit,
       size: this.data.size,
+      UNIT_CODE: app.globalData.userInfo.USER_UNIT
+      // UNIT_CODE: '7c818b8fcbd5473b91580b91926cef3d'   
     }
+    // debugger
     // 判断是否条件筛选
     let condition = this.data.condition  
     if (condition.type && condition.type.length>0){
@@ -140,9 +144,11 @@ Page({
     // api请求
     getFacilityList(data).then(res=>{
       // wx.hideLoading();
-      if(res.rest){
+      // debugger
+      console.log(res)
+      if(!res.rest){
         // 后面还有数据
-        this.data.list = this.data.list.concat(res.data);
+        this.data.list = this.data.list.concat(res.Data.ListInfo);
         
         this.setData({
           // 后面没有数据了

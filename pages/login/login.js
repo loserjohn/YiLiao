@@ -22,7 +22,7 @@ Page({
       userPass: {
         value: '123456',
         valid: true
-      },
+      }
     },
     show: false,
     loading: false,
@@ -55,16 +55,16 @@ Page({
     }
     // 登录api
     accountLogin(data).then(res => {
-      console.log('promise成功',res); 
+      console.log('promise成功', res);
       app.globalData.userAccount = this.data.form.userName.value //username保存下
       if (res.Success) {
         // 有效用户
         // 身份判定
-        if(res.Type=="1"){
+        if (res.Type == "1") {
           app.globalData.role = 'inspector' //巡检人员
-        }else if (res.Type == "2"){
-          app.globalData.role = 'maintain'  //维修人员
-        }else{
+        } else if (res.Type == "2") {
+          app.globalData.role = 'maintain' //维修人员
+        } else {
           Dialog.alert({
             message: '身份错误，请联系管理员',
             overlay: true,
@@ -72,13 +72,15 @@ Page({
             this.setData({
               loading: false
             })
-          });          
-         return false
+          });
+          return false
         }
         // 快速绑定微信账户
         this.bouding(() => {
-          // 微信获取公共信息
-          this.getUserMsg();
+          // 登录跳转
+          wx.reLaunch({
+            url: '/pages/index/index',
+          })
         })
       } else {
         Dialog.alert({
@@ -97,8 +99,6 @@ Page({
       });
       console.log('err', err);
     })
-
-
   },
   // 快速绑定微信账号opnenid
   bouding(callback) {
@@ -114,8 +114,6 @@ Page({
         }
         getIdentity(data).then(res => {
           console.log(111, res.Data);
-          // app.globalData.role = res.role;
-          // app.globalData.sessionKey = res.sessionKey
           wx.setStorageSync('openId', res.Data.openid)
           wx.setStorageSync('sessionKey', res.Data.session_key);
           this.setData({
@@ -123,7 +121,7 @@ Page({
           });
           if (callback) callback()
         })
-      
+
       }
     })
   },
@@ -188,25 +186,28 @@ Page({
       success(res) {
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-          wx.getUserInfo({
-            success(res) {
-              console.log('授权', res);
-              app.globalData.wxUserInfo = res;
-              wx.showToast({
-                title: '欢迎登录',
-                duration: 1000
-              })
-              wx.reLaunch({
-                url: '/pages/index/index',
-              })
-            }
+          console.log('已授权');
+          app.globalUserInfo(() => {
+            that.ifAutoLogin()
           })
         } else {
           console.log('未授权');
-          // 唤醒用户的手动授权按钮
-          that.setData({
-            show: true
-          });
+          if (that.data.canIUse) {
+            // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+            // 唤醒用户的手动授权按钮
+            that.setData({
+              show: true
+            });
+          } else {
+            // 在没有 open-type=getUserInfo 版本的兼容处理
+            app.globalUserInfo(() => {
+              wx.showToast({
+                title: '获取成功',
+                duration: 1000
+              })
+              that.ifAutoLogin()
+            })
+          }
         }
       }
     })
@@ -215,47 +216,94 @@ Page({
   bindGetUserInfo(e) {
     console.log('用户基本信息', e);
     app.globalData.wxUserInfo = e.detail
+    wx.showToast({
+      title: '获取成功',
+      duration: 1000
+    })
     this.setData({
       show: false
     });
-    wx.reLaunch({
-      url: '/pages/index/index',
-    })
+    this.ifAutoLogin()
   },
-// 自动登录
+  // 判断是否自动登录
+  ifAutoLogin() {
+    // 判断是否是自动登录
+    let autoLogin = wx.getStorageSync('autoLogin') || false;
+    if (autoLogin) {
+      console.log('自动开启')
+      try {
+        let openId = wx.getStorageSync('openId')
+        let sessionKey = wx.getStorageSync('sessionKey');
+        // debugger
+        if (openId && sessionKey) {
+          // Do something with return value;
+          console.log(openId + '------' + sessionKey)
+          // 调用自动登录接口
+          this.autoLoin(openId)
+        }
+      } catch (e) {
+        // Do something when catch error
+        wx.showToast({
+          title: '自动登录失败,请手动登录',
+          // icon: 'success',
+          duration: 1000
+        })
+      }
+    } else {
+      console.log('自动未开启')
+    }
+  },
+  // 自动登录
   autoLoin(openId) {
     let that = this
-    // debugger
+   
     wx.checkSession({
       success() {
         // session_key 未过期，并且在本生命周期一直有效
         console.log('有效');
-        // app.globalData.sessionKey = sessionKey;
-        app.globalData.openId = openId;
         let data = {
           openId: openId
         }
+        wx.showLoading({
+          title: '自动登录中',
+        })
+
         wxLogin(data).then(res => {
           console.log('自动登录', res);
-          // 身份判定
-          if (res.Type == "1") {
-            app.globalData.role = 'inspector' //巡检人员
-          } else if (res.Type == "2") {
-            app.globalData.role = 'maintain'  //维修人员
-          } else {
-            debugger
+          wx.hideLoading()
+          if (res.Success) {
+            // 身份判定
+            if (res.Type == "1") {
+              app.globalData.role = 'inspector' //巡检人员
+            } else if (res.Type == "2") {
+              app.globalData.role = 'maintain' //维修人员
+            } else {
+              Dialog.alert({
+                message: '身份错误，请联系管理员',
+                overlay: true,
+              }).then(() => {
+                that.setData({
+                  loading: false
+                })
+              });
+              return false
+            };
+            wx.reLaunch({
+              url: '/pages/index/index',
+            }) 
+          }else{
             Dialog.alert({
-              message: '身份错误，请联系管理员',
+              message: res.Msg,
               overlay: true,
             }).then(() => {
-              that.setData({
+              this.setData({
                 loading: false
-              })
+              });
             });
-            return false
           }
-          that.getUserMsg()
+        
         }).catch(err => {
+          wx.hideLoading()
           wx.showToast({
             title: '自动登录失效,请手动登录',
             icon: 'none',
@@ -291,35 +339,15 @@ Page({
     })
     // wx.login({
     //   success: res => {
-    //     console.log('测试code',res.code)
+    //     console.log('测试code', res.code)
     //   }
     // })
     // return
-    // 判断是否是自动登录
-    let autoLogin = wx.getStorageSync('autoLogin') || false;
-    if (autoLogin) {
-      console.log('自动开启')
-      try {
-        let openId = wx.getStorageSync('openId')
-        let sessionKey = wx.getStorageSync('sessionKey');
-        // debugger
-        if (openId && sessionKey) {
-          // Do something with return value;
-          console.log(openId + '------' + sessionKey)
-          // 调用自动登录接口
-          this.autoLoin(openId)
-        }
-      } catch (e) {
-        // Do something when catch error
-        wx.showToast({
-          title: '自动登录失败,请手动登录',
-          // icon: 'success',
-          duration: 1000
-        })
-      }
-    } else {
-      console.log('自动未开启')
-    }
+
+    // 先获取用户微信信息
+    this.getUserMsg()
+
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -19,9 +19,9 @@
 
 <van-popup show="{{ show }}" overlay="{{ true }}" bind:close="onClose" custom-class="authrize">
   <view class='authrizeBox'>
-    <view class='authrizeText'>欢迎登录医疗设备报修系统
-    </view>
-    <van-button size="normal" block open-type="getUserInfo" custom-class='cm_btn' bindgetuserinfo="bindGetUserInfo">立即同步微信</van-button>
+     <view class='authrizeTitle '>欢迎登录医疗设备报修系统</view>
+    <view class='authrizeText'>需要同步您的微信用户信息</view>
+    <van-button size="normal" block open-type="getUserInfo" custom-class='cm_btn' bindgetuserinfo="bindGetUserInfo">立即授权</van-button>
   </view>
 </van-popup>
 <van-dialog id="van-dialog" />

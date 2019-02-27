@@ -2,32 +2,32 @@
 <!-- 设备参数资料 -->
 <van-cell-group>
   <view class='pics'>
-    <scroll-view class="scroll_view" scroll-x style="width: 100%">
+    <!-- <scroll-view class="scroll_view" scroll-x style="width: 100%">
       <block wx:for="{{prePic}}" wx:key="index">
         <view class='prePics'>
           <image class='prePicsImg' src="{{item}}" mode="aspectFit"></image>
         </view>
       </block>
-    </scroll-view>
+    </scroll-view> -->
+     <view class='pics'>
+      <preImgGallery prePic="{{prePic}}" clientWidth="{{clientWidth}}" num="{{4}}"></preImgGallery>  
+    </view>
   </view>
-  <van-cell title="设备名称" value="内容" />
-  <van-cell title="设备编号" value="内容" />
-  <van-cell title="设备型号" value="内容" />
-  <van-cell title="设备状态" value="内容" />
-  <van-cell title="设备位置" label="是打发第三方第三方撒地方第三方撒地方单方事故" />
-  <van-cell title="使用部门" value="内容" />
-  <van-cell title="使用状况" value="内容" />
-  <van-cell title="操作人员" value="内容" />
-  <van-cell title="生产产商" value="内容" />
-  <van-cell title="备注" label="是打发第三方第三方撒地是打发第三方第三方撒地方第三方撒地方单方事故是打发第三方第三方撒地方第三方撒地方单方事故是打发第三方第三方撒地方第三方撒地方单方事故方第三方撒地方单方事故" />
-  <!-- <view class='cm_menus ' style='padding-bottom:20rpx'>
-    <van-button square type="primary" size="normal" block custom-class="cm_btn" bind:click="toEdite">
-        <van-icon name="edit" color="#fff" size="16px" /> 编辑
-    </van-button>
-  </view> -->
+  <van-cell title="设备名称" value="{{facility.DEVICE_NAME}}" />
+  <van-cell title="设备编号" value="{{facility.DEVICE_NUM}}" />
+  <van-cell title="设备型号" value="{{facility.DEVICE_SPCE}}" />
+  <van-cell title="设备状态" value="{{facility.DEVICE_STATUS}}" />
+  <van-cell title="所属医院" value="{{facility.DEVICE_NAME}}" />
+  <van-cell title="所属科室" value="{{facility.SOURCE_UNIT}}" />
+  <van-cell title="所在位置" value="{{facility.USE_UNIT}}" />
+  <van-cell title="设备状况" value="{{facility.DEVICE_STATUS}}" />
+  <van-cell title="管理人员" value="{{facility.MANAGE_USER}}" />
+  <van-cell title="生产产商" value="{{facility.DEVICE_TRADE}}" />
+  <van-cell title="备注" label="{{facilit.DEVICE_REMARK}}" />
+
   <!-- 小工具 -->
-  <view class='tip' hover-class='tipHover'bindtap="toEdite" >
-    <van-icon name="edit" size="40rpx" color="#fff" custom-class="tipIcon"  />
-    <view class='tipText'>编辑</view>
+  <view class='tip' hover-class='tipHover' bindtap="toEdite">
+    <van-icon name="passed" size="40rpx" color="#fff" custom-class="tipIcon" />
+    <view class='tipText'>保存</view>
   </view>
 </van-cell-group>

@@ -28,9 +28,14 @@ export const getUserMsg = function (data) {
 
 // 获取设备列表的条件筛选选项
 export const facilityOptions = function (data) {
-  return wxRequest('GET', '/api/facilityOptions', data)
+  return wxRequest('GET', '/api/Device/GetSelect', data)
 } 
 // 获取设备列表
 export const getFacilityList = function (data) {
-  return wxRequest('POST', '/api/facilityList', data)
+  return wxRequest('GET', '/api/Device/GetDeviceList', data)
+} 
+
+// 获取设备详情
+export const getFacilityDetail = function (data) {
+  return wxRequest('GET', '/api/Device/GetDevice', data)
 } 

@@ -31,6 +31,8 @@ Page({
   },
   // 处理数组添加badage
   renderPanels(callback){  
+    // username: that.data.form.userName.value,
+    // let username =app.globalData.userAccount
     getUserMsg().then(res=>{    
       if (res.waitingRepair && permissionObj.waitingRepair){
         permissionObj.waitingRepair.badge = res.waitingRepair
