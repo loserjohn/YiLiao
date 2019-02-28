@@ -32,9 +32,9 @@
 </view>
 <van-popup show="{{ show }}" position="left" overlay="{{ true }}" bind:close="onClose" custom-class="modal">
   <van-cell-group>
-    <van-cell title="设备类型" value="{{condition.type?condition.type.text:'全部'}}" id="type"  is-link bind:click="handler" />
-    <van-cell title="所处科室" value="{{condition.office?condition.office.text:'全部'}}"  id="office" is-link bind:click="handler" />
-    <van-cell title="设备状态" value="{{condition.status?condition.status.text:'全部'}}" id="status"  is-link bind:click="handler" />
+    <van-cell title="设备类型" value="{{condition.type.Value?condition.type.Text:'全部'}}" id="type"  is-link bind:click="handler" />
+    <van-cell title="所处科室" value="{{condition.office.Value?condition.office.Text:'全部'}}"  id="office" is-link bind:click="handler" />
+    <van-cell title="设备状态" value="{{condition.status.Value?condition.status.Text:'全部'}}" id="status"  is-link bind:click="handler" />
     <!-- <view class='cm_menus'>
       <van-button  type="primary" plain ></van-button>
     </view> -->
@@ -42,7 +42,7 @@
 </van-popup>
 
 <van-popup show="{{ showoption }}" position="bottom" overlay="{{ true }}" catichclose="onClose" safe-area-inset-bottom>
-  <van-picker show-toolbar title="{{currentOptions.title}}" key="{{currentOptions}}" columns="{{ currentOptions.options }}" bind:cancel="onCancel" bind:confirm="onConfirm" />
+  <van-picker show-toolbar title="{{currentOptions.title}}" value-key="Text" key="{{currentOptions}}" columns="{{ currentOptions.options }}" bind:cancel="onCancel" bind:confirm="onConfirm" />
 </van-popup>
 <van-toast id="van-toast" />
 <van-notify id="van-notify" />

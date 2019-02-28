@@ -23,13 +23,11 @@ Page({
       facilityId: options.facilityId
     })
     // 获取facilityId的设备详情
-    // console.log(options.facilityId);
+    console.log(options.facilityId);
     if (!options.facilityId){    
       return 
     }
-  
 
-    
   },
 
   /**

@@ -1,0 +1,49 @@
+
+// 设备状态定义  wxs不能写let!!!!
+// 0 - 未启用1 - 正常2--故障3 - 报废4 - 维修中5 - 搁置
+function status(val,t){
+  if (!val)return;
+  var s_key = parseInt(val);
+  
+  // console.log(666, key)
+  var s_res = {}
+  switch (val) 
+    {
+    case 0:
+      s_res.color = '#8956ec'
+      s_res.text = '未启用'
+      break;
+    case 1:
+      s_res.color = '#56ec99'
+      s_res.text = '正常'
+      break;
+    case 2:
+      s_res.color = '#f38868'
+      s_res.text = '故障'
+      break;
+    case 3:
+      s_res.color = '#518eda'
+      s_res.text = '报废'
+      break;
+    case 4:
+      s_res.color = '#4581ef'
+      s_res.text = '维修中'
+      break;
+    case 5:
+      s_res.color = '#ce1638'
+      s_res.text = '搁置'
+      break; 
+    default:
+      s_res.color = '#d3d3d3'
+      s_res.text = '其他'
+      break;
+  }
+  console.log(s_res)
+  if (s_res[t]){
+    return s_res[t]
+  }  
+}
+
+module.exports = {
+  status: status
+}

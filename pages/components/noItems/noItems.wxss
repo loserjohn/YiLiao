@@ -1,0 +1,16 @@
+/* pages/components/noItems/noItems.wxss */
+ .noItem{
+   width: 100vw;
+   height: 90vh;
+   position: relative;
+   /* background: pink; */
+    display: flex;
+  display: -webkit-flex;
+    justify-content: center;
+    align-items: center
+ }
+ .noItem .noItem_pic{
+  display: block;
+   width: 140px;
+   height: 128px
+ }

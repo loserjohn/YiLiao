@@ -1,4 +1,7 @@
 // pages/facility/components/relevant/relevant.js
+import {
+  getAccessoryList
+} from '../../../../utils/api.js'
 Component({
   options: {
     "addGlobalClass": true
@@ -10,6 +13,14 @@ Component({
     canchoose:{
       type:Boolean,
       value:false
+    },
+    facilityId: {
+      type: String,
+      value: '',
+      observer: function (val, old) {
+        // console.log(val);
+        this.loadData(val)
+      }
     }
   },
 
@@ -26,15 +37,6 @@ Component({
         type: [{ key: 0, text: '二极管' }, { key: 1, text: '小零件' }],
         num: 3,
         thumb: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4154563837,520368770&fm=26&gp=0.jpg'
-      },
-      {
-        status: 0,
-        title: '圆周离心机底片（o）',
-        facilityId: '12448-12',
-        num: 1,
-        model: '52sd',
-        type: [{ key: 4, text: '机械配件' }, { key: 2, text: '大零件' }],
-        thumb: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=331643808,2083727353&fm=26&gp=0.jpg'
       }
     ]
   },
@@ -43,9 +45,22 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    // 选择数量
     setNum(res){
       console.log(res)
       this.triggerEvent('choose', '备件id135435135')
-    }
+    },
+    // 加载数据
+    loadData(val) {
+      let that = this
+  
+      getAccessoryList({ DEVICE_CODE: val }).then(res => {
+        // debugger
+        that.setData({
+          list: res.Data.ListInfo,
+          // prePic: res.Data.DEVICE_IMGLIST.split(',')
+        })
+      }).catch(err => { })
+    } 
   } 
 })

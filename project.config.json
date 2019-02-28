@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 18,
+			"current": 9,
 			"list": [
 				{
 					"id": 0,
@@ -97,10 +97,10 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 9,
 					"name": "设备详情",
 					"pathName": "pages/facility/subpages/facilityDetail/facilityDetail",
-					"query": "",
+					"query": "facilityId=65a449eb381b4a559c665840266f1cf3",
 					"scene": null
 				},
 				{

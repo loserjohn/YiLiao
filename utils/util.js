@@ -37,8 +37,8 @@ const  scanCode = ()=>{
   return new Promise((resolve,reject)=>{
     wx.scanCode({
       success: (res) => {
-        // console.log(res.result)
-        if(res && res.result){
+        // console.log(res)
+        if (res&&res.result){
           resolve(res.result)
         }else{
           reject('没有检测到相关设备信息')

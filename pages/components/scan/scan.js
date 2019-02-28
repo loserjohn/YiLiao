@@ -31,7 +31,7 @@ Component({
         if (code) {
           this.triggerEvent('scanCode', code)
         } else {
-
+            
         }
       }).catch(err => {
         wx.showToast({

@@ -1,0 +1,4 @@
+<!--pages/components/noItems/noItems.wxml-->
+<view class='noItem '>
+  <image class='noItem_pic ' mode="scaleToFill" src='../../../static/img/no4.png'></image>
+</view>

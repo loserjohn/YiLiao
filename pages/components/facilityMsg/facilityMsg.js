@@ -1,8 +1,10 @@
 // pages/components/facilityMsg/facilityMsg.js
+import Dialog from '../../vant/dialog/dialog';
 import {
-  getFacilityDetail
+  getFacilityDetail,
+  editedFacility
 } from '../../../utils/api.js'
-
+const app = getApp()
 Component({
   options: {
     "addGlobalClass": true
@@ -27,25 +29,59 @@ Component({
   data: {
     facility:{},
     prePic:[
-      'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3329288042,2952547843&fm=15&gp=0.jpg',
-      'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3329288042,2952547843&fm=15&gp=0.jpg',
-      'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2398114811,2331663261&fm=15&gp=0.jpg',
-      'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=930564983,1390301969&fm=15&gp=0.jpg',
-      'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1526559757,3333528363&fm=15&gp=0.jpg'
+      'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3329288042,2952547843&fm=15&gp=0.jpg'
     ],
-    clientWidth:''
+    clientWidth:'',
+    canEdited: app.globalData.role == 'inspector'?true:false,
+    // canEdited: true
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+    // 手动保存
+    toSave(){
+      Dialog.confirm({
+        title: '提醒',
+        message: '您确定保存修改？'
+      }).then(() => {
+        // on confirm
+        this.toEdite()
+      }).catch(() => {
+        // on cancel
+      });
+    },
     // 保存编辑页面
-    toEdite:function(){
-      console.log(1)
-      // wx.navigateTo({
-      //   url: '/pages/facility/subpages/facilityEdite/facilityEdite',
-      // })
+    toEdite(){
+      // console.log(this.properties.facilityId)
+      if (!this.properties.facilityId)return;
+         let arr = this.data.prePic;
+        let data = {
+          DEVICE_CODE: this.properties.facilityId,
+          DEVICE_IMGLIST: arr.join(',')
+        }
+        // console.log(data)
+        editedFacility(data).then(res=>{
+          // console.log(res)
+          if(res.Success){
+            wx.showToast({
+              title: '修改成功',
+              icon: 'none',
+              duration: 2000
+            })
+            setTimeout(()=>{
+              wx.navigateBack()
+            },500)
+          }else{
+            wx.showToast({
+              title: '修改失败',
+              icon: 'none',
+              duration: 2000
+            }) 
+          }
+        })
+  
     },
     // 加载数据
     loadData(val){
@@ -62,14 +98,39 @@ Component({
           // console.log(clientHeight)
         }
       });
-
       getFacilityDetail({ DEVICE_CODE: val }).then(res => {
-        // debugger/
+        // debugger
+        // console.log(res.Data.DEVICE_IMGLIST.split(','));
+        let arr = []
+        if (res.Data.DEVICE_IMGLIST){
+          arr = res.Data.DEVICE_IMGLIST.split(',')
+        }
         that.setData({
           facility: res.Data,
-          // prePic: res.Data.DEVICE_IMGLIST.split(',')
+          prePic: arr
         })
       }).catch(err => { })  
+    },
+    // 提醒用户保存
+    notifyToSave(res){
+      // console.log(res.detail);
+      let that = this
+      let notify = res.detail.notify
+      let arr = res.detail.arr;
+      this.data.prePic = arr
+      if (notify){
+        // 提示保存
+        Dialog.confirm({
+          title: '提醒',
+          message: '当前信息发生修改，请立即保存'
+        }).then(() => {
+          // on confirm
+          // debugger
+          that.toEdite(arr)
+        }).catch(() => {
+          // on cancel
+        });
+      }
     }
   }
 })

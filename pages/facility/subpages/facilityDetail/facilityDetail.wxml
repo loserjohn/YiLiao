@@ -6,19 +6,21 @@
   <van-tabs color="#28B8A1" custom-class="tabs" animated="true" swipeable="false" active="{{active}}">
     <van-tab title="设备参数">
       <scroll-view scroll-y  style="{{'height:'+height}}">
-        <facilityMsg facilityId="{{facilityId}}"></facilityMsg>
-        
+        <facilityMsg facilityId="{{facilityId}}"></facilityMsg>      
       </scroll-view>
     </van-tab>
     <van-tab title="相关备件">
       <view style="{{'height:'+height}}">
-        <relevant></relevant>
+        <relevant facilityId="{{facilityId}}"></relevant>
       </view>
     </van-tab>
     <van-tab title="报修记录">
-      <scroll-view scroll-y style="{{'height:'+height}}">
-        <repairHistory></repairHistory>
-      </scroll-view>
+       <view  scroll-y style="{{'height:'+height}}">
+        <repairHistory facilityId="{{facilityId}}"></repairHistory>
+      </view>
     </van-tab>
   </van-tabs>
 </view>
+
+<van-dialog id="van-dialog" />
+<van-notify id="van-notify" />

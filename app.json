@@ -87,6 +87,7 @@
     "van-stepper": "./pages/vant/stepper/index",
     "van-toast": "./pages/vant/toast/index",
     "van-notify": "./pages/vant/notify/index",
-    "van-steps": "./pages/vant/steps/index"
+    "van-steps": "./pages/vant/steps/index",
+    "van-progress": "./pages/vant/progress/index"
   }
 }

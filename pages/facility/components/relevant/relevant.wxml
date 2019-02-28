@@ -1,10 +1,14 @@
 <!--pages/facility/components/relevant/relevant.wxml-->
 <!-- <van-cell-group > -->
-  <scroll-view scroll-y class='cm_scroll_y overflow' >
+
+  <scroll-view scroll-y class='cm_scroll_y overflow' wx:if="{{list.length>0}}">
     <block wx:for="{{list}}" wx:key="index">
       <navigator url="/pages/index/subpages/repairOrder/repairOrder">
         <accessoryItem item="{{item}}" dosagabled="{{false}}" choosabled="{{canchoose?true:false}}"  bind:choose="setNum"  delectabled="{{false}}" ></accessoryItem>
       </navigator>
     </block>
   </scroll-view>
+<view wx:else >
+  <noItems></noItems>  
+</view>
 <!-- </van-cell-group> -->

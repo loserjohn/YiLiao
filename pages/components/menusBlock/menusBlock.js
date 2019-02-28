@@ -1,5 +1,9 @@
 // pages/components/menusBlock/menusBlock.js
 import Utils from '../../../utils/util.js'
+import {
+  getFacilityDetail
+} from '../../../utils/api.js'
+
 Component({
   options: {
     "addGlobalClass": true
@@ -120,16 +124,30 @@ Component({
         icon: 'icon-saoma',
         title: '扫码识别',
         handle: () => {
-          Utils.scanCode().then(res => {
-            url = `/pages/facility/subpages/facilityDetail/facilityDetail?facilityId=${res}`
-            wx.navigateTo({
-              url: url
+          Utils.scanCode().then(code => {
+            wx.showLoading({
+              title: '查找设备中',
             })
+            console.log(0, code)
+            // 判断是否存在该设备    
+            getFacilityDetail({ DEVICE_CODE: code }).then(res => {
+              if (res.Success) {
+                wx.hideLoading()
+                wx.navigateTo({
+                  url: `/pages/facility/subpages/facilityDetail/facilityDetail?facilityId=${code}`,
+                })
+              } else {
+                wx.hideLoading();
+                wx.showToast({
+                  title: '没有找到该设备的相关信息!!',
+                  icon:'none'
+                })
+                // Toast.fail('没有找到该设备的相关信息');
+              }
+            }).catch(err => {
+              wx.hideLoading();
+            })  
           }).catch(err => {
-            wx.showToast({
-              title: '扫码错误，请到设备列表手动查找',
-              icon: "none"
-            });
             return false
           })
         },

@@ -6,12 +6,23 @@
   <block wx:for="{{prePicArr}}" wx:key="index">
     <view class="prePics" style="{{'width:'+width+'px;height:'+width+'px'}}" data-src="{{item}}" catchtap='preview'>
       <image class='prePicsImg' src="{{item}}" mode="aspectFit" ></image>
-      <view class="picDelect" data-key="{{index}}" catchtap='delect'>
-        -
+      <!-- <view class="picDelect" data-key="{{index}}" catchtap='delect' wx:if="{{canEdited}}"></view> -->
+      <van-icon name="clear" color="red" custom-class="picDelect" data-key="{{index}}" catchtap='delect' wx:if="{{canEdited}}"/>
+    </view>  
+  </block>
+  <block wx:for="{{inUpload}}" wx:key="index">
+    <view class="inUploadPics" style="{{'width:'+width+'px;height:'+width+'px'}}" data-src="{{item}}" catchtap='preview'>
+      <view class='inUploadImg '>
+        <van-progress
+          pivot-text="{{item}}"
+          color="#7bbcfd"
+          percentage="{{item}}"
+          custom-class="progress"
+        />
       </view>
     </view>  
   </block>
-  <view class='prePics' style="{{'width:'+width+'px;height:'+width+'px'}}">
+  <view class='prePics' style="{{'width:'+width+'px;height:'+width+'px'}}" wx:if="{{canEdited && prePicArr.length<9}}">
       <view class='addNew flex' bindtap='upload'>
         <van-icon name="plus" size='30px' color='#ddd' custom-class="addIcon"/>
       </view>

@@ -1,20 +1,17 @@
 <!--pages/facility/components/repairHistory/repairHistory.wxml-->
 
-  <!-- <scroll-view scroll-y class='cm_scroll_y overflow' > -->
+<scroll-view scroll-y class='cm_scroll_y overflow' wx:if="{{list.length>0}}">
   <view class="cm_menus">
-  <van-steps
-  direction="vertical"
-    steps="{{ steps }}"
-    active="{{ active }}"
-  />
-  
+    <van-steps direction="vertical" steps="{{ steps }}" active="{{ active }}" />
   </view>
-  
-    <!-- <block wx:for="{{list}}" wx:key="index">
+
+  <!-- <block wx:for="{{list}}" wx:key="index">
       <navigator url="../repairOrder/repairOrder">
         <orderItem item="{{item}}"></orderItem>
       </navigator>
     </block> -->
-    <!-- <moreReminder loading="{{loading}}" nomore="{{nomore}}"></moreReminder> -->
-  <!-- </scroll-view> -->
-  
+  <!-- <moreReminder loading="{{loading}}" nomore="{{nomore}}"></moreReminder> -->
+</scroll-view>
+<view wx:else >
+  <noItems></noItems>  
+</view>
