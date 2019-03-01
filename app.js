@@ -24,7 +24,7 @@ App({
   },
   globalData: {
     // 用户身份
-    role:'',
+    // role:'inspector',
     winHeight:559, 
     userInfo: {}, //本地服务器的用户信息
     // wxUserInfo:{}, //微信服务器的用户信息

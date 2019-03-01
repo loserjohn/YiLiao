@@ -50,6 +50,10 @@ Component({
     facilityId:{
       type: String,
       value: ''
+    },
+    title:{
+      type:String,
+      value:'设备图片'
     }
   },
  

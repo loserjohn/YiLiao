@@ -1,6 +1,6 @@
 <!--pages/components/preImgGallery/preImgGallery.wxml-->
 <!-- 展示图片的画廊组件 -->
-<blocktitle icon="icon-baoguo_dabao" title="设备图片(6张)"></blocktitle>
+<blocktitle icon="icon-baoguo_dabao" title="{{title?title:'故障图片'+num+'张'}}"></blocktitle>
 
 <view class="galleryBar flex">
   <block wx:for="{{prePicArr}}" wx:key="index">

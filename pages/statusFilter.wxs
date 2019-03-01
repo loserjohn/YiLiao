@@ -5,9 +5,9 @@ function status(val,t){
   if (!val)return;
   var s_key = parseInt(val);
   
-  // console.log(666, key)
+  // console.log(666, s_key)
   var s_res = {}
-  switch (val) 
+  switch (s_key) 
     {
     case 0:
       s_res.color = '#8956ec'

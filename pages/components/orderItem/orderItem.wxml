@@ -1,13 +1,13 @@
 <!--pages/components/orderItem/orderItem.wxml-->
-<van-card title="{{item.title}}" thumb="{{item.thumb}}"  custom-class="orderItem" lazy-load>
-  <view slot="tags">
-    <van-tag   color="#8956ec" wx:if="{{item.status==0}}" >{{item.statusText}}</van-tag>
-    <van-tag   color="#56ec99" wx:if="{{item.status==1}}">{{item.statusText}}</van-tag>
-    <van-tag   color="#f38868" wx:if="{{item.status==2}}">{{item.statusText}}</van-tag>
+<wxs src="../../statusFilter.wxs" module="statusFilter" />
+<van-card title="{{item.title}}" thumb="{{thumb}}"  custom-class="orderItem" lazy-load>
+  <view slot="tags"> 
+    <van-tag   color="{{statusFilter.status(item.DEVICE_STATUS,'color')}}"  >{{statusFilter.status(item.DEVICE_STATUS,'text')}}</van-tag>
   </view>
+
   <view slot="desc">
-    <view class='orderDesc'>设备编号：{{item.facilityId}}</view>
-    <view class='orderDesc'>报修工单号：{{item.repairId}}</view>
-    <view class='orderDesc'>报修时间：{{item.createTime}}</view>
+    <view class='orderDesc'>报修编号：{{item.REPAIRS_CODE}}</view>
+    <view class='orderDesc'>设备编号：{{item.DEVICE_NUM}}</view>
+    <view class='orderDesc'>报修时间：{{item.DEVICE_CRTATE_DATE}}</view>
   </view>
 </van-card>

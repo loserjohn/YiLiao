@@ -1,5 +1,5 @@
 <!--pages/index/subpages/repairMsg/repairMsg.wxml-->
 <view>
-  <faultMsg></faultMsg>
+  <faultMsg repairCode="{{repairCode}}"></faultMsg>
 </view>
 

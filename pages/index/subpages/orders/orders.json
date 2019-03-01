@@ -1,6 +1,7 @@
 {
     "usingComponents": {
-      "orderItem": "../../../components/orderItem/orderItem"
+      "orderItem": "../../../components/orderItem/orderItem",
+      "noItems": "/pages/components/noItems/noItems"
     },
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTextStyle": "black",

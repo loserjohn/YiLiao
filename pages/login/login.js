@@ -99,6 +99,10 @@ Page({
       });
       console.log('err', err);
     })
+
+    // wx.reLaunch({
+    //   url: '/pages/index/index',
+    // })
   },
   // 快速绑定微信账号opnenid
   bouding(callback) {
@@ -113,7 +117,7 @@ Page({
           code: res.code
         }
         getIdentity(data).then(res => {
-          console.log(111, res.Data);
+          // console.log(111, res.Data);
           wx.setStorageSync('openId', res.Data.openid)
           wx.setStorageSync('sessionKey', res.Data.session_key);
           this.setData({
@@ -214,7 +218,7 @@ Page({
   },
   // 获取用户信息点击事件回调
   bindGetUserInfo(e) {
-    console.log('用户基本信息', e);
+    // console.log('用户基本信息', e);
     app.globalData.wxUserInfo = e.detail
     wx.showToast({
       title: '获取成功',
@@ -256,7 +260,7 @@ Page({
   // 自动登录
   autoLoin(openId) {
     let that = this
-   
+
     wx.checkSession({
       success() {
         // session_key 未过期，并且在本生命周期一直有效
@@ -290,8 +294,8 @@ Page({
             };
             wx.reLaunch({
               url: '/pages/index/index',
-            }) 
-          }else{
+            })
+          } else {
             Dialog.alert({
               message: res.Msg,
               overlay: true,
@@ -301,7 +305,7 @@ Page({
               });
             });
           }
-        
+
         }).catch(err => {
           wx.hideLoading()
           wx.showToast({

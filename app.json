@@ -43,12 +43,6 @@
         "selectedIconPath": "./static/img/menus/tab2_cover.png"
       },
       {
-        "pagePath": "pages/accessory/accessory",
-        "text": "备件",
-        "iconPath": "./static/img/menus/tab3.png",
-        "selectedIconPath": "./static/img/menus/tab3_cover.png"
-      },
-      {
         "pagePath": "pages/mine/mine",
         "text": "我的",
         "iconPath": "./static/img/menus/tab4.png",
@@ -82,12 +76,17 @@
     "van-picker": "./pages/vant/picker/index",
     "van-loading": "./pages/vant/loading/index",
     "van-swipe-cell": "./pages/vant/swipe-cell/index",
-    "van-switch":"./pages/vant/switch/index",
+    "van-switch": "./pages/vant/switch/index",
     "van-switch-cell": "./pages/vant/switch-cell/index",
     "van-stepper": "./pages/vant/stepper/index",
     "van-toast": "./pages/vant/toast/index",
     "van-notify": "./pages/vant/notify/index",
     "van-steps": "./pages/vant/steps/index",
-    "van-progress": "./pages/vant/progress/index"
+    "van-progress": "./pages/vant/progress/index",
+    "van-action-sheet": "./pages/vant/action-sheet/index",
+    "van-radio": "./pages/vant/radio/index",
+    "van-radio-group": "./pages/vant/radio-group/index",
+    "van-collapse": "./pages/vant/collapse/index",
+    "van-collapse-item": "./pages/vant/collapse-item/index"
   }
 }

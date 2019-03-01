@@ -8,7 +8,11 @@ export const MainMenus = ['accessoryCheck', 'facilityCheck','scanCode']
   "repair":{
     name: 'repair',
     describe:'快速报修'
-  }
+  },
+   "repairHistory": {
+     name: 'repairHistory',
+     describe: '维修历史'
+   }
 }
  const maintainRight_index  = {
   "waitingRepair": {

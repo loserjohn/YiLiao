@@ -64,7 +64,7 @@ Page({
     permisionFilter(role, (res) => {
       permissionObj = res  
       this.renderPanels((arr)=>{
-        console.log(arr)
+        // console.log(arr)
         this.setData({
           role: role,
           meuns: MainMenus,

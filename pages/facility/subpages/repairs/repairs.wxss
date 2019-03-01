@@ -3,3 +3,45 @@
 .pd_bt{
   padding-bottom: 20rpx
 }
+.rightTip{
+  height: 88rpx;
+  width: 88rpx;
+  background: #28b8a1;
+  color: #fff;
+  text-align: center;
+  line-height: 88rpx
+}
+.matchBox{
+  min-height: 20rpx;
+  box-sizing: border-box;
+  padding:0 30rpx;
+ overflow: hidden
+}
+.box{
+   transition: all .5s  ease 
+}
+.matchBox .matchBoxText{
+  line-height: 2;
+  color: #bcbcbc;
+  font-size: 24rpx
+}
+.scanBox{
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-content: center
+}
+.scanIcon{
+  display: block;
+  /* background: red; */
+  margin-top: 16rpx;
+  margin-right: 20rpx
+}
+.radioBox{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 30rpx;
+  background: #fff
+}
