@@ -1,11 +1,16 @@
 <!--pages/index/subpages/record/record.wxml-->
-<van-cell-group>
-  <view class="main">
-    <block wx:for="{{list}}" wx:key="index">
-      <navigator url="../repairMsg/repairMsg">
-        <orderItem item="{{item}}"></orderItem>
-      </navigator>
-    </block>
-  </view>
-</van-cell-group>
-<moreReminder loading="{{loading}}" nomore="{{nomore}}"></moreReminder>
+<view wx:if="{{list.length>0}}">
+  <van-cell-group>
+    <view class="main">
+      <block wx:for="{{list}}" wx:key="index">
+        <navigator url="../repairMsg/repairMsg">
+          <orderItem item="{{item}}"></orderItem>
+        </navigator>
+      </block>
+    </view>
+  </van-cell-group>
+  <moreReminder loading="{{loading}}" nomore="{{!rest}}"></moreReminder>
+</view>
+<view wx:else>
+  <noItems></noItems>
+</view>

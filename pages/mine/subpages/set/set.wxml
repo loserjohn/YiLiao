@@ -23,14 +23,7 @@
     
     </van-cell-group>
   </view>
-  <view class='cm_blank'></view>
-  <view class='cm_nopading'>
-    <van-cell-group>
-      <van-cell icon="star" title="推荐朋友" is-link />
-      <van-cell icon="award" title="关于我们" is-link />
-
-    </van-cell-group>
-  </view>
+ 
 
 
 </view>

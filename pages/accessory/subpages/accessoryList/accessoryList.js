@@ -1,115 +1,132 @@
 // pages/accessory/subpages/accessory/accessoryList.js
+const app = getApp()
+import {
+  getAccessoryList
+} from '../../../../utils/api.js'
+import Toast from '../../../vant/toast/toast';
+import Notify from '../../../vant/notify/notify';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    keyword: '',//搜索关键字
+    index: 1,
+    size: 8,
+    rest: true,//是否有剩余条目
+    loading:false,
     num:0,
     show:false,
     typeAction:'',
     height:'300px',
     currentType:2,
-    list: [
-      {
-        status: 0,
-        title: '发光二极管（225）',
-        facilityId: '12448-12',
-        model: '2152s',
-        type: [{ key: 0, text: '二极管' }, { key: 1, text: '小零件' }],
-        num: 3,
-        thumb: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4154563837,520368770&fm=26&gp=0.jpg'
-      },
-      {
-        status: 0,
-        title: '圆周离心机底片（o）',
-        facilityId: '12448-12',
-        num: 1,
-        model: '52sd',
-        type: [{ key: 4, text: '机械配件' }, { key: 2, text: '大零件' }],
-        thumb: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=331643808,2083727353&fm=26&gp=0.jpg'
-      },
-      {
-        status: 0,
-        title: '发光二极管（225）',
-        facilityId: '12448-12',
-        model: '2152s',
-        type: [{ key: 0, text: '二极管' }, { key: 1, text: '小零件' }],
-        num: 3,
-        thumb: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4154563837,520368770&fm=26&gp=0.jpg'
-      },
-      {
-        status: 0,
-        title: '圆周离心机底片（o）',
-        facilityId: '12448-12',
-        num: 1,
-        model: '52sd',
-        type: [{ key: 4, text: '机械配件' }, { key: 2, text: '大零件' }],
-        thumb: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=331643808,2083727353&fm=26&gp=0.jpg'
-      },
-      {
-        status: 0,
-        title: '发光二极管（225）',
-        facilityId: '12448-12',
-        model: '2152s',
-        type: [{ key: 0, text: '二极管' }, { key: 1, text: '小零件' }],
-        num: 3,
-        thumb: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4154563837,520368770&fm=26&gp=0.jpg'
-      },
-      {
-        status: 0,
-        title: '圆周离心机底片（o）',
-        facilityId: '12448-12',
-        num: 1,
-        model: '52sd',
-        type: [{ key: 4, text: '机械配件' }, { key: 2, text: '大零件' }],
-        thumb: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=331643808,2083727353&fm=26&gp=0.jpg'
-      },
-      {
-        status: 0,
-        title: '发光二极管（225）',
-        facilityId: '12448-12',
-        model: '2152s',
-        type: [{ key: 0, text: '二极管' }, { key: 1, text: '小零件' }],
-        num: 3,
-        thumb: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4154563837,520368770&fm=26&gp=0.jpg'
-      },
-      {
-        status: 0,
-        title: '圆周离心机底片（o）',
-        facilityId: '12448-12',
-        num: 1,
-        model: '52sd',
-        type: [{ key: 4, text: '机械配件' }, { key: 2, text: '大零件' }],
-        thumb: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=331643808,2083727353&fm=26&gp=0.jpg'
+    list: []
+  },
+  // 同步keyword的值
+  syncValkeyword(e) {
+    // console.log(e.detail);
+    this.data.keyword = e.detail
+  },
+ 
+  // 开始搜索
+  onSearch() {
+    if (!this.data.keyword ) {
+      Notify({
+        text: '请输入关键字',
+        duration: 1000,
+        selector: '#van-notify',
+        backgroundColor: 'red'
+      });
+      return
+    }
+
+    this.setData({
+      list: [],
+      index: 1,
+      rest: true
+    })
+    Toast.loading({
+      mask: true,
+      message: '搜索中...'
+    });
+    this.loadData((total) => {
+      Toast.clear();
+      Notify({
+        text: '搜索到一共' + total + '条数据',
+        duration: 1000,
+        selector: '#van-notify',
+        backgroundColor: '#1989fa'
+      });
+    })
+  },
+  // 加载设备列表
+  loadData(callback) {
+    let that = this
+    let data = {
+      pageIndex: this.data.index,
+      pageSize: this.data.size,
+      // UNIT_CODE: app.globalData.userInfo.USER_UNIT
+      UNIT_CODE: '7c818b8fcbd5473b91580b91926cef3d'
+    }
+    if (this.data.keyword && this.data.keyword.length > 0) {
+      data.keyword = this.data.keyword
+    }
+    // 判断是否条件筛选
+  
+
+    let rest = that.data.rest;
+    if (!rest) { return }
+
+    this.setData({
+      loading: true
+    })
+    // api请求
+    getAccessoryList(data).then(res => {
+      // console.log(data)
+      // 后面还有数据
+      that.data.list = that.data.list.concat(res.Data.ListInfo);
+      // 后面y有没有数据了
+      if (that.data.list.length >= res.Data.Total) {
+        that.setData({
+          list: this.data.list,
+          loading: false,
+          rest: false
+        })
+      } else {
+        that.setData({
+          list: that.data.list,
+          loading: false
+        })
       }
-    ]
+      console.log(that.data.index, that.data.list.length);
+      if (callback) callback(res.Data.Total)
+    }).catch(err => {
+
+    })
+  },
+  // 加载更多
+  loadMore() {
+    if (this.data.loading || !this.data.rest) {
+      return
+    }
+    this.data.index += 1;
+
+    this.loadData()
   },
 
   /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function(options) {
-    // console.log(options)
-    let action = options.action ? options.action:false;
+  * 生命周期函数--监听页面加载
+  */
+  onLoad: function (options) {
+    let H = app.globalData.winHeight
+    // debugger
     this.setData({
-      typeAction:action
-    })
-    let  that = this
-    const query = wx.createSelectorQuery()
-    query.select('#scrollBox').boundingClientRect()
-    query.selectViewport().scrollOffset()
-    query.exec(function (res) {
-     
-      let H = res[0].height;
-      that.setData({
-        height: H -44 + 'px'
-      })
-      // console.log(H + 'px')
-    })
-    
-  },
+      height: H - 44 - 44 + 'px'
+    });
 
+    this.loadData()
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

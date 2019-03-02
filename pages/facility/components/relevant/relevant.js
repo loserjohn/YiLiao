@@ -28,17 +28,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    list: [
-      {
-        status: 0,
-        title: '发光二极管（225）',
-        facilityId: '12448-12',
-        model: '2152s',
-        type: [{ key: 0, text: '二极管' }, { key: 1, text: '小零件' }],
-        num: 3,
-        thumb: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4154563837,520368770&fm=26&gp=0.jpg'
-      }
-    ]
+    list: []
   },
 
   /**
@@ -53,8 +43,12 @@ Component({
     // 加载数据
     loadData(val) {
       let that = this
-  
-      getAccessoryList({ DEVICE_CODE: val }).then(res => {
+      let data = {
+        pageIndex: 1,
+        pageSize: 100,
+        DEVICE_CODE: val
+      }
+      getAccessoryList(data).then(res => {
         // debugger
         that.setData({
           list: res.Data.ListInfo,

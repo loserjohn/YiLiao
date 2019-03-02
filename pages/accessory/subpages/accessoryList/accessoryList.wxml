@@ -2,7 +2,7 @@
 <view class='cm_container flex'>
   <view class='flex searchBar'>
     <view class='f1'>
-      <van-search value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot bind:search="onSearch" background="#fff">
+      <van-search value="{{ value }}" bind:change="syncValkeyword" placeholder="请输入搜索关键词" use-action-slot bind:search="onSearch" background="#fff">
         <view slot="action" bind:tap="onSearch">搜索</view>
       </van-search>
     </view>
@@ -10,15 +10,15 @@
   <view class='f1 overhidden ' id="scrollBox">
     <van-tabs color="#28B8A1" custom-class="tabs" animated="true" swipeable="false" active="{{active}}">
       <van-tab title="全部备件">
-        <scroll-view scroll-y class='cm_scroll_y ' style="{{'height:'+height}}">
+        <scroll-view scroll-y class='cm_scroll_y ' style="{{'height:'+height}}" bindscrolltolower="loadMore">
           <van-cell-group>
             <view class="">
               <block wx:for="{{list}}" wx:key="index">
-                <navigator url="../accessoryDetail/accessoryDetail">
+                <navigator url="../accessoryDetail/accessoryDetail?accessoryCode={{item.PART_CODE}}">
                   <accessoryItem item="{{item}}" delectabled="{{false}}" dosagabled="{{false}}" choosabled="{{typeAction=='choose'?true:false}}" bind:choose="setNum"></accessoryItem>
                 </navigator>
               </block>
-              <moreReminder loading="{{loading}}" nomore="{{nomore}}"></moreReminder>
+              <moreReminder loading="{{loading}}" nomore="{{!rest}}"></moreReminder>
             </view>
           </van-cell-group>
         </scroll-view>
@@ -30,18 +30,15 @@
         </view>
       </van-tab>
     </van-tabs>
-
   </view>
   <van-button wx:if="{{typeAction=='choose'}}" bind:click="addAccessory" type="primary" size="normal" block custom-class="cm_btn">添加其他备件</van-button>
 </view>
-
 
 <van-dialog use-slot async-close show="{{ show }}" show-cancel-button bind:close="onClose">
   <view class='cm_menus flex numModal'>
     <view class="numTip ">请确认数量</view>
     <van-stepper value="{{ num }}" custom-class="" bind:change="syncVal" />
   </view>
-
-  <!-- <van-field value="{{num}}" label="数量：" placeholder="请输入数量"  bind:change="{{syncVal}}"/> -->
-
 </van-dialog>
+<van-toast id="van-toast" />
+<van-notify id="van-notify" />

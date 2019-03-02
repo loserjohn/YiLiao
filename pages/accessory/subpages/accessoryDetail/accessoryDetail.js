@@ -5,20 +5,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-    prePic: [
-      'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3329288042,2952547843&fm=15&gp=0.jpg',
-      'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3329288042,2952547843&fm=15&gp=0.jpg',
-      'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2398114811,2331663261&fm=15&gp=0.jpg',
-      'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=930564983,1390301969&fm=15&gp=0.jpg',
-      'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1526559757,3333528363&fm=15&gp=0.jpg'
-    ]
+    prePic: [],
+    accessoryCode:''
   },
-
+  // 加载详情数据
+  loadData(){
+    
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options.accessoryCode)
+    this.setData({
+      accessoryCode: accessoryCode
+    })
+    this.loadData()
   },
 
   /**

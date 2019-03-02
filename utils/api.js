@@ -23,6 +23,11 @@ export const getUserMsg = function(data) {
   return wxRequest('GET', '/api/User/GetUserInfo', data)
 }
 
+// 修改密码
+export const updatedPass = function (data) {
+  return wxRequest('POST', '/api/User/SetUserPass', data)
+}
+
 
 // 设备部分
 

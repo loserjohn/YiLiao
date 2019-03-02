@@ -36,11 +36,15 @@ Component({
     // 加载数据
     loadData(val) {
       let that = this
-      getHistoryList({ DEVICE_CODE: val }).then(res => {
-  
+      let data = {
+        pageIndex:1,
+        pageSize:100,
+        DEVICE_CODE: val 
+      }
+      getHistoryList(data).then(res => {
+        console.log(res)
         that.setData({
-          steps: res.Data.ListInfo,
-          // prePic: res.Data.DEVICE_IMGLIST.split(',')
+          steps: res.Data.ListInfo
         })
       }).catch(err => { })
     } 

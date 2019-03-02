@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "faultMsg": "../../../components/faultMsg/faultMsg"
-  }
+  },
+    "navigationBarTitleText": "报修故障信息"
 }

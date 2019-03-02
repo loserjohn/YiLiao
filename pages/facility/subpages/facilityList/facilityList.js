@@ -84,7 +84,7 @@ Page({
     })
     // 判断是否存在该设备    
     getFacilityDetail({ DEVICE_CODE: code }).then(res => {
-      console.log(res)
+      // console.log(res)
       if(res.Success){
         wx.hideLoading()
         wx.navigateTo({
@@ -232,12 +232,12 @@ Page({
   onLoad: function (options) {
     this.initFilterOption()
     this.loadData((total)=>{
-      Notify({
-        text: '搜索到一共' + total + '条数据',
-        duration: 1000,
-        selector: '#van-notify',
-        backgroundColor: '#1989fa'
-      }); 
+      // Notify({
+      //   text: '搜索到一共' + total + '条数据',
+      //   duration: 1000,
+      //   selector: '#van-notify',
+      //   backgroundColor: '#1989fa'
+      // }); 
     })
   },
   /**

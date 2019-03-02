@@ -2,17 +2,15 @@
 <view>
 
   <van-cell-group>
-    <van-field value="{{ form.userName.value }}" id="userName" type="number" clearable label="用户手机号" placeholder="请输入手机号" error-message="{{ form.userName.valid?'':'手机号码输入错误' }}" bind:clear="clear" bind:blur="valid" />
-    
-  
-  <van-field value="{{ form.userPass.value  }}" id="userPass" clearable error-message="{{ form.userPass.valid?'':'密码格式错误' }}" type="password" label="旧密码" placeholder="旧密码" bind:clear="clear" bind:blur="valid" />
-  <van-field value="{{ sms }}" center clearable label="短信验证码" placeholder="请输入短信验证码" border="{{ false }}" use-button-slot>
-    <van-button slot="button" size="small" type="primary">发送验证码</van-button>
-  </van-field>
-  <van-field value="{{ form.userPass.value  }}" id="userPass" clearable error-message="{{ form.userPass.valid?'':'密码格式错误' }}" type="password" label="新密码" placeholder="6-20个字母、数字、下划线组成" bind:clear="clear" bind:blur="valid" />
+    <van-field value="{{ userName }}" input-align="right" readonly id="userName" type="number" clearable label="用户手机号" />
+    <van-field value="{{ oldPass  }}" input-align="right"  id="userPass" clearable  type="password" label="旧密码" placeholder="旧密码" bind:clear="clear" id="oldPass" bind:blur="syncVal" />
+    <van-field value="{{ newPass  }}" input-align="right"  id="userPass" clearable  type="password" label="新密码" placeholder="6-20个字母、数字、下划线组成" bind:clear="clear" id="newPass" bind:blur="syncVal" />
+     <van-field value="{{ reNewPass  }}" input-align="right"  id="userPass" clearable  type="password" label="确认新密码" placeholder="6-20个字母、数字、下划线组成" bind:clear="clear" id="reNewPass" bind:blur="syncVal" />
   </van-cell-group>
-  <view class='cm_menus'>
-    <van-button size="normal" block custom-class='cm_btn' bind:click="login" loading="{{loading}}">登录</van-button>
+  <view class='cm_pad cm_bg_w'>
+    <van-button custom-class="cm_btn" size="normal" block bindtap='submit'> 提交修改
+    </van-button>
   </view>
 </view>
-
+<van-toast id="van-toast" />
+<van-notify id="van-notify" />
