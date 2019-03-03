@@ -41,7 +41,7 @@ Page({
         permissionObj.inRepair.badge = res.inRepair
       }   
       let permissionArr = Object.values(permissionObj);
-      console.log("用户信息",res)
+      // console.log("用户信息",res)
       app.globalData.userInfo = res.Data
       if (callback) {
         callback(permissionArr)

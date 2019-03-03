@@ -12,8 +12,10 @@ Page({
       gender:0,
       level:'维修部' 
     },
+    shareShow:false,
     checked: wx.getStorageSync('autoLogin') || false,
-    loading:false
+    loading:false,
+    type:0
   },
   // 修改自动登录
   onChange(event){
@@ -50,11 +52,33 @@ Page({
     });
   
   },
+  // 分享功能
+  toShare(){
+    this.setData({
+      type: 0,
+      shareShow: true
+    })
+  },
+  toAbout(){
+    this.setData({
+      type:1,
+      shareShow: true
+    })
+  },
+  // 关闭函数
+  onClose(){
+    this.setData({
+      shareShow:false
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(wx.getStorageSync('autoLogin'))
+    wx.showShareMenu({
+      withShareTicket: true
+    })
+   
   },
 
   /**
@@ -68,7 +92,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // wx.getShareInfo({
+    //   // shareTicket:'aaaaa', 
+    //   success: function (res) {
+    //     console.log(res)
+    //   }
+    // })
   },
 
   /**
@@ -102,7 +131,27 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function (ops) {
+    this.setData({
+      shareShow: false
+    })
+    let that = this
+    if (ops.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(ops.target)
+    }
+    return {
+      title: '医疗报修',
+      path: 'pages/login/login',
+      success: function (res) {
+        // 转发成功
+        console.log("转发成功:" + JSON.stringify(res));
+      },
+      fail: function (res) {
+        // 转发失败
+        console.log("转发失败:" + JSON.stringify(res));
+      }
+    }
 
   }
 })

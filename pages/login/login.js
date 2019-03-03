@@ -55,7 +55,7 @@ Page({
     }
     // 登录api
     accountLogin(data).then(res => {
-      console.log('promise成功', res);
+      // console.log('promise成功', res);
       app.globalData.userAccount = this.data.form.userName.value //username保存下
       if (res.Success) {
         // 有效用户

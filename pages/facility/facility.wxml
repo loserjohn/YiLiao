@@ -7,7 +7,7 @@
     <!-- 菜单循环 -->
       <menusBlock name="facilityList" block> </menusBlock>
 
-      <menusBlock name="accessoryList" block> </menusBlock>
+      <menusBlock name="accessoryList" block last="{{true}}"> </menusBlock>
   </view>
 
   <view class='cm_blank'></view>

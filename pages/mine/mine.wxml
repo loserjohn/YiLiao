@@ -10,35 +10,54 @@
         <view>
           <!-- <open-data type="userNickName" class=""></open-data> -->
           <view class=' msg_p'>所属部门：{{userInfo.level}}</view>
-          <view class=' msg_p'>性别：{{userInfo.gender==0?'男':'女'}}</view>
+          <!-- <view class=' msg_p'>性别：{{userInfo.gender==0?'男':'女'}}</view>1 -->
         </view>
       </view>
     </view>
   </view>
 
   <view class='cm_blank'></view>
-  <view class='cm_menus'>
-    <!-- 菜单循环 -->
-    <menusBlock name="updatedPass" block> </menusBlock>
-    <menusBlock name="set" block> </menusBlock>
+  <van-cell-group>
+    <view class='cm_menus'>
 
-    <!-- <menusBlock name="about" block> </menusBlock> -->
+      <!-- 菜单循环 -->
+      <menusBlock name="updatedPass" block> </menusBlock>
+      <menusBlock name="set" block last="{{true}}"> </menusBlock>
+      <!-- <menusBlock name="about" block> </menusBlock> -->
 
-    
-
-  </view>
-   <view class='cm_blank'></view>
+    </view>
+  </van-cell-group>
+  <view class='cm_blank'></view>
   <view class='cm_nopading'>
     <van-cell-group>
-      <van-cell icon="star" title="推荐朋友" is-link />
-      <van-cell icon="award" title="关于我们" is-link />
+      <van-cell icon="star" title="推荐朋友" is-link bind:click="toShare" />
+      <van-cell icon="award" title="关于我们" is-link bind:click="toAbout" />
       <van-switch-cell title="允许自动登录" checked="{{ checked }}" bind:change="onChange" active-color="#28b8a1" />
     </van-cell-group>
   </view>
+
 </view>
 <view class='cm_blank'></view>
 <view class='cm_pad'>
-  <van-button  type="danger" size="normal" loading="{{loading}}" block bindtap='loginOut'> 退出登录
+  <van-button type="danger" size="normal" loading="{{loading}}" block bindtap='loginOut'> 退出登录
   </van-button>
 </view>
 <van-dialog id="van-dialog" />
+<van-popup show="{{ shareShow }}" close-on-click-overlay bind:close="onClose">
+  <view class='shareBox' wx:if="{{type==0}}">
+    <image src='../../static/img/share.jpg' class='shareBg'></image>
+    <view class='cm_c shareText'>医疗设备保修系统</view>
+    <view class='cm_pad'>
+      <button class='share' id="shareBtn" open-type="share" type="primary" hover-class="other-button-hover">
+        分享
+      </button>
+    </view>
+  </view>
+  <scroll-view class='aboutBox' scroll-y wx:else>
+    <view class='aboutTitle'>医疗设备保修系统</view>
+    <view class='aboutText'>
+      医疗报修设备是都是空收到后即医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可医疗报医疗报修设备是都是空收到后即医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可修设备是都是空收到后即可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可医疗报修设备是都是空收到后即可
+    </view>
+  </scroll-view>
+
+</van-popup>

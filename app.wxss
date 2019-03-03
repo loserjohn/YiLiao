@@ -2,7 +2,7 @@
 @import './static/icon/icon.wxss';
 
 page {
-  background: #f2f2f2;
+  background: #fbfffe;
   /* background: #ddd; */
   font-size: 32rpx;
   box-sizing: border-box;

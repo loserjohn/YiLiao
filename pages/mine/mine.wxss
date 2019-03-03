@@ -23,7 +23,7 @@
 .userBox .msg_p{
   font-size: 24rpx;
   text-align: center;
-  color: #b9ebdd
+  color: #19b87b
 }
 .panel{
   background: #fff;
@@ -41,4 +41,44 @@
   padding: 0 10rpx;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
   
+}
+.shareBox{
+  width: 300px;
+  height: 360px;
+  overflow: hidden;
+  box-sizing: border-box
+}
+.shareBg{
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+  /* height: 100%; */
+}
+.shareText{
+  line-height: 2;
+  margin-top: 10rpx
+}
+.aboutBox{
+  width: 300px;
+  height: 360px;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 20rpx;
+  border-radius: 30rpx
+}
+.aboutTitle{
+  line-height: 3;
+  border-bottom: 1rpx solid #eee;
+  color: #28b8a1;
+  text-align: center
+}
+.aboutText{
+  box-sizing: border-box;
+  padding: 20rpx;
+  word-break:break-word;
+  text-align:justify;
+  color: #404040;
+  line-height: 1.5;
+  font-size: 28rpx;
+  text-indent: 40rpx
 }

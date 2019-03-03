@@ -1,1 +1,4 @@
 /* pages/facility/facility.wxss */
+page{
+  background: #fff
+}

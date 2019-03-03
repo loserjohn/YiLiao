@@ -3,10 +3,10 @@
   width: 100%;
   margin: 0 auto;
   /* background: red; */
-  line-height: 88rpx;
-  height: 88rpx;
+  line-height: 100rpx;
+  height: 100rpx;
   position: relative;
-   border-bottom: 1rpx solid #f2f2f2;
+  
 }
 .menusBlockItem .badge{
   position: absolute;

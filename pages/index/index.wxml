@@ -1,11 +1,17 @@
 <!--index.wxml-->
 <view class="cm_">
   <view class='msgBox'>
-    <view class='permission'>{{role=='maintain'?'维修人员':'巡检员'}}</view>
+
     <view class="bg"></view>
+    <image class='unitPre' src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551606882599&di=d8da4ec229cef28fc028b062d7a11e81&imgtype=0&src=http%3A%2F%2Fdimg09.c-ctrip.com%2Fimages%2Ftg%2F804%2F744%2F532%2Fd4bc2e11eec742acbe3163b7dc13b185.jpg"></image>
+
+    <view class='unitName'>福州XXXX医院</view>
+    <view class='subUnit'>仓山区海峡分院</view>
+    <view class='permission'>{{role==1?'巡检员':'维修员'}}</view>
     <view class='orderBox'>
       <!-- <blocktitle icon="icon-jinzhidengji" title="维修管理" wx:if="{{role=='maintain'}}"></blocktitle> -->
       <view class='cm_blocks'>
+      
         <!-- 菜单循环 -->
         <view class='menusPanel  flex'>
           <block wx:for="{{panels}}" wx:key="index">
@@ -14,17 +20,21 @@
             </view>
           </block>
         </view>
+         
       </view>
     </view>
   </view>
-  <blocktitle icon="icon-fuwuxunhuanguanli" title="故障报修"></blocktitle>
+  <view class='blank'></view>
+  <!-- <blocktitle icon="icon-fuwuxunhuanguanli" title="故障报修"></blocktitle> -->
   <view class='cm_blocks'>
+   <van-cell-group>
     <view class='cm_menus'>
       <!-- 菜单循环 -->
       <block wx:for="{{meuns}}" wx:key="index">
-          <menusBlock name="{{item}}" block> </menusBlock>
+        <menusBlock name="{{item}}" block last="{{index==meuns.length-1?true:false}}"> </menusBlock>
       </block>
     </view>
+    </van-cell-group>
   </view>
 
 </view>

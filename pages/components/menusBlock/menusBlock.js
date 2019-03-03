@@ -29,6 +29,10 @@ Component({
     badge:{
       type: Number,
       value: 0
+    },
+    last:{
+      type: Boolean,
+      value: false,
     }
   },
 
@@ -39,7 +43,7 @@ Component({
     menusList: {
       "repair": {
         name: 'repair',
-        icon: 'icon-dici',
+        icon: 'icon-yixueweibo',
         title: '快速报修',
         handle: 'repairs',
         handle: () => {
@@ -50,7 +54,7 @@ Component({
       },
       "waitingRepair": {
         name: 'waitingRepair',
-        icon: 'icon-ceshishenqing',
+        icon: 'icon-neijingzhongxin',
         title: '待维修',
         handle: () => {
           wx.navigateTo({
@@ -60,7 +64,7 @@ Component({
       },
       "inRepair": {
         name: 'inRepair',
-        icon: 'icon-renjijiaohu',
+        icon: 'icon-yixueyingxiangke',
         title: '维修中',
         handle: () => {
           wx.navigateTo({
@@ -70,7 +74,7 @@ Component({
       },
       "repairHistory": {
         name: 'repairHistory',
-        icon: 'icon-changjingguanli',
+        icon: 'icon-bingzhi-copy',
         title: '历史记录',
         handle: () => {
           wx.navigateTo({
