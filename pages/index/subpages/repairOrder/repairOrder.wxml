@@ -6,20 +6,22 @@
     <van-tabs color="#28B8A1" custom-class="tabs" animated="true" swipeable="false" active="{{active}}">
       <van-tab title="故障信息">
         <scroll-view scroll-y style="{{'height:'+height}}">
-          <faultMsg></faultMsg>
+          <faultMsg  repairCode="{{repairCode}}"></faultMsg>
         </scroll-view>
       </van-tab>
       <van-tab title="更换配件"> 
-        <view class="red" style="{{'height:'+height}}">
-          <swichAccessory winheight="{{height}}"  ></swichAccessory>
+        <view class="" style="{{'height:'+height}}" >
+          <swichAccessory winheight="{{height}}" id="swichAccessory" repairCode="{{repairCode}}" facilityId="{{facilityId}}"  ></swichAccessory>
         </view>      
         
       </van-tab>
       <van-tab title="完成维修">
         <scroll-view scroll-y style="{{'height:'+height}}">
-            <complete></complete>  
+            <complete repairCode="{{repairCode}}" facilityId="{{facilityId}}"></complete>  
         </scroll-view>
       </van-tab>
     </van-tabs>
   </view>
 <van-dialog id="van-dialog" />
+<van-notify id="van-notify" />
+<van-toast id="van-toast" />

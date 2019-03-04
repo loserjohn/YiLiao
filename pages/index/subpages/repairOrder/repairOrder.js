@@ -9,21 +9,30 @@ Page({
     orderType: ['故障信息','更换配件','维修进度'],
     currentType: 0,
     height: '',
+    repairCode:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
- 
+   
     let H = app.globalData.winHeight;
-    // console.log(this.data.height)
+    console.log('刷新', options)
     this.setData({
-      height: H - 44 + 'px'
-    })
-      // console.log(H - 44  + 'px')
-  },
+      height: H - 44 + 'px',
+      repairCode: options.repairCode,
+      facilityId: options.facilityId
+    });
 
+    
+    // 添加全局事件
+    app.event.on('partRefresh', this.partRefresh, this)
+  },
+  // 刷新已选的备件列表
+  partRefresh(){
+    this.selectComponent("#swichAccessory").loadData();
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -35,7 +44,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let pages = getCurrentPages();
+    const currentPage = pages[pages.length - 1]
+    console.log('刷新的参数',currentPage.options);
+    if (currentPage.options.refresh){
+      this.onLoad({ repairCode: currentPage.options.repairCode, facilityId: currentPage.options.facilityId })
+    }
+   
   },
 
   /**

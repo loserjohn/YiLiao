@@ -300,7 +300,7 @@ Page({
               message: res.Msg,
               overlay: true,
             }).then(() => {
-              this.setData({
+              that.setData({
                 loading: false
               });
             });

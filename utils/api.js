@@ -64,17 +64,37 @@ export const getAccessoryList = function(data) {
 export const getHistoryList = function(data) {
   return wxRequest('GET', '/api/Repairs/GetRepairsList', data)
 }
+
 export const getRepairList = function (data) {
   return wxRequest('GET', '/api/Repairs/GetRepairsList', data)
 }
+
 // 故障报修详细信息
 export const getRepairDetail = function (data) {
   return wxRequest('GET', '/api/Repairs/GetRepairs', data)
 }
-
 
 // 快速报修
 export const submitRepairs = function (data) {
   return wxRequest('POST', '/api/Repairs/SubmitRepairs', data)
 }
 
+// 添加存在的备件 
+export const addAccessory = function (data) {
+  return wxRequest('POST', '/api/PartChanger/SubmitBePart', data)
+}
+
+//领取报修
+export const beginRepair = function (data) {
+  return wxRequest('POST', '/api/Repairs/AffirmRepairs', data)
+}
+
+// 获取该订单下的已选备件
+export const matingAccessory = function (data) {
+  return wxRequest('GET', '/api/Part/GetUsePartList', data)
+}
+
+// 完成报修
+export const completeRepair = function (data) {
+  return wxRequest('POST', '/api/Repairs/SubmitFinish', data)
+}

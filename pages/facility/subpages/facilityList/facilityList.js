@@ -143,8 +143,8 @@ Page({
     let data = {
       pageIndex: this.data.index,
       pageSize: this.data.size,
-      // UNIT_CODE: app.globalData.userInfo.USER_UNIT
-      UNIT_CODE: '7c818b8fcbd5473b91580b91926cef3d'   
+      UNIT_CODE: app.globalData.userInfo.USER_UNIT
+      // UNIT_CODE: '7c818b8fcbd5473b91580b91926cef3d'   
     }
     // debugger
     // 判断是否条件筛选

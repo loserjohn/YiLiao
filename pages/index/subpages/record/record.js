@@ -23,7 +23,7 @@ Page({
     let data={
       pageIndex: this.data.pageIndex,
       pageSize: this.data.pageSize,
-      REPAIRS_STATUS:2,
+      REPAIRS_STATUS:3,
       UNIT_CODE: this.data.userInfo.USER_UNIT
     }
     

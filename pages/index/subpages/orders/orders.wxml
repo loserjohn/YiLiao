@@ -4,7 +4,7 @@
     <van-tab title="待维修">
       <scroll-view scroll-y style="{{'height:'+height}}" wx:if="{{repairList.length>0}}" >
         <block wx:for="{{repairList}}" wx:key="index">
-          <navigator url="../repairMsg/repairMsg?repairCode={{item.REPAIRS_CODE}}">
+          <navigator url="../repairMsg/repairMsg?repairCode={{item.REPAIRS_CODE}}&facilityId={{item.DEVICE_CODE}}">
             <orderItem item="{{item}}"></orderItem>
           </navigator>
         </block>
@@ -16,7 +16,7 @@
     <van-tab title="维修中">
        <scroll-view scroll-y style="{{'height:'+height}}" wx:if="{{inRepairList.length>0}}"  >
         <block wx:for="{{inRepairList}}" wx:key="index">
-          <navigator url="../repairOrder/repairOrder">
+          <navigator url="../repairOrder/repairOrder?repairCode={{item.REPAIRS_CODE}}&facilityId={{item.DEVICE_CODE}}">
             <orderItem item="{{item}}"></orderItem>
           </navigator>
         </block>

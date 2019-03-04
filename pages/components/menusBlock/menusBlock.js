@@ -33,6 +33,10 @@ Component({
     last:{
       type: Boolean,
       value: false,
+    },
+    extra:{
+      type: String,
+      value: '',
     }
   },
 
@@ -191,9 +195,16 @@ Component({
         icon: 'icon-gaojing',
         title: '选择备件',
         handle: () => {
-          wx.navigateTo({
-            url: '/pages/accessory/subpages/accessoryList/accessoryList?action=choose'
-          })
+          if (this.properties.extra){
+            wx.navigateTo({
+              url: '/pages/accessory/subpages/accessoryList/accessoryList?action=choose&facilityId=' + this.properties.extra
+            })
+          }else{
+              wx.navigateTo({
+              url: '/pages/accessory/subpages/accessoryList/accessoryList?action=choose&facilityId=' + this.properties.extra
+            })
+          }
+          
         },
       }, 
     },

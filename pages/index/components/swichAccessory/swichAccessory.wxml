@@ -4,9 +4,16 @@
 <van-cell-group class='cm_container' id="scrollBox">
   <!-- <view class='cm_container'> -->
     <view class='cm_menus'>
-      <menusBlock name="chooseAccessory" block> </menusBlock>
+      <!-- <menusBlock name="chooseAccessory" block> </menusBlock> -->
+      <view hover-class="cm_hover" >
+        <view class='menusBlockItem flex' bindtap="link" style=" border-bottom: 1rpx solid #f2f2f2;">
+          <icon class="iconfont  menusItem_icon icon-gaojing"></icon>
+          <view class='menusItem_text f1' >查询备件</view>
+          <icon class="iconfont icon-jiantou_liebiaoxiangyou arrow-right"></icon>
+        </view>
+      </view>
     </view>
-    <view class='f1 red'>
+    <view class='f1 '>
       <scroll-view scroll-y style="{{'height:'+height}}">
         <block wx:for="{{list}}" wx:key="index">
           <navigator url="/pages/accessory/subpages/accessoryDetail/accessoryDetail">
@@ -14,7 +21,6 @@
           </navigator>
         </block>
       </scroll-view>
-
     </view>
 
   <!-- </view> -->

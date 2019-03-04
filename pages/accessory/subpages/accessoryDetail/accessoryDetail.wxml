@@ -2,7 +2,7 @@
 
 <!-- 备件参数资料 -->
 <van-cell-group>
-  <view class='pics'>
+  <!-- <view class='pics'>
     <scroll-view class="scroll_view" scroll-x style="width: 100%">
       <block wx:for="{{prePic}}" wx:key="index">
         <view class='prePics'>
@@ -10,7 +10,7 @@
         </view>
       </block>
     </scroll-view>
-  </view>
+  </view> -->
   
   <van-cell title="备件名称" value="内容" />
   <!-- <van-cell title="仓库库存" value="内容" /> -->

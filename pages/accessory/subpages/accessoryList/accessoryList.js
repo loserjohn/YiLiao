@@ -1,7 +1,8 @@
 // pages/accessory/subpages/accessory/accessoryList.js
 const app = getApp()
 import {
-  getAccessoryList
+  getAccessoryList,
+  addAccessory
 } from '../../../../utils/api.js'
 import Toast from '../../../vant/toast/toast';
 import Notify from '../../../vant/notify/notify';
@@ -11,27 +12,34 @@ Page({
    * 页面的初始数据
    */
   data: {
-    keyword: '',//搜索关键字
+    keyword: '', //搜索关键字
     index: 1,
     size: 8,
-    rest: true,//是否有剩余条目
-    loading:false,
-    num:0,
-    show:false,
-    typeAction:'',
-    height:'300px',
-    currentType:2,
-    list: []
+    rest: true, //是否有剩余条目
+    loading: false,
+    num: 0,
+    show: false,
+    typeAction: '',
+    height: '300px',
+    currentType: 2,
+    list: [],
+
+    currentAccessory: {}, //当前弹窗选择的备件
+    selectForm: {
+      selectNum: 1,
+      selectDes: '',
+      selectPrize: 0
+    }
   },
   // 同步keyword的值
   syncValkeyword(e) {
     // console.log(e.detail);
     this.data.keyword = e.detail
   },
- 
+
   // 开始搜索
   onSearch() {
-    if (!this.data.keyword ) {
+    if (!this.data.keyword) {
       Notify({
         text: '请输入关键字',
         duration: 1000,
@@ -73,10 +81,12 @@ Page({
       data.keyword = this.data.keyword
     }
     // 判断是否条件筛选
-  
+
 
     let rest = that.data.rest;
-    if (!rest) { return }
+    if (!rest) {
+      return
+    }
 
     this.setData({
       loading: true
@@ -99,7 +109,7 @@ Page({
           loading: false
         })
       }
-      console.log(that.data.index, that.data.list.length);
+      // console.log(that.data.index, that.data.list.length);
       if (callback) callback(res.Data.Total)
     }).catch(err => {
 
@@ -107,7 +117,7 @@ Page({
   },
   // 加载更多
   loadMore() {
-    if (this.data.loading || !this.data.rest) {
+    if (this.data.loading || ! this.data.rest) {
       return
     }
     this.data.index += 1;
@@ -116,13 +126,21 @@ Page({
   },
 
   /**
-  * 生命周期函数--监听页面加载
-  */
-  onLoad: function (options) {
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function(options) {
+    let typeAction = options.facilityId?true:false
+    // 传进来的facilityId
+    let facilityId = options.facilityId || ''
+    let repairCode = options.repairCode || ''
+    // debugger
     let H = app.globalData.winHeight
     // debugger
     this.setData({
-      height: H - 44 - 44 + 'px'
+      height: H - 44 - 44 + 'px',
+      typeAction: typeAction,
+      facilityId: facilityId,
+      repairCode: repairCode
     });
 
     this.loadData()
@@ -175,47 +193,81 @@ Page({
   onShareAppMessage: function() {
 
   },
-  // 关闭弹窗
+  // 关闭弹窗  用户点击判断
   onClose(event) {
+    console.log(this.data.selectForm)
+    let that = this
     if (event.detail === 'confirm') {
-      // 异步关闭弹窗
-      // console.log(event)
-      console.log(this.data.num)
-      setTimeout(() => {
-        this.setData({
-          show: false,
-          num: 0
+      if (!this.data.selectForm.selectNum){
+        that.setData({
+          show: false
         });
-        // api操作，对设备添加备件
-        wx.navigateBack({
-          delta:1
-        })
-      }, 1000);
+        Toast.fail('请输入数量');
+        return;
+      }
+      if (!this.data.selectForm.selectPrize) {
+        that.setData({
+          show: false
+        });
+        Toast.fail( '请输入备件价格');
+        
+        return;
+      }
+      // 异步关闭弹窗
+      let data = {
+        REPAIRS_CODE: this.data.repairCode,
+        PART_CODE: this.data.currentAccessory.PART_CODE,
+        PART_NUM: this.data.selectForm.selectNum,
+        PART_PRICE: this.data.selectForm.selectPrize,
+        PART_DESCRIBE: this.data.selectForm.selectDes
+      }
+      // console.log('表单数据',data)
+      addAccessory(data).then(res => {
+        if (res.Success){
+          Toast.success( '添加备件成功');
+          
+        }
+        that.setData({
+          show: false
+        });
+        app.event.emit('partRefresh', '')
+      }).catch(err => {
+
+      })
+
     } else {
       this.setData({
         show: false,
-        num:0
+        num: 0
       });
     }
   },
   // 点击选择备件数量
-  setNum:function(res){
-    console.log(res)
+  setNum: function(res) {
+    // res为选择的备件
+    let data = res.detail
+    this.data.selectForm.selectPrize = data.PART_PRICE
+    // this.data.selectForm.selectPrize = data.PART_PRICE
     this.setData({
-      show:true
+      currentAccessory: data,
+      selectForm: this.data.selectForm,
+      show: true
     })
   },
   // 添加新的配件
-  addAccessory:function(){
+  addAccessory: function() {
     wx.navigateTo({
       url: '../addAccessory/addAccessory',
     })
   },
-  // 同步选择的数量
-  syncVal(event){
+  // 同步输入框数据
+  syncVal(e) {
+    // console.log(e.detail)
+    let key = e.target.id;
+    this.data.selectForm[key] = e.detail
+  },
+
+  syncNumVal(event) {
     console.log(event.detail);
-    this.setData({
-      num: event.detail
-    });
   }
 })

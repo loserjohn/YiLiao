@@ -1,5 +1,7 @@
 <!--pages/index/subpages/repairMsg/repairMsg.wxml-->
 <view>
-  <faultMsg repairCode="{{repairCode}}"></faultMsg>
+  <faultMsg repairCode="{{repairCode}}"   canShow="{{canShow}}" ></faultMsg>
 </view>
+
+
 

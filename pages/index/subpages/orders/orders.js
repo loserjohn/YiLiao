@@ -34,6 +34,15 @@ Page({
       });
     }
     // 加载数据
+    this.loadData();
+    // 添加全局事件
+    app.event.on('refresh', this.refresh, this)
+
+  },
+  // 重新刷新
+  refresh(data){
+    // console.log('woshoudaola#############' + data)
+    
     this.loadData()
   },
   loadData() {
@@ -45,17 +54,17 @@ Page({
       UNIT_CODE: app.globalData.userInfo.USER_UNIT
     }
     
-    data.REPAIRS_STATUS =  0
-    console.log(data)
+    data.REPAIRS_STATUS =  1
+    // console.log(data)
     getRepairList(data).then(res => {
-      console.log(res.Data.ListInfo.length)
+      // console.log(res.Data.ListInfo.length)
       this.setData({
         repairList: res.Data.ListInfo
       })
     }).catch(err => {
 
     })
-    data.REPAIRS_STATUS = 1
+    data.REPAIRS_STATUS = 2
     getRepairList(data).then(res => {
       // console.log(res)
       this.setData({
@@ -92,6 +101,7 @@ Page({
    */
   onUnload: function() {
 
+    app.event.off('refresh')
   },
 
   /**

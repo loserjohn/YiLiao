@@ -1,7 +1,10 @@
 // pages/components/faultMsg/faultMsg.js
 import {
-  getRepairDetail
+  getRepairDetail,
+  beginRepair
 } from '../../../utils/api.js'
+const app = getApp()
+
 Component({
   options: {
     "addGlobalClass": true
@@ -16,6 +19,10 @@ Component({
       observer:function(val,old){
         this.loadData()
       }
+    },
+    canShow:{
+      type:Boolean,
+      value:false
     }
   },
 
@@ -26,8 +33,8 @@ Component({
     repairDetail:'',
     prePic:[],
     facilityId:'',
-    clientWidth:''
-    
+    clientWidth:'',
+    loading:false
   },
 
   /**
@@ -56,23 +63,50 @@ Component({
       }
       getRepairDetail(data).then(res=>{
         if(res.Success){
-          console.log(-1,res.Data)
+          // console.log(-1,res.Data)
           that.setData({
             repairDetail: res.Data,
             facilityId: res.Data.DEVICE_CODE,
             prePic: res.Data.REPAIRS_IMGLIST ? res.Data.REPAIRS_IMGLIST.split(','):[]
           })
-          console.log(0, res.Data.REPAIRS_IMGLIST.split(','))
+          // console.log(0, res.Data.REPAIRS_IMGLIST.split(','))
         }
       }).catch(err=>{
         
       })
     },
-    // 查看设备详情
+    // 查看信息
     linkTo(){
-      console.log(1111,this.data.facilityId)
+      let that = this
       wx.navigateTo({
-        url: '/pages/facility/subpages/facilityDetail/facilityDetail?facilityId=' + this.data.facilityId
+        url: `/pages/facility/subpages/facilityDetail/facilityDetail?facilityId=${that.data.facilityId}`,
+      })
+    },
+    // 报修响应
+    toRepair(){
+      let that = this;
+      let data = {
+        REPAIRS_CODE: this.properties.repairCode
+      }
+      this.setData({
+        loading:true
+      })   
+      beginRepair(data).then(res=>{
+          if(res.Success){
+            wx.showToast({
+              title: '响应成功',
+            })         
+            setTimeout(()=>{
+              app.event.emit('refresh', '')
+              wx.navigateBack({});
+              that.setData({
+                loading: false
+              });
+            },1000)
+            
+          }
+      }).catch(err=>{
+
       })
     }
   }

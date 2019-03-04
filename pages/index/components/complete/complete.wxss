@@ -4,3 +4,16 @@
   border-color: #28b8a1 !important;
   color: #fff!important
 }
+.radioBox{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 30rpx;
+  background: #fff
+}
+.title{
+  font-size: 24rpx;
+  /* line-height: 2; */
+  color: #28b8a1;
+  box-sizing: border-box;
+  padding: 30rpx
+}

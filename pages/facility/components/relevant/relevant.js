@@ -38,7 +38,7 @@ Component({
     // 选择数量
     setNum(res){
       console.log(res)
-      this.triggerEvent('choose', '备件id135435135')
+      this.triggerEvent('choose', res.detail)
     },
     // 加载数据
     loadData(val) {
@@ -49,11 +49,12 @@ Component({
         DEVICE_CODE: val
       }
       getAccessoryList(data).then(res => {
-        // debugger
+        
         that.setData({
           list: res.Data.ListInfo,
           // prePic: res.Data.DEVICE_IMGLIST.split(',')
         })
+        // debugger
       }).catch(err => { })
     } 
   } 

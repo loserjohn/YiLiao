@@ -17,7 +17,7 @@ Component({
       type:String,
       value:'',
       observer:function(val,old){
-        // console.log(val);
+        console.log('7777777777'+app.globalData.role)
         this.loadData(val)     
       }
     }
@@ -28,9 +28,7 @@ Component({
    */
   data: {
     facility:{},
-    prePic:[
-      'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3329288042,2952547843&fm=15&gp=0.jpg'
-    ],
+    prePic:[ ],
     clientWidth:'',
     canEdited: app.globalData.role == 'inspector'?true:false,
     // canEdited: true

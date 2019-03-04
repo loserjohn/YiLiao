@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 7,
 			"list": [
 				{
 					"id": 0,
@@ -63,7 +63,8 @@
 					"id": 3,
 					"name": "保修工单",
 					"pathName": "pages/index/subpages/orders/orders",
-					"query": ""
+					"query": "repairCode=17127a6bfadd410a94d38cab84433681& facilityId=65a449eb381b4a559c665840266f1cf3",
+					"scene": null
 				},
 				{
 					"id": -1,
@@ -85,10 +86,11 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 7,
 					"name": "报修工单详情",
 					"pathName": "pages/index/subpages/repairOrder/repairOrder",
-					"query": ""
+					"query": "repairCode=17127a6bfadd410a94d38cab84433681& facilityId=65a449eb381b4a559c665840266f1cf3",
+					"scene": null
 				},
 				{
 					"id": -1,

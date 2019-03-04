@@ -5,19 +5,21 @@
   <van-cell title="设备编号" value="{{repairDetail.DEVICE_NUM}}" />
   <van-cell title="报修时间" value="{{repairDetail.REPAIRS_DATE}}" />
   <van-cell title="报修人" value="{{repairDetail.REPAIRS_USER}}" />
-  <!-- <van-cell title="设备位置" label="{{repairDetail.REPAIRS_CODE}}" /> -->
-  <van-cell title="联系方式" value="{{repairDetail.MAKE_PHONE}}" />
+  <van-cell title="联系方式" value="{{repairDetail.USER_MOBLIE}}" />
   <van-cell title="故障等级" value="{{repairDetail.URGENT_TYPE}}" />
   <!-- <van-cell title="故障图片" is-link /> -->
-  <van-cell title="故障描述" label="{{repairDetail.MAKE_DESCRIBE}}" />
+  <van-cell title="故障描述" label="{{repairDetail.REPAIRS_DESCRIBE}}" />
 
   <view class='pics'>
     <preImgGallery title="故障图片" facilityId="{{facilityId}}" prePic="{{prePic}}" clientWidth="{{clientWidth}}" num="{{9}}" canEdited="{{false}}"></preImgGallery>
   </view>
   <view class='cm_blank'></view>
   <view class='cm_pad cm_bg_w'>
-    <van-button custom-class="cm_btn" size="normal"  block bindtap='linkTo'> 查看设备信息
+    <van-button type="default" size="normal"  block bindtap='linkTo'> 查看设备信息
     </van-button>
+    <van-button custom-class="cm_btn" size="normal" loading="{{loading}}"  block bindtap='toRepair'  wx:if="{{canShow}}"> 立即维修
+    </van-button>
+ 
   </view>
 
 </van-cell-group>

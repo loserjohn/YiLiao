@@ -26,6 +26,7 @@
 
 .numModal{
   line-height: 80rpx;
-  justify-content: center;
-  align-items: center
+  /* justify-content: center; */
+  justify-content: space-between
+  /* align-items: center */
 }

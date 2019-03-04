@@ -15,7 +15,7 @@
             <view class="">
               <block wx:for="{{list}}" wx:key="index">
                 <navigator url="../accessoryDetail/accessoryDetail?accessoryCode={{item.PART_CODE}}">
-                  <accessoryItem item="{{item}}" delectabled="{{false}}" dosagabled="{{false}}" choosabled="{{typeAction=='choose'?true:false}}" bind:choose="setNum"></accessoryItem>
+                  <accessoryItem item="{{item}}" delectabled="{{false}}" dosagabled="{{false}}" choosabled="{{typeAction}}" bind:choose="setNum"></accessoryItem>
                 </navigator>
               </block>
               <moreReminder loading="{{loading}}" nomore="{{!rest}}"></moreReminder>
@@ -24,21 +24,26 @@
         </scroll-view>
       </van-tab>
 
-      <van-tab title="相关备件" wx:if="{{typeAction=='choose'}}">
+      <van-tab title="相关备件" wx:if="{{typeAction}}">
         <view style="{{'height:'+height}}">
-          <relevant canchoose="{{true}}" bind:choose="setNum"></relevant>
+          <relevant facilityId="{{facilityId}}" canchoose="{{true}}" bind:choose="setNum"></relevant>
         </view>
       </van-tab>
     </van-tabs>
   </view>
-  <van-button wx:if="{{typeAction=='choose'}}" bind:click="addAccessory" type="primary" size="normal" block custom-class="cm_btn">添加其他备件</van-button>
+  <van-button wx:if="{{typeAction}}" bind:click="addAccessory" type="primary" size="normal" block custom-class="cm_btn">添加其他备件</van-button>
 </view>
 
-<van-dialog use-slot async-close show="{{ show }}" show-cancel-button bind:close="onClose">
+<van-dialog use-slot title="备件选择" async-close show="{{ show }}" show-cancel-button bind:close="onClose">
   <view class='cm_menus flex numModal'>
     <view class="numTip ">请确认数量</view>
-    <van-stepper value="{{ num }}" custom-class="" bind:change="syncVal" />
+    <van-stepper value="{{ selectForm.selectNum }}" id="selectNum" bind:change="syncVal" />
   </view>
+  <van-cell-group>
+    <van-field value="{{selectForm.selectPrize}}" input-align="right" id="selectPrize" type="number" label="价格" placeholder="请输入价格" bind:change="syncVal" />
+    <van-field value="{{selectForm.selectDes}}" input-align="right" id="selectDes" type="textarea" autosize label="使用描述" placeholder="请输入描述" bind:change="syncVal" />
+  </van-cell-group>
+
 </van-dialog>
-<van-toast id="van-toast" />
+<van-toast id="van-toast" zIndex="10000"/>
 <van-notify id="van-notify" />

@@ -18,3 +18,40 @@
 .orderDesc{
   color: #bcbcbc
 }
+
+.menusBlockItem{
+  width: 100%;
+  margin: 0 auto;
+  /* background: red; */
+  line-height: 100rpx;
+  height: 100rpx;
+  position: relative;
+  
+}
+.menusBlockItem .badge{
+  position: absolute;
+  right: -18rpx;
+  top: 0;
+  color: #fff;
+  background: red;
+  border-radius: 50%;
+  width: 36rpx;
+  height: 36rpx;
+  font-size: 22rpx;
+  line-height: 36rpx
+}
+
+.menusBlockItem .menusItem_icon{
+  font-size: 40rpx;
+  /* font-weight: 600; */
+  color: #28B8A1;
+ 
+}
+.menusBlockItem .menusItem_text{
+  font-size: 28rpx;
+  color: #404040;
+  padding: 0 20rpx
+}
+.arrow-right{
+  color: #bcbcbc
+}

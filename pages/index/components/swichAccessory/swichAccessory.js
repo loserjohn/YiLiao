@@ -1,5 +1,8 @@
 // pages/index/components/swichFacility/swichFacility.js
 import Dialog from '../../../vant/dialog/dialog';
+import {
+  matingAccessory
+} from '../../../../utils/api.js'
 const app = getApp()
 Component({
   /**
@@ -12,6 +15,28 @@ Component({
     winheight: {
       type: Number,
       value: 0
+    },
+    // 报修编码
+    repairCode: {
+      type: String,
+      value: '',
+      observer: function (val, old) {
+        this.setData({
+          repairCode:val
+        })
+        // this.loadData()
+      }
+    },
+    // 设备编码
+    facilityId: {
+      type: String,
+      value: '',
+      observer: function (val, old) {
+        this.setData({
+          facilityId: val
+        })
+        this.loadData()
+      }
     }
   },
 
@@ -20,203 +45,8 @@ Component({
    */
   data: {
     height: 0,
-    list: [{
-        status: 0,
-        title: '发光二极管（225）',
-        facilityId: '12448-12',
-        model: '2152s',
-        type: [{
-          key: 0,
-          text: '二极管'
-        }, {
-          key: 1,
-          text: '小零件'
-        }],
-        num: 3,
-        thumb: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4154563837,520368770&fm=26&gp=0.jpg'
-      },
-      {
-        status: 0,
-        title: '发光二极管（225）',
-        facilityId: '12448-12',
-        model: '2152s',
-        type: [{
-          key: 0,
-          text: '二极管'
-        }, {
-          key: 1,
-          text: '小零件'
-        }],
-        num: 3,
-        thumb: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4154563837,520368770&fm=26&gp=0.jpg'
-      },
-      {
-        status: 0,
-        title: '发光二极管（225）',
-        facilityId: '12448-12',
-        model: '2152s',
-        type: [{
-          key: 0,
-          text: '二极管'
-        }, {
-          key: 1,
-          text: '小零件'
-        }],
-        num: 3,
-        thumb: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4154563837,520368770&fm=26&gp=0.jpg'
-      },
-      {
-        status: 0,
-        title: '发光二极管（225）',
-        facilityId: '12448-12',
-        model: '2152s',
-        type: [{
-          key: 0,
-          text: '二极管'
-        }, {
-          key: 1,
-          text: '小零件'
-        }],
-        num: 3,
-        thumb: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4154563837,520368770&fm=26&gp=0.jpg'
-      },
-      {
-        status: 0,
-        title: '发光二极管（225）',
-        facilityId: '12448-12',
-        model: '2152s',
-        type: [{
-          key: 0,
-          text: '二极管'
-        }, {
-          key: 1,
-          text: '小零件'
-        }],
-        num: 3,
-        thumb: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4154563837,520368770&fm=26&gp=0.jpg'
-      },
-
-      {
-        status: 0,
-        title: '发光二极管（225）',
-        facilityId: '12448-12',
-        model: '2152s',
-        type: [{
-          key: 0,
-          text: '二极管'
-        }, {
-          key: 1,
-          text: '小零件'
-        }],
-        num: 3,
-        thumb: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4154563837,520368770&fm=26&gp=0.jpg'
-      },
-      {
-        status: 0,
-        title: '发光二极管（225）',
-        facilityId: '12448-12',
-        model: '2152s',
-        type: [{
-          key: 0,
-          text: '二极管'
-        }, {
-          key: 1,
-          text: '小零件'
-        }],
-        num: 3,
-        thumb: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4154563837,520368770&fm=26&gp=0.jpg'
-      },
-      {
-        status: 0,
-        title: '发光二极管（225）',
-        facilityId: '12448-12',
-        model: '2152s',
-        type: [{
-          key: 0,
-          text: '二极管'
-        }, {
-          key: 1,
-          text: '小零件'
-        }],
-        num: 3,
-        thumb: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4154563837,520368770&fm=26&gp=0.jpg'
-      },
-      {
-        status: 0,
-        title: '发光二极管（225）',
-        facilityId: '12448-12',
-        model: '2152s',
-        type: [{
-          key: 0,
-          text: '二极管'
-        }, {
-          key: 1,
-          text: '小零件'
-        }],
-        num: 3,
-        thumb: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4154563837,520368770&fm=26&gp=0.jpg'
-      },
-      {
-        status: 0,
-        title: '发光二极管（225）',
-        facilityId: '12448-12',
-        model: '2152s',
-        type: [{
-          key: 0,
-          text: '二极管'
-        }, {
-          key: 1,
-          text: '小零件'
-        }],
-        num: 3,
-        thumb: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4154563837,520368770&fm=26&gp=0.jpg'
-      },
-      {
-        status: 0,
-        title: '发光二极管（225）',
-        facilityId: '12448-12',
-        model: '2152s',
-        type: [{
-          key: 0,
-          text: '二极管'
-        }, {
-          key: 1,
-          text: '小零件'
-        }],
-        num: 3,
-        thumb: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4154563837,520368770&fm=26&gp=0.jpg'
-      },
-      {
-        status: 0,
-        title: '发光二极管（225）',
-        facilityId: '12448-12',
-        model: '2152s',
-        type: [{
-          key: 0,
-          text: '二极管'
-        }, {
-          key: 1,
-          text: '小零件'
-        }],
-        num: 3,
-        thumb: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4154563837,520368770&fm=26&gp=0.jpg'
-      },
-      {
-        status: 0,
-        title: '圆周离心机底片（o）',
-        facilityId: '12448-12',
-        num: 1,
-        model: '52sd',
-        type: [{
-          key: 4,
-          text: '机械配件'
-        }, {
-          key: 2,
-          text: '大零件'
-        }],
-        thumb: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=331643808,2083727353&fm=26&gp=0.jpg'
-      }
-    ]
+    list: [],
+    repairCode:''
   },
   attached() {
     let H = app.globalData.winHeight;
@@ -239,6 +69,41 @@ Component({
       }).catch(() => {
         // on cancel
       });
+    },
+    // 加载备件列表
+    loadData(){
+      let that = this
+      let data = {
+        pageIndex: 1,
+        pageSize:100,
+        REPAIRS_CODE: this.data.repairCode
+      }
+
+      // 判断是否条件筛选
+
+      this.setData({
+        loading: true
+      })
+     
+      // api请求
+      matingAccessory(data).then(res => {       
+        // 后面还有数据
+        that.data.list = res.Data.ListInfo;
+        console.log('已选的备件', res.Data.ListInfo.length)
+        that.setData({
+          list:that.data.list,
+          loading: false
+        })
+      }).catch(err => {
+
+      })
+    },
+    // 跳转
+    link(){
+      wx.navigateTo({
+        url: '/pages/accessory/subpages/accessoryList/accessoryList?repairCode=' + this.data.repairCode + '&facilityId=' + this.data.facilityId
+      })
     }
+    
   }
 })
