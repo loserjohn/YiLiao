@@ -17,14 +17,14 @@ Page({
     form: {
       userName: {
         // value: 'mainhosp',
-        // value: 'fhosp',
-        value: '',
+        value: 'fhosp',
+        // value: '',
         valid: true
       },
       userPass: {
         // value: '123456',
-        // value: '888888',
-        value: '',
+        value: '888888',
+        // value: '',
         valid: true
       }
     },

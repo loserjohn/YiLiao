@@ -1,5 +1,6 @@
 <!--index.wxml-->
 <view class="cm_">
+  <!-- <loading></loading> -->
   <view class='msgBox'>
 
     <view class="bg"></view>
