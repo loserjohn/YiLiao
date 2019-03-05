@@ -3,8 +3,8 @@
 
 <!-- 更新维修进度 -->
 <van-cell-group>
-  <van-cell title="设备编号" value="{{facilityId}}" />
-  <van-cell title="订单编号" value="{{repairCode}}" />
+  <van-cell title="订单编号" value="{{repairDetailData.REPAIRS_NUM}}" />
+  <van-cell title="设备编号" value="{{repairDetailData.DEVICE_NUM}}" />
   <van-cell title="设备状态" value="维修中" />
   <van-cell title="完成时间" value="{{completeTime}}" />
   <!-- <van-cell
@@ -14,11 +14,11 @@
   <!-- <van-cell title="是否更换备件" value="是" /> -->
   <van-cell title="是否委托第三方" />
   <van-radio-group value="{{ switchAccessory }}" bind:change="onSwitch">
-    <van-radio name="1" custom-class="radioBox" checked-color="#07c160">是</van-radio>
-    <van-radio name="2" custom-class="radioBox" checked-color="#07c160">否</van-radio>
+    <van-radio name="{{1}}" custom-class="radioBox" checked-color="#07c160">是</van-radio>
+    <van-radio name="{{0}}" custom-class="radioBox" checked-color="#07c160">否</van-radio>
   </van-radio-group>
-  <van-field value="{{descript}}" label="维修内容简述" id="descript" required  type="textarea" placeholder="请输入文字信息" autosize border="{{ false }}" input-align="right" bindchange="syncVal"/>
-
+  <van-field value="" label="维修内容"  required  border="{{ false }}"  bindchange="syncVal"/>
+  <van-field value="{{descript}}" label="" id="descript"   placeholder="请输入文字信息"  border="{{ false }}" input-align="left" bindchange="syncVal"/>
 </van-cell-group>
 <!-- <view class='cm_blank'></view> -->
 

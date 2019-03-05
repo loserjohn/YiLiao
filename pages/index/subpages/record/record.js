@@ -17,7 +17,7 @@ Page({
     rest:true
   },
   // 加载数据
-  loadData(){
+  loadData(callback){
     let role = this.data.role
     let that = this
     let data={
@@ -41,9 +41,10 @@ Page({
     this.setData({
       loading: true
     })
+    console.log(data)
     // api
     getHistoryList(data).then(res => {
-      // console.log(data)
+     
       // 后面还有数据
       that.data.list = that.data.list.concat(res.Data.ListInfo);
       // 后面y有没有数据了
@@ -62,7 +63,7 @@ Page({
       // console.log(that.data.index, that.data.list.length);
       if (callback) callback(res.Data.Total)
     }).catch(err => {
-
+      console.log(1111)
     })
 
   },

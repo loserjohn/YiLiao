@@ -16,11 +16,15 @@ Page({
   data: {
     form: {
       userName: {
-        value: 'mainhosp',
+        // value: 'mainhosp',
+        // value: 'fhosp',
+        value: '',
         valid: true
       },
       userPass: {
-        value: '123456',
+        // value: '123456',
+        // value: '888888',
+        value: '',
         valid: true
       }
     },
@@ -137,12 +141,13 @@ Page({
     switch (key) {
       case 'userName':
         this.data.form.userName.value = val;
-        if (!Utils.checkPhone(val)) {
-          // 格式错误       
-          this.data.form.userName.valid = false;
-        } else {
-          this.data.form.userName.valid = true;
-        }
+        // if (!Utils.checkPhone(val)) {
+        //   // 格式错误       
+        //   this.data.form.userName.valid = false;
+        // } else {
+        //   this.data.form.userName.valid = true;
+        // }
+        this.data.form.userName.valid = true;
         this.setData({
           form: Utils.copyObj(this.data.form)
         })

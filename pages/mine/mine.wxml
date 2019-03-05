@@ -6,13 +6,13 @@
         <open-data type="userAvatarUrl" class=""></open-data>
       </view>
       <view class='cor_w cm_h3 cm_c'>{{userInfo.nickName}}</view>
-      <view class=''>
+      <!-- <view class=''>
         <view>
-          <!-- <open-data type="userNickName" class=""></open-data> -->
+          <open-data type="userNickName" class=""></open-data>
           <view class=' msg_p'>所属部门：{{userInfo.level}}</view>
-          <!-- <view class=' msg_p'>性别：{{userInfo.gender==0?'男':'女'}}</view>1 -->
+          <view class=' msg_p'>性别：{{userInfo.gender==0?'男':'女'}}</view>1
         </view>
-      </view>
+      </view> -->
     </view>
   </view>
 

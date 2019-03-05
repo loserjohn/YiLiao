@@ -84,6 +84,16 @@ export const addAccessory = function (data) {
   return wxRequest('POST', '/api/PartChanger/SubmitBePart', data)
 }
 
+// 添加不存在的备件 
+export const addNewAccessory = function (data) {
+  return wxRequest('POST', '/api/PartChanger/SubmitNotPart', data)
+}
+
+// 删除已经添加的备件 
+export const delectAccessory = function (data) {
+  return wxRequest('POST', '/api/PartChanger/DeletePart', data)
+}
+
 //领取报修
 export const beginRepair = function (data) {
   return wxRequest('POST', '/api/Repairs/AffirmRepairs', data)
@@ -91,10 +101,15 @@ export const beginRepair = function (data) {
 
 // 获取该订单下的已选备件
 export const matingAccessory = function (data) {
-  return wxRequest('GET', '/api/Part/GetUsePartList', data)
+  return wxRequest('GET', '/api/PartChanger/GetUsePartList', data)
 }
 
 // 完成报修
 export const completeRepair = function (data) {
   return wxRequest('POST', '/api/Repairs/SubmitFinish', data)
+}
+
+// 获取已被使用的备件的详情
+export const relevantAccessory = function (data) {
+  return wxRequest('GET', '/api/PartChanger/GetPartModel', data)
 }

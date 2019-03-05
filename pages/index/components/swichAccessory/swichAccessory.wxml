@@ -16,7 +16,7 @@
     <view class='f1 '>
       <scroll-view scroll-y style="{{'height:'+height}}">
         <block wx:for="{{list}}" wx:key="index">
-          <navigator url="/pages/accessory/subpages/accessoryDetail/accessoryDetail">
+          <navigator url="/pages/facility/subpages/relevantAccessory/relevantAccessory?accessoryId={{item.CHANGER_CODE}}">
             <accessoryItem item="{{item}}" dosagabled="{{false}}" bind:delect="delectHandler"></accessoryItem>
           </navigator>
         </block>

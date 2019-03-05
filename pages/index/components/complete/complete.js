@@ -18,13 +18,13 @@ Component({
    */
   
   properties: {
-    facilityId:{
-      type:String,
-      value:''
-    },
-    repairCode:{
-      type: String,
-      value: ''
+
+    repairDetail: {
+      type: Object,
+      value: '',
+      observer: function (val, old) {
+        this.initData(val)
+      }
     }
   },
 
@@ -33,14 +33,15 @@ Component({
    */
   data: {
     completeTime: Utils.formatTime(new Date()).split(' ')[0],
-    switchAccessory:'2',
+    switchAccessory:0,
     extra:{
       repairTime: Utils.formatTime(new Date()).split(' ')[0],
       name:'',
       menber:'',
       phone:''
     },
-    descript:''
+    descript:'',
+    repairDetailData:''
   },
   attached(){
 
@@ -49,10 +50,23 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    initData(val){
+      let that = this
+      if (!val || !val.DEVICE_CODE) { return } 
+      that.setData({
+        repairDetailData: val,
+        facilityId: val.DEVICE_CODE,
+        repairCode: val.REPAIRS_CODE,
+      });
+    },
     syncVal(e){
       this.data.descript = e.detail
+      this.setData({
+        descript: e.detail
+      }) 
     },
     syncVal2(e) {
+      // console.log(e.target.id, e.detail)
       let key = e.target.id
       this.data.extra[key]= e.detail
     },
@@ -75,7 +89,6 @@ Component({
     // 完成报修
     submitComplete(){
       let that = this;
-
       // 若委托第三方
       if (this.data.switchAccessory == 1) {
         if (!this.data.extra.name) {
@@ -109,31 +122,27 @@ Component({
 
      
       let data = {
-        REPAIRS_CODE: this.properties.repairCode,
-        SEND_DATE: this.data.extra.repairTime,
-        MAKE_USER: app.globalData.userInfo.USER_NAME,
+        REPAIRS_CODE: this.data.repairCode,
         IS_THIRDPARTY: this.data.switchAccessory,
         MAKE_DESCRIBE: this.data.descript
       }
 
       if (this.data.switchAccessory==1){
-        data.THIRDPARTY_NAME = this.data.name;
-        data.MAINTAIN_USER = this.data.menber;
-        data.MAKE_PHONE = this.data.phone
+        data.THIRDPARTY_NAME = this.data.extra.name;
+        data.MAINTAIN_USER = this.data.extra.menber;
+        data.MAKE_PHONE = this.data.extra.phone
       } 
-      console.log(data)
-      // 判断是否条件筛选
-
       this.setData({
         loading: true
       })
       completeRepair(data).then(res => {
-        if(res.Success){
+        // console.log(res)
+        if (res.Success){
           Toast.success('维修完成')
           app.event.emit('refresh', '');
-          wx.navigateBack({
-            
-          })
+          setTimeout(()=>{
+            wx.navigateBack({}) 
+          },1000)        
         }else{
           Toast.fail(res.Msg ? res.Msg:'操作失败')
         }

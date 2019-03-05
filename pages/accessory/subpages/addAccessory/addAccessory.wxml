@@ -2,19 +2,21 @@
 
 <!-- 添加配件 -->
 <van-cell-group >
-  <van-field label="报修单号" value="内容" required border disabled placeholder="请输入用户名" input-align="right" />
-  <van-field label="设备编号" value="内容" required  border disabled placeholder="请输入用户名" input-align="right" />
+  <van-field label="报修单号" value="{{props.repairNum}}" required border disabled  input-align="right" />
+  <van-field label="设备编号" value="{{props.facilityNum}}" required  border disabled  input-align="right" />
 
-  <van-field label="备件名称" value="内容" required  border  input-align="right" />
-  <van-field label="备件编号" value="内容" required  border  input-align="right" />
-  <van-field label="备件型号" value="内容" required  border  input-align="right" />
-  <van-field label="备件数量" value="内容" required  border  input-align="right" />
-  <van-field label="配用人员" value="内容" required disabled  border placeholder="请输入用户名" input-align="right" />
-  <van-field label="生产产商" value="内容" required  border placeholder="请输入用户名" input-align="right" />
-  <van-field label="备注" type="textarea" autosize input-align="right" value="是打发第三方第三方撒地是打发第三方第三方撒地方第三方撒地方单方事故是打发第三方第三方撒地方第三方撒地方单方事故是打发第三方第三方撒地方第三方撒地方单方事故方第三方撒地方单方事故" />
+  <van-field label="备件名称" value="{{form.accessoryName}}" required id="accessoryName" bind:change="syncVal" border placeholder="请输入备件名称" input-align="right" />
+  <van-field label="备件序列号" value="{{form.accessoryNo}}" required id="accessoryNo" bind:change="syncVal"  border placeholder="请输入序列号" input-align="right" />
+  <van-field label="备件型号" value="{{form.accessoryType}}" required id="accessoryType" bind:change="syncVal"  border placeholder="请输入数量" input-align="right" />
+  <van-field label="备件数量" value="{{form.accessoryNum}}" required id="accessoryNum" bind:change="syncVal"  type="number"  border placeholder="请输入价格" input-align="right" />
+  <van-field label="设备价格" value="{{form.accessoryPrize}}" required id="accessoryPrize" bind:change="syncVal"  type="number" border placeholder="请输入价格" input-align="right" />
+  <van-field label="更换描述" type="textarea" id="accessoryDes"  required autosize input-align="right" bind:change="syncVal" value="{{form.accessoryDes}}" placeholder="请输入更换描述" />
+  <van-switch-cell title="同步到备件库" checked="{{ form.accessoryCreate }}" bind:change="onChange" active-color="#28b8a1" />
   <view class='cm_menus pd_bt'>
-    <van-button square type="primary" size="normal" block custom-class="cm_btn">
-      <van-icon name="edit" color="#fff" size="16px" /> 确认添加
+    <van-button square type="primary" size="normal" bind:click="submit" loading='{{loading}}' block custom-class="cm_btn"> 确认添加
     </van-button>
   </view>
 </van-cell-group>
+
+<van-toast id="van-toast" zIndex="10000"/>
+<van-notify id="van-notify" />

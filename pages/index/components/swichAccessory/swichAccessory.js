@@ -1,7 +1,9 @@
 // pages/index/components/swichFacility/swichFacility.js
 import Dialog from '../../../vant/dialog/dialog';
+import Toast from '../../../vant/toast/toast';
 import {
-  matingAccessory
+  matingAccessory,
+  delectAccessory
 } from '../../../../utils/api.js'
 const app = getApp()
 Component({
@@ -16,26 +18,11 @@ Component({
       type: Number,
       value: 0
     },
-    // 报修编码
-    repairCode: {
-      type: String,
+    repairDetail: {
+      type: Object,
       value: '',
       observer: function (val, old) {
-        this.setData({
-          repairCode:val
-        })
-        // this.loadData()
-      }
-    },
-    // 设备编码
-    facilityId: {
-      type: String,
-      value: '',
-      observer: function (val, old) {
-        this.setData({
-          facilityId: val
-        })
-        this.loadData()
+        this.initData(val)
       }
     }
   },
@@ -46,7 +33,9 @@ Component({
   data: {
     height: 0,
     list: [],
-    repairCode:''
+    repairCode:'',
+    facilityId:'',
+    repairDetailData:''
   },
   attached() {
     let H = app.globalData.winHeight;
@@ -59,13 +48,42 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    initData(val){
+      let that = this
+      if (!val || !val.DEVICE_CODE) { return }
+      that.setData({
+        repairDetailData: val,
+        facilityId: val.DEVICE_CODE,
+        repairCode: val.REPAIRS_CODE
+      });
+      // 加载数据
+      this.loadData()
+    },
     // 删除备件
-    delectHandler() {
+    delectHandler(item) {
+     
+      let that = this
+      // console.log(item)
+      let accessory = item.detail
       Dialog.confirm({
         title: '删除备件',
         message: '您确认要删除该备件？'
       }).then(() => {
-        // on confirm
+        // api操作
+        let data = {
+          CHANGER_CODE: accessory.CHANGER_CODE
+        }
+        delectAccessory(data).then(res=>{
+          if(res.Success){
+            Toast.success('删除成功');
+            that.loadData()
+          }else{
+            Toast.fail(res.Msg ? res.Msg:'操作失败')  
+          }
+        }).catch(err=>{
+          
+        })
+
       }).catch(() => {
         // on cancel
       });
@@ -78,7 +96,7 @@ Component({
         pageSize:100,
         REPAIRS_CODE: this.data.repairCode
       }
-
+      // debugger
       // 判断是否条件筛选
 
       this.setData({
@@ -101,7 +119,7 @@ Component({
     // 跳转
     link(){
       wx.navigateTo({
-        url: '/pages/accessory/subpages/accessoryList/accessoryList?repairCode=' + this.data.repairCode + '&facilityId=' + this.data.facilityId
+        url: `/pages/accessory/subpages/accessoryList/accessoryList?repairCode=${this.data.repairCode}`
       })
     }
     

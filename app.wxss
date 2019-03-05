@@ -6,6 +6,7 @@ page {
   /* background: #ddd; */
   font-size: 32rpx;
   box-sizing: border-box;
+  font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
 }
 
 view {

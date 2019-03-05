@@ -1,7 +1,8 @@
-// pages/index/subpages/repairMsg/repairMsg.js
+// pages/facility/subpages/relevantAccessory/relevantAccessory.js
+import Toast from '../../../vant/toast/toast';
+import Notify from '../../../vant/notify/notify';
 import {
-  getRepairDetail,
-  beginRepair
+  relevantAccessory
 } from '../../../../utils/api.js'
 const app = getApp()
 Page({
@@ -10,42 +11,35 @@ Page({
    * 页面的初始数据
    */
   data: {
-    repairCode:'',
-    canShow:false,
-    repairDetail:{}
+    accessoryId:'',
+    detail:'',
+    totalPrices:0
   },
 
-  // 加载数据
-  loadData() {
-    let that = this
-    let code = this.data.repairCode;
-    let data = {
-      REPAIRS_CODE: code,
-    }
-    getRepairDetail(data).then(res => {
-      console.log(res)
-      if (res.Success) {
-        that.setData({
-          repairDetail: res.Data
-        })
-      }
-    }).catch(err => {
-
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let repairCode = options.repairCode
- 
-    this.setData({
-      repairCode: repairCode,
-      canShow:app.globalData.role == "maintain" ? true : false
+    let id = options.accessoryId;
+    console.log(id)
+    this.loadData(id)
+  },
+
+  loadData(id){
+    let that =this
+    relevantAccessory({ CHANGER_CODE: id}).then(res=>{
+      console.log(res)
+      if(res.Success){
+        that.setData({
+          detail: res.Data.partModel,
+          totalPrices: res.Data.TotalPrices
+        })
+      }    
+    }).catch(err=>{
+
     })
-    // 加载数据
-    this.loadData()
-  },  
+  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

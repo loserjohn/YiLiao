@@ -17,7 +17,7 @@ Component({
       type:String,
       value:'',
       observer:function(val,old){
-        console.log('7777777777'+app.globalData.role)
+        console.log(app.globalData.role)
         this.loadData(val)     
       }
     }
@@ -30,7 +30,7 @@ Component({
     facility:{},
     prePic:[ ],
     clientWidth:'',
-    canEdited: app.globalData.role == 'inspector'?true:false,
+    canEdited: false,
     // canEdited: true
   },
 
@@ -91,7 +91,8 @@ Component({
           let ratio = 750 / clientWidth;
           let height = clientHeight * ratio;
           that.setData({
-            clientWidth: clientWidth
+            clientWidth: clientWidth,
+            canEdited:app.globalData.role == 'inspector' ? true : false
           });
           // console.log(clientHeight)
         }

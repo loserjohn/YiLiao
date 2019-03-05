@@ -1,0 +1,16 @@
+<!--pages/facility/subpages/relevantAccessory/relevantAccessory.wxml-->
+<!--pages/accessory/subpages/accessoryDetail/accessoryDetail.wxml-->
+
+<!-- 备件参数资料 -->
+<van-cell-group>
+  <van-cell title="设备编号" value="{{detail.PART_TYPE}}" />
+  <van-cell title="备件名称" value="{{detail.PART_NAME}}" />
+  <van-cell title="备件价格" value="{{detail.PART_PRICE}}元" />
+  <van-cell title="备件数量" value="{{detail.PART_NUM}}" />
+  <van-cell title="备件序列号" value="{{detail.PART_NO}}" />
+  <!-- <van-cell title="备件编号" value="{{detail}}" /> -->
+  <van-cell title="备件描述" value="{{detail.PART_DESCRIBE}}" />
+  <van-cell title="总价格" value="{{totalPrices}}元" />
+
+</van-cell-group>
+

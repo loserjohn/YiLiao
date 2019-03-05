@@ -43,6 +43,9 @@ Page({
       let permissionArr = Object.values(permissionObj);
       // console.log("用户信息",res)
       app.globalData.userInfo = res.Data
+      this.setData({
+        userInfo: res.Data
+      })
       if (callback) {
         callback(permissionArr)
       }    
@@ -54,6 +57,7 @@ Page({
   },
   onLoad: function () {
     let role = app.globalData.role;
+    // wx.showNavigationBarLoading()
     console.log('身份',role)
     if (!role) return
     this.setData({
@@ -106,12 +110,12 @@ Page({
     // console.log(1111)
    
   }, 
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  }
+  // getUserInfo: function(e) {
+  //   console.log(e)
+  //   app.globalData.userInfo = e.detail.userInfo
+  //   this.setData({
+  //     userInfo: e.detail.userInfo,
+  //     hasUserInfo: true
+  //   })
+  // }
 })

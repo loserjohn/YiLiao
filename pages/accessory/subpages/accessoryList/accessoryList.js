@@ -2,7 +2,8 @@
 const app = getApp()
 import {
   getAccessoryList,
-  addAccessory
+  addAccessory,
+  getRepairDetail
 } from '../../../../utils/api.js'
 import Toast from '../../../vant/toast/toast';
 import Notify from '../../../vant/notify/notify';
@@ -29,7 +30,10 @@ Page({
       selectNum: 1,
       selectDes: '',
       selectPrize: 0
-    }
+    },
+    facilityId:'',
+    repairCode:'',  
+    repairDetail:'' //如果是选择更换备件则这里存放绑定的订单信息
   },
   // 同步keyword的值
   syncValkeyword(e) {
@@ -81,8 +85,6 @@ Page({
       data.keyword = this.data.keyword
     }
     // 判断是否条件筛选
-
-
     let rest = that.data.rest;
     if (!rest) {
       return
@@ -129,21 +131,35 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let typeAction = options.facilityId?true:false
-    // 传进来的facilityId
-    let facilityId = options.facilityId || ''
-    let repairCode = options.repairCode || ''
-    // debugger
+    let typeAction = options.repairCode?true:false
+    let that = this
     let H = app.globalData.winHeight
-    // debugger
-    this.setData({
-      height: H - 44 - 44 + 'px',
-      typeAction: typeAction,
-      facilityId: facilityId,
-      repairCode: repairCode
-    });
+    if (typeAction){
+      let code = options.repairCode
+      let data = {
+        REPAIRS_CODE: code,
+      }
+      getRepairDetail(data).then(res => {
+        if (res.Success) {       
+          that.setData({
+            height: H - 44 - 44 -44 + 'px',
+            repairDetail: res.Data,
+            typeAction: typeAction,
+            facilityId: res.Data.DEVICE_CODE,
+            repairCode: res.Data.REPAIRS_CODE
+          })
+          that.loadData()
+        }
+      }).catch(err => {
 
-    this.loadData()
+      })
+    }else{
+      that.setData({
+        height: H - 44 - 44 + 'px',
+        typeAction: typeAction
+      })
+      that.loadData()
+    } 
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -209,8 +225,14 @@ Page({
         that.setData({
           show: false
         });
-        Toast.fail( '请输入备件价格');
-        
+        Toast.fail( '请输入备件价格');       
+        return;
+      }
+      if (!this.data.selectForm.selectDes) {
+        that.setData({
+          show: false
+        });
+        Toast.fail('请输入更换描述');
         return;
       }
       // 异步关闭弹窗
@@ -247,7 +269,9 @@ Page({
     // res为选择的备件
     let data = res.detail
     this.data.selectForm.selectPrize = data.PART_PRICE
-    // this.data.selectForm.selectPrize = data.PART_PRICE
+    this.data.selectForm.selectDes = ''
+
+    this.data.selectForm.selectNum = 1
     this.setData({
       currentAccessory: data,
       selectForm: this.data.selectForm,
@@ -257,7 +281,7 @@ Page({
   // 添加新的配件
   addAccessory: function() {
     wx.navigateTo({
-      url: '../addAccessory/addAccessory',
+      url: `../addAccessory/addAccessory?facilityId=${this.data.facilityId}&repairCode=${this.data.repairCode}&repairNum=${this.data.repairDetail.REPAIRS_NUM}&facilityNum=${this.data.repairDetail.DEVICE_NUM}`,
     })
   },
   // 同步输入框数据

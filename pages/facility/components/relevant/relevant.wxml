@@ -3,7 +3,7 @@
 
   <scroll-view scroll-y class='cm_scroll_y overflow' wx:if="{{list.length>0}}">
     <block wx:for="{{list}}" wx:key="index">
-      <navigator url="/pages/accessory/subpages/accessoryDetail/accessoryDetail">
+      <navigator url="/pages/accessory/subpages/accessoryDetail/accessoryDetail?partname={{item.PART_NAME}}&parttype={{item.PART_TYPE}}&partprize={{item.PART_PRICE}}">
         <accessoryItem item="{{item}}" dosagabled="{{false}}" choosabled="{{canchoose?true:false}}"  bind:choose="setNum"  delectabled="{{false}}" ></accessoryItem>
       </navigator>
     </block>

@@ -18,7 +18,8 @@
     "pages/accessory/subpages/accessoryList/accessoryList",
     "pages/accessory/subpages/accessoryDetail/accessoryDetail",
     "pages/accessory/subpages/addAccessory/addAccessory",
-    "pages/mine/subpages/updatedPass/updatedPass"
+    "pages/mine/subpages/updatedPass/updatedPass",
+    "pages/facility/subpages/relevantAccessory/relevantAccessory"
   ],
   "window": {
     "backgroundTextStyle": "light",

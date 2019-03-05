@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 19,
 			"list": [
 				{
 					"id": 0,
@@ -166,6 +166,13 @@
 					"name": "设备",
 					"pathName": "pages/facility/facility",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "添加新的配件",
+					"pathName": "pages/accessory/subpages/addAccessory/addAccessory",
+					"query": "repairCode=17127a6bfadd410a94d38cab84433681& facilityId=65a449eb381b4a559c665840266f1cf3",
 					"scene": null
 				}
 			]

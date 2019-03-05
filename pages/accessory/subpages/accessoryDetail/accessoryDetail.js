@@ -6,21 +6,18 @@ Page({
    */
   data: {
     prePic: [],
-    accessoryCode:''
+    detail:''
   },
-  // 加载详情数据
-  loadData(){
-      
-  },
+ 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(options)
+    console.log(options)
     this.setData({
-      accessoryCode: options.accessoryCode
+      detail: options
     })
-    this.loadData()
+    // this.loadData()
   },
 
   /**

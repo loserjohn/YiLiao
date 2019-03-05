@@ -1,5 +1,9 @@
 // pages/index/subpages/repairOrder/repairOrder.js
 const app = getApp()
+import {
+  getRepairDetail
+} from '../../../../utils/api.js'
+
 Page({
 
   /**
@@ -9,7 +13,8 @@ Page({
     orderType: ['故障信息','更换配件','维修进度'],
     currentType: 0,
     height: '',
-    repairCode:''
+    repairCode:'',
+    repairDetail:''  //基本信息的详情
   },
 
   /**
@@ -24,14 +29,34 @@ Page({
       repairCode: options.repairCode,
       facilityId: options.facilityId
     });
-
-    
+    // 加载基本数据
+    this.loadData()
     // 添加全局事件
     app.event.on('partRefresh', this.partRefresh, this)
   },
+
   // 刷新已选的备件列表
   partRefresh(){
     this.selectComponent("#swichAccessory").loadData();
+  },
+
+  // 加载数据
+  loadData() {
+    let that = this
+    let code = this.data.repairCode;
+    let data = {
+      REPAIRS_CODE: code,
+    }
+    getRepairDetail(data).then(res => {
+      console.log(res)
+      if (res.Success) {
+        that.setData({
+          repairDetail: res.Data
+        })
+      }
+    }).catch(err => {
+
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

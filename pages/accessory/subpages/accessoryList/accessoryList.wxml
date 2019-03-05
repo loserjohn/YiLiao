@@ -14,7 +14,7 @@
           <van-cell-group>
             <view class="">
               <block wx:for="{{list}}" wx:key="index">
-                <navigator url="../accessoryDetail/accessoryDetail?accessoryCode={{item.PART_CODE}}">
+                <navigator url="../accessoryDetail/accessoryDetail?partname={{item.PART_NAME}}&parttype={{item.PART_TYPE}}&partprize={{item.PART_PRICE}}">
                   <accessoryItem item="{{item}}" delectabled="{{false}}" dosagabled="{{false}}" choosabled="{{typeAction}}" bind:choose="setNum"></accessoryItem>
                 </navigator>
               </block>
@@ -22,7 +22,7 @@
             </view>
           </van-cell-group>
         </scroll-view>
-      </van-tab>
+      </van-tab>  
 
       <van-tab title="相关备件" wx:if="{{typeAction}}">
         <view style="{{'height:'+height}}">

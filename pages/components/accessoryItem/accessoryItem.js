@@ -43,7 +43,7 @@ Component({
     },
     // 删除备件
     delect:function(){
-      this.triggerEvent('delect', '备件id135435135')
+      this.triggerEvent('delect', this.properties.item)
     }
   }
 })

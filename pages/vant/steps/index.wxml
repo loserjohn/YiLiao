@@ -7,12 +7,12 @@
       style="{{ width ? 'width:' + width + 'px' : '' }}"
     >
       <view class="van-step__title" style="{{ item.status === 'process' ? 'color: ' + activeColor : '' }}">
-        <view>{{ item.text }}</view>
-        <view class='small'>报修时间：2017-12-2</view>
-        <view class='small'>报修单号：2015728-123</view>
-        <view class='small'>报修人：陈玉燕</view>
-        <view class='small'>维修报告：已完成</view>
-        <van-button type="default" type='warning' size="mini" wx:if="{{item.status !== 'process'}}">查看详情</van-button>
+        <!-- <view>{{ item.text }}</view> -->
+        <view class='small'>报修时间：{{ item.REPAIRS_DATE }}</view>
+        <view class='small'>报修单号：{{ item.REPAIRS_NUM }}</view>
+        <view class='small'>报修设备：{{ item.DEVICE_NAME }}</view>
+        <view class='small'>维修报告：{{ item.REPAIRS_STATUS }}</view>
+        <!-- <van-button type="default" type='warning' size="mini" wx:if="{{item.status !== 'process'}}">查看详情</van-button> -->
       </view>
       <view class="van-step__circle-container">
         <view class="van-step__circle" wx:if="{{ item.status !== 'process' }}" style="{{ item.status === 'finish' ? 'background-color: ' + activeColor : '' }}" />
