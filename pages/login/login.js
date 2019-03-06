@@ -16,14 +16,14 @@ Page({
   data: {
     form: {
       userName: {
-        // value: 'mainhosp',
-        value: 'fhosp',
+        value: 'mainhosp',
+        // value: 'fhosp',
         // value: '',
         valid: true
       },
       userPass: {
-        // value: '123456',
-        value: '888888',
+        value: '123456',
+        // value: '888888',
         // value: '',
         valid: true
       }
@@ -61,6 +61,7 @@ Page({
     accountLogin(data).then(res => {
       // console.log('promise成功', res);
       app.globalData.userAccount = this.data.form.userName.value //username保存下
+      wx.setStorageSync('userAccount', this.data.form.userName.value);    
       if (res.Success) {
         // 有效用户
         // 身份判定
@@ -111,26 +112,12 @@ Page({
   // 快速绑定微信账号opnenid
   bouding(callback) {
     let that = this
-    wx.login({
-      success: res => {
-        // app.globalData.code = res.code; 
-        console.log('code ' + res.code)
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId;储存在全局
-        let data = {
-          username: that.data.form.userName.value,
-          code: res.code
-        }
-        getIdentity(data).then(res => {
-          // console.log(111, res.Data);
-          wx.setStorageSync('openId', res.Data.openid)
-          wx.setStorageSync('sessionKey', res.Data.session_key);
-          this.setData({
-            loading: false
-          });
-          if (callback) callback()
-        })
 
-      }
+    app.globalLogin(()=>{
+      that.setData({
+        loading: false
+      });
+      if (callback) callback()
     })
   },
   // 表单验证

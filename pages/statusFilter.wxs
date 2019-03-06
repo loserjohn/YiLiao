@@ -44,6 +44,32 @@ function status(val,t){
   }  
 }
 
+function repair(val) {
+  if (!val) return;
+  var s_key = parseInt(val);
+  var s_res = ''
+  switch (s_key) {
+    case 0:
+      s_res = '已报修'
+      break;
+    case 1:
+      s_res = '待维修'
+      break;
+    case 2:
+      s_res = '维修中'
+      break;
+    case 3:
+      s_res = '已完成'
+      break; 
+    default:
+      break;
+  }
+
+  return s_res
+
+}
+
 module.exports = {
-  status: status
+  status: status,
+  repair: repair
 }

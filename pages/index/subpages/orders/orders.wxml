@@ -1,29 +1,22 @@
 <!--pages/index/orders/orders.wxml-->
+<import src="/pages/template/template.wxml"/> 
 <view class='main' >
   <van-tabs color="#28B8A1" custom-class="tabs" animated="true" swipeable="false" active="{{active}}">
     <van-tab title="待维修">
-      <scroll-view scroll-y style="{{'height:'+height}}" wx:if="{{repairList.length>0}}" >
-        <block wx:for="{{repairList}}" wx:key="index">
-          <navigator url="../repairMsg/repairMsg?repairCode={{item.REPAIRS_CODE}}&facilityId={{item.DEVICE_CODE}}">
-            <orderItem item="{{item}}"></orderItem>
-          </navigator>
-        </block>
-      </scroll-view>
-      <view wx:else >
-        <noItems></noItems>  
-      </view>
+      <view class="" style="{{'height:'+height}}" >
+          <orderBlocks type="{{1}}"></orderBlocks>  
+        </view>
     </van-tab>
     <van-tab title="维修中">
-       <scroll-view scroll-y style="{{'height:'+height}}" wx:if="{{inRepairList.length>0}}"  >
-        <block wx:for="{{inRepairList}}" wx:key="index">
-          <navigator url="../repairOrder/repairOrder?repairCode={{item.REPAIRS_CODE}}&facilityId={{item.DEVICE_CODE}}">
-            <orderItem item="{{item}}"></orderItem>
-          </navigator>
-        </block>
-      </scroll-view>
-      <view wx:else >
-        <noItems></noItems>  
-      </view>
+       <view class="" style="{{'height:'+height}}" >
+          <orderBlocks type="{{2}}"></orderBlocks>  
+        </view>
+    </van-tab>
+
+    <van-tab title="维修完成">
+        <view class="" style="{{'height:'+height}}" >
+          <orderBlocks type="{{3}}"></orderBlocks>  
+        </view>
     </van-tab>
   </van-tabs>
    

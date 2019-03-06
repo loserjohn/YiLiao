@@ -63,8 +63,10 @@ Component({
     delectHandler(item) {
      
       let that = this
-      // console.log(item)
-      let accessory = item.detail
+      console.log(item)
+      debugger
+      // let accessory = item.detail
+      let accessory = item.target.dataset.item
       Dialog.confirm({
         title: '删除备件',
         message: '您确认要删除该备件？'

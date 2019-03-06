@@ -1,4 +1,4 @@
-/* pages/components/orderItem/orderItem.wxss */
+/* pages/templete/loading/laoding.wxss */
 .orderItem{
   background: #fff!important;
   border-bottom: 1px solid #eee;
@@ -12,4 +12,8 @@
 }
 .orderDesc{
   color: #bcbcbc
+}
+
+.tags{
+  margin-right: 1rpx
 }

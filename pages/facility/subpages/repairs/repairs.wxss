@@ -45,3 +45,7 @@
   padding: 30rpx;
   background: #fff
 }
+
+.scanhover{
+  background: #16a38c!important
+}

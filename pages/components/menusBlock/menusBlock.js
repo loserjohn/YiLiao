@@ -79,10 +79,10 @@ Component({
       "repairHistory": {
         name: 'repairHistory',
         icon: 'icon-bingzhi-copy',
-        title: '历史记录',
+        title: '维修记录',
         handle: () => {
           wx.navigateTo({
-            url: '/pages/index/subpages/record/record'
+            url: '/pages/index/subpages/orders/orders?active=2'
           })
         }
       },

@@ -267,7 +267,23 @@ Page({
   // 点击选择备件数量
   setNum: function(res) {
     // res为选择的备件
+    let data = res.target.dataset.item
+    debugger
+    this.data.selectForm.selectPrize = data.PART_PRICE
+    this.data.selectForm.selectDes = ''
+
+    this.data.selectForm.selectNum = 1
+    this.setData({
+      currentAccessory: data,
+      selectForm: this.data.selectForm,
+      show: true
+    })
+  },
+  // 点击选择备件数量
+  setNum2: function (res) {
+    // res为选择的备件
     let data = res.detail
+    debugger
     this.data.selectForm.selectPrize = data.PART_PRICE
     this.data.selectForm.selectDes = ''
 

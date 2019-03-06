@@ -26,8 +26,14 @@ Page({
       console.log(res)
       if (res.Success) {
         that.setData({
-          repairDetail: res.Data
+          repairDetail: res.Data,
         })
+        if (res.Data.REPAIRS_STATUS == 1){
+
+          that.setData({
+            canShow: app.globalData.role == "maintain" ? true : false
+          })
+        }
       }
     }).catch(err => {
 
@@ -41,7 +47,7 @@ Page({
  
     this.setData({
       repairCode: repairCode,
-      canShow:app.globalData.role == "maintain" ? true : false
+      
     })
     // 加载数据
     this.loadData()

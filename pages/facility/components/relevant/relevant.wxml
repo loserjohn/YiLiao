@@ -1,10 +1,11 @@
 <!--pages/facility/components/relevant/relevant.wxml-->
 <!-- <van-cell-group > -->
-
+<import src="/pages/template/template.wxml"/> 
   <scroll-view scroll-y class='cm_scroll_y overflow' wx:if="{{list.length>0}}">
     <block wx:for="{{list}}" wx:key="index">
       <navigator url="/pages/accessory/subpages/accessoryDetail/accessoryDetail?partname={{item.PART_NAME}}&parttype={{item.PART_TYPE}}&partprize={{item.PART_PRICE}}">
-        <accessoryItem item="{{item}}" dosagabled="{{false}}" choosabled="{{canchoose?true:false}}"  bind:choose="setNum"  delectabled="{{false}}" ></accessoryItem>
+        <!-- <accessoryItem item="{{item}}" dosagabled="{{false}}" choosabled="{{canchoose?true:false}}"  bind:choose="setNum"  delectabled="{{false}}" ></accessoryItem> -->
+         <template is="accessoryItem" data="{{ item:item,delectabled:false,dosagabled:false,choosabled:canchoose?true:false}}"></template>  
       </navigator>
     </block>
   </scroll-view>

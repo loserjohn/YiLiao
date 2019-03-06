@@ -1,5 +1,5 @@
 /* pages/facility/subpages/facilityList/facilityList.wxss */
-
+@import '/pages/template/template.wxss';
 .searchBar{
   background: #fff
 }

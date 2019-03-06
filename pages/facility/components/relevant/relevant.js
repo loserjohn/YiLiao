@@ -36,9 +36,11 @@ Component({
    */
   methods: {
     // 选择数量
-    setNum(res){
-      console.log(res)
-      this.triggerEvent('choose', res.detail)
+    setNum(e){
+      
+      let data = e.target.dataset.item
+      // debugger
+      this.triggerEvent('choose', data)
     },
     // 加载数据
     loadData(val) {

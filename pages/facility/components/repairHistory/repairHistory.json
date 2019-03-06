@@ -1,7 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "orderItem":"/pages/components/orderItem/orderItem",
     "noItems": "/pages/components/noItems/noItems"
   }
 }

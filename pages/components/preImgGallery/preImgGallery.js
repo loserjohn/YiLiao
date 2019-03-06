@@ -147,7 +147,7 @@ Component({
         alls.push(this.promiseWork(index,item))
       });
       Promise.all(alls).then((result) => {
-        // console.log('哈勒',result) //上传结束
+        console.log('哈勒',result) //上传结束
         that.data.prePicArr = this.data.prePicArr.concat(result)
         that.setData({
           prePicArr: that.data.prePicArr,
@@ -161,11 +161,15 @@ Component({
     },
     // 创建上传队列
     promiseWork(index,filePath) {
+      let Authorization = 'Bearer ' + wx.getStorageSync('sessionKey')
       let that = this
       return new Promise((resolve, reject) => {
         const uploadTask = wx.uploadFile({
           url: baseURL + '/api/Upload/UploadImg', // 仅为示例，非真实的接口地址
           filePath: filePath,
+          header:{
+            Authorization:Authorization
+          },
           name: 'file',
           formData: {
             folder: 'Device\\' + that.properties.facilityId

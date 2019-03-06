@@ -7,11 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo:{
-      nickName:'小大寒',
-      gender:0,
-      level:'维修部' 
-    },
+    userInfo:{ },
     shareShow:false,
     checked: wx.getStorageSync('autoLogin') || false,
     loading:false,
@@ -75,10 +71,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.showShareMenu({
-      withShareTicket: true
-    })
-   
+    // console.log(app.globalData.userInfo.USER_FULL_NAME) 
+   this.setData({
+     userInfo: app.globalData.userInfo
+   })
   },
 
   /**

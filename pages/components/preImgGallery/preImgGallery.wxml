@@ -5,7 +5,7 @@
 <view class="galleryBar flex">
   <block wx:for="{{prePicArr}}" wx:key="index">
     <view class="prePics" style="{{'width:'+width+'px;height:'+width+'px'}}" data-src="{{item}}" catchtap='preview'>
-      <image class='prePicsImg' src="{{item}}" mode="aspectFit" ></image>
+      <image lazy-load class='prePicsImg' src="{{item}}" mode="aspectFit" ></image>
       <!-- <view class="picDelect" data-key="{{index}}" catchtap='delect' wx:if="{{canEdited}}"></view> -->
       <van-icon name="clear" color="red" custom-class="picDelect" data-key="{{index}}" catchtap='delect' wx:if="{{canEdited}}"/>
     </view>  
@@ -23,7 +23,7 @@
     </view>  
   </block>
   <view class='prePics' style="{{'width:'+width+'px;height:'+width+'px'}}" wx:if="{{canEdited && prePicArr.length<9}}">
-      <view class='addNew flex' bindtap='upload'>
+      <view class='addNew flex' bindtap='upload' hover-class='addNewHover'>
         <van-icon name="plus" size='30px' color='#ddd' custom-class="addIcon"/>
       </view>
   </view>

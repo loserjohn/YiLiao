@@ -5,14 +5,7 @@
       <view class='avatar'>
         <open-data type="userAvatarUrl" class=""></open-data>
       </view>
-      <view class='cor_w cm_h3 cm_c'>{{userInfo.nickName}}</view>
-      <!-- <view class=''>
-        <view>
-          <open-data type="userNickName" class=""></open-data>
-          <view class=' msg_p'>所属部门：{{userInfo.level}}</view>
-          <view class=' msg_p'>性别：{{userInfo.gender==0?'男':'女'}}</view>1
-        </view>
-      </view> -->
+      <view class='cor_w cm_h3 cm_c'>{{userInfo.USER_FULL_NAME}}</view>
     </view>
   </view>
 
@@ -30,8 +23,8 @@
   <view class='cm_blank'></view>
   <view class='cm_nopading'>
     <van-cell-group>
-      <van-cell icon="star" title="推荐朋友" is-link bind:click="toShare" />
-      <van-cell icon="award" title="关于我们" is-link bind:click="toAbout" />
+      <van-cell icon="star" title="推荐朋友"  bind:click="toShare" />
+      <van-cell icon="award" title="关于我们"  bind:click="toAbout" />
       <van-switch-cell title="允许自动登录" checked="{{ checked }}" bind:change="onChange" active-color="#28b8a1" />
     </van-cell-group>
   </view>

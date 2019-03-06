@@ -1,11 +1,11 @@
 <!--pages/accessory/subpages/addRepair/addRepair.wxml-->
 
 <view class="">
-  <view class='scanBox cm_btn flex' bindtap='scanCode'>
+  <view class='scanBox cm_btn flex' hover-class="scanhover" bindtap='scanCode'>
     <van-icon name="scan" slot="icon" color="#fff" size='28px' custom-class="scanIcon" />
     <text>快速扫码报修</text>
   </view>
-  <van-field label="设备编码"  value="{{form.facilityId}}" placeholder="请输入设备编号" border="{{ false }}" id="facilityId" bind:change="syncVal" required use-button-slot>
+  <van-field label="设备编码" value="{{form.facilityId}}" placeholder="请输入设备编号" border="{{ false }}" id="facilityId" bind:change="syncVal" required use-button-slot>
     <van-button slot="button" size="small" type="primary" bindtap="match">匹配</van-button>
   </van-field>
 
@@ -19,32 +19,35 @@
   </view>
   <van-cell-group>
     <van-field label="报修时间" readonly value="{{createTime}}" input-align="right" input-class="cm_input" border="{{ false }}" />
-    <van-field label="报修人" readonly value="{{userInfo.USER_NAME}}" input-align="right" input-class="cm_input" border="{{ false }}"  />
+    <van-field label="报修人" readonly value="{{userInfo.USER_NAME}}" input-align="right" input-class="cm_input" border="{{ false }}" />
     <van-field label="联系电话" input-align="right" value="1505925485" input-class="cm_input" placeholder="请输入联系电话" border="{{ false }}" value="{{userInfo.USER_MOBLIE}}" />
   </van-cell-group>
   <view class='cm_blank'></view>
   <van-cell-group custom-class="cm_block">
-    <van-field  value="{{form.describe}}" id="describe" bind:change="syncVal" label="故障描述" type="textarea" placeholder="请输入故障描述" autosize border="{{ false }}" input-align="right" />
-    <van-field value="{{ form.repairTime.val }}" id="repairTime" bind:change="syncVal" required type="number" input-align="right"  label="维修耗时" placeholder="请输入数字" border="{{ false }}" use-button-slot>
+
+    <van-field value="" label="故障描述" required border="{{ false }}" bindchange="syncVal" />
+    <van-field value="{{form.describe}}" label="" id="descript" placeholder="请输入故障描述" border="{{ false }}" input-align="left" bind:change="syncVal" />
+
+    <van-field value="{{ form.repairTime.val }}" id="repairTime" bind:change="syncVal" required type="number" input-align="right" label="维修耗时" placeholder="请输入数字" border="{{ false }}" use-button-slot>
       <van-button slot="button" size="small" type="primary" id="repairTime" bindtap='switch'>{{ form.repairTime.unit }}
         <van-icon name="arrow-down" />
       </van-button>
     </van-field>
     <van-cell required title="紧急程度" value="{{form.emergency.text}}" is-link bind:click="handler" />
     <van-cell required title="是否停机" />
-      <van-radio-group value="{{ form.ifClosing }}"   bind:change="onSwitch">
-        <van-radio name="1" custom-class="radioBox" checked-color="#07c160">未停机</van-radio>
-        <van-radio name="2" custom-class="radioBox" checked-color="#07c160">停机</van-radio>
-      </van-radio-group>
+    <van-radio-group value="{{ form.ifClosing }}" bind:change="onSwitch">
+      <van-radio name="1" custom-class="radioBox" checked-color="#07c160">未停机</van-radio>
+      <van-radio name="2" custom-class="radioBox" checked-color="#07c160">停机</van-radio>
+    </van-radio-group>
     <van-field wx:if="{{form.ifClosing==2}}" required value="{{ form.closeTime.val }}" type="number" input-align="right" label="停机时长" placeholder="请输入数字" id="closeTime" bind:change="syncVal" border="{{ false }}" use-button-slot>
       <van-button slot="button" size="small" type="primary" id="closeTime" bindtap='switch'>{{ form.closeTime.unit }}
         <van-icon name="arrow-down" />
       </van-button>
     </van-field>
     <view class='pics'>
-      <preImgGallery prePic="{{repairPic}}" clientWidth="{{clientWidth}}" num="{{3}}"  canEdited="{{true}}"  bind:updatedHandle = "notifyToSave"></preImgGallery>
+      <preImgGallery prePic="{{repairPic}}" clientWidth="{{clientWidth}}" num="{{3}}" canEdited="{{true}}" bind:updatedHandle="notifyToSave"></preImgGallery>
     </view>
-    
+
     <view class='cm_blank'></view>
     <view class='cm_pad cm_bg_w'>
       <van-button custom-class="cm_btn" size="normal" loading="{{loading}}" block bindtap='submit'> 报修设备
@@ -61,4 +64,3 @@
 <van-toast id="van-toast" />
 <van-notify id="van-notify" />
 <van-action-sheet title="时间单位" show="{{ timeShow }}" actions="{{ actions }}" bind:close="onCloseTime" bind:select="onSelectTime" safe-area-inset-bottom />
-

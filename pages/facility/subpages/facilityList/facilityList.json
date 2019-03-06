@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "facilityItem": "../../../components/facilityItem/facilityItem",
     "moreReminder":"../../../components/moreReminder/moreReminder",
     "QrScan":"../../../components/scan/scan"
   },

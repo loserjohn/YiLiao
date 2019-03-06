@@ -1,5 +1,6 @@
 <!--pages/index/components/swichFacility/swichFacility.wxml-->
 <!-- 更换备件选择 -->
+<import src="/pages/template/template.wxml"/> 
 
 <van-cell-group class='cm_container' id="scrollBox">
   <!-- <view class='cm_container'> -->
@@ -17,7 +18,8 @@
       <scroll-view scroll-y style="{{'height:'+height}}">
         <block wx:for="{{list}}" wx:key="index">
           <navigator url="/pages/facility/subpages/relevantAccessory/relevantAccessory?accessoryId={{item.CHANGER_CODE}}">
-            <accessoryItem item="{{item}}" dosagabled="{{false}}" bind:delect="delectHandler"></accessoryItem>
+            <!-- <accessoryItem item="{{item}}" dosagabled="{{false}}" bind:delect="delectHandler"></accessoryItem> -->
+            <template is="accessoryItem" data="{{ item:item,delectabled:true,dosagabled:false}}"></template>  
           </navigator>
         </block>
       </scroll-view>

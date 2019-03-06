@@ -1,7 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "accessoryItem":"/pages/components/accessoryItem/accessoryItem",
     "noItems": "/pages/components/noItems/noItems"
   }
 }

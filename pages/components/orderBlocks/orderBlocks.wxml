@@ -1,0 +1,44 @@
+<!--pages/components/orderBlocks/orderBlocks.wxml-->
+<!--pages/index/subpages/record/record.wxml-->
+<import src="/pages/template/template.wxml"/> 
+<view wx:if="{{list.length>0}}">
+  <scroll-view scroll-y class='cm_scroll_y overhidden ' bindscrolltolower="loadMore" style="{{'height:'+height}}" > 
+    <van-cell-group>
+      <!-- 待维修 -->
+      <view class="main" wx:if="{{type==1}}">
+        <block wx:for="{{list}}" wx:key="index">
+          <navigator url="/pages/index/subpages/repairMsg/repairMsg?repairCode={{item.REPAIRS_CODE}}&facilityId={{item.DEVICE_CODE}}" >
+            <template is="orderItem" data="{{ item:item,color:'red'}}"></template>  
+          </navigator>
+        </block>       
+      </view>
+      <!-- 维修中 -->
+      <view class="main" wx:if="{{type==2 && role=='maintain'}}">
+        <block wx:for="{{list}}" wx:key="index">
+          <navigator url="/pages/index/subpages/repairOrder/repairOrder?repairCode={{item.REPAIRS_CODE}}&facilityId={{item.DEVICE_CODE}}" >
+            <template is="orderItem" data="{{ item:item,color:'#549ff8'}}"></template>  
+          </navigator>
+        </block>       
+      </view>
+      <view class="main" wx:if="{{type==2 && role=='inspector'}}">
+        <block wx:for="{{list}}" wx:key="index">
+          <navigator url="/pages/index/subpages/repairMsg/repairMsg?repairCode={{item.REPAIRS_CODE}}&facilityId={{item.DEVICE_CODE}}" >
+            <template is="orderItem" data="{{ item:item,color:'#549ff8'}}"></template>  
+          </navigator>
+        </block>       
+      </view>
+      <!-- 已完成 -->
+      <view class="main" wx:if="{{type==3}}">
+        <block wx:for="{{list}}" wx:key="index">
+          <navigator url="/pages/index/subpages/repairMsg/repairMsg?repairCode={{item.REPAIRS_CODE}}" >
+            <template is="orderItem" data="{{ item:item,color:'#11bf67'}}"></template>  
+          </navigator>
+        </block>       
+      </view>
+    </van-cell-group>
+    <moreReminder loading="{{loading}}" nomore="{{!rest}}"></moreReminder>
+  </scroll-view>
+</view>
+<view wx:else>
+  <noItems></noItems>
+</view>

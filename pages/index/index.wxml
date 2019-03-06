@@ -1,6 +1,13 @@
 <!--index.wxml-->
+
+
+
+
+
 <view class="cm_">
   <!-- <loading></loading> -->
+<!-- <template is="loading"  data="{{name:1,age:2}}" ></template> -->
+
   <view class='msgBox'>
 
     <view class="bg"></view>

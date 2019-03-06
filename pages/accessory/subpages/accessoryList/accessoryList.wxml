@@ -1,4 +1,6 @@
 <!--pages/accessory/subpages/accessory/accessoryList.wxml-->
+<import src="/pages/template/template.wxml"/> 
+
 <view class='cm_container flex'>
   <view class='flex searchBar'>
     <view class='f1'>
@@ -15,7 +17,8 @@
             <view class="">
               <block wx:for="{{list}}" wx:key="index">
                 <navigator url="../accessoryDetail/accessoryDetail?partname={{item.PART_NAME}}&parttype={{item.PART_TYPE}}&partprize={{item.PART_PRICE}}">
-                  <accessoryItem item="{{item}}" delectabled="{{false}}" dosagabled="{{false}}" choosabled="{{typeAction}}" bind:choose="setNum"></accessoryItem>
+                  <!-- <accessoryItem item="{{item}}"  delectabled="{{false}}" dosagabled="{{false}}" choosabled="{{typeAction}}" bind:choose="setNum"></accessoryItem> -->
+                   <template is="accessoryItem" data="{{ item:item,delectabled:false,dosagabled:false,choosabled:typeAction}}"></template>  
                 </navigator>
               </block>
               <moreReminder loading="{{loading}}" nomore="{{!rest}}"></moreReminder>
@@ -26,7 +29,7 @@
 
       <van-tab title="相关备件" wx:if="{{typeAction}}">
         <view style="{{'height:'+height}}">
-          <relevant facilityId="{{facilityId}}" canchoose="{{true}}" bind:choose="setNum"></relevant>
+          <relevant facilityId="{{facilityId}}" canchoose="{{true}}" bind:choose="setNum2"></relevant>
         </view>
       </van-tab>
     </van-tabs>

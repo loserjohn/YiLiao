@@ -1,0 +1,46 @@
+<!--pages/templete/loading/laoding.wxml-->
+<wxs src="../statusFilter.wxs" module="statusFilter" />
+<!-- 设备列表 -->
+<template name="facilityItem">
+  <van-card title="{{item.DEVICE_NAME}}" thumb="{{item.DEVICE_IMGLIST?item.DEVICE_IMGLIST:'../../static/img/noPic.jpg'}}" custom-class="orderItem" lazy-load>
+    <view slot="tags">
+      <van-tag color="{{statusFilter.status(item.DEVICE_STATUS,'color')}}">{{statusFilter.status(item.DEVICE_STATUS,'text')}}</van-tag>
+    </view>
+    <view slot="desc">
+      <view class='orderDesc'>设备编号：{{item.DEVICE_NUM}}</view>
+      <view class='orderDesc'>设备型号：{{item.DEVICE_SPCE}}</view>
+      <view class='orderDesc'>所在位置{{item.SOURCE_UNIT}}</view>
+    </view>
+  </van-card>
+</template>
+<!-- 备件列表 -->
+<template name="accessoryItem">
+  <van-card title="{{item.PART_NAME}}" thumb="{{item.PART_IMG?item.PART_IMG:'../../static/img/noPic.jpg'}}" price="{{dosagabled?'使用数量:':''}}" currency='' custom-class="orderItem" lazy-load num="{{dosagabled?'item.num':''}}">
+    <view slot="desc">
+      <view class='orderDesc'>备件编号：{{item.PART_NO}}</view>
+      <view class='orderDesc'>规格型号{{item.PART_TYPE}}</view>
+    </view>
+    <view slot="tags">
+      <van-tag type="danger" custom-class="tags">{{'￥'+item.PART_PRICE}}</van-tag>
+    </view>
+    <view slot="footer">
+      <van-button type="primary" size="mini" wx:if="{{choosabled}}" data-item="{{item}}" catchtap="setNum">选用备件</van-button>
+      <van-button plain type="danger" size="mini" wx:if="{{delectabled}}" data-item="{{item}}" catchtap="delectHandler">删除备件</van-button>
+    </view>
+  </van-card>
+</template>
+
+<!-- 工单列表 -->
+<template name="orderItem">
+  <van-card title="{{item.DEVICE_NAME}}" thumb="{{item.REPAIRS_IMGLIST?item.REPAIRS_IMGLIST:'/pages/../static/img/noPic.jpg'}}" custom-class="orderItem" lazy-load>
+    <view slot="tags">
+      <van-tag color="{{color}}">{{item.REPAIRS_STATUS}}</van-tag>
+    </view>
+
+    <view slot="desc">
+      <view class='orderDesc'>报修编号：{{item.REPAIRS_NUM}}</view>
+      <!-- <view class='orderDesc'>设备编号：{{item.DEVICE_NUM}}</view> -->
+      <view class='orderDesc'>报修时间：{{item.REPAIRS_DATE}}</view>
+    </view>
+  </van-card>
+</template>

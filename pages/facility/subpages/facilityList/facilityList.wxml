@@ -1,4 +1,7 @@
 <!--pages/facility/subpages/facilityList/facilityList.wxml-->
+<import src="/pages/template/template.wxml"/> 
+
+
 <view class='cm_container flex'>
   <view class='flex searchBar'>
     <view>
@@ -16,7 +19,8 @@
         <view class="">
           <block wx:for="{{list}}" wx:key="index">
             <navigator url="{{'../facilityDetail/facilityDetail?facilityId='+item.DEVICE_CODE}}">
-              <facilityItem item="{{item}}"></facilityItem>
+              <!-- <facilityItem item="{{item}}"></facilityItem> -->
+                <template is="facilityItem" data="{{ item:item}}"></template>  
             </navigator>
           </block>
           <moreReminder loading="{{loading}}" nomore="{{!rest}}"></moreReminder>

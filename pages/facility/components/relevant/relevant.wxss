@@ -1,1 +1,2 @@
 /* pages/facility/components/relevant/relevant.wxss */
+@import '/pages/template/template.wxss';

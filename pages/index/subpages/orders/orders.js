@@ -29,9 +29,9 @@ Page({
       height: H - 44 + 'px'
     })
     let key = parseInt(options.active);
-    if (key == 1) {
+    if (key ) {
       this.setData({
-        active: 1
+        active: key
       });
     }
     // 加载数据

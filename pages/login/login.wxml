@@ -5,7 +5,7 @@
       <open-data type="userAvatarUrl"></open-data>
     </view>
     <view class="user_name">
-      <open-data type="userNickName"></open-data>
+      当前微信：<open-data type="userNickName"></open-data>
     </view>
   </view>
   <van-cell-group>

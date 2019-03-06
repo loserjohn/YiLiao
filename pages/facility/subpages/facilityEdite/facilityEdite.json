@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "preImgGallery":"/pages/components/preImgGallery/preImgGallery"
-  },
-  "navigationBarTitleText": "编辑设备资料"
-}
