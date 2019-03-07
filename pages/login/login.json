@@ -1,3 +1,8 @@
 {
-  "usingComponents": {}
+  "usingComponents": {},
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "医疗设备报修",
+  "backgroundColor": "#ddd",
+  "backgroundTextStyle": "light",
+  "navigationStyle": "custom"
 }

@@ -3,7 +3,47 @@ page {
   background: #fff;
 }
 .msgBox{
-  padding-bottom: 160rpx
+  /* padding-bottom: 160rpx; */
+  height: 700rpx;
+  position: relative;
+  /* overflow: hidden; */
+   /* background-image: -webkit-linear-gradient(top left, #2adec1,#1bc8cf);  */
+  /* background: url('../../static/img/ng.png') 0 0 /cover no-repeat */
+}
+.logoBox{
+  position: absolute;
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+  left: 50%;
+  margin-left: -80rpx;
+  top: 280rpx;
+  background: #fefefe;
+  box-sizing: border-box;
+  /* padding: 20rpx; */
+  box-shadow: 0 0 4px #12bbb2
+}
+.logoText{
+   width: 100%;
+   position: absolute;
+   top: 480rpx;
+   text-align: center;
+   color: rgb(245, 252, 241);
+   font-size: 32rpx;
+   font-weight: 600
+}
+.boxbg{
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%
+}
+.logo{
+   width: 100%;
+  height: 100%;
 }
 .user_avatar{
   width: 160rpx;
@@ -15,6 +55,11 @@ page {
 }
 .user_name{
   text-align: center;
+  color: #fff
+}
+
+.formBox{
+  margin-top: 200rpx
 }
 .cm_menus{
   margin-top: 40rpx

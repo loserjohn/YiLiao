@@ -83,8 +83,9 @@ view {
 } */
 
 .cm_btn {
-  background: #28b8a1 !important;
-  border-color: #28b8a1 !important;
+  /* background: #28b8a1 !important;
+  border-color: #28b8a1 !important; */
+  background-image: -webkit-linear-gradient(top left, #2adec1,#1bc8cf)!important;
   color: #fff!important
 }
 

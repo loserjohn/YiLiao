@@ -49,7 +49,7 @@ page {
   position: absolute;
   left: 0;
   /* opacity: .5; */
-  background-image: -webkit-linear-gradient(top, #c2eeb9,#3dd8ad );
+    background-image: -webkit-linear-gradient(top left, #c2eeb9,#1bc8cf); 
   /* background: #14daaf; */
   z-index: -1;
   top: 0;
@@ -61,7 +61,7 @@ page {
   z-index: -1;
   left: 0;
   top: 0;
-  opacity: .3;
+  opacity: .2;
 }
 .orderBox {
   width: 96%;
