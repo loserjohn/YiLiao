@@ -3,7 +3,8 @@ import Toast from '../../../vant/toast/toast';
 import Notify from '../../../vant/notify/notify';
 import {
   getFacilityDetail,
-  submitRepairs
+  submitRepairs,
+  getFacilityList
 } from '../../../../utils/api.js'
 import Utils from '../../../../utils/util.js'
 const app = getApp()
@@ -26,6 +27,7 @@ Page({
     }],
     clientWidth: '',
     form: {
+      facilityId:'',
       repairTime: {
         val: '',
         unit: '天'
@@ -45,6 +47,7 @@ Page({
     repairPic: [], //报修问题图片
     date: '',
     facility: '', //当前匹配的设备信息
+    facilityList:[],
     createTime: '',
     timeShow: false,
     actions: [{
@@ -59,7 +62,9 @@ Page({
       name: '年'
     }],
     currentUnit: 'repairTime',
-    loading:false
+    loading:false,
+    facilityNum:'',
+    show2:false //搜索结果列表显示
   },
   // 二维码扫码设备
   scanCode(res) {
@@ -107,12 +112,14 @@ Page({
     }).then(res => {
       Toast.clear();
       if (res.Success) {
+        console.log(res.Data)
         that.setData({
-          facility: res.Data
+          facility: res.Data,
+          facilityNum: res.Data.DEVICE_NUM
         })
       } else {
         Notify({
-          text: '没有匹配到相关涉笔',
+          text: '没有匹配到相关设备',
           duration: 1000,
           selector: '#van-notify',
           backgroundColor: 'red'
@@ -122,6 +129,48 @@ Page({
         })
       }
     }).catch(err => {})
+  },
+  // 设备编号搜索详情
+  search(){
+    // FJ食药监械生产备201900013号
+    let facilityNum = this.data.facilityNum;
+    let that = this
+    if (!facilityNum) {
+      Notify({
+        text: '请输入设备编号，或者使用快速扫码匹配设备',
+        duration: 1000,
+        selector: '#van-notify',
+        backgroundColor: 'red'
+      });
+      return
+    }
+    Toast.loading({
+      message: '匹配中'
+    });
+    // debugger
+    getFacilityList({
+      DEVICE_NUM: facilityNum,
+      UNIT_CODE: app.globalData.userInfo.USER_UNIT
+    }).then(res => {
+      Toast.clear();
+      if (res.Success && res.Data.ListInfo.length>0) {
+        that.setData({
+          facilityList: res.Data.ListInfo,
+          show2:true
+        })
+        console.log(res.Data)
+      } else {
+        Notify({
+          text: '没有匹配到相关设备',
+          duration: 1000,
+          selector: '#van-notify',
+          backgroundColor: 'red'
+        });
+        that.setData({
+          facility: ''
+        })
+      }
+    }).catch(err => { })
   },
   // 同步输入信息
   syncVal(e) {
@@ -134,6 +183,12 @@ Page({
         break;
       case 'closeTime':
         this.data.form.closeTime.val = val
+        break;
+      case 'facilityNum':
+        this.data.facilityNum = val
+        this.setData({
+          facility:''
+        })
         break;
       default:
         this.data.form[key] = val
@@ -152,7 +207,7 @@ Page({
   },
   // 选择时间
   onSelectTime(e) {
-    console.log(e.detail.name, this.data.currentUnit);
+    // console.log(e.detail.name, this.data.currentUnit);
     let unit = e.detail.name
     let name = this.data.currentUnit
     this.data.form[name].unit = unit
@@ -167,9 +222,25 @@ Page({
       timeShow: false
     })
   },
+  onClose2(){
+    this.setData({
+      show2: false
+    })
+  },
+  // 选择某一条结果
+  selectFacility(e){
+    console.log(e.currentTarget.dataset.item);
+    let data = e.currentTarget.dataset.item;
+    this.data.form.facilityId = data.DEVICE_CODE
+    this.setData({
+      facility:data,
+      show2:false,
+      form: this.data.form,
+    })
+  },
   // 选择是否停机
   onSwitch(e) {
-    console.log(e.detail);
+    // console.log(e.detail);
     let val = e.detail;
     this.data.form.ifClosing = val;
     this.setData({

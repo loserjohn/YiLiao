@@ -14,8 +14,8 @@
 .matchBox{
   min-height: 20rpx;
   box-sizing: border-box;
-  padding:0 30rpx;
- overflow: hidden
+  /* padding:0 30rpx; */
+  overflow: hidden
 }
 .box{
    transition: all .5s  ease 
@@ -48,4 +48,16 @@
 
 .scanhover{
   background: #16a38c!important
+}
+
+.listBox{
+  width: 100%;
+  height: 600rpx;
+  /* background: red; */
+  overflow: hidden
+}
+.title{
+  line-height: 3;
+  border-bottom: 1rpx solid #f2f2f2;
+  color: #28b8a1
 }

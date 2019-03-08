@@ -49,17 +49,17 @@ Component({
         pageIndex: this.data.pageIndex,
         pageSize: this.data.pageSize,
         REPAIRS_STATUS: this.properties.type,
-        UNIT_CODE: this.data.userInfo.USER_UNIT
+        // UNIT_CODE: this.data.userInfo.USER_UNIT
       }
 
-      if (role == "maintain") {
-        // 维修人员
-        data.MAKE_USER = this.data.userInfo.USER_NAME
-        // data.REPAIRS_STATUS = 3
-      } else if (role == "inspector") {
-        // 巡检员
-        data.REPAIRS_USER = this.data.userInfo.USER_NAME
-      }
+      // if (role == "maintain") {
+      //   // 维修人员
+      //   data.MAKE_USER = this.data.userInfo.USER_NAME
+      //   // data.REPAIRS_STATUS = 3
+      // } else if (role == "inspector") {
+      //   // 巡检员
+      //   data.REPAIRS_USER = this.data.userInfo.USER_NAME
+      // }
       // debugger
       let rest = that.data.rest;
       if (!rest) { return }
@@ -70,9 +70,10 @@ Component({
       console.log(data)
       // api
       getRepairList(data).then(res => {
-
+          
         // 后面还有数据
         that.data.list = that.data.list.concat(res.Data.ListInfo);
+        console.log(that.data.list)
         // 后面y有没有数据了
         if (that.data.list.length >= res.Data.Total) {
           that.setData({

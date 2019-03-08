@@ -16,13 +16,13 @@ Page({
   data: {
     form: {
       userName: {
-        value: 'mainhosp',
+        value: 'SL001',
         // value: 'fhosp',
         // value: '',
         valid: true
       },
       userPass: {
-        value: '123456',
+        value: '888888',
         // value: '888888',
         // value: '',
         valid: true

@@ -31,7 +31,8 @@ Page({
     let key = parseInt(options.active);
     if (key ) {
       this.setData({
-        active: key
+        active: key,
+        role: app.globalData.role
       });
     }
     // 加载数据
