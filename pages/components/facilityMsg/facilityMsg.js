@@ -68,6 +68,7 @@ Component({
               icon: 'none',
               duration: 2000
             })
+            app.event.emit('refresh', '')
             setTimeout(()=>{
               wx.navigateBack()
             },500)

@@ -252,6 +252,7 @@ Page({
   // 自动登录
   autoLoin(openId) {
     let that = this
+    // debugger
 
     wx.checkSession({
       success() {
@@ -324,15 +325,20 @@ Page({
   onLoad: function(options) {
     // 记录全局的页面高度
     let that = this
-    const query = wx.createSelectorQuery()
-    query.select('#scrollBox').boundingClientRect()
-    query.selectViewport().scrollOffset()
-    query.exec(function(res) {
+    wx.getSystemInfo({
+      success(res) {
+        // console.log(res.model)
+        // console.log(res.pixelRatio)
+        // console.log(res.windowWidth)
+        console.log(res.windowHeight)
+        // console.log(res.language)
+        // console.log(res.version)
+        console.log(res.statusBarHeight);
 
-      let H = res[0].height;
-      // console.log(H);
-      app.globalData.winHeight = H
+        app.globalData.winHeight = res.windowHeight - res.statusBarHeight
+      }
     })
+
     // wx.login({
     //   success: res => {
     //     console.log('测试code', res.code)

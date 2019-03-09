@@ -21,7 +21,7 @@
         <van-cell required title="设备名称" value="{{facility.DEVICE_NAME}}" />
         <van-cell required title="规格型号" value="{{facility.DEVICE_SPCE}}" />
         <van-cell required title="所属科室" value="{{facility.SOURCE_UNIT}}" />
-        <van-cell required title="所在位置" value="{{facility.DEVICE_ADDR}}" />
+        <van-cell required title="设备产商" value="{{facility.DEVICE_SUPPLIER}}" />
         <van-field value="" label="故障描述" disabled required border="{{ false }}" bindchange="syncVal" />
         <van-field value="{{form.describe}}" label="" id="descript" placeholder="请输入故障描述" border="{{ false }}" input-align="left" bind:change="syncVal" />
 

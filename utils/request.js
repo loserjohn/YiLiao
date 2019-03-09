@@ -38,7 +38,7 @@ const wxRequest =  function (method, url, data) {
                 }
                 identity(data).then(res => {
                   // wx.setStorageSync('openId', res.Data.openid)
-                  console.log(res)
+                  // console.log(res)
                   wx.setStorageSync('sessionKey', res.Data.session_key);
                   setTimeout(function () {
                     wx.hideLoading()
@@ -60,7 +60,7 @@ const wxRequest =  function (method, url, data) {
   })
 }
 const identity = function(data){
-  debugger
+  // debugger
   return new  Promise((resolve,reject)=>{
     wx.request({
       url: baseURL + '/api/XCXAuth/Code2Session', // 仅为示例，并非真实的接口地址

@@ -199,7 +199,18 @@ Page({
       return
     }
     this.data.index += 1;
-    
+    app.event.on('refresh', this.refresh, this)
+    this.loadData()
+  },
+  // 刷新
+  refresh(){
+    this.setData({
+      keyword: '',//搜索关键字
+      index: 1,
+      size: 8,
+      list: [],
+      rest: true,//是否有剩余条目
+    })
     this.loadData()
   },
   // 初始化设备列表的筛选条件
@@ -231,14 +242,8 @@ Page({
   */
   onLoad: function (options) {
     this.initFilterOption()
-    this.loadData((total)=>{
-      // Notify({
-      //   text: '搜索到一共' + total + '条数据',
-      //   duration: 1000,
-      //   selector: '#van-notify',
-      //   backgroundColor: '#1989fa'
-      // }); 
-    })
+    this.loadData((total)=>{ })
+    app.event.on('refresh', this.refresh, this)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

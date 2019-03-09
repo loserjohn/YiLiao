@@ -1,1 +1,4 @@
 /* pages/components/orderBlocks/orderBlocks.wxss */
+.main{
+  /* background: red */
+}

@@ -356,7 +356,7 @@ Page({
       // 停机状态下
       data.CLOSING_TIME= form.closeTime.val + form.closeTime.unit
     }
-    console.log(data)
+    // console.log(data)
     this.setData({ loading:true})
     // 提交表单
     submitRepairs(data).then(res=>{
@@ -366,8 +366,8 @@ Page({
               title:'报修成功'
           })
           setTimeout(()=>{
-            wx.navigateBack({
-
+            wx.redirectTo({
+              url: '/pages/index/subpages/orders/orders?active=3'
             })
           },1000)
          

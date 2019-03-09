@@ -31,7 +31,7 @@ Component({
   attached() {
     let H = app.globalData.winHeight;
     this.setData({
-      height: H - 44 + 'px',
+      height: H - 44 -44+ 'px',
       role: app.globalData.role,
       userInfo: app.globalData.userInfo
     })
@@ -84,7 +84,8 @@ Component({
         } else {
           that.setData({
             list: that.data.list,
-            loading: false
+            loading: false,
+            rest:true
           })
         }
         // console.log(that.data.index, that.data.list.length);

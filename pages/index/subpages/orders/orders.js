@@ -24,9 +24,9 @@ Page({
   onLoad: function(options) {
     // wx.showNavigationBarLoading()
     let H = app.globalData.winHeight;
-    // console.log(H)
+    // console.log(H,H - 44 - 44)
     this.setData({
-      height: H - 44 + 'px'
+      height: H - 44 -44 + 'px'
     })
     let key = parseInt(options.active);
     if (key ) {
@@ -35,48 +35,15 @@ Page({
         role: app.globalData.role
       });
     }
-    // 加载数据
-    this.loadData();
     // 添加全局事件
     app.event.on('refresh', this.refresh, this)
 
   },
   // 重新刷新
   refresh(data){
-    // console.log('woshoudaola#############' + data)
-    
-    this.loadData()
+    this.onLoad({ active:thid.data.active})
   },
-  loadData() {
-    let that = this
-    let data = {
-      pageIndex: 1,
-      pageSize: 100,
-      // MAKE_USER: app.globalData.userInfo.USER_NAME, //维修人 
-      UNIT_CODE: app.globalData.userInfo.USER_UNIT
-    }
-    
-    data.REPAIRS_STATUS =  1
-    // console.log(data)
-    getRepairList(data).then(res => {
-      // console.log(res.Data.ListInfo.length)
-      this.setData({
-        repairList: res.Data.ListInfo
-      })
-    }).catch(err => {
 
-    })
-    data.REPAIRS_STATUS = 2
-    getRepairList(data).then(res => {
-      // console.log(res)
-      this.setData({
-        inRepairList: res.Data.ListInfo
-      })
-    }).catch(err => {
-
-    })
-
-  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

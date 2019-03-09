@@ -41,7 +41,7 @@ App({
         }
         getIdentity(data).then(res => {
           console.log(111, res.Data);
-          // wx.setStorageSync('openId', res.Data.openid)
+          wx.setStorageSync('openId', res.Data.openid)
           wx.setStorageSync('sessionKey', res.Data.session_key);    
           if (callback) callback()
         })

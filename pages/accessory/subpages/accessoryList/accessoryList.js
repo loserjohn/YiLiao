@@ -160,6 +160,35 @@ Page({
       })
       that.loadData()
     } 
+
+    app.event.on('refresh', this.refresh, this)
+  },
+  // 刷新数据
+  refresh(){
+    this.setData({
+      keyword: '', //搜索关键字
+      index: 1,
+      size: 8,
+      rest: true, //是否有剩余条目
+      loading: false,
+      num: 0,
+      show: false,
+      typeAction: '',
+      height: '300px',
+      currentType: 2,
+      list: [],
+
+      currentAccessory: {}, //当前弹窗选择的备件
+      selectForm: {
+        selectNum: 1,
+        selectDes: '',
+        selectPrize: 0
+      },
+      facilityId: '',
+      repairCode: '',
+      repairDetail: '' //如果是选择更换备件则这里存放绑定的订单信息
+    })
+    this.loadData()
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

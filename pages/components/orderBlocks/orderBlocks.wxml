@@ -45,6 +45,8 @@
       </view>
     </van-cell-group>
     <moreReminder loading="{{loading}}" nomore="{{!rest}}"></moreReminder>
+
+      <!-- <moreReminder loading="{{true}}" nomore="{{true}}"></moreReminder> -->
   </scroll-view>
 </view>
 <view wx:else>
