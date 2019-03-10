@@ -6,10 +6,10 @@ import {
   getIdentity
 } from './utils/api.js'
 
-// console.log(Event)
+
 App({
   onLaunch: function() {
-
+    console.log(1)
    
   },
   // 全局时间订阅者
