@@ -1,7 +1,12 @@
 <!--pages/facility/subpages/facilityDetail/facilityDetail.wxml-->
 
 <!-- 设备详情 -->
+<import src="/pages/template/template.wxml"/> 
 
+
+<view animation="{{animationData}}">
+   <template is="loading" ></template>  
+</view>
 <view class='cm_container '>
   <van-tabs color="#28B8A1" custom-class="tabs" animated="true" swipeable="false" active="{{active}}">
     <van-tab title="设备参数">

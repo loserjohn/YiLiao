@@ -1,6 +1,11 @@
 <!--pages/index/subpages/repairOrder/repairOrder.wxml-->
 <!-- 设备保修工单 -->
+<import src="/pages/template/template.wxml"/> 
 
+
+<view animation="{{animationData}}">
+   <template is="loading" ></template>  
+</view>
 
   <view class='cm_container' id="scrollBox">
     <van-tabs color="#28B8A1" custom-class="tabs" animated="true" swipeable="false" active="{{active}}">

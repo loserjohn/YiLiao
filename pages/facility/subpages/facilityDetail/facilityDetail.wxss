@@ -1,4 +1,5 @@
 /* pages/facility/subpages/facilityDetail/facilityDetail.wxss */
+@import '/pages/template/template.wxss';
 .tabs{
   width: 100vw;
   height: 100vh;

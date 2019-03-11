@@ -367,13 +367,13 @@ Page({
           })
           setTimeout(()=>{
             wx.redirectTo({
-              url: '/pages/index/subpages/orders/orders?active=3'
+              url: '/pages/index/subpages/orders/orders?active=0'
             })
           },1000)
          
         }else{
           wx.showToast({
-            title: '报修失败',
+            title: res.Msg ? res.Msg:'报修失败',
             icon:'none'
           })
         }

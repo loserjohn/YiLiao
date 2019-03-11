@@ -1,6 +1,6 @@
 /**index.wxss**/
 @import '/static/icon/icon.wxss';
-
+@import '/pages/template/template.wxss';
 page {
   background: #fff;
 }
@@ -76,6 +76,7 @@ page {
   box-shadow: 0 0 6rpx #e1f0f7;   
   /* border: 1rpx solid #baffeb; */
   overflow: hidden;
+
 }
 
 .permission {

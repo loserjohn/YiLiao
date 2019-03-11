@@ -9,25 +9,37 @@ Page({
    */
   data: {
     height: '',
-    facility:''
+    facility:'',
+    animationData:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+  
     let H = app.globalData.winHeight;
     let that = this
     this.setData({
-      height: H - 44 + 'px',
+      height: H - 44 -44 + 'px',
       facilityId: options.facilityId
     })
     // 获取facilityId的设备详情
-    console.log(options.facilityId);
+    // console.log(options.facilityId);
     if (!options.facilityId){    
       return 
     }
-
+    setTimeout(() => {
+      const animation = wx.createAnimation({
+        duration: 1000,
+        timingFunction: 'ease',
+      });
+      animation.opacity(0).step();
+      this.setData({
+        // waitting: false,
+        animationData: animation.export()
+      })
+    }, 2000)
   },
 
   /**

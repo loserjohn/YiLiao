@@ -10,13 +10,14 @@ import Utils from '../../utils/util.js'
 
 Page({
 
+
   /**
    * 页面的初始数据
    */
   data: {
     form: {
       userName: {
-        // value: 'SL001', 
+        // value: 'SL002', 
         // value: 'fhosp',
         value: '',
         valid: true

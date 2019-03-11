@@ -14,6 +14,7 @@ Page({
     currentType: 0,
     height: '',
     repairCode:'',
+    animationData:{},
     repairDetail:''  //基本信息的详情
   },
 
@@ -23,7 +24,7 @@ Page({
   onLoad: function (options) {
    
     let H = app.globalData.winHeight;
-    console.log('刷新', options)
+    // console.log('刷新', options)
     this.setData({
       height: H - 44 + 'px',
       repairCode: options.repairCode,
@@ -33,6 +34,7 @@ Page({
     this.loadData()
     // 添加全局事件
     app.event.on('partRefresh', this.partRefresh, this)
+
   },
 
   // 刷新已选的备件列表
@@ -53,6 +55,17 @@ Page({
         that.setData({
           repairDetail: res.Data
         })
+        setTimeout(() => {
+          const animation = wx.createAnimation({
+            duration: 1000,
+            timingFunction: 'ease',
+          });
+          animation.opacity(0).step();
+          this.setData({
+            // waitting: false,
+            animationData: animation.export()
+          })
+        }, 2000)
       }
     }).catch(err => {
 

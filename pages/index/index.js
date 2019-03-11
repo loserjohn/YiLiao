@@ -18,7 +18,9 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     role:-1,
     meuns:[],
-    panels:[]
+    panels:[],
+    waitting:true,
+    animationData:{}
   },
   errImg(e) {
     // console.log('pic', e)
@@ -33,9 +35,6 @@ Page({
     wx.navigateTo({
       url: '../logs/logs'
     })
-  },
-  test() {
-    console.log(22222)
   },
   // 处理数组添加badage
   renderPanels(callback){  
@@ -64,9 +63,12 @@ Page({
     
   },
   onLoad: function () {
+    // wx.showLoading({
+    //   title: 'waiting',
+    // })
     let role = app.globalData.role;
     // wx.showNavigationBarLoading()
-    console.log('身份',role)
+    // console.log('身份',role)
     if (!role) return
     this.setData({
       role: role
@@ -80,8 +82,21 @@ Page({
         this.setData({
           role: role,
           meuns: MainMenus,
-          panels: arr
+          panels: arr,
+          
         })
+        setTimeout(()=>{
+          const animation = wx.createAnimation({
+            duration: 1000,
+            timingFunction: 'ease',
+          });
+          animation.opacity(0).step();
+          this.setData({
+            // waitting: false,
+            animationData: animation.export()
+          })
+        },1000)
+        // wx.hideLoading()
       })
     })
 

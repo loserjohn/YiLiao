@@ -1,1 +1,2 @@
 /* pages/index/subpages/repairOrder/repairOrder.wxss */
+@import '/pages/template/template.wxss';

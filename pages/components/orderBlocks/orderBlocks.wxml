@@ -4,6 +4,7 @@
 <view wx:if="{{list.length>0}}">
   <scroll-view scroll-y class='cm_scroll_y overhidden ' bindscrolltolower="loadMore" style="{{'height:'+height}}" > 
     <van-cell-group>
+   
      <!-- 已报修带响应 -->
       <view class="main" wx:if="{{type==0}}">
         <block wx:for="{{list}}" wx:key="index">
@@ -49,6 +50,6 @@
       <!-- <moreReminder loading="{{true}}" nomore="{{true}}"></moreReminder> -->
   </scroll-view>
 </view>
-<view wx:else>
+<view wx:else class='red' style="{{'height:'+height}}">
   <noItems></noItems>
 </view>

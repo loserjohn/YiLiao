@@ -16,20 +16,29 @@ Page({
     repairList: [],
     inRepairList: [],
     height: 0,
+    role:'',
+    extraShow:true,
+    timesample:new Date().getTime(),
+    animationData: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    // wx.showNavigationBarLoading()
+    // wx.showLoading({
+    //   title: 'waiting',
+    // })
     let H = app.globalData.winHeight;
-    // console.log(H,H - 44 - 44)
     this.setData({
-      height: H - 44 -44 + 'px'
+      height: H - 44 -44 + 'px',
+      extraShow:app.globalData.role === 'maintain' ? false : true,
     })
     let key = parseInt(options.active);
-    if (key ) {
+    if (key  ) {
+      if (app.globalData.role !== 'inspector'){
+        key = key-1
+      }
       this.setData({
         active: key,
         role: app.globalData.role
@@ -37,15 +46,29 @@ Page({
     }
     // 添加全局事件
     app.event.on('refresh', this.refresh, this)
-
+    setTimeout(() => {
+      const animation = wx.createAnimation({
+        duration: 1000,
+        timingFunction: 'ease',
+      });
+      animation.opacity(0).step();
+      this.setData({
+        // waitting: false,
+        animationData: animation.export()
+      })
+    }, 2000)
   },
   // 重新刷新
-  refresh(data){
-    // this.onLoad({ active:thid.data.active})
-    this.selectComponent("#block1").loadData();
-    this.selectComponent("#block2").loadData();
-    this.selectComponent("#block3").loadData();
-    this.selectComponent("#block4").loadData();
+  refresh(data,callback){
+    // this.onLoad({ active:this.data.active});
+    this.setData({
+      timesample:new Date().getTime()
+    })
+    if (callback) callback()
+    // this.selectComponent("#block1").loadData();
+    // this.selectComponent("#block2").loadData();
+    // this.selectComponent("#block3").loadData();
+    // this.selectComponent("#block4").loadData();
   },
 
   /**
@@ -59,7 +82,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+  //  wx.hideLoading()
   },
 
   /**
@@ -81,7 +104,12 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    this.refresh('',()=>{
+      setTimeout(()=>{
+        wx.stopPullDownRefresh()
+      },1000)
+      
+    })
   },
 
   /**

@@ -1,19 +1,46 @@
 /* pages/templete/loading/laoding.wxss */
-.orderItem{
-  background: #fff!important;
+
+.orderItem {
+  background: #fff !important;
   border-bottom: 1px solid #eee;
-  
 }
-.orderTitle{
+
+.orderTitle {
   font-size: 32rpx;
   /* font-weight: 600; */
   color: #404040;
-  line-height: 2
-}
-.orderDesc{
-  color: #bcbcbc
+  line-height: 2;
 }
 
-.tags{
-  margin-right: 1rpx
+.orderDesc {
+  color: #bcbcbc;
+}
+
+.tags {
+  margin-right: 1rpx;
+}
+
+.loadingBox {
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+  position: absolute;
+  left: 0;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  flex-direction: column;
+  transition: all 1s ease;
+}
+
+.loadingPic {
+  width: 280rpx;
+  height: 210rpx;
+}
+
+.loadingText {
+  line-height: 2;
+  color: #404040;
+  font-size: 24rpx
 }

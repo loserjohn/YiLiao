@@ -8,5 +8,6 @@
     "navigationBarTitleText": "保修工单管理",
     "backgroundColor": "#f1f1f1",
     "backgroundTextStyle": "light",
-    "disableScroll":false
+    "disableScroll":false,
+    "enablePullDownRefresh": true
 }

@@ -62,7 +62,7 @@ Component({
         title: '待维修',
         handle: () => {
           wx.navigateTo({
-            url: '/pages/index/subpages/orders/orders?active=0'
+            url: '/pages/index/subpages/orders/orders?active=1'
           })
         }
       },
@@ -72,7 +72,17 @@ Component({
         title: '维修中',
         handle: () => {
           wx.navigateTo({
-            url: '/pages/index/subpages/orders/orders?active=1'
+            url: '/pages/index/subpages/orders/orders?active=2'
+          })
+        }
+      },
+      "Repaired": {
+        name: 'Repaired',
+        icon: 'icon-bingzhi-copy',
+        title: '维修完成',
+        handle: () => {
+          wx.navigateTo({
+            url: '/pages/index/subpages/orders/orders?active=3'
           })
         }
       },
@@ -82,7 +92,7 @@ Component({
         title: '维修记录',
         handle: () => {
           wx.navigateTo({
-            url: '/pages/index/subpages/orders/orders?active=2'
+            url: '/pages/index/subpages/orders/orders'
           })
         }
       },

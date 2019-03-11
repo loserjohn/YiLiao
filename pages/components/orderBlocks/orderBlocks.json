@@ -1,6 +1,8 @@
 {
   "component": true,
   "usingComponents": {
-    "moreReminder":"/pages/components/moreReminder/moreReminder"
+    "moreReminder":"/pages/components/moreReminder/moreReminder",
+    "noItems": "/pages/components/noItems/noItems"
+    
   }
 }

@@ -23,9 +23,9 @@ export const MainMenus = ['accessoryCheck', 'facilityCheck','scanCode']
     name: 'inRepair',
     describe: '维修中'
   },
-  "repairHistory": {
-    name: 'repairHistory',
-    describe: '维修历史'
+  "Repaired": {
+    name: 'Repaired',
+    describe: '维修完成'
   }
 }
 

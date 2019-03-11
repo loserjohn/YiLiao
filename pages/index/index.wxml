@@ -1,7 +1,10 @@
 <!--index.wxml-->
+<import src="/pages/template/template.wxml"/> 
 
 
-
+<view wx:if="{{waitting}}"  animation="{{animationData}}">
+   <template is="loading" ></template>  
+</view>
 
 
 <view class="cm_">

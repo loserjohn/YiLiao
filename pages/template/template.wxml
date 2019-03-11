@@ -44,3 +44,12 @@
     </view>
   </van-card>
 </template>
+
+
+<!-- loading -->
+<template name="loading">
+  <view  class="loadingBox flex">
+    <image class='loadingPic'  src='/static/img/loading.gif'></image>
+    <!-- <view class='loadingText'>加载中...</view> -->
+  </view>
+</template>
