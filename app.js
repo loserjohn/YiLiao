@@ -9,7 +9,7 @@ import {
 
 App({
   onLaunch: function() {
-    // console.log(1)
+    console.log(1)
    
   },
   // 全局时间订阅者
