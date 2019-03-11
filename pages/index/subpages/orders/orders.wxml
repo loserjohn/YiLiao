@@ -5,23 +5,23 @@
     
     <van-tab title="待维修">
       <view class="" style="{{'height:'+height}}" >
-          <orderBlocks type="{{1}}"></orderBlocks>  
+          <orderBlocks type="{{1}}" id="block1"></orderBlocks>  
         </view>
     </van-tab>
     <van-tab title="维修中">
        <view class="" style="{{'height:'+height}}" >
-          <orderBlocks type="{{2}}"></orderBlocks>  
+          <orderBlocks type="{{2}}" id="block2"></orderBlocks>  
         </view>
     </van-tab>
 
     <van-tab title="维修完成">
         <view class="" style="{{'height:'+height}}" >
-          <orderBlocks type="{{3}}"></orderBlocks>  
+          <orderBlocks type="{{3}}" id="block3"></orderBlocks>  
         </view>
     </van-tab>
     <van-tab title="未响应" wx:if="{{role==='inspector'?true:false}}">
       <view class="" style="{{'height:'+height}}" >
-          <orderBlocks type="{{0}}"></orderBlocks>  
+          <orderBlocks type="{{0}}" id="block4"></orderBlocks>  
         </view>
     </van-tab>
   </van-tabs>

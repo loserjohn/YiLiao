@@ -41,7 +41,11 @@ Page({
   },
   // 重新刷新
   refresh(data){
-    this.onLoad({ active:thid.data.active})
+    // this.onLoad({ active:thid.data.active})
+    this.selectComponent("#block1").loadData();
+    this.selectComponent("#block2").loadData();
+    this.selectComponent("#block3").loadData();
+    this.selectComponent("#block4").loadData();
   },
 
   /**

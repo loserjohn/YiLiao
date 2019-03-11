@@ -73,7 +73,7 @@ Component({
           
         // 后面还有数据
         that.data.list = that.data.list.concat(res.Data.ListInfo);
-        console.log(that.data.list)
+        // console.log(that.data.list)
         // 后面y有没有数据了
         if (that.data.list.length >= res.Data.Total) {
           that.setData({

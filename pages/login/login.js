@@ -16,15 +16,15 @@ Page({
   data: {
     form: {
       userName: {
-        value: 'SL001', 
+        // value: 'SL001', 
         // value: 'fhosp',
-        // value: '',
+        value: '',
         valid: true
       },
       userPass: {
-        value: '888888',
         // value: '888888',
-        // value: '',
+        // value: '888888',
+        value: '',
         valid: true
       }
     },
@@ -330,10 +330,10 @@ Page({
         // console.log(res.model)
         // console.log(res.pixelRatio)
         // console.log(res.windowWidth)
-        console.log(res.windowHeight)
+        // console.log(res.windowHeight)
         // console.log(res.language)
         // console.log(res.version)
-        console.log(res.statusBarHeight);
+        // console.log(res.statusBarHeight);
 
         app.globalData.winHeight = res.windowHeight - res.statusBarHeight
       }
