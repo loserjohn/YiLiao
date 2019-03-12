@@ -127,11 +127,16 @@ Component({
     },
     // 预览图片
     preview(e){
-      // console.log(e.currentTarget.dataset.src);
-      let url = e.currentTarget.dataset.src;
-      url = url.replace(/_mini/g,"_original");
+      let arr = [];
+      this.data.prePicArr.forEach(item=>{
+        let url = item.replace(/_mini/g, "_original");
+        arr.push(url)
+      })
+
+      // let url = e.currentTarget.dataset.src;
+      // url = url.replace(/_mini/g,"_original");
       // console.log(url)
-      let pre = [url]
+      let pre = arr
       wx.previewImage({
         current: '', // 当前显示图片的http链接
         urls: pre // 需要预览的图片http链接列表

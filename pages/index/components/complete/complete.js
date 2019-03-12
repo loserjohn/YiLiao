@@ -33,7 +33,7 @@ Component({
    */
   data: {
     completeTime: Utils.formatTime(new Date()).split(' ')[0],
-    switchAccessory:0,
+    switchAccessory:'0',
     extra:{
       repairTime: Utils.formatTime(new Date()).split(' ')[0],
       name:'',
@@ -41,7 +41,8 @@ Component({
       phone:''
     },
     descript:'',
-    repairDetailData:''
+    repairDetailData:'',
+    textArea:false
   },
   attached(){
 
@@ -59,20 +60,31 @@ Component({
         repairCode: val.REPAIRS_CODE,
       });
     },
+    // 多文档本描述框
     syncVal(e){
-      this.data.descript = e.detail
-      this.setData({
-        descript: e.detail
-      }) 
+     console.log(e);
+     if(e.target.id=='btn'){
+       this.setData({
+         textArea: true
+       }) 
+     }else{
+       this.setData({
+         textArea: false,
+         descript: e.detail.value
+       }) 
+     }
+      
     },
     syncVal2(e) {
       // console.log(e.target.id, e.detail)
       let key = e.target.id
       this.data.extra[key]= e.detail
     },
+   
     // 是否委托第三方
     onSwitch(e){
-      // console.log(e.detail);
+      // console.log(e);
+      // console.log(e.target);
       this.setData({
         switchAccessory:e.detail
       })

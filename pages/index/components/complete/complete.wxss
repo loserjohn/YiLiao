@@ -5,10 +5,14 @@
   color: #fff!important
 }
 .radioBox{
-  width: 100%;
+  /* width: 50%; */
   box-sizing: border-box;
-  padding: 30rpx;
-  background: #fff
+  height: 88rpx;
+  padding:30rpx;
+  background: #fff;
+  /* background: red; */
+  display: inline-block;
+  align-self:flex-end;
 }
 .title{
   font-size: 24rpx;
@@ -16,4 +20,20 @@
   color: #28b8a1;
   box-sizing: border-box;
   padding: 30rpx
+}
+.content{
+  box-sizing: border-box;
+  padding:0 30rpx 0 30rpx!important;
+  /* background: red; */
+  word-wrap:break-word;
+  white-space: pre-wrap;
+  font-size: 28rpx;
+  color: #404040
+}
+.box{
+  box-sizing: border-box;
+  padding:0 30rpx;
+  line-height: 88rpx;
+  height: 88rpx;
+  overflow: hidden
 }

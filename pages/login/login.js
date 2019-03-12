@@ -17,15 +17,15 @@ Page({
   data: {
     form: {
       userName: {
-        // value: 'SL002', 
+        value: 'SL003', 
         // value: 'fhosp',
-        value: '',
+        // value: '',
         valid: true
       },
       userPass: {
+        value: '888888',
         // value: '888888',
-        // value: '888888',
-        value: '',
+        // value: '',
         valid: true
       }
     },

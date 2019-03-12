@@ -23,13 +23,14 @@
         <van-cell required title="所属科室" value="{{facility.SOURCE_UNIT}}" />
         <van-cell required title="设备产商" value="{{facility.DEVICE_SUPPLIER}}" />
         <van-field value="" label="故障描述" disabled required border="{{ false }}" bindchange="syncVal" />
-        <van-field value="{{form.describe}}" label="" id="descript" placeholder="请输入故障描述" border="{{ false }}" input-align="left" bind:change="syncVal" />
+        <van-field value="{{form.describe}}" label="" id="describe" type="textarea" placeholder="请输入故障描述" border="{{ false }}" input-align="left" bind:change="syncVal" />
 
         <van-field value="{{ form.repairTime.val }}" id="repairTime" bind:change="syncVal" required type="number" input-align="right" label="维修耗时" placeholder="请输入数字" border="{{ false }}" use-button-slot>
           <van-button slot="button" size="small" type="primary" id="repairTime" bindtap='switch'>{{ form.repairTime.unit }}
             <van-icon name="arrow-down" />
           </van-button>
         </van-field>
+       
         <van-cell required title="紧急程度" value="{{form.emergency.text}}" is-link bind:click="handler" />
         <van-cell required title="是否停机" />
         <van-radio-group value="{{ form.ifClosing }}" bind:change="onSwitch">

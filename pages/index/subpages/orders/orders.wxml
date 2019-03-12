@@ -23,7 +23,7 @@
         </view>
     </van-tab>
 
-    <van-tab title="维修完成">
+    <van-tab title="维修历史">
         <view class="" style="{{'height:'+height}}" >
           <orderBlocks type="{{3}}" id="block3" refreshCode="{{timesample}}"></orderBlocks>  
         </view>

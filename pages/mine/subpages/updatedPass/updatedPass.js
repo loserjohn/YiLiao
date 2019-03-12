@@ -97,8 +97,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      // userName: app.globalData.userInfo.USER_NAME,
-      userName: 'mainhosp'
+      userName: app.globalData.userInfo.USER_NAME
     })
   },
 

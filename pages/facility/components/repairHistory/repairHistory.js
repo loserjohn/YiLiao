@@ -39,10 +39,11 @@ Component({
       let data = {
         pageIndex:1,
         pageSize:100,
-        DEVICE_CODE: val 
+        DEVICE_CODE: val ,
+        REPAIRS_STATUS:3
       }
       getHistoryList(data).then(res => {
-        console.log(res)
+        // console.log(res)
         that.setData({
           steps: res.Data.ListInfo
         })

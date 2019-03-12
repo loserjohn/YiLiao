@@ -349,14 +349,13 @@ Page({
       REPAIRS_DESCRIBE: form.describe,
       REPAIRS_IMGLIST: this.data.repairPic.join(','),
       URGENT_TYPE: form.emergency.val,
-      IS_CLOSING: form.ifClosing,
-      REPAIRS_USER:'admin'
+      IS_CLOSING: form.ifClosing
     }
     if (form.ifClosing==2){
       // 停机状态下
       data.CLOSING_TIME= form.closeTime.val + form.closeTime.unit
     }
-    // console.log(data)
+    console.log(data)
     this.setData({ loading:true})
     // 提交表单
     submitRepairs(data).then(res=>{

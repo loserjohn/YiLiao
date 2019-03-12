@@ -26,7 +26,7 @@ Page({
     let H = app.globalData.winHeight;
     // console.log('刷新', options)
     this.setData({
-      height: H - 44 + 'px',
+      height: H - 44 -44 + 'px',
       repairCode: options.repairCode,
       facilityId: options.facilityId
     });
