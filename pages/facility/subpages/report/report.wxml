@@ -1,5 +1,6 @@
 <!--pages/components/fault /fault .wxml-->
 <wxs src="../../../statusFilter.wxs" module="statusFilter" />
+<import src="/pages/template/template.wxml" />
 
 <!-- 故障信息组件 -->
 <van-cell-group>
@@ -27,5 +28,18 @@
     <van-cell title="联系方式" value="{{repairDetailData.MAKE_PHONE}}" />
     <van-cell title="故障描述" label="{{repairDetailData.REPAIRS_DESCRIBE}}" />
   </block>
+
+  <view wx:if="{{list.length>0}}">
+    <view class='title'>已使用备件({{list.length}})</view>
+    <block wx:for="{{list}}" wx:key="index">
+      <!-- <navigator url="/pages/accessory/subpages/accessoryDetail/accessoryDetail?partname={{item.PART_NAME}}&parttype={{item.PART_TYPE}}&partprize={{item.PART_PRICE}}"> -->
+      <navigator url="/pages/facility/subpages/relevantAccessory/relevantAccessory?changerId={{item.CHANGER_CODE}}">
+        <template is="accessoryItem" data="{{ item:item,delectabled:false,dosagabled:true,choosabled:false}}"></template>
+      </navigator>
+    </block>
+  </view>
+  <view wx:else>
+    <view class='title'>没有更换备件</view>
+  </view>
 
 </van-cell-group>

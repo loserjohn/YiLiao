@@ -1,0 +1,58 @@
+<!--pages/accessory/subpages/accessory/accessoryList.wxml-->
+<import src="/pages/template/template.wxml" />
+
+<view class='cm_container flex'>
+  <view class='flex searchBar'>
+    <view class='f1'>
+      <van-search value="{{ value }}" bind:change="syncValkeyword" placeholder="请输入搜索关键词" use-action-slot bind:search="onSearch" background="#fff">
+        <view slot="action" bind:tap="onSearch">搜索</view>
+      </van-search>
+    </view>
+  </view>
+  <view class='f1 overhidden ' id="scrollBox">
+    <van-tabs color="#28B8A1" custom-class="tabs" animated="true" swipeable="false" active="{{active}}">
+      <!-- 相关备件 -->
+      <van-tab title="相关备件">
+        <view style="{{'height:'+height}}">
+          <relevant facilityId="{{facilityId}}" canchoose="{{true}}" bind:choose="setNum2"></relevant>
+        </view>
+      </van-tab>
+      <!-- 全部备件 -->
+      <van-tab title="全部备件">
+        <scroll-view scroll-y class='cm_scroll_y ' style="{{'height:'+height}}" bindscrolltolower="loadMore">
+          <van-cell-group>
+            <view class="">
+              <block wx:for="{{list}}" wx:key="index">
+                <navigator url="../accessoryDetail/accessoryDetail?partname={{item.PART_NAME}}&parttype={{item.PART_TYPE}}&partprize={{item.PART_PRICE}}">
+                  <template is="accessoryItem" data="{{ item:item,delectabled:false,dosagabled:false,choosabled:true}}"></template>
+                </navigator>
+              </block>
+              <moreReminder loading="{{loading}}" nomore="{{!rest}}"></moreReminder>
+            </view>
+          </van-cell-group>
+        </scroll-view>
+      </van-tab>
+    </van-tabs>
+
+  </view>
+  <van-button bind:click="addAccessory" type="primary" size="normal" block custom-class="cm_btn">添加其他备件</van-button>
+</view>
+
+<van-dialog use-slot title="备件选择" async-close show="{{ show }}" show-cancel-button bind:close="onClose">
+  <view class='cm_menus flex numModal'>
+    <view class="numTip ">请确认数量</view>
+    <van-stepper value="{{ selectForm.selectNum }}" id="selectNum" bind:change="syncVal" />
+  </view>
+  <van-cell-group>
+    <van-field value="{{selectForm.selectPrize}}" input-align="right" id="selectPrize" type="number" label="单价" readonly />
+    <van-field value="{{selectForm.selectAmount}}" input-align="right" id="selectAmount" type="number" label="价格" placeholder="请输入价格" bind:change="syncVal" />
+    <van-field value="" label="使用描述" required border="{{ false }}" disabled/>
+    <van-field wx:if="{{textArea}}" focus="{{textArea}}" value="{{selectForm.selectDes}}" label="" id="selectDes" type="textarea" autosize placeholder="请输入描述信息" border="{{ false }}" input-align="left" bindblur="syncVal" />
+    <view wx:else bindtap="syncVal" id="btn" class='content'>
+      {{selectForm.selectDes?selectForm.selectDes:'内容信息'}}
+    </view>
+  </van-cell-group>
+
+</van-dialog>
+<van-toast id="van-toast" zIndex="10000" />
+<van-notify id="van-notify" />

@@ -22,21 +22,35 @@
         <van-cell required title="规格型号" value="{{facility.DEVICE_SPCE}}" />
         <van-cell required title="所属科室" value="{{facility.SOURCE_UNIT}}" />
         <van-cell required title="设备产商" value="{{facility.DEVICE_SUPPLIER}}" />
-        <van-field value="" label="故障描述" disabled required border="{{ false }}" bindchange="syncVal" />
-        <van-field value="{{form.describe}}" label="" id="describe" type="textarea" placeholder="请输入故障描述" border="{{ false }}" input-align="left" bind:change="syncVal" />
+        <!-- <van-field value="" label="故障描述" disabled required border="{{ false }}" bindchange="syncVal" />
+        <van-field value="{{form.describe}}" label="" id="describe" type="textarea" placeholder="请输入故障描述" border="{{ false }}" input-align="left" bind:change="syncVal" /> -->
 
+        <van-field value="" label="故障描述" required border="{{ false }}" disabled/>
+        <van-field wx:if="{{textArea}}" focus="{{textArea}}" value="{{form.describe}}" label="" id="describe" type="textarea" autosize placeholder="请输入文字信息" border="{{ false }}" input-align="left" bindblur="syncVal" />
+        <view wx:else bindtap="syncVal" id="btn" class='content'>
+          {{form.describe?form.describe:'内容信息'}}
+        </view>
         <van-field value="{{ form.repairTime.val }}" id="repairTime" bind:change="syncVal" required type="number" input-align="right" label="维修耗时" placeholder="请输入数字" border="{{ false }}" use-button-slot>
           <van-button slot="button" size="small" type="primary" id="repairTime" bindtap='switch'>{{ form.repairTime.unit }}
             <van-icon name="arrow-down" />
           </van-button>
         </van-field>
-       
+
         <van-cell required title="紧急程度" value="{{form.emergency.text}}" is-link bind:click="handler" />
-        <van-cell required title="是否停机" />
+        <!-- <van-cell required title="是否停机" />
         <van-radio-group value="{{ form.ifClosing }}" bind:change="onSwitch">
           <van-radio name="1" custom-class="radioBox" checked-color="#07c160">未停机</van-radio>
           <van-radio name="2" custom-class="radioBox" checked-color="#07c160">停机</van-radio>
-        </van-radio-group>
+          </van-radio-group> -->
+        <view class='cm_inlineBox  flex'>
+          <view class='f1 cm_inlineBox_label'>是否停机</view>
+          <van-radio-group class="flex" value="{{ form.ifClosing }}" bind:change="onSwitch">
+            <van-radio name="1" custom-class="radioBox" checked-color="#07c160">未停机</van-radio>
+            <van-radio name="2" custom-class="radioBox " checked-color="#07c160">停机</van-radio>
+          </van-radio-group>
+        </view>
+
+
         <van-field wx:if="{{form.ifClosing==2}}" required value="{{ form.closeTime.val }}" type="number" input-align="right" label="停机时长" placeholder="请输入数字" id="closeTime" bind:change="syncVal" border="{{ false }}" use-button-slot>
           <van-button slot="button" size="small" type="primary" id="closeTime" bindtap='switch'>{{ form.closeTime.unit }}
             <van-icon name="arrow-down" />
@@ -79,7 +93,7 @@
   </view>
 
 </van-popup>
-
+<van-dialog id="van-dialog" />
 <van-toast id="van-toast" />
 <van-notify id="van-notify" />
 <van-action-sheet title="时间单位" show="{{ timeShow }}" actions="{{ actions }}" bind:close="onCloseTime" bind:select="onSelectTime" safe-area-inset-bottom />

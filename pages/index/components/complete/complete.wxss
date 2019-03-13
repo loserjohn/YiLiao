@@ -5,14 +5,7 @@
   color: #fff!important
 }
 .radioBox{
-  /* width: 50%; */
-  box-sizing: border-box;
-  height: 88rpx;
-  padding:30rpx;
-  background: #fff;
-  /* background: red; */
-  display: inline-block;
-  align-self:flex-end;
+  padding-left:   30rpx
 }
 .title{
   font-size: 24rpx;

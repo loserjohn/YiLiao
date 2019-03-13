@@ -14,10 +14,10 @@
     <view class="logoText">医疗器械报修管理系统</view>
   </view>
   <view class='formBox'>
-     <van-cell-group >
-    <van-field value="{{ form.userName.value }}" id="userName"  clearable label="用户名" placeholder="请输入用户名" error-message="{{ form.userName.valid?'':'手机号码输入错误' }}" bind:clear="clear" bind:blur="valid" />
-    <van-field value="{{ form.userPass.value  }}" id="userPass" clearable error-message="{{ form.userPass.valid?'':'密码格式错误' }}" type="password" label="密码" placeholder="6-20个字母、数字、下划线组成" bind:clear="clear" bind:blur="valid" />
-  </van-cell-group>
+    <van-cell-group>
+      <van-field value="{{ form.userName.value }}" id="userName" clearable label="用户名" placeholder="请输入用户名" error-message="{{ form.userName.valid?'':'手机号码输入错误' }}" bind:clear="clear" bind:blur="valid" />
+      <van-field value="{{ form.userPass.value  }}" id="userPass" clearable error-message="{{ form.userPass.valid?'':'密码格式错误' }}" type="password" label="密码" placeholder="6-20个字母、数字、下划线组成" bind:clear="clear" bind:blur="valid" />
+    </van-cell-group>
   </view>
  
   <view class='cm_menus'>
@@ -27,7 +27,7 @@
 
 <van-popup show="{{ show }}" overlay="{{ true }}" bind:close="onClose" custom-class="authrize">
   <view class='authrizeBox'>
-     <view class='authrizeTitle '>欢迎登录医疗设备报修系统</view>
+    <view class='authrizeTitle '>欢迎登录医疗设备报修系统</view>
     <view class='authrizeText'>需要同步您的微信用户信息</view>
     <van-button size="normal" block open-type="getUserInfo" custom-class='cm_btn' bindgetuserinfo="bindGetUserInfo">立即授权</van-button>
   </view>

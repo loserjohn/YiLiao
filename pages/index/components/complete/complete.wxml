@@ -7,23 +7,19 @@
   <van-cell title="设备编号" value="{{repairDetailData.DEVICE_NUM}}" />
   <van-cell title="设备状态" value="维修中" />
   <van-cell title="完成时间" value="{{completeTime}}" />
-  <van-field value="" label="维修内容" required border="{{ false }}" />
+  <van-field value="" label="维修内容" required border="{{ false }}" disabled/>
   <van-field wx:if="{{textArea}}" focus="{{textArea}}" value="{{descript}}" label="" id="descript" type="textarea" autosize placeholder="请输入文字信息" border="{{ false }}" input-align="left" bindblur="syncVal" />
   <view wx:else bindtap="syncVal" id="btn" class='content'>
     {{descript?descript:'内容信息'}}
   </view>
-  <view class='flex box '>
-    <view class='f1'>是否委托第三方
-    </view>
-    <view class=" ">
-      <van-radio-group class="flex" value="{{ switchAccessory }}" bind:change="onSwitch">
-        <van-radio name="1" custom-class="radioBox " checked-color="#07c160">是</van-radio>
-        <van-radio name="0" custom-class="radioBox " checked-color="#07c160">否</van-radio>
-      </van-radio-group>
-    </view>
+
+ <view class='cm_inlineBox  flex'  >
+    <view class='f1 cm_inlineBox_label'>是否委托第三方</view>
+    <van-radio-group class="flex" value="{{ switchAccessory }}" bind:change="onSwitch">
+      <van-radio name="1" custom-class=" radioBox" checked-color="#07c160">是</van-radio>
+      <van-radio name="0" custom-class="radioBox " checked-color="#07c160">否</van-radio>
+    </van-radio-group>
   </view>
-
-
 
 </van-cell-group>
 <!-- <view class='cm_blank'></view> -->

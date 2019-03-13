@@ -96,6 +96,12 @@ Component({
       }).catch(err => {
 
       })
+    },
+    // 查看维修报告
+    reportDetail(){
+      wx.navigateTo({
+        url: '/pages/facility/subpages/report/report?repairCode=' + this.data.repairCode,
+      })
     }
   }
 })

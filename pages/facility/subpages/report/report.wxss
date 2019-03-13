@@ -1,1 +1,8 @@
 /* pages/facility/subpages/report/report.wxss */
+.title{
+  box-sizing: border-box;
+  padding: 30rpx;
+  color: #bcbcbc;
+  text-align: center;
+  font-size: 24rpx
+}

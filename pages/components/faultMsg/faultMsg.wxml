@@ -22,7 +22,8 @@
     </van-button>
     <van-button custom-class="cm_btn" size="normal" loading="{{loading}}"  block bindtap='toRepair'  wx:if="{{canShow}}"> 立即维修
     </van-button>
- 
+    <van-button custom-class="cm_btn" size="normal" loading="{{loading}}"  block bindtap='reportDetail'  wx:if="{{repairDetailData.REPAIRS_STATUS==3}}"> 维修报告
+    </van-button>
   </view>
 
 </van-cell-group>

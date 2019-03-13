@@ -61,3 +61,12 @@
   border-bottom: 1rpx solid #f2f2f2;
   color: #28b8a1
 }
+.content{
+  box-sizing: border-box;
+  padding:0 30rpx 0 30rpx!important;
+  /* background: red; */
+  word-wrap:break-word;
+  white-space: pre-wrap;
+  font-size: 28rpx;
+  color: #404040
+}

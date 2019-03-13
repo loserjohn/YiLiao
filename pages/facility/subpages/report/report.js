@@ -1,6 +1,7 @@
 // pages/facility/subpages/report/report.js
 import {
-  getRepairDetail
+  getRepairDetail,
+  matingAccessory
 } from '../../../../utils/api.js'
 Page({
 
@@ -9,7 +10,8 @@ Page({
    */
   data: {
     repairCode:'',
-    repairDetailData:{}
+    repairDetailData:{},
+    list:[]
   },
 
   /**
@@ -27,6 +29,8 @@ Page({
   loadData() {
     let that = this
     let code = this.data.repairCode;
+
+    // 获取报修信息
     let data = {
       REPAIRS_CODE: code,
     }
@@ -38,6 +42,22 @@ Page({
         })
        
       }
+    }).catch(err => {
+
+    })
+    // 获取已使用的备件列表
+    let data2 = {
+      pageIndex: 1,
+      pageSize: 100,
+      REPAIRS_CODE: this.data.repairCode
+    }
+    // api请求
+    matingAccessory(data2).then(res => {
+      // 后面还有数据
+      that.data.list = res.Data.ListInfo;
+      that.setData({
+        list: that.data.list
+      })
     }).catch(err => {
 
     })

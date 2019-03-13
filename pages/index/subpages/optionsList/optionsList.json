@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "moreReminder": "../../../components/moreReminder/moreReminder",
+    "QrScan": "../../../components/scan/scan",
+    "relevant":"/pages/facility/components/relevant/relevant"
+  },
+  "navigationBarTitleText": "选择备件"
+}

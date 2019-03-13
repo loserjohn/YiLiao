@@ -62,7 +62,7 @@ Component({
     },
     // 多文档本描述框
     syncVal(e){
-     console.log(e);
+    //  console.log(e);
      if(e.target.id=='btn'){
        this.setData({
          textArea: true

@@ -123,3 +123,15 @@ view {
    box-sizing: border-box;
    padding: 30rpx
  }
+
+ .cm_inlineBox{
+   box-sizing:border-box;
+   padding:24rpx 30rpx;
+ }
+ .cm_inlineBox_label{
+   font-size: 28rpx;
+   color: #404040
+ }
+ .cm_radioBox{
+  padding-left:   30rpx
+}

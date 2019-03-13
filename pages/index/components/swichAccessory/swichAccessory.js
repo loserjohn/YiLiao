@@ -63,9 +63,7 @@ Component({
     delectHandler(item) {
      
       let that = this
-      console.log(item)
-      debugger
-      // let accessory = item.detail
+
       let accessory = item.target.dataset.item
       Dialog.confirm({
         title: '删除备件',
@@ -121,7 +119,7 @@ Component({
     // 跳转
     link(){
       wx.navigateTo({
-        url: `/pages/accessory/subpages/accessoryList/accessoryList?repairCode=${this.data.repairCode}`
+        url: `/pages/index/subpages/optionsList/optionsList?repairCode=${this.data.repairCode}`
       })
     }
     

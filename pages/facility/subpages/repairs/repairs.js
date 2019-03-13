@@ -64,7 +64,8 @@ Page({
     currentUnit: 'repairTime',
     loading:false,
     facilityNum:'',
-    show2:false //搜索结果列表显示
+    show2:false, //搜索结果列表显示
+    textArea:false
   },
   // 二维码扫码设备
   scanCode(res) {
@@ -174,7 +175,6 @@ Page({
   },
   // 同步输入信息
   syncVal(e) {
-    // console.log(e.target.id, e.detail);
     let key = e.target.id
     let val = e.detail;
     switch (key) {
@@ -188,6 +188,19 @@ Page({
         this.data.facilityNum = val
         this.setData({
           facility:''
+        })
+        break;
+      case 'btn':
+        this.setData({
+          textArea: true
+        })
+        break;
+      case 'describe':
+        // console.log(e)
+        this.data.form.describe = e.detail.value
+        this.setData({
+          form:this.data.form,
+          textArea: false
         })
         break;
       default:
