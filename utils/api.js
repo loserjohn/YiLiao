@@ -14,9 +14,9 @@ export const wxLogin = function(data) {
 }
 
 // 换取openID 与sessionID
-export const getIdentity = function(data) {
-  return wxRequest('POST', '/api/XCXAuth/Code2Session', data)
-}
+// export const getIdentity = function(data) {
+//   return wxRequest('POST', '/api/XCXAuth/Code2Session', data)
+// }
 
 // 获取服务器上的个人信息
 export const getUserMsg = function(data) {

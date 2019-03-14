@@ -3,14 +3,18 @@
 import Event from './utils/event.js'
 import {
   wxLogin,
-  getIdentity
+  // getIdentity
 } from './utils/api.js'
 
 
 App({
   onLaunch: function() {
-    console.log(777)
-   
+    // console.log(777)
+    // this.globalUserInfo()
+    // this.globalLogin()
+    // this.getCode(code=>{
+    //   console.log(code)
+    // })
   },
   // 全局时间订阅者
   event: new Event(),
@@ -23,32 +27,44 @@ App({
     };
     wx.getUserInfo({
       success(res) {
-        that.globalData.wxUserInfo = res;  
+        that.globalData.wxUserInfo = res.userInfo;  
+        console.log(that.globalData.wxUserInfo )
         if (callback) callback()  
       }
     })
   },
-  // 微信登录
-  globalLogin(callback){
+  // 换取code
+  getCode(callback){
     wx.login({
       success: res => {
         // app.globalData.code = res.code; 
         console.log('code ' + res.code)
         // 发送 res.code 到后台换取 openId, sessionKey, unionId;储存在全局
-        let data = {
-          username: this.globalData.userAccount,
-          code: res.code
-        }
-        getIdentity(data).then(res => {
-          console.log(111, res.Data);
-          wx.setStorageSync('openId', res.Data.openid)
-          wx.setStorageSync('sessionKey', res.Data.session_key);    
-          if (callback) callback()
-        })
-
+        let code = res.code;
+        if (callback) callback(code)
       }
     })
   },
+  // 微信登录
+  // globalLogin(callback){
+  //   wx.login({
+  //     success: res => {
+  //       // app.globalData.code = res.code; 
+  //       console.log('code ' + res.code)
+  //       // 发送 res.code 到后台换取 openId, sessionKey, unionId;储存在全局
+  //       let data = {
+  //         username: this.globalData.userAccount,
+  //         code: res.code
+  //       }
+  //       getIdentity(data).then(res => {
+  //         console.log(111, res.Data);
+  //         wx.setStorageSync('openId', res.Data.openid)
+  //         wx.setStorageSync('sessionKey', res.Data.session_key);    
+  //         if (callback) callback()
+  //       })
+  //     }
+  //   })
+  // },
   globalData: {
     // 用户身份
     // role:'inspector',

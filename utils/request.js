@@ -1,6 +1,8 @@
 const baseURL = 'http://wx.fjdmll.com'
 const app = getApp()
-
+import {
+  wxLogin
+} from './api.js'
 const wxRequest =  function (method, url, data) {
   let Authorization = 'Bearer ' + wx.getStorageSync('sessionKey')
   let header = {
@@ -33,12 +35,10 @@ const wxRequest =  function (method, url, data) {
               success: res => {
                 // 发送 res.code 到后台换取 openId, sessionKey, unionId;储存在全局
                 let data = {
-                  username: wx.getStorageSync('userAccount'),
                   code: res.code
                 }
-                identity(data).then(res => {
-                  // wx.setStorageSync('openId', res.Data.openid)
-                  // console.log(res)
+                wxLogin(data).then(res => {
+                  wx.setStorageSync('openId', res.Data.openid)
                   wx.setStorageSync('sessionKey', res.Data.session_key);
                   setTimeout(function () {
                     wx.hideLoading()
@@ -59,31 +59,31 @@ const wxRequest =  function (method, url, data) {
     }) 
   })
 }
-const identity = function(data){
-  // debugger
-  return new  Promise((resolve,reject)=>{
-    wx.request({
-      url: baseURL + '/api/XCXAuth/Code2Session', // 仅为示例，并非真实的接口地址
-      data: data,
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'// 默认值
-      },
-      success(res) {
-        console.log(res)
-        if (res.data.Success) {
-          resolve(res.data)
-        }
+// const identity = function(data){
+//   // debugger
+//   return new  Promise((resolve,reject)=>{
+//     wx.request({
+//       url: baseURL + '/api/XCXAuth/Code2Session', // 仅为示例，并非真实的接口地址
+//       data: data,
+//       method: 'POST',
+//       header: {
+//         'content-type': 'application/x-www-form-urlencoded'// 默认值
+//       },
+//       success(res) {
+//         // console.log(res)
+//         if (res.data.Success) {
+//           resolve(res.data)
+//         }
        
-      },
-      fail(err){
-        console.log('请求错误处理', err)
-        reject(err)
-      }
-    })
-  })
+//       },
+//       fail(err){
+//         console.log('请求错误处理', err)
+//         reject(err)
+//       }
+//     })
+//   })
   
 
-}
+// }
 
 export default wxRequest
