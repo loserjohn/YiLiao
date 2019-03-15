@@ -240,7 +240,7 @@ Page({
           wx.showLoading({
             title: '自动登录中',
           })
-
+          console.log(data)
           wxLogin(data).then(res => {
             console.log('自动登录', res);
             wx.hideLoading()

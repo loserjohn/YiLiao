@@ -45,26 +45,6 @@ App({
       }
     })
   },
-  // 微信登录
-  // globalLogin(callback){
-  //   wx.login({
-  //     success: res => {
-  //       // app.globalData.code = res.code; 
-  //       console.log('code ' + res.code)
-  //       // 发送 res.code 到后台换取 openId, sessionKey, unionId;储存在全局
-  //       let data = {
-  //         username: this.globalData.userAccount,
-  //         code: res.code
-  //       }
-  //       getIdentity(data).then(res => {
-  //         console.log(111, res.Data);
-  //         wx.setStorageSync('openId', res.Data.openid)
-  //         wx.setStorageSync('sessionKey', res.Data.session_key);    
-  //         if (callback) callback()
-  //       })
-  //     }
-  //   })
-  // },
   globalData: {
     // 用户身份
     // role:'inspector',

@@ -2,7 +2,7 @@
 <import src="/pages/template/template.wxml"/> 
 
 
-<view wx:if="{{waitting}}"  animation="{{animationData}}">
+<view  animation="{{animationData}}">
    <template is="loading" ></template>  
 </view>
 

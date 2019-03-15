@@ -1,0 +1,2 @@
+/* pages/facility/subpages/reportPreview/reportPreview.wxss */
+@import '/pages/template/template.wxss';

@@ -1,0 +1,11 @@
+<!--pages/facility/subpages/reportPreview/reportPreview.wxml-->
+<import src="/pages/template/template.wxml"/> 
+
+<view wx:if="{{waitting}}"  animation="{{animationData}}">
+  <template is="loading" ></template>  
+</view>
+<view>
+    <web-view src="https://www.baidu.com" bindload="loaded" > </web-view>
+</view>
+
+

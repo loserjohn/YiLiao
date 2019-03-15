@@ -11,7 +11,8 @@ Page({
   data: {
     repairCode:'',
     repairDetailData:{},
-    list:[]
+    list:[],
+    show:false
   },
 
   /**
@@ -62,6 +63,15 @@ Page({
 
     })
   },
+  toPreview(){
+    // this.setData({
+    //   show:true
+    // })
+    wx.navigateTo({
+      url: '/pages/facility/subpages/reportPreview/reportPreview',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -80,14 +90,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+      
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    
   },
 
   /**
