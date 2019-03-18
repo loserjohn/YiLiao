@@ -18,13 +18,13 @@ Page({
       userName: {
         // value: 'SL001',
         // value: 'fhosp',
-        value: '',
+        value: 'FY002',
         valid: true
       },
       userPass: {
         // value: '888888',
-        // value: '888888',
-        value: '',
+        value: '888888',
+        // value: '',
         valid: true
       }
     },
@@ -59,7 +59,7 @@ Page({
         username: this.data.form.userName.value,
         password: this.data.form.userPass.value,
         code: code,
-        IsDebug: false
+        IsDebug: true
       }
       // 登录api
       accountLogin(data).then(res => {

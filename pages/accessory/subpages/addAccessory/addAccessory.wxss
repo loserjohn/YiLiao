@@ -1,1 +1,6 @@
 /* pages/accessory/subpages/addAccessory/addAccessory.wxss */
+.cm_btn {
+  background: #28b8a1 !important;
+  border-color: #28b8a1 !important;
+  color: #fff!important
+}

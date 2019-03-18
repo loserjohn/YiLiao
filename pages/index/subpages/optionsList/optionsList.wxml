@@ -47,7 +47,7 @@
     <van-field value="{{selectForm.selectPrize}}" input-align="right" id="selectPrize" type="number" label="单价" readonly />
     <van-field value="{{selectForm.selectAmount}}" input-align="right" id="selectAmount" type="number" label="价格" placeholder="请输入价格" bind:change="syncVal" />
     <van-field value="" label="使用描述" required border="{{ false }}" disabled/>
-    <van-field wx:if="{{textArea}}" focus="{{textArea}}" value="{{selectForm.selectDes}}" label="" id="selectDes" type="textarea" autosize placeholder="请输入描述信息" border="{{ false }}" input-align="left" bindblur="syncVal" />
+    <van-field wx:if="{{textArea}}" focus="{{textArea}}" value="{{selectForm.selectDes}}" label="" id="selectDes" type="textarea" autosize placeholder="请输入描述信息" border="{{ false }}" input-align="left" bindchange="syncVal" bindblur="textareaClose" />
     <view wx:else bindtap="syncVal" id="btn" class='content'>
       {{selectForm.selectDes?selectForm.selectDes:'内容信息'}}
     </view>

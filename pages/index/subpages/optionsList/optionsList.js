@@ -315,7 +315,7 @@ Page({
   // 添加新的配件
   addAccessory: function() {
     wx.navigateTo({
-      url: `../addAccessory/addAccessory?facilityId=${this.data.facilityId}&repairCode=${this.data.repairCode}&repairNum=${this.data.repairDetail.REPAIRS_NUM}&facilityNum=${this.data.repairDetail.DEVICE_NUM}`,
+      url: `/pages/accessory/subpages/addAccessory/addAccessory?facilityId=${this.data.facilityId}&repairCode=${this.data.repairCode}&repairNum=${this.data.repairDetail.REPAIRS_NUM}&facilityNum=${this.data.repairDetail.DEVICE_NUM}`,
     })
   },
   // 同步输入框数据
@@ -326,7 +326,7 @@ Page({
         textArea: true
       })
     } else {
-      console.log(e.detail)
+      // console.log(e.detail)
 
       if (key == 'selectNum') {
         this.data.selectForm[key] = e.detail;
@@ -336,10 +336,10 @@ Page({
           textArea: false,
         })
       } else if (key == 'selectDes') {
-        this.data.selectForm[key] = e.detail.value;
+        console.log(e.detail)
+        this.data.selectForm.selectDes = e.detail;
         this.setData({
           selectForm: this.data.selectForm,
-          textArea: false,
         })
       } else {
         this.data.selectForm[key] = e.detail
@@ -354,7 +354,10 @@ Page({
 
 
   },
-
+  textareaClose(){
+    this.setData({
+      textArea: false})
+  },
   syncNumVal(event) {
     console.log(event.detail);
   }

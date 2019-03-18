@@ -5,7 +5,7 @@
   <template is="loading" ></template>  
 </view>
 <view>
-    <web-view src="https://www.baidu.com" bindload="loaded" > </web-view>
+    <web-view src="{{url}}" bindload="loaded" > </web-view>
 </view>
 
 

@@ -78,7 +78,14 @@ Component({
     syncVal2(e) {
       // console.log(e.target.id, e.detail)
       let key = e.target.id
-      this.data.extra[key]= e.detail
+      if (key == 'descript'){
+        this.setData({
+          descript: e.detail
+        }) 
+      }else{
+        this.data.extra[key] = e.detail
+      }
+     
     },
    
     // 是否委托第三方
@@ -147,6 +154,7 @@ Component({
       this.setData({
         loading: true
       })
+      console.log(data)
       completeRepair(data).then(res => {
         // console.log(res)
         if (res.Success){
@@ -163,6 +171,11 @@ Component({
         })
       }).catch(err => {
 
+      })
+    },
+    textareaClose() {
+      this.setData({
+        textArea: false
       })
     }
   }

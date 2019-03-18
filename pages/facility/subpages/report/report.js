@@ -68,7 +68,7 @@ Page({
     //   show:true
     // })
     wx.navigateTo({
-      url: '/pages/facility/subpages/reportPreview/reportPreview',
+      url: '/pages/facility/subpages/reportPreview/reportPreview?repairCode=' + this.data.repairCode,
     })
   },
 

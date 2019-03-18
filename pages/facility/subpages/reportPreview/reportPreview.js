@@ -5,13 +5,19 @@ Page({
    * 页面的初始数据
    */
   data: {
+    repairCode:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
+    this.setData({
+      // waitting: false,
+      repairCode: options.repairCode,
+      url: 'http://116.62.162.65/report/index.html?code=' + options.repairCode
+    })
   },
   loaded(){
   
