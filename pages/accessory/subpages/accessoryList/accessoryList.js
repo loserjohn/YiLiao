@@ -81,11 +81,12 @@ Page({
     })
     // api请求
     getAccessoryList(data).then(res => {
-      // console.log(data)
+      console.log(res.Data.ListInfo)
       // 后面还有数据
       that.data.list = that.data.list.concat(res.Data.ListInfo);
       // 后面y有没有数据了
       if (that.data.list.length >= res.Data.Total) {
+       
         that.setData({
           list: this.data.list,
           loading: false,

@@ -16,9 +16,9 @@ Page({
   data: {
     form: {
       userName: {
-        // value: 'SL001',
+        value: 'SL001',
         // value: 'fhosp',
-        value: 'FY002',
+        // value: 'FY002',
         valid: true
       },
       userPass: {
