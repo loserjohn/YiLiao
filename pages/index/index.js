@@ -20,7 +20,8 @@ Page({
     meuns:[],
     panels:[],
     waitting:true,
-    animationData:{}
+    animationData:{},
+    systemInfo:{}
   },
   errImg(e) {
     // console.log('pic', e)
@@ -41,17 +42,18 @@ Page({
     // username: that.data.form.userName.value,
     // let username =app.globalData.userAccount
     getUserMsg().then(res=>{    
-      if (res.waitingRepair && permissionObj.waitingRepair){
-        permissionObj.waitingRepair.badge = res.waitingRepair
+      console.log(res)
+      if (res.Data.waitingRepair && permissionObj.waitingRepair){
+        permissionObj.waitingRepair.badge = res.Data.waitingRepair
       }
-      if (res.inRepair && permissionObj.inRepair) {
-        permissionObj.inRepair.badge = res.inRepair
+      if (res.Data.inRepair && permissionObj.inRepair) {
+        permissionObj.inRepair.badge = res.Data.inRepair
       }   
       let permissionArr = Object.values(permissionObj);
       console.log("用户信息",res)
-      app.globalData.userInfo = res.Data
+      app.globalData.userInfo = res.Data.user
       this.setData({
-        userInfo: res.Data
+        userInfo: res.Data.user
       })
       if (callback) {
         callback(permissionArr)
@@ -71,14 +73,15 @@ Page({
     // console.log('身份',role)
     if (!role) return
     this.setData({
-      role: role
+      role: role,
+      systemInfo: app.globalData.systemInfo.IndexBgImg[0]?app.globalData.systemInfo.IndexBgImg[0]:''
     })
     
     // 权限判断
     permisionFilter(role, (res) => {
       permissionObj = res  
       this.renderPanels((arr)=>{
-        // console.log(arr)
+        console.log(arr)
         this.setData({
           role: role,
           meuns: MainMenus,

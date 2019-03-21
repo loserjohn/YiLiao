@@ -2,8 +2,7 @@
 
 import Event from './utils/event.js'
 import {
-  wxLogin,
-  // getIdentity
+  
 } from './utils/api.js'
 
 
@@ -15,6 +14,8 @@ App({
     // this.getCode(code=>{
     //   console.log(code)
     // })
+    // 获取系统相关配置信息
+   
   },
   // 全局时间订阅者
   event: new Event(),
@@ -22,13 +23,14 @@ App({
   globalUserInfo(callback){
     let that = this
     if (that.globalData.wxUserInfo){
+      console.log('weixin0', that.globalData.wxUserInfo)
       if (callback) callback()  
       return
     };
     wx.getUserInfo({
       success(res) {
         that.globalData.wxUserInfo = res.userInfo;  
-        console.log(that.globalData.wxUserInfo )
+        console.log('weixin1',that.globalData.wxUserInfo )
         if (callback) callback()  
       }
     })
@@ -50,7 +52,7 @@ App({
     // role:'inspector',
     // role: 'maintain',
     winHeight:559, 
-    userInfo: {}, //本地服务器的用户信息
+    // userInfo: {}, //本地服务器的用户信息
     // wxUserInfo:{}, //微信服务器的用户信息
     openId: '',
     sessionKey: ''

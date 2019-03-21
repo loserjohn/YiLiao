@@ -11,7 +11,8 @@ Page({
     shareShow:false,
     checked: wx.getStorageSync('autoLogin') || false,
     loading:false,
-    type:0
+    type:0,
+    systemInfo:{}
   },
   // 修改自动登录
   onChange(event){
@@ -73,7 +74,8 @@ Page({
   onLoad: function (options) {
     // console.log(app.globalData.userInfo.USER_FULL_NAME) 
    this.setData({
-     userInfo: app.globalData.userInfo
+     userInfo: app.globalData.userInfo,
+     systemInfo: app.globalData.systemInfo.Share[0]
    })
   },
 

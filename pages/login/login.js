@@ -3,7 +3,7 @@ const app = getApp()
 import {
   wxLogin,
   accountLogin,
-  // getIdentity
+  getSystemInfo
 } from '../../utils/api.js'
 import Dialog from '../vant/dialog/dialog';
 import Utils from '../../utils/util.js'
@@ -16,21 +16,22 @@ Page({
   data: {
     form: {
       userName: {
-        value: 'SL001',
+        value: '',
         // value: 'fhosp',
         // value: 'FY002',
         valid: true
       },
       userPass: {
         // value: '888888',
-        value: '888888',
+        value: '',
         // value: '',
         valid: true
       }
     },
     show: false,
     loading: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    systemInfo:{}
   },
   // 登录判断
   login() {
@@ -59,11 +60,11 @@ Page({
         username: this.data.form.userName.value,
         password: this.data.form.userPass.value,
         code: code,
-        IsDebug: true
+        IsDebug: false
       }
       // 登录api
       accountLogin(data).then(res => {
-        console.log(data)
+        // console.log(data)
         app.globalData.userAccount = this.data.form.userName.value //username保存下
         wx.setStorageSync('userAccount', this.data.form.userName.value);
         if (res.Success) {
@@ -162,7 +163,7 @@ Page({
     }
   },
   // 获取微信公共的用户信息
-  getUserMsg() {
+  getUserMsg(callback) {
     let that = this
     //判断授权状态
     wx.getSetting({
@@ -170,7 +171,7 @@ Page({
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称
           console.log('已授权');
-          app.globalUserInfo()
+          app.globalUserInfo(callback)
         } else {
           console.log('未授权');
           if (that.data.canIUse) {
@@ -182,6 +183,7 @@ Page({
           } else {
             // 在没有 open-type=getUserInfo 版本的兼容处理
             app.globalUserInfo(() => {
+              if (callback) callback()
               wx.showToast({
                 title: '获取成功',
                 duration: 1000
@@ -194,7 +196,7 @@ Page({
   },
   // 获取用户信息点击事件回调
   bindGetUserInfo(e) {
-    // console.log('用户基本信息', e);
+    console.log('用户微信基本信息', e);
     app.globalData.wxUserInfo = e.detail
     wx.showToast({
       title: '获取成功',
@@ -303,33 +305,27 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     // 记录全局的页面高度
     let that = this
-    wx.getSystemInfo({
+     wx.getSystemInfo({
       success(res) {
-        // console.log(res.model)
-        // console.log(res.pixelRatio)
-        // console.log(res.windowWidth)
-        // console.log(res.windowHeight)
-        // console.log(res.language)
-        // console.log(res.version)
-        // console.log(res.statusBarHeight);
-
         app.globalData.winHeight = res.windowHeight - res.statusBarHeight
       }
     })
-
-    // wx.login({
-    //   success: res => {
-    //     console.log('测试code', res.code)
-    //   }
-    // })
-    // return
+    getSystemInfo({}).then(res => {
+      // console.log(0,res)
+      app.globalData.systemInfo = res.Data;
+      that.setData({
+        systemInfo: res.Data.SystemInfo[0]
+      })
+    })
 
     // 先获取用户微信信息
-    this.getUserMsg()
-    this.ifAutoLogin()
+    this.getUserMsg(()=>{
+      this.ifAutoLogin()
+    })
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

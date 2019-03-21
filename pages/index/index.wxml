@@ -14,7 +14,7 @@
   <view class='msgBox'>
 
     <view class="bg"></view>
-    <image class='unitPre' src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551606882599&di=d8da4ec229cef28fc028b062d7a11e81&imgtype=0&src=http%3A%2F%2Fdimg09.c-ctrip.com%2Fimages%2Ftg%2F804%2F744%2F532%2Fd4bc2e11eec742acbe3163b7dc13b185.jpg"></image>
+    <image class='unitPre' src="{{systemInfo.LINK_IMAGE?systemInfo.LINK_IMAGE:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551606882599&di=d8da4ec229cef28fc028b062d7a11e81&imgtype=0&src=http%3A%2F%2Fdimg09.c-ctrip.com%2Fimages%2Ftg%2F804%2F744%2F532%2Fd4bc2e11eec742acbe3163b7dc13b185.jpg'}}"></image>
 
     <view class='unitName'>{{userInfo.UNIT_NAME}}</view>
     <view class='subUnit'>{{userInfo.UNIT_ADDR}}</view>

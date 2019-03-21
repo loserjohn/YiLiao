@@ -3,12 +3,12 @@
 
   <view class='cm_nopading'>
     <van-cell-group>
-      <van-cell icon="eye" title="昵称" value="{{wxUserInfo.userInfo.nickName}}"  />
-      <van-cell icon="award" title="性别" value="{{wxUserInfo.userInfo.gender==0?'男':'女'}}"  />
+      <van-cell icon="eye" title="昵称" value="{{wxUserInfo.nickName}}"  />
+      <van-cell icon="award" title="性别" value="{{wxUserInfo.gender==0?'男':'女'}}"  />
       <van-cell icon="invition" title="邮箱" value="{{userInfo.USER_MAIL}}"  />
       <van-cell icon="phone" title="手机号" value="{{userInfo.USER_MOBLIE}}"  />
-      <van-cell icon="todo-list" title="维修经验" value="3年"  />
-      <van-cell icon="bell" title="已成功维修" value="13次"  />
+      <!-- <van-cell icon="todo-list" title="维修经验" value="{{userInfo.USER_MOBLIE}}"  />
+      <van-cell icon="bell" title="已成功维修" value="{{userInfo.USER_MOBLIE}}"  /> -->
     </van-cell-group>
   </view>
   <view class='cm_blank'></view>

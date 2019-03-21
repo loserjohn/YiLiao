@@ -1,6 +1,12 @@
 import wxRequest from './request.js';
 export const baseURL = 'http://wx.fjdmll.com'
 
+// 获取系统信息
+export const getSystemInfo = function (data) {
+  return wxRequest('GET', '/api/XCXAuth/GetPublicData', data)
+}
+
+
 // 登录部分
 
 // 用户密码登录

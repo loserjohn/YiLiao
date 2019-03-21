@@ -9,9 +9,11 @@
       当前微信：<open-data type="userNickName"></open-data>
     </view> -->
     <view class='logoBox'>
-      <image src='../../static/img/logo.png' class='logo' mode="scaleToFill"></image>
+      <!-- <image src='../../static/img/logo.png' class='logo' mode="scaleToFill"></image> -->
+      
+       <image src="{{systemInfo.LINK_IMAGE?systemInfo.LINK_IMAGE:'../../static/img/logo.png'}}" class='logo' mode="scaleToFill"></image>
     </view>
-    <view class="logoText">医疗器械报修管理系统</view>
+    <view class="logoText">{{systemInfo.LINK_NAME}}</view>
   </view>
   <view class='formBox'>
     <van-cell-group>

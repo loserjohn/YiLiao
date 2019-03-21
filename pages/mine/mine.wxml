@@ -38,8 +38,8 @@
 <van-dialog id="van-dialog" />
 <van-popup show="{{ shareShow }}" close-on-click-overlay bind:close="onClose">
   <view class='shareBox' wx:if="{{type==0}}">
-    <image src='../../static/img/share.jpg' class='shareBg'></image>
-    <view class='cm_c shareText'>医疗设备保修系统</view>
+    <image src="{{systemInfo.LINK_IMAGE?systemInfo.LINK_IMAGE:'../../static/img/share.jpg'}}" class='shareBg'></image>
+    <view class='cm_c shareText'>{{systemInfo.LINK_NAME}}</view>
     <view class='cm_pad'>
       <button class='share' id="shareBtn" open-type="share" type="primary" hover-class="other-button-hover">
         分享
