@@ -42,15 +42,15 @@ Page({
 
   // 开始搜索
   onSearch() {
-    if (!this.data.keyword) {
-      Notify({
-        text: '请输入关键字',
-        duration: 1000,
-        selector: '#van-notify',
-        backgroundColor: 'red'
-      });
-      return
-    }
+    // if (!this.data.keyword) {
+    //   Notify({
+    //     text: '请输入关键字',
+    //     duration: 1000,
+    //     selector: '#van-notify',
+    //     backgroundColor: 'red'
+    //   });
+    //   return
+    // }
 
     this.setData({
       list: [],
@@ -77,8 +77,8 @@ Page({
     let data = {
       pageIndex: this.data.index,
       pageSize: this.data.size,
-      // UNIT_CODE: app.globalData.userInfo.USER_UNIT
-      UNIT_CODE: '7c818b8fcbd5473b91580b91926cef3d'
+      UNIT_CODE: app.globalData.userInfo.USER_UNIT
+      // UNIT_CODE: '7c818b8fcbd5473b91580b91926cef3d'
     }
     if (this.data.keyword && this.data.keyword.length > 0) {
       data.keyword = this.data.keyword
@@ -261,7 +261,7 @@ Page({
         PART_PRICE: this.data.selectForm.selectAmount,
         PART_DESCRIBE: this.data.selectForm.selectDes
       }
-      console.log('表单数据', data)
+      // console.log('表单数据', data)
       addAccessory(data).then(res => {
         if (res.Success) {
           Toast.success('添加备件成功');

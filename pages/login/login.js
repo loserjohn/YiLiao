@@ -7,6 +7,7 @@ import {
 } from '../../utils/api.js'
 import Dialog from '../vant/dialog/dialog';
 import Utils from '../../utils/util.js'
+import { ROLE_INSPECTOR, ROLE_MAINTAIN } from '../../utils/permision.js'
 
 Page({
 
@@ -35,8 +36,8 @@ Page({
   },
   // 登录判断
   login(e) {
-    console.log('表单id',e.detail);
-    const formid = e.detail.formId
+    // console.log('表单id',e.detail);
+    // const formid = e.detail.formId
     // return 
     let form = this.data.form
     // 不能为空
@@ -63,7 +64,7 @@ Page({
         password: this.data.form.userPass.value,
         code: code,
         IsDebug: false,
-        formid: formid
+        // formid: formid
       }
       // 登录api
       accountLogin(data).then(res => {
@@ -75,11 +76,11 @@ Page({
           // 有效用户
           // 身份判定
           if (res.Data.USER_TYPE == "1") {
-            app.globalData.role = 'inspector' //巡检人员
+            app.globalData.role = ROLE_INSPECTOR //巡检人员
             wx.setStorageSync('openId', res.Data.openid);
             wx.setStorageSync('sessionKey', res.Data.session_key);
           } else if (res.Data.USER_TYPE == "2") {
-            app.globalData.role = 'maintain' //维修人员
+            app.globalData.role = ROLE_MAINTAIN //维修人员
             wx.setStorageSync('openId', res.Data.openid);
             wx.setStorageSync('sessionKey', res.Data.session_key);
           } else {
@@ -245,18 +246,18 @@ Page({
           wx.showLoading({
             title: '自动登录中',
           })
-          console.log(data)
+          // console.log(data)
           wxLogin(data).then(res => {
             console.log('自动登录', res);
             wx.hideLoading()
             if (res.Success) {
               // 身份判定
               if (res.Data.USER_TYPE == "1") {
-                app.globalData.role = 'inspector' //巡检人员
+                app.globalData.role = ROLE_INSPECTOR //巡检人员
                 wx.setStorageSync('openId', res.Data.openid);
                 wx.setStorageSync('sessionKey', res.Data.session_key);
               } else if (res.Data.USER_TYPE == "2") {
-                app.globalData.role = 'maintain' //维修人员
+                app.globalData.role = ROLE_MAINTAIN //维修人员
                 wx.setStorageSync('openId', res.Data.openid);
                 wx.setStorageSync('sessionKey', res.Data.session_key);
               } else {
@@ -275,7 +276,7 @@ Page({
               })
             } else {
               Dialog.alert({
-                message: res.Msg,
+                message: res.Msg ? res.Msg:'登陆失败',
                 overlay: true,
               }).then(() => {
                 that.setData({

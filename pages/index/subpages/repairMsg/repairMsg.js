@@ -23,7 +23,7 @@ Page({
       REPAIRS_CODE: code,
     }
     getRepairDetail(data).then(res => {
-      console.log(res)
+      // console.log(res)
       if (res.Success) {
         that.setData({
           repairDetail: res.Data,

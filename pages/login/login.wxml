@@ -9,7 +9,7 @@
     <view class="logoText">{{systemInfo.LINK_NAME}}</view>
   </view>
  
-  <form bindsubmit="login" report-submit='true' >
+  <!-- <form bindsubmit="login" report-submit='true' > -->
   <view class='formBox'>
     <van-cell-group>
       <van-field value="{{ form.userName.value }}" id="userName" clearable label="用户名" placeholder="请输入用户名" error-message="{{ form.userName.valid?'':'手机号码输入错误' }}" bind:clear="clear" bind:blur="valid" />
@@ -18,10 +18,10 @@
   </view>
   
   <view class='cm_menus'>
-    <!-- <van-button size="normal" block custom-class='cm_btn' bind:click="login" loading="{{loading}}">登录</van-button> -->
-     <button size="normal" block custom-class='cm_btn' form-type="submit" loading="{{loading}}">登录</button>
+    <van-button size="normal" block custom-class='cm_btn' bind:click="login" loading="{{loading}}">登录</van-button>
+     <!-- <button size="normal" block custom-class='cm_btn' form-type="submit" loading="{{loading}}">登录</button> -->
   </view>
-  </form>
+  <!-- </form> -->
 </view>
 
 <van-popup show="{{ show }}" overlay="{{ true }}" bind:close="onClose" custom-class="authrize">

@@ -12,7 +12,6 @@ import {
 
 Page({
   data: {
-    motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -38,11 +37,8 @@ Page({
     })
   },
   // 处理数组添加badage
-  renderPanels(callback){  
-    // username: that.data.form.userName.value,
-    // let username =app.globalData.userAccount
-    getUserMsg().then(res=>{    
-      console.log(res)
+  renderPanels(callback){ 
+    getUserMsg().then(res=>{   
       if (res.Data.waitingRepair && permissionObj.waitingRepair){
         permissionObj.waitingRepair.badge = res.Data.waitingRepair
       }
@@ -64,31 +60,25 @@ Page({
     })
     
   },
-  onLoad: function () {
-    // wx.showLoading({
-    //   title: 'waiting',
-    // })
-    let role = app.globalData.role;
-    // wx.showNavigationBarLoading()
-    // console.log('身份',role)
-    if (!role) return
-    this.setData({
-      role: role,
-      systemInfo: app.globalData.systemInfo.IndexBgImg[0]?app.globalData.systemInfo.IndexBgImg[0]:''
-    })
-    
-    // 权限判断
+  // 重新刷新
+  refresh(data, callback) {
+    this.init()
+    if (callback) callback()
+
+  },
+  // 初始化数据显示
+  init(){
+    let role = app.globalData.role
     permisionFilter(role, (res) => {
-      permissionObj = res  
-      this.renderPanels((arr)=>{
-        console.log(arr)
+      permissionObj = res
+      this.renderPanels((arr) => {
         this.setData({
           role: role,
           meuns: MainMenus,
           panels: arr,
-          
+
         })
-        setTimeout(()=>{
+        setTimeout(() => {
           const animation = wx.createAnimation({
             duration: 1000,
             timingFunction: 'ease',
@@ -98,10 +88,22 @@ Page({
             // waitting: false,
             animationData: animation.export()
           })
-        },1000)
+        }, 1000)
         // wx.hideLoading()
       })
     })
+  },
+  onLoad: function () {
+    let role = app.globalData.role;
+    if (!role) return
+    this.setData({
+      role: role,
+      systemInfo: app.globalData.systemInfo.IndexBgImg[0]?app.globalData.systemInfo.IndexBgImg[0]:''
+    })
+    // 添加全局事件
+    app.event.on('refresh', this.refresh, this)
+    // 权限判断
+    this.init()
 
   },
   /**

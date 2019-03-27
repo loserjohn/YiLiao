@@ -5,6 +5,8 @@ import {
   editedFacility
 } from '../../../utils/api.js'
 const app = getApp()
+import { ROLE_INSPECTOR, ROLE_MAINTAIN } from '../../../utils/permision.js'
+
 Component({
   options: {
     "addGlobalClass": true
@@ -17,7 +19,7 @@ Component({
       type:String,
       value:'',
       observer:function(val,old){
-        console.log(app.globalData.role)
+        // console.log(app.globalData.role)
         this.loadData(val)     
       }
     }
@@ -93,7 +95,7 @@ Component({
           let height = clientHeight * ratio;
           that.setData({
             clientWidth: clientWidth,
-            canEdited:app.globalData.role == 'inspector' ? true : false
+            canEdited: app.globalData.role == ROLE_INSPECTOR ? true : false
           });
           // console.log(clientHeight)
         }

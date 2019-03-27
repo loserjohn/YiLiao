@@ -72,7 +72,7 @@ Component({
       this.setData({
         loading: true
       })
-      console.log(data)
+      // console.log(data)
       // api
       getRepairList(data).then(res => {
           

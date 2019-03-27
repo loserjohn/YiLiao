@@ -8,9 +8,6 @@ import {
 
 App({
   onLaunch: function() {
-    // console.log(777)
-    // this.globalUserInfo()
-    // this.globalLogin()
     // this.getCode(code=>{
     //   console.log(code)
     // })
@@ -30,7 +27,7 @@ App({
     wx.getUserInfo({
       success(res) {
         that.globalData.wxUserInfo = res.userInfo;  
-        console.log('weixin1',that.globalData.wxUserInfo )
+        console.log('微信个人信息',that.globalData.wxUserInfo )
         if (callback) callback()  
       }
     })
@@ -51,10 +48,10 @@ App({
     // 用户身份
     // role:'inspector',
     // role: 'maintain',
-    winHeight:559, 
+    // winHeight:559, 
     // userInfo: {}, //本地服务器的用户信息
     // wxUserInfo:{}, //微信服务器的用户信息
-    openId: '',
-    sessionKey: ''
+    // openId: '',
+    // sessionKey: ''
   }
 })

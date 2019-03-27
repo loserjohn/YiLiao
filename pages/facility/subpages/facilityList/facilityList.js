@@ -187,7 +187,7 @@ Page({
             loading: false
           })
         }   
-      console.log(that.data.index, that.data.list.length);
+      // console.log(that.data.index, that.data.list.length);
       if (callback) callback(res.Data.Total)
     }).catch(err=>{
 
