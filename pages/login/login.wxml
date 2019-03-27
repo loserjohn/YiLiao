@@ -1,30 +1,27 @@
 <!--pages/login/login.wxml-->
+
 <view class='cm_container' id="scrollBox">
   <view class='msgBox'>
     <image src='../../static/img/bg.png' class='boxbg' mode="scaleToFill"></image>
-    <!-- <view class="user_avatar">
-      <open-data type="userAvatarUrl"></open-data>
-    </view>
-    <view class="user_name">
-      当前微信：<open-data type="userNickName"></open-data>
-    </view> -->
-    <view class='logoBox'>
-      <!-- <image src='../../static/img/logo.png' class='logo' mode="scaleToFill"></image> -->
-      
+    <view class='logoBox'>   
        <image src="{{systemInfo.LINK_IMAGE?systemInfo.LINK_IMAGE:'../../static/img/logo.png'}}" class='logo' mode="scaleToFill"></image>
     </view>
     <view class="logoText">{{systemInfo.LINK_NAME}}</view>
   </view>
+ 
+  <form bindsubmit="login" report-submit='true' >
   <view class='formBox'>
     <van-cell-group>
       <van-field value="{{ form.userName.value }}" id="userName" clearable label="用户名" placeholder="请输入用户名" error-message="{{ form.userName.valid?'':'手机号码输入错误' }}" bind:clear="clear" bind:blur="valid" />
       <van-field value="{{ form.userPass.value  }}" id="userPass" clearable error-message="{{ form.userPass.valid?'':'密码格式错误' }}" type="password" label="密码" placeholder="6-20个字母、数字、下划线组成" bind:clear="clear" bind:blur="valid" />
     </van-cell-group>
   </view>
- 
+  
   <view class='cm_menus'>
-    <van-button size="normal" block custom-class='cm_btn' bind:click="login" loading="{{loading}}">登录</van-button>
+    <!-- <van-button size="normal" block custom-class='cm_btn' bind:click="login" loading="{{loading}}">登录</van-button> -->
+     <button size="normal" block custom-class='cm_btn' form-type="submit" loading="{{loading}}">登录</button>
   </view>
+  </form>
 </view>
 
 <van-popup show="{{ show }}" overlay="{{ true }}" bind:close="onClose" custom-class="authrize">

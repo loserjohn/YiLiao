@@ -34,8 +34,10 @@ Page({
     systemInfo:{}
   },
   // 登录判断
-  login() {
-    // console.log(this.data.form);
+  login(e) {
+    console.log('表单id',e.detail);
+    const formid = e.detail.formId
+    // return 
     let form = this.data.form
     // 不能为空
     if (!form.userName.value || !form.userPass.value) {
@@ -60,7 +62,8 @@ Page({
         username: this.data.form.userName.value,
         password: this.data.form.userPass.value,
         code: code,
-        IsDebug: false
+        IsDebug: false,
+        formid: formid
       }
       // 登录api
       accountLogin(data).then(res => {
@@ -279,6 +282,7 @@ Page({
                   loading: false
                 });
               });
+              wx.clearStorageSync();
             }
 
           }).catch(err => {

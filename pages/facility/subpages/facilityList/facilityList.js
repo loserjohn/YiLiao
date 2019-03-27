@@ -67,7 +67,7 @@ Page({
     let res = e.detail.value
     let key = this.data.currentOptions.key
     // debugger
-    // console.log(res, key)
+    console.log(-1, key, res)
 
     this.data.condition[key] = res
     this.setData({
@@ -108,15 +108,15 @@ Page({
   // 开始搜索
   onSearch(){
     let condition = this.data.condition  
-    if (!this.data.keyword && !condition.type.Value && !condition.office.Value && !condition.status.Value){
-      Notify({
-        text: '请输入关键字或者选择筛选条件',
-        duration: 1000,
-        selector: '#van-notify',
-        backgroundColor: 'red'
-      });
-      return 
-    }
+    // if (!this.data.keyword && !condition.type.Value && !condition.office.Value && !condition.status.Value){
+    //   Notify({
+    //     text: '请输入关键字或者选择筛选条件',
+    //     duration: 1000,
+    //     selector: '#van-notify',
+    //     backgroundColor: 'red'
+    //   });
+    //   return 
+    // }
 
     this.setData({
       list:[],
@@ -149,13 +149,13 @@ Page({
     // debugger
     // 判断是否条件筛选
     let condition = this.data.condition  
-    if (condition.type && condition.type.length>0){
+    if (condition.type && condition.type.Value){
       data.DEVICE_TYPE = condition.type.Value
     }
-    if (condition.office && condition.office.length > 0) {
+    if (condition.office && condition.office.Value) {
       data.SOURCE_UNIT = condition.office.Value
     }
-    if (condition.status && condition.status.length > 0) {
+    if (condition.status && condition.status.Value) {
       data.DEVICE_STATUS = condition.status.Value
     }
     if (this.data.keyword && this.data.keyword.length > 0) {
@@ -168,6 +168,7 @@ Page({
     this.setData({
       loading: true
     })
+    console.log(111,data,this.data.condition)
     // api请求
     getFacilityList(data).then(res=>{
       // console.log(data)

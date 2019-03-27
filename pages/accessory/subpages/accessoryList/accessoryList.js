@@ -75,7 +75,7 @@ Page({
     if (!rest) {
       return
     }
-
+    // console.log(data)
     this.setData({
       loading: true
     })
