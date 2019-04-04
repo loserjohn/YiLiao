@@ -181,8 +181,8 @@ Component({
           },
           success(res) {
             const data = JSON.parse(res.data).Data
+            // console.log(data)
             resolve(data)
-            // console.log(data);
           }
         })
         uploadTask.onProgressUpdate((res) => {

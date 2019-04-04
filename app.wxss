@@ -67,7 +67,9 @@ view {
 .cm_c {
   text-align: center;
 }
-
+.cm_r {
+  text-align: right;
+}
 .contain {
   width: 100%;
 }

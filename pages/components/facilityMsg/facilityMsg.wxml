@@ -6,15 +6,20 @@
   </view>
   <van-cell title="设备名称" value="{{facility.DEVICE_NAME}}" />
   <van-cell title="设备编号" value="{{facility.DEVICE_NUM}}" />
-  <van-cell title="设备型号" value="{{facility.DEVICE_SPCE}}" />
+   <van-cell title="设备品牌" value="{{facility.DEVICE_BRAND}}" />
+  <van-cell title="设备型号" value="{{facility.DEVICE_GENRE}}" />
   <van-cell title="设备状态" value="{{facility.DEVICE_STATUS}}" />
   <van-cell title="所属医院" value="{{facility.DEVICE_NAME}}" />
   <van-cell title="所属科室" value="{{facility.SOURCE_UNIT}}" />
   <van-cell title="所在位置" value="{{facility.USE_UNIT}}" />
-  <van-cell title="设备状况" value="{{facility.DEVICE_STATUS}}" />
+  <van-cell title="设备类别" value="{{facility.DEVICE_TYPE}}" />
   <van-cell title="管理人员" value="{{facility.MANAGE_USER}}" />
-  <van-cell title="生产产商" value="{{facility.DEVICE_TRADE}}" />
+  <van-cell title="生产厂家" value="{{facility.DEVICE_TRADE}}" />
   <van-cell title="备注" label="{{facilit.DEVICE_REMARK}}" />
+
+  <van-cell title="生产时间" value="{{facility.DEVICE_USE_DATE}}" />
+  <van-cell title="验收时间" value="{{facility.DEVICE_OVERTIME}}" />
+
 
   <!-- 小工具 -->
   <view class='tip' hover-class='tipHover' bindtap="toSave" wx:if="{{canEdited}}">

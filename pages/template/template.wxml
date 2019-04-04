@@ -2,7 +2,7 @@
 <wxs src="../statusFilter.wxs" module="statusFilter" />
 <!-- 设备列表 -->
 <template name="facilityItem">
-  <van-card title="{{item.DEVICE_NAME}}" thumb="{{item.DEVICE_IMGLIST?item.DEVICE_IMGLIST:'../../static/img/noPic.jpg'}}" custom-class="orderItem" lazy-load>
+  <van-card title="{{item.DEVICE_NAME}}" thumb="{{item.DEVICE_IMGLIST?item.DEVICE_IMGLIST:'/static/img/noPic.jpg'}}" custom-class="orderItem" lazy-load>
     <view slot="tags">
       <van-tag color="{{statusFilter.status(item.DEVICE_STATUS,'color')}}">{{statusFilter.status(item.DEVICE_STATUS,'text')}}</van-tag>
     </view>
@@ -15,7 +15,7 @@
 </template>
 <!-- 备件列表 -->
 <template name="accessoryItem">
-  <van-card title="{{item.PART_NAME}}" thumb="{{item.PART_IMG?item.PART_IMG:'../../static/img/noPic.jpg'}}" price="{{dosagabled?'使用数量:':''}}" currency='' custom-class="orderItem" lazy-load num="{{dosagabled?item.PART_NUM:''}}">
+  <van-card title="{{item.PART_NAME}}" thumb="{{item.PART_IMG?item.PART_IMG:'/static/img/noPic.jpg'}}" price="{{dosagabled?'使用数量:':''}}" currency='' custom-class="orderItem" lazy-load num="{{dosagabled?item.PART_NUM:''}}">
     <view slot="desc">
       <view class='orderDesc'>备件编号：{{item.PART_NO}}</view>
       <view class='orderDesc'>规格型号{{item.PART_TYPE}}</view>
@@ -32,7 +32,7 @@
 
 <!-- 工单列表 -->
 <template name="orderItem">
-  <van-card title="{{item.DEVICE_NAME}}" thumb="{{item.REPAIRS_IMGLIST?item.REPAIRS_IMGLIST:'/pages/../static/img/noPic.jpg'}}" custom-class="orderItem" lazy-load>
+  <van-card title="{{item.DEVICE_NAME}}" thumb="{{item.REPAIRS_IMGLIST?item.REPAIRS_IMGLIST:'/static/img/noPic.jpg'}}" custom-class="orderItem" lazy-load>
     <view slot="tags">
       <van-tag color="{{color}}">{{item.REPAIRS_STATUS}}</van-tag>
     </view>
@@ -51,5 +51,14 @@
   <view  class="loadingBox flex">
     <image class='loadingPic'  src='/static/img/loading.gif'></image>
     <!-- <view class='loadingText'>加载中...</view> -->
+  </view>
+</template>
+
+
+<!-- 维修员列表 -->
+<template name="maintainItem">
+  <view class="maintainItem flex">
+    <text class="f1">{{item.Text}}</text>
+    <text  class="f1 cm_r">{{item.Value}}</text>
   </view>
 </template>

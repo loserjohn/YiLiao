@@ -80,6 +80,11 @@ export const getRepairDetail = function (data) {
   return wxRequest('GET', '/api/Repairs/GetRepairs', data)
 }
 
+// 获取可指派的维修员列表
+export const getMaintainList = function (data) {
+  return wxRequest('GET', '/api/Repairs/GetMakeUserList', data)
+}
+
 // 快速报修
 export const submitRepairs = function (data) {
   return wxRequest('POST', '/api/Repairs/SubmitRepairs', data)

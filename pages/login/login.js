@@ -17,14 +17,14 @@ Page({
   data: {
     form: {
       userName: {
-        value: '',
+        // value: '',
         // value: 'fhosp',
-        // value: 'FY002',
+        value: 'SL001',
         valid: true
       },
       userPass: {
-        // value: '888888',
-        value: '',
+        value: '888888',
+        // value: '',
         // value: '',
         valid: true
       }
@@ -63,8 +63,7 @@ Page({
         username: this.data.form.userName.value,
         password: this.data.form.userPass.value,
         code: code,
-        IsDebug: false,
-        // formid: formid
+        IsDebug: true
       }
       // 登录api
       accountLogin(data).then(res => {

@@ -1,5 +1,5 @@
 /* pages/accessory/subpages/addRepair/addRepair.wxss */
-
+@import '/pages/template/template.wxss';
 .pd_bt{
   padding-bottom: 20rpx
 }

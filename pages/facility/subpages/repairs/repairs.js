@@ -4,7 +4,8 @@ import Notify from '../../../vant/notify/notify';
 import {
   getFacilityDetail,
   submitRepairs,
-  getFacilityList
+  getFacilityList,
+  getMaintainList
 } from '../../../../utils/api.js'
 import Utils from '../../../../utils/util.js'
 const app = getApp()
@@ -28,20 +29,13 @@ Page({
     clientWidth: '',
     form: {
       facilityId:'',
-      repairTime: {
-        val: '',
-        unit: '天'
-      },
-      closeTime: {
-        val: '',
-        unit: '天'
-      },
       emergency: {
         val: 2,
         text: '中级'
       },
-      ifClosing: '1',
-      describe: ''
+      // ifClosing: '1',
+      describe: '',
+      maintain:''
     },
     canEdited: app.globalData.role == 'inspector' ? true : false,
     repairPic: [], //报修问题图片
@@ -49,22 +43,13 @@ Page({
     facility: '', //当前匹配的设备信息
     facilityList:[],
     createTime: '',
-    timeShow: false,
-    actions: [{
-      name: '分'
-    }, {
-      name: '时'
-    }, {
-      name: '天'
-    }, {
-      name: '月'
-    }, {
-      name: '年'
-    }],
+
     currentUnit: 'repairTime',
     loading:false,
     facilityNum:'',
     show2:false, //搜索结果列表显示
+    show3:false,//维修人员显示
+    maintainList:[], //维修员列表
     textArea:false
   },
   // 二维码扫码设备
@@ -133,7 +118,7 @@ Page({
   },
   // 设备编号搜索详情
   search(){
-    // FJ食药监械生产备201900013号
+    //SL00000001
     let facilityNum = this.data.facilityNum;
     let that = this
     if (!facilityNum) {
@@ -209,35 +194,24 @@ Page({
     }
     
   },
-  // 时间单位选择
-  switch (e) {
-    console.log(e.target.id)
-    let current = e.target.id
-    this.setData({
-      timeShow: true,
-      currentUnit: current
-    })
-  },
-  // 选择时间
-  onSelectTime(e) {
-    // console.log(e.detail.name, this.data.currentUnit);
-    let unit = e.detail.name
-    let name = this.data.currentUnit
-    this.data.form[name].unit = unit
-    this.setData({
-      form: this.data.form,
-      timeShow: false
-    })
-  },
-  // 关闭时间弹框
-  onCloseTime(e) {
-    this.setData({
-      timeShow: false
-    })
-  },
+  
   onClose2(){
     this.setData({
       show2: false
+    })
+  },
+  onClose3() {
+    this.setData({
+      show3: false
+    })
+  },
+  // 选择维修员
+  selectMaintain(e){
+    let data = e.currentTarget.dataset.item;
+    this.data.form.maintain = data
+    this.setData({
+      show3: false,
+      form: this.data.form,
     })
   },
   // 选择某一条结果
@@ -251,19 +225,17 @@ Page({
       form: this.data.form,
     })
   },
-  // 选择是否停机
-  onSwitch(e) {
-    // console.log(e.detail);
-    let val = e.detail;
-    this.data.form.ifClosing = val;
-    this.setData({
-      form: this.data.form
-    })
-  },
+
   // 显示紧急程度选项
   handler: function() {
     this.setData({
       show: true
+    })
+  },
+  // 显示维修员选项
+  handler3: function () {
+    this.setData({
+      show3: true
     })
   },
   // 选择紧急程度
@@ -305,6 +277,17 @@ Page({
         });
       }
     });
+
+    // 获取可指派的维修员
+   
+    getMaintainList({ UNIT_CODE: app.globalData.userInfo.USER_UNIT}).then(res=>{
+      if(res.Success){
+        console.log(res.Data.ListInfo)
+        that.setData({
+          maintainList: res.Data.ListInfo
+        })
+      }
+    }).catch(err=>{})
   },
   // 上传故障图片回调
   notifyToSave(res) {
@@ -325,26 +308,16 @@ Page({
       });
       return
     }
-    if (!form.repairTime.val) {
+    if (!form.maintain.Value) {
       Notify({
-        text: '请输入维修耗时',
+        text: '请务必选择维修员',
         duration: 1000,
         selector: '#van-notify',
         backgroundColor: 'red'
       });
       return
     }
-    if (form.ifClosing == 2) {
-      if (!form.closeTime.val) {
-        Notify({
-          text: '请输入停机时间',
-          duration: 1000,
-          selector: '#van-notify',
-          backgroundColor: 'red'
-        });
-        return
-      }
-    }
+
     if (!this.data.repairPic.length || this.data.repairPic.length<=0) {   
         Notify({
           text: '请务必上传故障图片',
@@ -358,16 +331,12 @@ Page({
     let that = this;
     let data = {
       DEVICE_CODE: form.facilityId,
-      MAKE_MEND_DATE: form.repairTime.val + form.repairTime.unit,
       REPAIRS_DESCRIBE: form.describe,
       REPAIRS_IMGLIST: this.data.repairPic.join(','),
       URGENT_TYPE: form.emergency.val,
-      IS_CLOSING: form.ifClosing
+      MAKE_USER: form.maintain.Value
     }
-    if (form.ifClosing==2){
-      // 停机状态下
-      data.CLOSING_TIME= form.closeTime.val + form.closeTime.unit
-    }
+  
     console.log(data)
     this.setData({ loading:true})
     // 提交表单
