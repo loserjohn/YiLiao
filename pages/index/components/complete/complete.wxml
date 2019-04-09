@@ -14,11 +14,7 @@
     {{form.descript?form.descript:'请输入文字信息'}}
   </view>
 
-  <van-field value="" label="维修类型" required border="{{ false }}" disabled/>
-  <van-field wx:if="{{textArea2}}" focus="{{textArea2}}" value="{{form.repairType}}" label="" id="repairType" type="textarea" autosize placeholder="请输入文字信息" border="{{ false }}" input-align="left" bindchange="syncVal" bindblur="textareaClose" />
-  <view wx:else bindtap="showTextArea" id="btn2" class='content'>
-    {{form.repairType?form.repairType:'请输入文字信息'}}
-  </view>
+  
   <!-- 维修耗时 -->
   <van-field value="{{ form.repairTime.val }}" id="repairTime" bind:change="syncVal" required type="number" input-align="right" label="维修耗时" placeholder="请输入数字" border="{{ false }}" use-button-slot>
     <van-button slot="button" size="small" type="primary" id="repairTime" bindtap="switchUnit">{{ form.repairTime.unit }}
@@ -51,13 +47,18 @@
     </van-radio-group>
   </view>
   <view class='title'>额外信息</view>
-  <picker mode="date" value="{{extra.repairTime}}" start="2019-01-01" end="2025-12-12" bindchange="bindDateChange">
+  <!-- <picker mode="date" value="{{extra.repairTime}}" start="2019-01-01" end="2025-12-12" bindchange="bindDateChange">
     <van-cell title="送修时间" required value="{{extra.repairTime}}" is-link />
-  </picker>
+  </picker> -->
 
-  <van-field label="{{switchAccessory==0?'机构名称':'保修公司'}}" required value="{{extra.name}}" input-align="right" border="{{ false }}" id="name" bindchange="syncVal" placeholder="{{switchAccessory==1?'请输入机构名称':'请输入保修公司名称'}}" />
-  <van-field label="联系人" required value="{{extra.menber}}" input-align="right" border="{{ false }}" id="menber" bindchange="syncVal" placeholder="请输入联系人" />
+  <van-field label="{{switchAccessory==0?'机构名称':'售后服务公司'}}" required value="{{extra.name}}" input-align="right" border="{{ false }}" id="name" bindchange="syncVal" placeholder="{{switchAccessory==1?'请输入机构名称':'请输入保修公司名称'}}" />
+  <van-field label="{{switchAccessory==0?'联系人':'售后工程师'}}" required value="{{extra.menber}}" input-align="right" border="{{ false }}" id="menber" bindchange="syncVal" placeholder="请输入联系人" />
   <van-field label="联系方式" required input-align="right" placeholder="请输入联系电话" border="{{ false }}" id="phone" bindchange="syncVal" value="{{extra.phone}}" />
+  <van-field value="" label="维修类型" required border="{{ false }}" disabled/>
+  <van-field wx:if="{{textArea2}}" focus="{{textArea2}}" value="{{form.repairType}}" label="" id="repairType" type="textarea" autosize placeholder="请输入文字信息" border="{{ false }}" input-align="left" bindchange="syncVal" bindblur="textareaClose" />
+  <view wx:else bindtap="showTextArea" id="btn2" class='content'>
+    {{form.repairType?form.repairType:'请输入文字信息'}}
+  </view>
 </van-cell-group>
 
 

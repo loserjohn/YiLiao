@@ -8,7 +8,7 @@ export const ROLE_INSPECTOR = 'inspector'
 export const ROLE_MAINTAIN = 'maintain'
 
 
-//首页的功能显示 inspector是巡检员身份  maintain是维修工身份
+//首页的功能显示 inspector是报修员身份  maintain是维修工身份
  const inspectorRight_index = {
   "repair":{
     name: 'repair',

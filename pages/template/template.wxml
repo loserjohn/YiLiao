@@ -41,6 +41,8 @@
       <view class='orderDesc'>报修编号：{{item.REPAIRS_NUM}}</view>
       <!-- <view class='orderDesc'>设备编号：{{item.DEVICE_NUM}}</view> -->
       <view class='orderDesc'>报修时间：{{item.REPAIRS_DATE}}</view>
+      <view class='orderDesc'>联系人：{{item.USER_FULL_NAME}}</view>
+      <view class='orderDesc'>联系电话：{{item.USER_MOBLIE}}</view>
     </view>
   </van-card>
 </template>

@@ -308,15 +308,15 @@ Page({
       });
       return
     }
-    if (!form.maintain.Value) {
-      Notify({
-        text: '请务必选择维修员',
-        duration: 1000,
-        selector: '#van-notify',
-        backgroundColor: 'red'
-      });
-      return
-    }
+    // if (!form.maintain.Value) {
+    //   Notify({
+    //     text: '请务必选择维修员',
+    //     duration: 1000,
+    //     selector: '#van-notify',
+    //     backgroundColor: 'red'
+    //   });
+    //   return
+    // }
 
     if (!this.data.repairPic.length || this.data.repairPic.length<=0) {   
         Notify({

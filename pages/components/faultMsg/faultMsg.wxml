@@ -7,7 +7,7 @@
   <van-cell title="设备编号" value="{{repairDetailData.DEVICE_NUM}}" />
   <van-cell title="报修状态" value="{{statusFilter.repair(repairDetailData.REPAIRS_STATUS)}}" />
   <van-cell title="报修时间" value="{{repairDetailData.REPAIRS_DATE}}" />
-  <van-cell title="报修人" value="{{repairDetailData.REPAIRS_USER}}" />
+  <van-cell title="报修员" value="{{repairDetailData.REPAIRS_USER}}" />
   <van-cell title="联系方式" value="{{repairDetailData.USER_MOBLIE}}" />
   <van-cell title="故障等级" value="{{repairDetailData.URGENT_TYPE}}" />
   <!-- <van-cell title="故障图片" is-link /> -->

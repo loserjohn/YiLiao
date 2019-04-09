@@ -62,6 +62,7 @@ Page({
   },
   // 重新刷新
   refresh(data, callback) {
+    console.log('首页刷新')
     this.init()
     if (callback) callback()
 

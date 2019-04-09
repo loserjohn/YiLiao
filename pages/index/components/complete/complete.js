@@ -152,9 +152,18 @@ Component({
       let that = this;
       let form = this.data.form
 
-      if (!this.data.form.descript || !this.data.form.repairType ) {
+      if (!this.data.form.descript  ) {
         Notify({
-          text: '请输入维修内容和维修类型',
+          text: '请输入维修内容',
+          duration: 1000,
+          selector: '#van-notify',
+          backgroundColor: 'red'
+        });
+        return
+      }
+      if (!this.data.form.repairTime.val) {
+        Notify({
+          text: '请输入维修耗时',
           duration: 1000,
           selector: '#van-notify',
           backgroundColor: 'red'

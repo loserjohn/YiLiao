@@ -19,7 +19,7 @@ Page({
       userName: {
         // value: '',
         // value: 'fhosp',
-        value: 'SL001',
+        value: 'SL002',
         valid: true
       },
       userPass: {
@@ -57,6 +57,7 @@ Page({
     this.setData({
       loading: true
     })
+   
     // 先获取code
     app.getCode(code => {
       let data = {
@@ -65,6 +66,7 @@ Page({
         code: code,
         IsDebug: true
       }
+      // console.log(data)
       // 登录api
       accountLogin(data).then(res => {
         // console.log(data)

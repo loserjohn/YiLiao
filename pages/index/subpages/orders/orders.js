@@ -61,6 +61,7 @@ Page({
   // 重新刷新
   refresh(data,callback){
     // this.onLoad({ active:this.data.active});
+    console.log('订单刷新')
     this.setData({
       timesample:new Date().getTime()
     })

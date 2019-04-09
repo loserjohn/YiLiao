@@ -18,7 +18,7 @@
 
     <view class='unitName'>{{userInfo.UNIT_NAME}}</view>
     <view class='subUnit'>{{userInfo.UNIT_ADDR}}</view>
-    <view class='permission'>{{role=='inspector'?'巡检员':'维修员'}}</view>
+    <view class='permission'>{{role=='inspector'?'报修员':'维修员'}}</view>
     <view class='orderBox'>
       <!-- <blocktitle icon="icon-jinzhidengji" title="维修管理" wx:if="{{role=='maintain'}}"></blocktitle> -->
       <view class='cm_blocks'>
