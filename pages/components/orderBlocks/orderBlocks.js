@@ -1,7 +1,10 @@
 // pages/components/orderBlocks/orderBlocks.js
 const app = getApp()
+import Dialog from '../../vant/dialog/dialog';
+import Toast from '../../vant/toast/toast';
 import {
-  getRepairList
+  getRepairList,
+  doneRepairsTest
 } from '../../../utils/api.js'
 Component({
   /**
@@ -108,6 +111,28 @@ Component({
       this.data.pageIndex += 1;
 
       this.loadData()
+    },
+    // 完成测试
+    doneRepairsTest(e){
+      let that = this;   
+      let key = e.target.id;
+      Dialog.confirm({
+        title: '确认操作',
+        message: '确认该设备已完成维修并且正常运行'
+      }).then((res) => {
+        // api操作
+        doneRepairsTest({ REPAIRS_CODE: key }).then(res => {
+          console.log(res)
+          if (res.Success) {
+              Toast.success('维修完成');
+            }
+          }).catch(err => {
+            Toast.fail(res.Msg ? res.Msg : '操作失败')
+          })
+      
+      }).catch(() => {
+        // on cancel
+      });
     }
     
   }

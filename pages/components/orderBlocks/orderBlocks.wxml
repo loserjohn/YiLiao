@@ -36,8 +36,16 @@
           </navigator>
         </block>       
       </view>
+       <!-- 试机中 -->
+      <view class="main" wx:if="{{type==3 }}">
+        <block wx:for="{{list}}" wx:key="index">
+          <navigator url="/pages/index/subpages/repairMsg/repairMsg?repairCode={{item.REPAIRS_CODE}}&facilityId={{item.DEVICE_CODE}}" >
+            <template is="orderItem" data="{{ item:item,color:'#549ff8',incheck:role=='inspector'?true:false}}"></template>  
+          </navigator>
+        </block>       
+      </view>
       <!-- 已完成 -->
-      <view class="main" wx:if="{{type==3}}">
+      <view class="main" wx:if="{{type==4}}">
         <block wx:for="{{list}}" wx:key="index">
           <navigator url="/pages/index/subpages/repairMsg/repairMsg?repairCode={{item.REPAIRS_CODE}}" >
             <template is="orderItem" data="{{ item:item,color:'#11bf67'}}"></template>  
@@ -46,8 +54,6 @@
       </view>
     </van-cell-group>
     <moreReminder loading="{{loading}}" nomore="{{!rest}}"></moreReminder>
-
-      <!-- <moreReminder loading="{{true}}" nomore="{{true}}"></moreReminder> -->
   </scroll-view>
 </view>
 <view wx:else class='red' style="{{'height:'+height}}">

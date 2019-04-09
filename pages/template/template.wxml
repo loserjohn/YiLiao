@@ -44,6 +44,9 @@
       <view class='orderDesc'>联系人：{{item.USER_FULL_NAME}}</view>
       <view class='orderDesc'>联系电话：{{item.USER_MOBLIE}}</view>
     </view>
+    <view slot="footer" wx:if="{{incheck?true:false}}">
+      <van-button size="small" type="danger" id="{{item.REPAIRS_CODE}}" catchtap="doneRepairsTest">试机确认</van-button>
+    </view>
   </van-card>
 </template>
 

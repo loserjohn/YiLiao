@@ -6,7 +6,8 @@ import Toast from '../../../vant/toast/toast';
 const app = getApp()
 
 import {
-  completeRepair
+  completeRepair,
+  getWarrantyInfo
 } from '../../../../utils/api.js'
 
 Component({
@@ -34,22 +35,23 @@ Component({
     completeTime: Utils.formatTime(new Date()).split(' ')[0],
     switchAccessory: '0',
     extra: {
-      repairTime: Utils.formatTime(new Date()).split(' ')[0],
+      // repairTime: Utils.formatTime(new Date()).split(' ')[0],
       name: '',
       menber: '',
-      phone: ''
+      phone: '',
+      repairType: ''
     },
+    facilityId:'',
     repairDetailData: '',
     textArea1: false, //维修内容显示切换
     textArea2: false, //维修类型显示切换
     form: {
-      facilityId: '',
       repairTime: {
         val: '',
         unit: '天'
       },
       closeTime: {
-        val: '',
+        val: 1,
         unit: '天'
       },
       emergency: {
@@ -58,7 +60,6 @@ Component({
       },
       ifClosing: '1',
       descript: '',
-      repairType: ''
     },
     timeShow: false,
     currentUnit: 'repairTime', //当前的时间单位的匹配表单项
@@ -109,9 +110,9 @@ Component({
       }
     },
     syncVal(e) {
-      console.log(e.target.id, e.detail)
+      // console.log(e.target.id, e.detail)
       let key = e.target.id
-      if (key == 'descript' || key == 'repairType') {
+      if (key == 'descript') {
         this.data.form[key] = e.detail
         this.setData({
           form: this.data.form
@@ -132,27 +133,69 @@ Component({
         form: this.data.form
       })
     },
-    // 是否委托第三方
+    // 是否维保  若是 则自动填写表单
     onSwitch(e) {
-      this.setData({
-        switchAccessory: e.detail
-      })
+      let that = this
+      let val = parseInt(e.detail) ;
+      // 1是维保 0是不维保
+      switch (val) {
+        case 1:
+          // 维保
+          // 自动保定维保信息
+          Toast.loading({
+            mask: true,
+            message: '自动匹配中...'
+          });
+         
+          getWarrantyInfo({ DEVICE_CODE: this.data.facilityId}).then(res=>{
+            Toast.clear();
+            if(res.Success){
+              res = res.Data;
+              that.data.extra.name = res.KEEP_COMPANY;
+              that.data.extra.menber = res.KEEP_NAME;
+              that.data.extra.phone = res.KEEP_PHONE;
+              that.data.extra.repairType = res.WARRANTY_TYPE;
+              that.setData({
+                extra: that.data.extra,
+                switchAccessory: e.detail
+              })
+            }
+            
+          }).catch(err=>{
+            Toast.clear();
+          })
+
+          break;
+        case 0:
+          // 不维保
+          that.data.extra.name = '';
+          that.data.extra.menber = '';
+          that.data.extra.phone = '';
+          that.data.extra.repairType = '';
+            that.setData({
+              extra: that.data.extra,
+              switchAccessory: e.detail
+            })
+          break;
+        default:
+      }
+     
     },
     // 选择时间
-    bindDateChange(e) {
-      // console.log(e.detail)
-      let time = e.detail.value;
-      this.data.extra.repairTime = time
-      this.setData({
-        extra: this.data.extra
-      })
-    },
+    // bindDateChange(e) {
+    //   // console.log(e.detail)
+    //   let time = e.detail.value;
+    //   this.data.extra.repairTime = time
+    //   this.setData({
+    //     extra: this.data.extra
+    //   })
+    // },
     // 完成报修
     submitComplete() {
       let that = this;
       let form = this.data.form
 
-      if (!this.data.form.descript  ) {
+      if (!this.data.form.descript) {
         Notify({
           text: '请输入维修内容',
           duration: 1000,
@@ -164,6 +207,24 @@ Component({
       if (!this.data.form.repairTime.val) {
         Notify({
           text: '请输入维修耗时',
+          duration: 1000,
+          selector: '#van-notify',
+          backgroundColor: 'red'
+        });
+        return
+      }
+      if (!this.data.form.repairTime.val) {
+        Notify({
+          text: '请输入维修耗时',
+          duration: 1000,
+          selector: '#van-notify',
+          backgroundColor: 'red'
+        });
+        return
+      }
+      if (this.data.form.ifClosing == 2 && !this.data.form.closeTime.val) {
+        Notify({
+          text: '请输入停机时间',
           duration: 1000,
           selector: '#van-notify',
           backgroundColor: 'red'
@@ -205,7 +266,7 @@ Component({
         REPAIRS_CODE: this.data.repairCode,
         IS_THIRDPARTY: this.data.switchAccessory,
         MAKE_DESCRIBE: this.data.form.descript,
-        MAINTAIN_TYPE: this.data.form.repairType,
+        MAINTAIN_TYPE: this.data.extra.repairType,
         IS_CLOSING: this.data.form.ifClosing,
         THIRDPARTY_NAME: this.data.extra.name,
         MAINTAIN_USER: this.data.extra.menber,

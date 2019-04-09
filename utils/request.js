@@ -1,4 +1,4 @@
-const baseURL = 'http://wx.fjdmll.com'
+const baseURL = 'http://testwx.fjdmll.com'
 const app = getApp()
 import {
   wxLogin

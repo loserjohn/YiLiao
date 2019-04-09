@@ -82,7 +82,7 @@ Component({
         title: '维修完成',
         handle: () => {
           wx.navigateTo({
-            url: '/pages/index/subpages/orders/orders?active=3'
+            url: '/pages/index/subpages/orders/orders?active=4'
           })
         }
       },

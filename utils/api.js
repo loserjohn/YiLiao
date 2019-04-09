@@ -1,5 +1,4 @@
 import wxRequest from './request.js';
-export const baseURL = 'http://wx.fjdmll.com'
 
 // 获取系统信息
 export const getSystemInfo = function (data) {
@@ -90,6 +89,11 @@ export const submitRepairs = function (data) {
   return wxRequest('POST', '/api/Repairs/SubmitRepairs', data)
 }
 
+// 完成试机
+export const doneRepairsTest = function (data) {
+  return wxRequest('POST', '/api/PartChanger/DoneRepairsTest', data)
+}
+
 // 添加存在的备件 
 export const addAccessory = function (data) {
   return wxRequest('POST', '/api/PartChanger/SubmitBePart', data)
@@ -114,6 +118,12 @@ export const beginRepair = function (data) {
 export const matingAccessory = function (data) {
   return wxRequest('GET', '/api/PartChanger/GetUsePartList', data)
 }
+
+// 自动绑定维保信息
+export const getWarrantyInfo = function (data) {
+  return wxRequest('GET', '/api/Device/GetWarrantyInfo', data)
+}
+
 
 // 完成报修
 export const completeRepair = function (data) {
