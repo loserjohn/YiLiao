@@ -60,8 +60,15 @@ export const editedFacility = function (data) {
 // 备件部分
 // 获取备件列表
 export const getAccessoryList = function(data) {
-  return wxRequest('GET', '/api/Part/GetPartList', data)
+  return wxRequest('GET', '/api/Part/GetPublicPartList', data)
 }
+
+// 关联备件列表
+export const getLinkPartList = function (data) {
+  return wxRequest('GET', '/api/Part/GetLinkPartList', data)
+}
+
+
 
 // 报修工单部分
 
@@ -91,13 +98,19 @@ export const submitRepairs = function (data) {
 
 // 完成试机
 export const doneRepairsTest = function (data) {
-  return wxRequest('POST', '/api/PartChanger/DoneRepairsTest', data)
+  return wxRequest('POST', '/api/Repairs/DoneRepairsTest', data)
 }
 
-// 添加存在的备件 
+// 添加存在的公共备件 
 export const addAccessory = function (data) {
-  return wxRequest('POST', '/api/PartChanger/SubmitBePart', data)
+  return wxRequest('POST', '/api/PartChanger/SubmitPublicBePart', data)
 }
+// 添加存在的关联备件 
+export const addLinkAccessory = function (data) {
+  return wxRequest('POST', '/api/PartChanger/SubmitLinkBePart', data)
+}
+
+
 
 // 添加不存在的备件 
 export const addNewAccessory = function (data) {
@@ -121,7 +134,7 @@ export const matingAccessory = function (data) {
 
 // 自动绑定维保信息
 export const getWarrantyInfo = function (data) {
-  return wxRequest('GET', '/api/Device/GetWarrantyInfo', data)
+  return wxRequest('POST', '/api/Repairs/GetKeepInfo', data)
 }
 
 
@@ -134,3 +147,15 @@ export const completeRepair = function (data) {
 export const relevantAccessory = function (data) {
   return wxRequest('GET', '/api/PartChanger/GetPartModel', data)
 }
+
+// // 获取售后公司列表
+// export const relevantAccessory = function (data) {
+//   return wxRequest('GET', '/api/PartChanger/GetPartModel', data)
+// }
+
+// 获取已被使用的备件的详情
+export const getKeepList = function (data) {
+  return wxRequest('GET', '/api/Repairs/GetKeepList', data)
+}
+
+

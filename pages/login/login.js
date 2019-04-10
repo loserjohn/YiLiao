@@ -17,14 +17,15 @@ Page({
   data: {
     form: {
       userName: {
-        // value: '',
+        value: '',
         // value: 'fhosp',
-        value: 'SL002',
+        // value: 'xh001',
+        // value: 'sl002',
         valid: true
       },
       userPass: {
-        value: '888888',
-        // value: '',
+        // value: '888888',
+        value: '',
         // value: '',
         valid: true
       }
@@ -66,7 +67,7 @@ Page({
         code: code,
         IsDebug: true
       }
-      // console.log(data)
+      console.log(data)
       // 登录api
       accountLogin(data).then(res => {
         // console.log(data)
@@ -329,7 +330,7 @@ Page({
 
     // 先获取用户微信信息
     this.getUserMsg(()=>{
-      this.ifAutoLogin()
+      // this.ifAutoLogin()
     })
     
   },

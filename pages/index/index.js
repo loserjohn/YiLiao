@@ -39,20 +39,20 @@ Page({
   // 处理数组添加badage
   renderPanels(callback){ 
     getUserMsg().then(res=>{   
-      if (res.Data.waitingRepair && permissionObj.waitingRepair){
+      if (res.Data.waitingRepair>=0 && permissionObj.waitingRepair){
         permissionObj.waitingRepair.badge = res.Data.waitingRepair
       }
-      if (res.Data.inRepair && permissionObj.inRepair) {
+      if (res.Data.inRepair>=0 && permissionObj.inRepair) {
         permissionObj.inRepair.badge = res.Data.inRepair
       }   
       let permissionArr = Object.values(permissionObj);
-      console.log("用户信息",res)
+      console.log("用户信息", res, permissionArr)
       app.globalData.userInfo = res.Data.user
       this.setData({
         userInfo: res.Data.user
       })
       if (callback) {
-        callback(permissionArr)
+        callback(permissionArr) 
       }    
     }).catch(err=>{
       // debugger
@@ -61,8 +61,9 @@ Page({
     
   },
   // 重新刷新
-  refresh(data, callback) {
+  indexRefresh(data, callback) {
     console.log('首页刷新')
+    permissionObj = {}
     this.init()
     if (callback) callback()
 
@@ -72,6 +73,7 @@ Page({
     let role = app.globalData.role
     permisionFilter(role, (res) => {
       permissionObj = res
+      // debugger
       this.renderPanels((arr) => {
         this.setData({
           role: role,
@@ -99,10 +101,10 @@ Page({
     if (!role) return
     this.setData({
       role: role,
-      systemInfo: app.globalData.systemInfo.IndexBgImg[0]?app.globalData.systemInfo.IndexBgImg[0]:''
+      systemInfo: app.globalData.systemInfo?app.globalData.systemInfo.IndexBgImg[0]:''
     })
     // 添加全局事件
-    app.event.on('refresh', this.refresh, this)
+    app.event.on('indexRefresh', this.indexRefresh, this)
     // 权限判断
     this.init()
 
@@ -114,4 +116,8 @@ Page({
     // console.log(1111)
    
   }, 
+  onUnload: function () {
+
+    app.event.off('indexRefresh')
+  },
 })

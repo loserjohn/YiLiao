@@ -19,15 +19,15 @@ function status(val,t){
       break;
     case 2:
       s_res.color = '#f38868'
-      s_res.text = '故障'
+      s_res.text = '维修中'
       break;
     case 3:
       s_res.color = '#518eda'
-      s_res.text = '报废'
+      s_res.text = '试机中'
       break;
     case 4:
       s_res.color = '#4581ef'
-      s_res.text = '维修中'
+      s_res.text = '报废'
       break;
     case 5:
       s_res.color = '#ce1638'
@@ -38,7 +38,7 @@ function status(val,t){
       s_res.text = '其他'
       break;
   }
-  console.log(s_res)
+  // console.log(s_res)
   if (s_res[t]){
     return s_res[t]
   }  

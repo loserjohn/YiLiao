@@ -10,7 +10,7 @@
     </view>
   </view>
   <view class='f1 overhidden ' id="scrollBox"> 
-      <scroll-view scroll-y class='cm_scroll_y ' style="{{'height:'+height}}"  bindscrolltolower="loadMore">
+      <scroll-view wx:if="{{list.length>0}}" scroll-y class='cm_scroll_y ' style="{{'height:'+height}}"  bindscrolltolower="loadMore">
         <van-cell-group>
           <view class="">
             <block wx:for="{{list}}" wx:key="index">
@@ -22,7 +22,11 @@
           </view>
         </van-cell-group>
       </scroll-view>
+      <view wx:else style="{{'height:'+height}}" class=''>
+        <noItems></noItems>
+      </view>
   </view>
 </view>
+
 <van-toast id="van-toast" zIndex="10000" />
 <van-notify id="van-notify" />

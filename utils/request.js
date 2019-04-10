@@ -1,4 +1,4 @@
-const baseURL = 'http://testwx.fjdmll.com'
+export const baseURL = 'http://wx.fjdmll.com'
 const app = getApp()
 import {
   wxLogin
@@ -49,12 +49,21 @@ const wxRequest =  function (method, url, data) {
 
               }
             })
+          }else{
+            wx.showToast({
+              title: res.data.Msg ? res.data.Msg : '操作失败',
+              icon: 'none'
+            })
+            reject(res.data.Msg ? res.data : { Msg: '服务器未知错误' })
           }
-          resolve(res.data.Msg ? res.data : { Msg: '服务器未知错误'})
+          
         }      
       },
       fail: function (err) {
-        console.log('请求错误处理', err)
+        wx.showToast({
+          title: '服务器请求失败',
+          icon: 'none'
+        })
         reject(err)
         // errFun(res); 
       }

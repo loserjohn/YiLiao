@@ -9,7 +9,7 @@
     <view slot="desc">
       <view class='orderDesc'>设备编号：{{item.DEVICE_NUM}}</view>
       <view class='orderDesc'>设备型号：{{item.DEVICE_SPCE}}</view>
-      <view class='orderDesc'>所在位置{{item.SOURCE_UNIT}}</view>
+      <view class='orderDesc'>所属科室：{{item.SOURCE_UNIT}}</view>
     </view>
   </van-card>
 </template>
@@ -41,7 +41,7 @@
       <view class='orderDesc'>报修编号：{{item.REPAIRS_NUM}}</view>
       <!-- <view class='orderDesc'>设备编号：{{item.DEVICE_NUM}}</view> -->
       <view class='orderDesc'>报修时间：{{item.REPAIRS_DATE}}</view>
-      <view class='orderDesc'>联系人：{{item.USER_FULL_NAME}}</view>
+      <view class='orderDesc'>{{role=='inspector'?'维修员':'报修员'}}：{{item.USER_FULL_NAME}}</view>
       <view class='orderDesc'>联系电话：{{item.USER_MOBLIE}}</view>
     </view>
     <view slot="footer" wx:if="{{incheck?true:false}}">

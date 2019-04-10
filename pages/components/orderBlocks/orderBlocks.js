@@ -49,7 +49,7 @@ Component({
      */
   attached() {
     let H = app.globalData.winHeight;
-    // console.log(app.globalData.role)
+    console.log(app.globalData.role)
     this.setData({
       height: H - 44 -44+ 'px',
       role: app.globalData.role
@@ -120,11 +120,13 @@ Component({
         title: '确认操作',
         message: '确认该设备已完成维修并且正常运行'
       }).then((res) => {
+        console.log(key)
         // api操作
         doneRepairsTest({ REPAIRS_CODE: key }).then(res => {
           console.log(res)
           if (res.Success) {
               Toast.success('维修完成');
+              app.event.emit('refresh', '');
             }
           }).catch(err => {
             Toast.fail(res.Msg ? res.Msg : '操作失败')

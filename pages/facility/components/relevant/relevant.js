@@ -1,6 +1,6 @@
 // pages/facility/components/relevant/relevant.js
 import {
-  getAccessoryList
+  getLinkPartList
 } from '../../../../utils/api.js'
 Component({
   options: {
@@ -50,8 +50,7 @@ Component({
         pageSize: 100,
         DEVICE_CODE: val
       }
-      getAccessoryList(data).then(res => {
-        
+      getLinkPartList(data).then(res => {      
         that.setData({
           list: res.Data.ListInfo,
           // prePic: res.Data.DEVICE_IMGLIST.split(',')

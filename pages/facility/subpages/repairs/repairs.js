@@ -30,8 +30,8 @@ Page({
     form: {
       facilityId:'',
       emergency: {
-        val: 2,
-        text: '中级'
+        val: 0,
+        text: '低级'
       },
       // ifClosing: '1',
       describe: '',
@@ -280,14 +280,14 @@ Page({
 
     // 获取可指派的维修员
    
-    getMaintainList({ UNIT_CODE: app.globalData.userInfo.USER_UNIT}).then(res=>{
-      if(res.Success){
-        console.log(res.Data.ListInfo)
-        that.setData({
-          maintainList: res.Data.ListInfo
-        })
-      }
-    }).catch(err=>{})
+    // getMaintainList({ UNIT_CODE: app.globalData.userInfo.USER_UNIT}).then(res=>{
+    //   if(res.Success){
+    //     console.log(res.Data.ListInfo)
+    //     that.setData({
+    //       maintainList: res.Data.ListInfo
+    //     })
+    //   }
+    // }).catch(err=>{})
   },
   // 上传故障图片回调
   notifyToSave(res) {
@@ -333,8 +333,7 @@ Page({
       DEVICE_CODE: form.facilityId,
       REPAIRS_DESCRIBE: form.describe,
       REPAIRS_IMGLIST: this.data.repairPic.join(','),
-      URGENT_TYPE: form.emergency.val,
-      MAKE_USER: form.maintain.Value
+      URGENT_TYPE: form.emergency.val
     }
   
     console.log(data)

@@ -3,7 +3,7 @@ import Notify from '../../vant/notify/notify';
 import Dialog from '../../vant/dialog/dialog'; 
 import {
   baseURL
-} from '../../../utils/api.js'
+} from '../../../utils/request.js'
 
 Component({
   options: {

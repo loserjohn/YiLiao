@@ -49,7 +49,7 @@ Page({
     let data = {
       REPAIRS_CODE: code,
     }
-    console.log(1111,data)
+    // console.log(1111,data)
     getRepairDetail(data).then(res => {
      
       if (res.Success) {

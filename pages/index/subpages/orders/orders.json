@@ -5,9 +5,8 @@
     },
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "保修工单管理",
+    "navigationBarTitleText": "维修工单管理",
     "backgroundColor": "#f1f1f1",
     "backgroundTextStyle": "light",
-    "disableScroll":false,
-    "enablePullDownRefresh": true
+    "disableScroll":false
 }

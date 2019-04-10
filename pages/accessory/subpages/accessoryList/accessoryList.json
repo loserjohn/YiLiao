@@ -2,7 +2,8 @@
   "usingComponents": {
     "moreReminder": "../../../components/moreReminder/moreReminder",
     "QrScan": "../../../components/scan/scan",
-    "relevant":"/pages/facility/components/relevant/relevant"
+    "relevant":"/pages/facility/components/relevant/relevant",
+    "noItems": "/pages/components/noItems/noItems"
   },
   "navigationBarTitleText": "备件列表"
 }

@@ -86,6 +86,7 @@ Component({
           })
           setTimeout(() => {
             app.event.emit('refresh', '')
+            app.event.emit('indexRefresh', '');
             wx.navigateBack({});
             that.setData({
               loading: false

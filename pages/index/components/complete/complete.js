@@ -3,11 +3,14 @@
 import Utils from '../../../../utils/util.js'
 import Notify from '../../../vant/notify/notify';
 import Toast from '../../../vant/toast/toast';
+
+
 const app = getApp()
 
 import {
   completeRepair,
-  getWarrantyInfo
+  getWarrantyInfo,
+  getKeepList
 } from '../../../../utils/api.js'
 
 Component({
@@ -41,7 +44,7 @@ Component({
       phone: '',
       repairType: ''
     },
-    facilityId:'',
+    facilityId: '',
     repairDetailData: '',
     textArea1: false, //维修内容显示切换
     textArea2: false, //维修类型显示切换
@@ -74,6 +77,8 @@ Component({
     }, {
       name: '年'
     }],
+    showCompany: false,
+    columns: []
   },
   /**
    * 组件的方法列表
@@ -89,6 +94,21 @@ Component({
         facilityId: val.DEVICE_CODE,
         repairCode: val.REPAIRS_CODE,
       });
+
+      // 预加载本医院的维保公司
+      // console.log(app.globalData.userInfo)
+      getKeepList({
+        UNIT_CODE: app.globalData.userInfo.USER_UNIT
+      }).then(res => {
+        console.log(res)
+        if (res.Success) {
+          that.setData({
+            columns2: res.Data.ListInfo
+          })
+        }
+      }).catch(err => {
+
+      })
     },
     // 显示原本的文本域
     showTextArea(e) {
@@ -136,35 +156,15 @@ Component({
     // 是否维保  若是 则自动填写表单
     onSwitch(e) {
       let that = this
-      let val = parseInt(e.detail) ;
+      let val = parseInt(e.detail);
       // 1是维保 0是不维保
       switch (val) {
         case 1:
           // 维保
-          // 自动保定维保信息
-          Toast.loading({
-            mask: true,
-            message: '自动匹配中...'
-          });
-         
-          getWarrantyInfo({ DEVICE_CODE: this.data.facilityId}).then(res=>{
-            Toast.clear();
-            if(res.Success){
-              res = res.Data;
-              that.data.extra.name = res.KEEP_COMPANY;
-              that.data.extra.menber = res.KEEP_NAME;
-              that.data.extra.phone = res.KEEP_PHONE;
-              that.data.extra.repairType = res.WARRANTY_TYPE;
-              that.setData({
-                extra: that.data.extra,
-                switchAccessory: e.detail
-              })
-            }
-            
-          }).catch(err=>{
-            Toast.clear();
-          })
 
+          that.setData({
+            switchAccessory: e.detail
+          })
           break;
         case 0:
           // 不维保
@@ -172,14 +172,14 @@ Component({
           that.data.extra.menber = '';
           that.data.extra.phone = '';
           that.data.extra.repairType = '';
-            that.setData({
-              extra: that.data.extra,
-              switchAccessory: e.detail
-            })
+          that.setData({
+            extra: that.data.extra,
+            switchAccessory: e.detail
+          })
           break;
         default:
       }
-     
+
     },
     // 选择时间
     // bindDateChange(e) {
@@ -213,15 +213,7 @@ Component({
         });
         return
       }
-      if (!this.data.form.repairTime.val) {
-        Notify({
-          text: '请输入维修耗时',
-          duration: 1000,
-          selector: '#van-notify',
-          backgroundColor: 'red'
-        });
-        return
-      }
+
       if (this.data.form.ifClosing == 2 && !this.data.form.closeTime.val) {
         Notify({
           text: '请输入停机时间',
@@ -234,7 +226,7 @@ Component({
       // 若委托第三方
       if (!this.data.extra.name) {
         Notify({
-          text: '请输入机构名称',
+          text: '请选择维保机构',
           duration: 1000,
           selector: '#van-notify',
           backgroundColor: 'red'
@@ -287,17 +279,19 @@ Component({
         if (res.Success) {
           Toast.success('维修完成')
           app.event.emit('refresh', '');
+          app.event.emit('indexRefresh', '');
           setTimeout(() => {
             wx.navigateBack({})
           }, 1000)
-        } else {
-          Toast.fail(res.Msg ? res.Msg : '操作失败')
-        }
+        } 
         that.setData({
           loading: false
         })
       }).catch(err => {
-
+       
+        that.setData({
+          loading: false
+        })
       })
     },
     // 关闭文本域
@@ -333,5 +327,42 @@ Component({
         timeShow: false
       })
     },
+    // 显示维保公司
+    showCompany(e) {
+      this.setData({
+        showCompany: !this.data.showCompany
+      })
+    },
+    // 选择维保公司
+    selectCompany(e) {
+      console.log(e.detail.value.Value);
+      let that = this
+      let val = e.detail.value.Value;
+      // 自动保定维保信息
+      Toast.loading({
+        mask: true,
+        message: '自动匹配中...'
+      });
+
+      getWarrantyInfo({
+        KEEP_CODE: val
+      }).then(res => {
+        Toast.clear();
+        if (res.Success) {
+          res = res.Data;
+          that.data.extra.name = res.KEEP_COMPANY;
+          that.data.extra.menber = res.KEEP_NAME;
+          that.data.extra.phone = res.KEEP_PHONE;
+          that.data.extra.repairType = res.WARRANTY_TYPE;
+          that.setData({
+            extra: that.data.extra,
+            showCompany: false
+          })
+        }
+      }).catch(err => {
+        Toast.clear();
+      })
+
+    }
   }
 })

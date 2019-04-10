@@ -5,6 +5,7 @@ import {
 } from '../../../../utils/api.js'
 import Toast from '../../../vant/toast/toast';
 import Notify from '../../../vant/notify/notify';
+// import noItems from '../../../components/noItems/noItems';
 Page({
 
   /**
@@ -80,9 +81,10 @@ Page({
     })
     // api请求
     getAccessoryList(data).then(res => {
-      console.log(res.Data.ListInfo)
+      // console.log(res.Data.ListInfo)
+       that.data.list = that.data.list.concat(res.Data.ListInfo);
       // 后面还有数据
-      that.data.list = that.data.list.concat(res.Data.ListInfo);
+      
       // 后面y有没有数据了
       if (that.data.list.length >= res.Data.Total) {
        
@@ -100,7 +102,10 @@ Page({
       // console.log(that.data.index, that.data.list.length);
       if (callback) callback(res.Data.Total)
     }).catch(err => {
-
+      console.log(that.data.list)
+      that.setData({
+        loading: false
+      })
     })
   },
   // 加载更多

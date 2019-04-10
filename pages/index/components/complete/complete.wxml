@@ -47,9 +47,8 @@
     </van-radio-group>
   </view>
   <view class='title'>额外信息</view>
-  <!-- <picker mode="date" value="{{extra.repairTime}}" start="2019-01-01" end="2025-12-12" bindchange="bindDateChange">
-    <van-cell title="送修时间" required value="{{extra.repairTime}}" is-link />
-  </picker> -->
+  <van-cell required title="选择维保公司" wx:if="{{switchAccessory==1}}" value="{{extra.name}}" is-link bind:click="showCompany" />
+
 
   <van-field label="{{switchAccessory==0?'机构名称':'售后服务公司'}}" disabled="{{switchAccessory==0?false:true}}" required value="{{extra.name}}" input-align="right" border="{{ false }}" id="name" bindchange="syncVal"  placeholder="{{switchAccessory==1?'请输入机构名称':'请输入保修公司名称'}}" />
   <van-field label="{{switchAccessory==0?'联系人':'售后工程师'}}" required disabled="{{switchAccessory==0?false:true}}" value="{{extra.menber}}" input-align="right" border="{{ false }}" id="menber" bindchange="syncVal" placeholder="请输入联系人" />
@@ -64,3 +63,8 @@
   </van-button>
 </view>
 <van-action-sheet title="时间单位" show="{{ timeShow }}" actions="{{ actions }}" bind:close="onCloseTime" bind:select="onSelectTime" safe-area-inset-bottom />
+
+
+<van-popup show="{{ showCompany }}" position="bottom" overlay="{{ true }}" close-on-click-overlay safe-area-inset-bottom>
+  <van-picker show-toolbar title="选择维保公司" value-key="Text"  columns="{{ columns2 }}" bind:cancel="showCompany" bind:confirm="selectCompany" />
+</van-popup>

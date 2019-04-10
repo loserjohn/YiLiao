@@ -100,7 +100,8 @@ Page({
       PART_NUM: this.data.form.accessoryNum,
       PART_PRICE: this.data.form.accessoryPrize,
       PART_DESCRIBE: this.data.form.accessoryDes,
-      IS_Create: this.data.form.accessoryCreate?1:0   
+      IS_Create: this.data.form.accessoryCreate?1:0,
+      UNIT_CODE: app.globalData.userInfo.USER_UNIT
     }
     // console.log(data)
     this.setData({

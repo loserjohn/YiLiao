@@ -19,7 +19,10 @@
     <van-transition show="{{ facility?true:false }}" name="slide-down" custom-class="block">
       <van-cell-group custom-class="cm_block">
         <van-cell required title="设备名称" value="{{facility.DEVICE_NAME}}" />
-        <van-cell required title="规格型号" value="{{facility.DEVICE_SPCE}}" />
+        <van-cell required title="设备规格" value="{{facility.DEVICE_SPCE}}" />
+        <van-cell required title="设备型号" value="{{facility.DEVICE_GENRE}}" />
+        <van-cell required title="设备品牌" value="{{facility.DEVICE_BRAND}}" />
+        <van-cell required title="维修员" value="{{facility.MANAGE_USER}}" />
         <van-cell required title="所属科室" value="{{facility.SOURCE_UNIT}}" />
         <van-cell required title="设备产商" value="{{facility.DEVICE_SUPPLIER}}" />
 

@@ -41,7 +41,7 @@ Component({
     let H = app.globalData.winHeight;
     // console.log(H - 44 - 44 + 'px')
     this.setData({
-      height: H - 44 - 44 + 'px'
+      height: H - 44 - 44 -52 + 'px'
     })
   },
   /**

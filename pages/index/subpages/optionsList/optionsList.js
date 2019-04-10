@@ -3,6 +3,7 @@ const app = getApp()
 import {
   getAccessoryList,
   addAccessory,
+  addLinkAccessory,
   getRepairDetail
 } from '../../../../utils/api.js'
 import Toast from '../../../vant/toast/toast';
@@ -151,34 +152,6 @@ Page({
     })
     // app.event.on('refresh', this.refresh, this)
   },
-  // 刷新数据
-  // refresh() {
-  //   this.setData({
-  //     keyword: '', //搜索关键字
-  //     index: 1,
-  //     size: 8,
-  //     rest: true, //是否有剩余条目
-  //     loading: false,
-  //     num: 0,
-  //     show: false,
-  //     textArea: false,
-  //     height: '0',
-  //     currentType: 2,
-  //     list: [],
-
-  //     currentAccessory: {}, //当前弹窗选择的备件
-  //     selectForm: {
-  //       selectNum: 1,
-  //       selectDes: '',
-  //       selectPrize: 0,
-  //       selectAmount: 0
-  //     },
-  //     facilityId: '',
-  //     repairCode: '',
-  //     repairDetail: '' //如果是选择更换备件则这里存放绑定的订单信息
-  //   })
-  //   this.loadData()
-  // },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -253,28 +226,51 @@ Page({
         Toast.fail('请输入更换描述');
         return;
       }
-      // 异步关闭弹窗
       let data = {
         REPAIRS_CODE: this.data.repairCode,
-        PART_CODE: this.data.currentAccessory.PART_CODE,
+       
         PART_NUM: this.data.selectForm.selectNum,
         PART_PRICE: this.data.selectForm.selectAmount,
         PART_DESCRIBE: this.data.selectForm.selectDes
       }
-      // console.log('表单数据', data)
-      addAccessory(data).then(res => {
-        if (res.Success) {
-          Toast.success('添加备件成功');
 
-        }
-        that.setData({
-          show: false
-        });
-        app.event.emit('partRefresh', '')
-      }).catch(err => {
+      if (this.data.currentAccessory.PARTLINK_CODE){
+        data.PARTLINK_CODE = this.data.currentAccessory.PARTLINK_CODE;
+        console.log(data)
+        // 选择更换关联配件
+        addLinkAccessory(data).then(res => {
+          if (res.Success) {
+            Toast.success('添加关联备件成功');
 
-      })
+          }
+          that.setData({
+            show: false
+          });
+          app.event.emit('partRefresh', '')
+        }).catch(err => {
+          that.setData({
+            show: false
+          });
+        })
+      }else{
+        data.PART_CODE = this.data.currentAccessory.PART_CODE;
+        // 选择更换公共配件
+        addAccessory(data).then(res => {
+          if (res.Success) {
+            Toast.success('添加公共备件成功');
 
+          }
+          that.setData({
+            show: false
+          });
+          app.event.emit('partRefresh', '')
+        }).catch(err => {
+          that.setData({
+            show: false
+          });
+        })
+      }
+      // 异步关闭弹窗  
     } else {
       this.setData({
         show: false,
@@ -297,7 +293,7 @@ Page({
       show: true
     })
   },
-  // 点击选择备件数量 本组件里面的
+  // 点击选择备件数量 relevent组件里面的选择回调
   setNum2: function(res) {
     // res为选择的备件
     let data = res.detail
