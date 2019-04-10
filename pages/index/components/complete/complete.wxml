@@ -47,13 +47,13 @@
     </van-radio-group>
   </view>
   <view class='title'>额外信息</view>
-  <van-cell required title="选择维保公司" wx:if="{{switchAccessory==1}}" value="{{extra.name}}" is-link bind:click="showCompany" />
+  <van-cell required title="选择维保公司" wx:if="{{switchAccessory==0}}" value="{{extra.name}}" is-link bind:click="showCompany" />
 
 
-  <van-field label="{{switchAccessory==0?'机构名称':'售后服务公司'}}" disabled="{{switchAccessory==0?false:true}}" required value="{{extra.name}}" input-align="right" border="{{ false }}" id="name" bindchange="syncVal"  placeholder="{{switchAccessory==1?'请输入机构名称':'请输入保修公司名称'}}" />
-  <van-field label="{{switchAccessory==0?'联系人':'售后工程师'}}" required disabled="{{switchAccessory==0?false:true}}" value="{{extra.menber}}" input-align="right" border="{{ false }}" id="menber" bindchange="syncVal" placeholder="请输入联系人" />
-  <van-field label="联系方式" required input-align="right" disabled="{{switchAccessory==0?false:true}}" placeholder="请输入联系电话" border="{{ false }}" id="phone" bindchange="syncVal" value="{{extra.phone}}" />
-  <van-field label="维修类型" required input-align="right" disabled="{{switchAccessory==0?false:true}}" placeholder="请输入维修类型" border="{{ false }}" id="repairType" bindchange="syncVal" value="{{extra.repairType}}" />
+  <van-field label="{{switchAccessory==0?'机构名称':'售后服务公司'}}" disabled="{{true}}" required value="{{extra.name}}" input-align="right" border="{{ false }}" id="name" bindchange="syncVal"  placeholder="{{switchAccessory==1?'请输入机构名称':'请输入保修公司名称'}}" />
+  <van-field label="{{switchAccessory==0?'联系人':'售后工程师'}}" required disabled="{{true}}" value="{{extra.menber}}" input-align="right" border="{{ false }}" id="menber" bindchange="syncVal" placeholder="请输入联系人" />
+  <van-field label="联系方式" required input-align="right" disabled="{{true}}" placeholder="请输入联系电话" border="{{ false }}" id="phone" bindchange="syncVal" value="{{extra.phone}}" />
+  <van-field label="维修类型" required input-align="right" disabled="{{true}}" placeholder="请输入维修类型" border="{{ false }}" id="repairType" bindchange="syncVal" value="{{extra.repairType}}" />
 </van-cell-group>
 
 

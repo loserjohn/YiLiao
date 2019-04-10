@@ -153,7 +153,7 @@ export const relevantAccessory = function (data) {
 //   return wxRequest('GET', '/api/PartChanger/GetPartModel', data)
 // }
 
-// 获取已被使用的备件的详情
+// 加载本医院的维保公司
 export const getKeepList = function (data) {
   return wxRequest('GET', '/api/Repairs/GetKeepList', data)
 }

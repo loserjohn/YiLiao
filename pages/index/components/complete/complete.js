@@ -10,7 +10,8 @@ const app = getApp()
 import {
   completeRepair,
   getWarrantyInfo,
-  getKeepList
+  getKeepList,
+  getFacilityDetail
 } from '../../../../utils/api.js'
 
 Component({
@@ -26,6 +27,7 @@ Component({
       type: Object,
       value: '',
       observer: function(val, old) {
+        console.log(val)
         this.initData(val)
       }
     }
@@ -35,19 +37,21 @@ Component({
    * 组件的初始数据
    */
   data: {
-    completeTime: Utils.formatTime(new Date()).split(' ')[0],
-    switchAccessory: '0',
+    completeTime: Utils.formatTime(new Date()).split(' ')[0], //完成时间
+    switchAccessory: '0', //是否维保
+    // 维保共公司信息
     extra: {
-      // repairTime: Utils.formatTime(new Date()).split(' ')[0],
       name: '',
       menber: '',
       phone: '',
       repairType: ''
     },
-    facilityId: '',
-    repairDetailData: '',
+    facilityId: '',  //设备id
+    facilityDetail:'',//设备详情
+    repairDetailData: '',  //保修订单详情
     textArea1: false, //维修内容显示切换
     textArea2: false, //维修类型显示切换
+    // 表单内容
     form: {
       repairTime: {
         val: '',
@@ -94,8 +98,21 @@ Component({
         facilityId: val.DEVICE_CODE,
         repairCode: val.REPAIRS_CODE,
       });
+      // 预加载默认的维保公司信息
+      getFacilityDetail({
+        DEVICE_CODE: val.DEVICE_CODE
+      }).then(res => {
+        console.log('####',res)
+        if (res.Success) {
+          that.setData({
+            facilityDetail: res.Data
+          })
+        }
+      }).catch(err => {
 
-      // 预加载本医院的维保公司
+      })
+
+      // 预加载本医院的可选择维保公司
       // console.log(app.globalData.userInfo)
       getKeepList({
         UNIT_CODE: app.globalData.userInfo.USER_UNIT
@@ -161,8 +178,12 @@ Component({
       switch (val) {
         case 1:
           // 维保
-
+          that.data.extra.name = that.data.facilityDetail.KEEP_COMPANY;
+          that.data.extra.menber = that.data.facilityDetail.KEEP_NAME;
+          that.data.extra.phone = that.data.facilityDetail.KEEP_PHONE;
+          that.data.extra.repairType = that.data.facilityDetail.WARRANTY_TYPE;
           that.setData({
+            extra: that.data.extra,
             switchAccessory: e.detail
           })
           break;

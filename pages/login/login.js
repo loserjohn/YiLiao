@@ -20,12 +20,12 @@ Page({
         value: '',
         // value: 'fhosp',
         // value: 'xh001',
-        // value: 'sl002',
+        value: 'sl002',
         valid: true
       },
       userPass: {
-        // value: '888888',
-        value: '',
+        value: '888888',
+        // value: '',
         // value: '',
         valid: true
       }
@@ -330,7 +330,7 @@ Page({
 
     // 先获取用户微信信息
     this.getUserMsg(()=>{
-      // this.ifAutoLogin()
+      this.ifAutoLogin()
     })
     
   },
