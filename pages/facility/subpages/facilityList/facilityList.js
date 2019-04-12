@@ -66,9 +66,6 @@ Page({
   onConfirm(e){
     let res = e.detail.value
     let key = this.data.currentOptions.key
-    // debugger
-    console.log(-1, key, res)
-
     this.data.condition[key] = res
     this.setData({
       condition: this.data.condition,
@@ -105,19 +102,16 @@ Page({
     // console.log(e.detail);
     this.data.keyword = e.detail
   },
+  // 分类后搜索
+  toSearch(){
+    this.setData({
+      show: false,
+    })
+    this.onSearch()
+  },
   // 开始搜索
   onSearch(){
     let condition = this.data.condition  
-    // if (!this.data.keyword && !condition.type.Value && !condition.office.Value && !condition.status.Value){
-    //   Notify({
-    //     text: '请输入关键字或者选择筛选条件',
-    //     duration: 1000,
-    //     selector: '#van-notify',
-    //     backgroundColor: 'red'
-    //   });
-    //   return 
-    // }
-
     this.setData({
       list:[],
       index:1,

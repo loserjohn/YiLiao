@@ -39,9 +39,10 @@
     <van-cell title="设备类型" value="{{condition.type.Value?condition.type.Text:'全部'}}" id="type"  is-link bind:click="handler" />
     <van-cell title="所处科室" value="{{condition.office.Value?condition.office.Text:'全部'}}"  id="office" is-link bind:click="handler" />
     <van-cell title="设备状态" value="{{condition.status.Value?condition.status.Text:'全部'}}" id="status"  is-link bind:click="handler" />
-    <!-- <view class='cm_menus'>
-      <van-button  type="primary" plain ></van-button>
-    </view> -->
+    <view class='cm_pad cm_bg_w'>
+        <van-button custom-class="cm_btn" size="normal"  block bindtap='toSearch'> 搜索设备
+        </van-button>
+    </view>
   </van-cell-group>
 </van-popup>
 

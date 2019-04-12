@@ -86,3 +86,32 @@ page {
   color: #858484;
     text-align: center
 }
+
+/* .van-enter-active-class,
+.van-leave-active-class {
+  transition-property: background-color, transform;
+   transform: scale(3);
+} */
+.test{
+  position: absolute;
+  left: 100rpx;
+  top:100rpx;
+  width: 300rpx;
+  height: 400rpx;
+  background: green;
+  transform: scale(0.5)
+}
+/* .vans-enter-class,
+.vans-leave-to-class {
+  transform: scale(2.5);
+  opacity: 0
+}
+.vans-leave-class,
+.vans-enter-to-class {
+ transform: scale(.5);
+  opacity: 0
+}
+.vans-leave-active-class,
+vans-enter-active-class{
+  transform: scale(1.5);
+} */

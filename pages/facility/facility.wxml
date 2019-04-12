@@ -12,13 +12,7 @@
 
   <view class='cm_blank'></view>
   <view class='cm_blocks'>
-    <!-- <view class='cm_menus'>
-       <block wx:for="{{meuns}}" wx:key="index">
-        <view class='cm_menusItem'>
-          <menusBlock name="{{item.name}}" block> </menusBlock>
-        </view>
-      </block>
-    </view> -->
+
   </view>
 
 </view>

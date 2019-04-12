@@ -1,28 +1,13 @@
-// pages/facility/facility.js
+// pages/arrearage/arrearage.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-   
+
   },
-  linkTo: function (event) {
-    let to = event.currentTarget.dataset['to'];
 
-    let url = ''
-    switch (to) {
-      case 'repair':
-        url = './subpages/repairs/repairs'
-        break;
-
-      default:
-
-    }
-    wx.navigateTo({
-      url: url
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */

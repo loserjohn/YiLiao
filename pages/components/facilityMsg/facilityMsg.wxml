@@ -16,7 +16,7 @@
   <van-cell title="设备类别" value="{{facility.DEVICE_TYPE}}" />
   <van-cell title="管理人员" value="{{facility.MANAGE_USER}}" />
   <van-cell title="生产厂家" value="{{facility.DEVICE_TRADE}}" />
-  <van-cell title="备注" label="{{facilit.DEVICE_REMARK}}" />
+
 
   <van-cell title="安装工程师" value="{{facility.INSTALL_USER}}" />
   <van-cell title="安装工程师电话" value="{{facility.INSTALL_PHONE}}" />
@@ -24,7 +24,7 @@
   <van-cell title="生产时间" value="{{facility.DEVICE_USE_DATE}}" />
   <van-cell title="验收时间" value="{{facility.DEVICE_OVERTIME}}" />
 
-
+    <van-cell title="备注" label="{{facilit.DEVICE_REMARK}}" />
   <!-- 小工具 -->
   <view class='tip' hover-class='tipHover' bindtap="toSave" wx:if="{{canEdited}}">
     <van-icon name="passed" size="40rpx" color="#fff" custom-class="tipIcon" />

@@ -9,6 +9,7 @@ import Dialog from '../vant/dialog/dialog';
 import Utils from '../../utils/util.js'
 import { ROLE_INSPECTOR, ROLE_MAINTAIN } from '../../utils/permision.js'
 
+let animationShowHeight = 300;
 Page({
 
   /**
@@ -17,10 +18,10 @@ Page({
   data: {
     form: {
       userName: {
-        value: '',
+        // value: '',
         // value: 'fhosp',
-        // value: 'xh001',
-        value: 'sl002',
+        value: 'xh001',
+        // value: 'sl002',
         valid: true
       },
       userPass: {
@@ -33,7 +34,9 @@ Page({
     show: false,
     loading: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    systemInfo:{}
+    systemInfo:{},
+    animationData:'',
+    showModalStatus:false
   },
   // 登录判断
   login(e) {
@@ -113,7 +116,13 @@ Page({
         // 登录失败
         this.setData({
           loading: false
-        });
+        });   
+        // 欠费续交
+        if (err.Msg == 'Arrearage') {
+          console.log('弹窗操作');
+          this.showModal()
+          return
+        }
         // console.log('err', err);
       })
     })
@@ -286,6 +295,7 @@ Page({
                 });
               });
               wx.clearStorageSync();
+              
             }
 
           }).catch(err => {
@@ -294,7 +304,13 @@ Page({
               title: '自动登录失效,请手动登录',
               icon: 'none',
               duration: 1000
-            })
+            });
+            // 欠费续交
+            if (err.Msg == 'Arrearage') {
+              console.log('弹窗操作');
+              that.showModal()
+              return
+            }
           })
         },
         fail() {
@@ -308,6 +324,49 @@ Page({
       })
     })
   },
+  // 关闭欠费提示
+  closeArrearage(){
+    this.setData({
+      showArrearage:false
+    })
+  },
+
+  showModal: function () {
+    let that = this;
+    this.setData({
+      showModalStatus: true
+    })
+    let animation = wx.createAnimation({
+      duration: 400,
+      timingFunction: "cubic-bezier(.85,1.6,.73,.63)",
+      // delay:500
+    });
+    that.animation = animation;
+    animation.scale(1).step();
+    that.setData({
+      animationData: animation.export(),   
+    });
+  },
+  // 隐藏遮罩层
+  hideModal: function () {
+    let that = this;
+    let animation = wx.createAnimation({
+      duration: 200,
+      timingFunction: "cubic-bezier(.01,1.59,.67,-0.03)",
+    });
+    that.animation = animation;
+    animation.scale(0).step();
+    that.setData({
+      animationData: animation.export(),
+    });
+    setTimeout(function () {   
+      that.setData({
+        showModalStatus: false
+      })
+    }.bind(that), 200);
+  },
+
+
 
   /**
    * 生命周期函数--监听页面加载

@@ -27,7 +27,8 @@ const wxRequest =  function (method, url, data) {
           // console.log('请求success,结果true');
           resolve(res.data) 
         }else{
-          console.log('请求success,结果false',res)
+          // console.log('请求success,结果false',res)      
+          // 无权限错误
           if (res.statusCode==401){
             // 没有权限错误
             wx.showLoading({
@@ -55,8 +56,7 @@ const wxRequest =  function (method, url, data) {
               icon: 'none'
             })
             reject(res.data.Msg ? res.data : { Msg: '服务器未知错误' })
-          }
-          
+          }          
         }      
       },
       fail: function (err) {
@@ -64,8 +64,7 @@ const wxRequest =  function (method, url, data) {
           title: '服务器请求失败',
           icon: 'none'
         })
-        reject(err)
-        // errFun(res); 
+        reject(err);
       }
     }) 
   })

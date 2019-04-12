@@ -3,12 +3,12 @@
 <view class='cm_container' id="scrollBox">
   <view class='msgBox'>
     <image src='../../static/img/bg.png' class='boxbg' mode="scaleToFill"></image>
-    <view class='logoBox'>   
-       <image src="{{systemInfo.LINK_IMAGE?systemInfo.LINK_IMAGE:'../../static/img/logo.png'}}" class='logo' mode="scaleToFill"></image>
+    <view class='logoBox'>
+      <image src="{{systemInfo.LINK_IMAGE?systemInfo.LINK_IMAGE:'../../static/img/logo.png'}}" class='logo' mode="scaleToFill"></image>
     </view>
     <view class="logoText">{{systemInfo.LINK_NAME}}</view>
   </view>
- 
+
   <!-- <form bindsubmit="login" report-submit='true' > -->
   <view class='formBox'>
     <van-cell-group>
@@ -16,10 +16,9 @@
       <van-field value="{{ form.userPass.value  }}" id="userPass" clearable error-message="{{ form.userPass.valid?'':'密码格式错误' }}" type="password" label="密码" placeholder="6-20个字母、数字、下划线组成" bind:clear="clear" bind:blur="valid" />
     </van-cell-group>
   </view>
-  
+
   <view class='cm_menus'>
     <van-button size="normal" block custom-class='cm_btn' bind:click="login" loading="{{loading}}">登录</van-button>
-     <!-- <button size="normal" block custom-class='cm_btn' form-type="submit" loading="{{loading}}">登录</button> -->
   </view>
   <!-- </form> -->
 </view>
@@ -29,6 +28,12 @@
     <view class='authrizeTitle '>欢迎登录医疗设备报修系统</view>
     <view class='authrizeText'>需要同步您的微信用户信息</view>
     <van-button size="normal" block open-type="getUserInfo" custom-class='cm_btn' bindgetuserinfo="bindGetUserInfo">立即授权</van-button>
+  </view>
+</van-popup>
+<van-popup show="{{ showModalStatus }}" bind:close="hideModal" custom-style="background:transparent!important">
+ <view  animation="{{animationData}}" class="" wx:if="{{showModalStatus}}" >
+      <view style='width:260rpx;height:260rpx;background:red' class=''>弹窗内容</view>
+      <!-- <button bindtap='hideModal'>close</button> -->
   </view>
 </van-popup>
 <van-dialog id="van-dialog" />

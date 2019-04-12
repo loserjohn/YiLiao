@@ -17,7 +17,7 @@
 
 
       <van-cell icon="shop" title="所在医院" value="{{userInfo.UNIT_NAME}}" />
-      <van-cell title="医院地址" icon="map-marked"  value="{{userInfo.UNIT_ADDR+'dsafdsfdasfdsfdasfdsfdas'}}" />
+      <!-- <van-cell title="医院地址" icon="map-marked"  value="{{userInfo.UNIT_ADDR}}" /> -->
       <van-cell icon="friends" title="所在部门" value="{{userInfo.UNIT_NAME}}" />
       <van-cell title="所属职位" icon="manager"  label="{{userInfo.UNIT_ADDR}}" />
     
