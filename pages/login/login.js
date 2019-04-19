@@ -18,15 +18,15 @@ Page({
   data: {
     form: {
       userName: {
-        // value: '',
+        value: '',
         // value: 'fhosp',
-        value: 'xh001',
+        // value: 'xh001',
         // value: 'sl002',
         valid: true
       },
       userPass: {
-        value: '888888',
-        // value: '',
+        // value: '888888',
+        value: '',
         // value: '',
         valid: true
       }
@@ -70,7 +70,7 @@ Page({
         code: code,
         IsDebug: true
       }
-      console.log(data)
+      // console.log(data)
       // 登录api
       accountLogin(data).then(res => {
         // console.log(data)
@@ -404,7 +404,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    // wx.startSoterAuthentication({
+    //   requestAuthModes: ['fingerPrint'],
+    //   challenge: '123456',
+    //   authContent: '请用指纹解锁',
+    //   success(res) {
+    //   }
+    // })
   },
 
   /**

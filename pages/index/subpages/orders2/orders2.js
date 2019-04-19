@@ -1,5 +1,7 @@
 // pages/index/orders/orders.js
-// 报修员身份
+// 维修员身份
+
+
 import {
   getRepairList
 } from '../../../../utils/api.js'
@@ -32,10 +34,10 @@ Page({
     let H = app.globalData.winHeight;
     this.setData({
       height: H - 44 -44 + 'px',
-      extraShow:false
+      extraShow: true,
     })
     let key = parseInt(options.active);
-    if (key  ) {
+    if (key) {
       this.setData({
         active: key,
         role: app.globalData.role

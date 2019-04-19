@@ -88,7 +88,12 @@ view {
   /* background: #28b8a1 !important;
   border-color: #28b8a1 !important; */
   background-image: -webkit-linear-gradient(top left, #2adec1,#1bc8cf)!important;
-  color: #fff!important
+  color: #fff!important;
+  border: none!important;
+  font-size: 36rpx!important;
+  /* font-weight: 600; */
+  /* letter-spacing:20rpx;
+  text-indent: 20rpx */
 }
 
 .red {

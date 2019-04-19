@@ -7,11 +7,11 @@
 </view>
 <view class='main' >
   <van-tabs color="#28B8A1" custom-class="tabs" animated="{{true}}" swipeable="{{true}}" active="{{active}}">
-    <van-tab title="未响应"  >
+    <!-- <van-tab title="未响应"  >
       <view class="" style="{{'height:'+height}}" >
           <orderBlocks type="{{0}}"  refreshCode="{{timesample}}"></orderBlocks>  
         </view>
-    </van-tab>
+    </van-tab> -->
     <van-tab title="待维修">
       <view class="" style="{{'height:'+height}}" >
           <orderBlocks type="{{1}}"  refreshCode="{{timesample}}"></orderBlocks>  

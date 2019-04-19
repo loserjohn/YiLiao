@@ -1,0 +1,12 @@
+{
+    "usingComponents": {
+      "noItems": "/pages/components/noItems/noItems",
+      "orderBlocks":"/pages/components/orderBlocks/orderBlocks"
+    },
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "维修工单管理",
+    "backgroundColor": "#f1f1f1",
+    "backgroundTextStyle": "light",
+    "disableScroll":false
+}

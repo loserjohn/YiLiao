@@ -62,7 +62,7 @@ Component({
         title: '待维修',
         handle: () => {
           wx.navigateTo({
-            url: '/pages/index/subpages/orders/orders?active=1'
+            url: '/pages/index/subpages/orders2/orders2?active=0'
           })
         }
       },
@@ -72,7 +72,7 @@ Component({
         title: '维修中',
         handle: () => {
           wx.navigateTo({
-            url: '/pages/index/subpages/orders/orders?active=2'
+            url: '/pages/index/subpages/orders2/orders2?active=1'
           })
         }
       },
@@ -82,7 +82,17 @@ Component({
         title: '维修完成',
         handle: () => {
           wx.navigateTo({
-            url: '/pages/index/subpages/orders/orders?active=4'
+            url: '/pages/index/subpages/orders2/orders2?active=3'
+          })
+        }
+      },
+      "waitResponse": {
+        name: 'waitResponse',
+        icon: 'icon-kangfufangan-copy',
+        title: '等待响应',
+        handle: () => {
+          wx.navigateTo({
+            url: '/pages/index/subpages/orders/orders?active=0'
           })
         }
       },
@@ -92,7 +102,7 @@ Component({
         title: '维修记录',
         handle: () => {
           wx.navigateTo({
-            url: '/pages/index/subpages/orders/orders'
+            url: '/pages/index/subpages/orders/orders?active=4'
           })
         }
       },
