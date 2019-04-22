@@ -68,7 +68,7 @@ Page({
         username: this.data.form.userName.value,
         password: this.data.form.userPass.value,
         code: code,
-        IsDebug: false
+        IsDebug: true
       }
       // console.log(data)
       // 登录api
