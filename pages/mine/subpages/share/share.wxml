@@ -1,0 +1,8 @@
+<!--pages/mine/subpages/share/share.wxml-->
+<view class="bg">
+  <image src="/static/img/shareBg.jpg" class='cover' mode='aspectFill' ></image>
+  <!-- <view class="title">小马设备快修</view> -->
+   <view class='cm_menus'>
+    <van-button size="normal" block custom-class='cm_btn' open-type="share"  hover-class="other-button-hover" >分享给好友</van-button>
+  </view>
+</view>

@@ -210,6 +210,16 @@ Component({
           })
         },
       },
+      "toShare": {
+        name: 'toShare',
+        icon: 'icon-guanfangbanben',
+        title: '推荐朋友',
+        handle: () => {
+          wx.navigateTo({
+            url: '/pages/mine/subpages/share/share'
+          })
+        },
+      },
       "chooseAccessory": {
         name: 'chooseAccessory',
         icon: 'icon-gaojing',

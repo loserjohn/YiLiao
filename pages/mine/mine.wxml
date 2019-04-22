@@ -16,14 +16,14 @@
       <!-- 菜单循环 -->
       <menusBlock name="updatedPass" block> </menusBlock>
       <menusBlock name="set" block last="{{true}}"> </menusBlock>
-      <!-- <menusBlock name="about" block> </menusBlock> -->
+      <menusBlock name="toShare" block> </menusBlock>
 
     </view>
   </van-cell-group>
   <view class='cm_blank'></view>
   <view class='cm_nopading'>
     <van-cell-group>
-      <van-cell icon="star" title="推荐朋友"  bind:click="toShare" />
+      <!-- <van-cell icon="star" title="推荐朋友"  bind:click="toShare" /> -->
       <!-- <van-cell icon="award" title="关于我们"  bind:click="toAbout" /> -->
       <!-- <van-switch-cell title="允许自动登录" checked="{{ checked }}" bind:change="onChange" active-color="#28b8a1" /> -->
     </van-cell-group>
@@ -35,7 +35,9 @@
   <van-button type="danger" size="normal" loading="{{loading}}" block bindtap='loginOut'> 退出登录
   </van-button>
 </view>
-<van-dialog id="van-dialog" />
+ <van-dialog id="van-dialog" />
+
+ <!--
 <van-popup show="{{ shareShow }}" close-on-click-overlay bind:close="onClose">
   <view class='shareBox' wx:if="{{type==0}}">
     <image src="{{systemInfo.LINK_IMAGE?systemInfo.LINK_IMAGE:'../../static/img/share.jpg'}}" class='shareBg'></image>
@@ -53,4 +55,4 @@
     </view>
   </scroll-view>
 
-</van-popup>
+</van-popup> -->

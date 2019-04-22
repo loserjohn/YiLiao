@@ -1,34 +1,21 @@
-// pages/facility/facility.js
+// pages/mine/subpages/share/share.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-   
+
   },
-  linkTo: function (event) {
-    let to = event.currentTarget.dataset['to'];
 
-    let url = ''
-    switch (to) {
-      case 'repair':
-        url = './subpages/repairs/repairs'
-        break;
-
-      default:
-
-    }
-    wx.navigateTo({
-      url: url
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
 
   },
+
+  
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -75,7 +62,30 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  // onShareAppMessage: function () {
+  /**
+  * 用户点击右上角分享
+  */
+  onShareAppMessage: function (ops) {
+    this.setData({
+      shareShow: false
+    })
+    let that = this
+    if (ops.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(ops.target)
+    }
+    return {
+      title: '小马设备快修',
+      path: 'pages/login/login',
+      success: function (res) {
+        // 转发成功
+        console.log("转发成功:" + JSON.stringify(res));
+      },
+      fail: function (res) {
+        // 转发失败
+        console.log("转发失败:" + JSON.stringify(res));
+      }
+    }
 
-  // }
+  }
 })

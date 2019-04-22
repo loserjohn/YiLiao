@@ -8,7 +8,7 @@
   /* background:#49c7a4;#dcf3af */
    /* background-image: -webkit-linear-gradient(top, #c2eeb9, #6de2ce); 
     */
-    background-image: -webkit-linear-gradient(top left, #c2eeb9,#1bc8cf); 
+    background-image: -webkit-linear-gradient(top left, #78f5b6,#1bc8cf); 
   padding:180rpx  30rpx 100rpx 30rpx;
   color: #fff
 }

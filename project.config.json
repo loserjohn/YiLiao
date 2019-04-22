@@ -13,7 +13,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.6.0",
-	"appid": "wxd463568812190ae4",
+	"appid": "wxadbadd6ab2af74ff",
 	"projectname": "%E5%8C%BB%E7%96%97%E6%8A%A5%E4%BF%AE",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 19,
+			"current": 20,
 			"list": [
 				{
 					"id": 0,
@@ -173,6 +173,12 @@
 					"name": "添加新的配件",
 					"pathName": "pages/accessory/subpages/addAccessory/addAccessory",
 					"query": "repairCode=17127a6bfadd410a94d38cab84433681& facilityId=65a449eb381b4a559c665840266f1cf3",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "share",
+					"pathName": "pages/mine/subpages/share/share",
 					"scene": null
 				}
 			]
