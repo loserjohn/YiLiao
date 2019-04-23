@@ -1,4 +1,5 @@
 // pages/facility/subpages/reportPreview/reportPreview.js
+import { baseURL} from '../../../../utils/request.js'
 Page({
 
   /**
@@ -16,7 +17,7 @@ Page({
     this.setData({
       // waitting: false,
       repairCode: options.repairCode,
-      url: 'http://www.fjdmll.com/report/index.html?code=' + options.repairCode
+      url: 'https://www.xmkuaixiu.com/report/index.html?CODE=' + options.repairCode
     })
   },
   loaded(){

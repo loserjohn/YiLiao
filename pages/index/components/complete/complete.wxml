@@ -50,11 +50,20 @@
   <van-cell required title="选择维保公司" wx:if="{{switchAccessory==0}}" value="{{extra.name}}" is-link bind:click="showCompany" />
 
 
-  <van-field label="{{switchAccessory==0?'机构名称':'售后服务公司'}}" disabled="{{switchAccessory==0?false:true}}" required value="{{extra.name}}" input-align="right" border="{{ false }}" id="name" bindchange="syncVal"  placeholder="{{switchAccessory==1?'请输入机构名称':'请输入保修公司名称'}}" />
+  <van-field label="{{switchAccessory==0?'机构名称':'售后服务公司'}}" disabled="{{switchAccessory==0?false:true}}" required value="{{extra.name}}" input-align="right" border="{{ false }}" id="name" bindchange="syncVal" placeholder="{{switchAccessory==1?'请输入机构名称':'请输入保修公司名称'}}"
+  />
   <van-field label="{{switchAccessory==0?'联系人':'售后工程师'}}" required disabled="{{switchAccessory==0?false:true}}" value="{{extra.menber}}" input-align="right" border="{{ false }}" id="menber" bindchange="syncVal" placeholder="请输入联系人" />
   <van-field label="联系方式" required input-align="right" disabled="{{switchAccessory==0?false:true}}" placeholder="请输入联系电话" border="{{ false }}" id="phone" bindchange="syncVal" value="{{extra.phone}}" />
   <van-field label="维修类型" required input-align="right" disabled="{{switchAccessory==0?false:true}}" placeholder="请输入维修类型" border="{{ false }}" id="repairType" bindchange="syncVal" value="{{extra.repairType}}" />
+  <view class='cm_inlineBox  flex' wx:if="{{switchAccessory==0}}">
+    <view class='f1 cm_inlineBox_label'>是否保存维保公司</view>
+    <van-radio-group class="flex" value="{{ extra.ifSave }}" bind:change="onSwitch2">
+      <van-radio name="1" custom-class=" radioBox" checked-color="#07c160">是</van-radio>
+      <van-radio name="0" custom-class="radioBox " checked-color="#07c160">否</van-radio>
+    </van-radio-group>
+  </view>
 </van-cell-group>
+
 
 
 <view class='cm_blank'></view>
@@ -66,5 +75,5 @@
 
 
 <van-popup show="{{ showCompany }}" position="bottom" overlay="{{ true }}" close-on-click-overlay safe-area-inset-bottom>
-  <van-picker show-toolbar title="选择维保公司" value-key="Text"  columns="{{ columns2 }}" bind:cancel="showCompany" bind:confirm="selectCompany" />
+  <van-picker show-toolbar title="选择维保公司" value-key="Text" columns="{{ columns2 }}" bind:cancel="showCompany" bind:confirm="selectCompany" />
 </van-popup>

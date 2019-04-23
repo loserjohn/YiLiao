@@ -4,31 +4,31 @@
 
 
 <!-- 故障信息组件 -->
+<view class='pics'>
+    <preImgGallery title="故障图片" facilityId="{{facilityId}}" prePic="{{prePic}}" clientWidth="{{clientWidth}}" num="{{9}}" canEdited="{{false}}"></preImgGallery>
+  </view>
 <van-cell-group>
+
   <van-cell title="报修单号" value="{{repairDetailData.REPAIRS_NUM}}" />
   <van-cell title="设备编号" value="{{repairDetailData.DEVICE_NUM}}" />
   <van-cell title="报修状态" value="{{statusFilter.repair(repairDetailData.REPAIRS_STATUS)}}" />
   <van-cell title="报修时间" value="{{repairDetailData.REPAIRS_DATE}}" />
-  <van-cell title="报修人" value="{{repairDetailData.REPAIRS_USER}}" />
+  <van-cell title="报修人" value="{{repairDetailData.USER_FULL_NAME}}" />
   <van-cell title="联系方式" value="{{repairDetailData.USER_MOBLIE}}" />
   <van-cell title="故障等级" value="{{repairDetailData.URGENT_TYPE}}" />
-  <!-- <van-cell title="故障图片" is-link /> -->
 
-
-  <view class='pics'>
-    <preImgGallery title="故障图片" facilityId="{{facilityId}}" prePic="{{prePic}}" clientWidth="{{clientWidth}}" num="{{9}}" canEdited="{{false}}"></preImgGallery>
-  </view>
-  <van-cell title="是否停机" value="{{repairDetailData.IS_CLOSING}}" />
-  <!-- <block wx:if="{{repairDetailData.IS_CLOSING==1?true:false}}">
+  <van-cell title="是否停机" value="{{repairDetailData.IS_CLOSING==1?'未停机':'停机'}}" />
+  <block wx:if="{{repairDetailData.IS_CLOSING==1?false:true}}">
     <van-cell title="停机时长" value="{{repairDetailData.CLOSING_TIME}}" />
-  </block> -->
-  <van-cell title="是否委托第三方" value="{{repairDetailData.IS_THIRDPARTY==1?'是':'否'}}" />
-  <block wx:if="{{repairDetailData.IS_THIRDPARTY==1?true:false}}">
-    <van-cell title="第三方名称" value="{{repairDetailData.THIRDPARTY_NAME}}" />
-    <van-cell title="联系人" value="{{repairDetailData.MAINTAIN_USER}}" />
-    <van-cell title="联系方式" value="{{repairDetailData.MAKE_PHONE}}" />
-    <van-cell title="故障描述" label="{{repairDetailData.REPAIRS_DESCRIBE}}" />
   </block>
+  
+  <van-cell title="是否维保" value="{{repairDetailData.IS_THIRDPARTY==0?'否':'是'}}" />
+   <van-cell title="{{repairDetailData.IS_THIRDPARTY==0?'机构名称':'售后服务公司'}}"  value="{{repairDetailData.THIRDPARTY_NAME}}" />
+    <van-cell title="{{repairDetailData.IS_THIRDPARTY==0?'联系人':'售后工程师'}}" value="{{repairDetailData.MAINTAIN_USER}}" />
+     <van-cell title="联系方式" value="{{repairDetailData.MAKE_PHONE}}" />
+      <van-cell title="维修类型" value="{{repairDetailData.MAINTAIN_TYPE}}" />
+ <van-cell title="维修内容" label="{{repairDetailData.MAKE_DESCRIBE}}" />
+
 
   <view wx:if="{{list.length>0}}">
     <view class='title'>已使用备件({{list.length}})</view>
@@ -44,5 +44,7 @@
   </view>
   
 </van-cell-group>
+ <view class='cm_menus' style='padding:20rpx '>
 <van-button custom-class="cm_btn" size="normal"  bindtap='toPreview'  > 纸质报告预览
     </van-button>
+  </view>

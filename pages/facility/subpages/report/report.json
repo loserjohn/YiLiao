@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "preImgGallery": "/pages/components/preImgGallery/preImgGallery"
+  },
   "navigationBarTitleText": "报修结果报告"
 }

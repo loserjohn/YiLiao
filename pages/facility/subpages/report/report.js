@@ -12,7 +12,9 @@ Page({
     repairCode:'',
     repairDetailData:{},
     list:[],
-    show:false
+    show:false,
+    prePic:[],
+    facilityId:''
   },
 
   /**
@@ -20,10 +22,20 @@ Page({
    */
   onLoad: function (options) {
     let repairCode = options.repairCode
-    console.log(repairCode)
-    this.setData({
-      repairCode: repairCode
-    })
+    let that = this
+    wx.getSystemInfo({
+      success: function (res) {
+        let clientHeight = res.windowHeight;
+        let clientWidth = res.windowWidth;
+        let ratio = 750 / clientWidth;
+        let height = clientHeight * ratio;
+        that.setData({
+          clientWidth: clientWidth,
+          repairCode: repairCode
+        });
+      }
+    });
+
     this.loadData()
   },
   // 加载数据
@@ -31,15 +43,19 @@ Page({
     let that = this
     let code = this.data.repairCode;
 
+
+
     // 获取报修信息
     let data = {
       REPAIRS_CODE: code,
     }
     getRepairDetail(data).then(res => {
-      // console.log(res)
+      console.log(res)
       if (res.Success) {
         that.setData({
-          repairDetailData: res.Data
+          repairDetailData: res.Data,
+          prePic: res.Data.REPAIRS_IMGLIST ? res.Data.REPAIRS_IMGLIST.split(',') : [],
+          facilityId: res.Data.DEVICE_CODE,
         })
        
       }
@@ -62,6 +78,7 @@ Page({
     }).catch(err => {
 
     })
+
   },
   toPreview(){
     // this.setData({

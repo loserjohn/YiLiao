@@ -22,7 +22,7 @@
 
 </view>
 
-<van-popup show="{{ show }}" overlay="{{ true }}" bind:close="onClose" custom-class="authrize">
+<van-popup show="{{ show }}" overlay="{{ true }}"  custom-class="authrize">
   <view class='authrizeBox'>
     <view class='authrizeTitle '>欢迎登录医疗设备报修系统</view>
     <view class='authrizeText'>需要同步您的微信用户信息</view>

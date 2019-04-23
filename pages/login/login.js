@@ -68,7 +68,7 @@ Page({
         username: this.data.form.userName.value,
         password: this.data.form.userPass.value,
         code: code,
-        IsDebug: true
+        IsDebug: false
       }
       // console.log(data)
       // 登录api
@@ -211,7 +211,10 @@ Page({
   },
   // 获取用户信息点击事件回调
   bindGetUserInfo(e) {
-    console.log('用户微信基本信息', e);
+    // console.log('用户微信基本信息', e);
+    if (e.detail.errMsg === 'getUserInfo:fail auth deny'){
+      return
+    }
     app.globalData.wxUserInfo = e.detail
     wx.showToast({
       title: '获取成功',

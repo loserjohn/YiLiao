@@ -19,6 +19,7 @@ Page({
   loadData() {
     let that = this
     let code = this.data.repairCode;
+    console.log(code)
     let data = {
       REPAIRS_CODE: code,
     }

@@ -40,7 +40,7 @@ Component({
         pageIndex:1,
         pageSize:100,
         DEVICE_CODE: val ,
-        REPAIRS_STATUS:3
+        REPAIRS_STATUS:4
       }
       getHistoryList(data).then(res => {
         // console.log(res)

@@ -59,6 +59,9 @@ function repair(val) {
       s_res = '维修中'
       break;
     case 3:
+      s_res = '试机中'
+      break; 
+    case 4:
       s_res = '已完成'
       break; 
     default:
@@ -69,7 +72,25 @@ function repair(val) {
 
 }
 
+function repairLevel(key){
+  let s_res = '低级'
+  switch (key) {
+    case 0:
+      s_res = '低级'
+      break;
+    case 1:
+      s_res = '中级'
+      break;
+    case 2:
+      s_res = '高级'
+      break;
+    default:
+      break;
+  }
+  return s_res
+}
 module.exports = {
   status: status,
-  repair: repair
+  repair: repair,
+  repairLevel: repairLevel
 }

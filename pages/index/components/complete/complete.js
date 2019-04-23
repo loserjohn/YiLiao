@@ -44,7 +44,8 @@ Component({
       name: '',
       menber: '',
       phone: '',
-      repairType: ''
+      repairType: '',
+      ifSave:'0'
     },
     facilityId: '',  //设备id
     facilityDetail:'',//设备详情
@@ -202,15 +203,13 @@ Component({
       }
 
     },
-    // 选择时间
-    // bindDateChange(e) {
-    //   // console.log(e.detail)
-    //   let time = e.detail.value;
-    //   this.data.extra.repairTime = time
-    //   this.setData({
-    //     extra: this.data.extra
-    //   })
-    // },
+    // 是否维同步第三方机构
+    onSwitch2(e) {
+      this.data.extra.ifSave = e.detail
+      this.setData({
+        extra: this.data.extra
+      })
+    },
     // 完成报修
     submitComplete() {
       let that = this;
@@ -284,13 +283,17 @@ Component({
         THIRDPARTY_NAME: this.data.extra.name,
         MAINTAIN_USER: this.data.extra.menber,
         MAKE_PHONE: this.data.extra.phone,
-        MAKE_MEND_DATE: form.repairTime.val + form.repairTime.unit
+        MAKE_MEND_DATE: form.repairTime.val + form.repairTime.unit,
+       
       }
 
       if (this.data.form.ifClosing == 2) {
         data.CLOSING_TIME = form.closeTime.val + form.closeTime.unit
       }
-
+      // 若是委托提交是否同步第三方的选项
+      if (this.data.switchAccessory == 0) {
+        data.THIRDPARTY_IS_SAVE=this.data.extra.ifSave
+      }
       this.setData({
         loading: true
       })

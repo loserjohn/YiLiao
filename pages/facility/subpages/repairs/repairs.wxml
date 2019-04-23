@@ -11,8 +11,8 @@
   <van-field value="{{facilityNum}}" label="" id="facilityNum" placeholder="请输入设备编号" border="{{ false }}" input-align="left" bind:change="syncVal" />
   <van-cell-group>
     <van-field label="报修时间" readonly value="{{createTime}}" input-align="right" input-class="cm_input" border="{{ false }}" />
-    <van-field label="报修员" readonly value="{{userInfo.USER_NAME}}" input-align="right" input-class="cm_input" border="{{ false }}" />
-    <van-field label="联系电话" input-align="right" value="1505925485" input-class="cm_input" placeholder="请输入联系电话" border="{{ false }}" value="{{userInfo.USER_MOBLIE}}" />
+    <van-field label="报修员" readonly value="{{userInfo.USER_FULL_NAME}}" input-align="right" input-class="cm_input" border="{{ false }}" />
+    <van-field label="联系电话" input-align="right" value="" input-class="cm_input" placeholder="请输入联系电话" border="{{ false }}" value="{{userInfo.USER_MOBLIE}}" />
   </van-cell-group>
   <view class='cm_blank'></view>
   <view class='matchBox'>

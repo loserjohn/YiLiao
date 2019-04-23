@@ -1,6 +1,7 @@
 // export const baseURL = 'http://wx.fjdmll.com'
 // export const baseURL = 'http://api.redcodeinfo.cn'
-export const baseURL = 'https://www.redcodeinfo.cn'
+// export const baseURL = 'https://www.redcodeinfo.cn'
+export const baseURL = 'https://api.xmkuaixiu.com'
 
 const app = getApp()
 import {
