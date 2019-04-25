@@ -211,11 +211,12 @@ Page({
   },
   // 获取用户信息点击事件回调
   bindGetUserInfo(e) {
-    // console.log('用户微信基本信息', e);
+    console.log('用户微信基本信息', e);
     if (e.detail.errMsg === 'getUserInfo:fail auth deny'){
       return
     }
-    app.globalData.wxUserInfo = e.detail
+
+    app.globalData.wxUserInfo = e.detail.userInfo
     wx.showToast({
       title: '获取成功',
       duration: 1000
