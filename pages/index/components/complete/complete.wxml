@@ -29,6 +29,7 @@
       <van-radio name="2" custom-class="radioBox " checked-color="#07c160">停机</van-radio>
     </van-radio-group>
   </view>
+
   <!-- 停机时长 -->
   <van-field wx:if="{{form.ifClosing==2}}" required value="{{ form.closeTime.val }}" type="number" input-align="right" label="停机时长" placeholder="请输入数字" id="closeTime" bind:change="syncVal" border="{{ false }}" use-button-slot>
     <van-button slot="button" size="small" type="primary" id="closeTime" bindtap="switchUnit">{{ form.closeTime.unit }}
@@ -36,7 +37,11 @@
     </van-button>
   </van-field>
 </van-cell-group>
-
+<!-- 完成图片 -->
+  <view class='pics'>
+    <preImgGallery title="完成状态图片" facilityId="{{facilityId}}" prePic="{{prePic}}" clientWidth="{{clientWidth}}" num="{{9}}" canEdited="{{true}}" bind:updatedHandle="notifyToSave"></preImgGallery>
+  </view>
+  <!-- 是否维保 -->
 <view class='cm_blank'></view>
 <van-cell-group>
   <view class='cm_inlineBox  flex'>

@@ -83,7 +83,8 @@ Component({
       name: '年'
     }],
     showCompany: false,
-    columns: []
+    columns: [],
+    prePic:[]
   },
   /**
    * 组件的方法列表
@@ -94,11 +95,21 @@ Component({
       if (!val || !val.DEVICE_CODE) {
         return
       }
-      that.setData({
-        repairDetailData: val,
-        facilityId: val.DEVICE_CODE,
-        repairCode: val.REPAIRS_CODE,
+      wx.getSystemInfo({
+        success: function (res) {
+          let clientHeight = res.windowHeight;
+          let clientWidth = res.windowWidth;
+          let ratio = 750 / clientWidth;
+          let height = clientHeight * ratio;
+          that.setData({
+              repairDetailData: val,
+              facilityId: val.DEVICE_CODE,
+              repairCode: val.REPAIRS_CODE,
+              clientWidth: clientWidth
+          });
+        }
       });
+      
       // 预加载默认的维保公司信息
       getFacilityDetail({
         DEVICE_CODE: val.DEVICE_CODE
@@ -284,9 +295,9 @@ Component({
         MAINTAIN_USER: this.data.extra.menber,
         MAKE_PHONE: this.data.extra.phone,
         MAKE_MEND_DATE: form.repairTime.val + form.repairTime.unit,
-       
+        MAKE_IMGLIST: this.data.prePic.join(',')
       }
-
+ 
       if (this.data.form.ifClosing == 2) {
         data.CLOSING_TIME = form.closeTime.val + form.closeTime.unit
       }
@@ -387,6 +398,13 @@ Component({
         Toast.clear();
       })
 
+    },
+    // 保修图片回传
+    notifyToSave(res){
+      let that = this
+      let notify = res.detail.notify
+      let arr = res.detail.arr;
+      this.data.prePic = arr;
     }
   }
 })

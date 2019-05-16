@@ -76,7 +76,7 @@ Component({
       let count = this.properties.num - this.data.prePicArr.length;
       // let count = 10
       // console.log(this.data.prePicArr)
-      if(count<0){
+      if(count<=0){
         count=0
         Notify({
           text: '超过最大数量,请适当删除',
