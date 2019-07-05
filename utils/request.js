@@ -1,7 +1,4 @@
-// export const baseURL = 'http://wx.fjdmll.com'
-// export const baseURL = 'http://api.redcodeinfo.cn'
-export const baseURL = 'https://www.redcodeinfo.cn'
-
+export const baseURL = 'http://wx.fjdmll.com'
 const app = getApp()
 import {
   wxLogin

@@ -180,14 +180,13 @@ Component({
             folder: 'Device\\' + that.properties.facilityId
           },
           success(res) {
-            console.log(res)
             const data = JSON.parse(res.data).Data
-           
+            // console.log(data)
             resolve(data)
           }
         })
         uploadTask.onProgressUpdate((res) => {
-          console.log('上传进度', res);
+          // console.log('上传进度', res.progress);
           that.renderProgress(index,res.progress)
         })
       })

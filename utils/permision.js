@@ -14,10 +14,6 @@ export const ROLE_MAINTAIN = 'maintain'
     name: 'repair',
     describe:'快速报修'
   },
-   "waitResponse": {
-     name: 'waitResponse',
-     describe: '等待响应'
-   },  
    "repairHistory": {
      name: 'repairHistory',
      describe: '维修历史'

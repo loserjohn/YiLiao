@@ -20,7 +20,7 @@
     "pages/facility/subpages/relevantAccessory/relevantAccessory",
     "pages/facility/subpages/report/report",
     "pages/facility/subpages/reportPreview/reportPreview",
-    "pages/index/subpages/orders2/orders2"
+    "pages/arrearage/arrearage"
   ],
   "window": {
     "backgroundTextStyle": "light",

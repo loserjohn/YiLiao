@@ -87,37 +87,31 @@ page {
     text-align: center
 }
 
-
-.arreBox{
-  width: 530rpx;
-  height: 665rpx;
-  /* background: red; */
-  position: relative;
-  box-sizing: border-box;
-  padding-top: 400rpx
-  /* overflow: hidden */
-}
-.bg{
+/* .van-enter-active-class,
+.van-leave-active-class {
+  transition-property: background-color, transform;
+   transform: scale(3);
+} */
+.test{
   position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  z-index: -1
+  left: 100rpx;
+  top:100rpx;
+  width: 300rpx;
+  height: 400rpx;
+  background: green;
+  transform: scale(0.5)
 }
-.arreBox .title{
-  /* margin-top: 400rpx; */
-  text-align: center;
-  font-weight: 600;
-  font-size: 36rpx;
-  color: #666666
+/* .vans-enter-class,
+.vans-leave-to-class {
+  transform: scale(2.5);
+  opacity: 0
 }
-.arreBox .text{
-  /* margin-top: 400rpx; */
-  text-align: center;
-  color: #878787;
-  line-height: 60rpx
+.vans-leave-class,
+.vans-enter-to-class {
+ transform: scale(.5);
+  opacity: 0
 }
-.arreBox .cm_btn{
-  border-radius: 6px!important
-}
+.vans-leave-active-class,
+vans-enter-active-class{
+  transform: scale(1.5);
+} */

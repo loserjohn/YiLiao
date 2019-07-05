@@ -9,6 +9,7 @@
     <view class="logoText">{{systemInfo.LINK_NAME}}</view>
   </view>
 
+  <!-- <form bindsubmit="login" report-submit='true' > -->
   <view class='formBox'>
     <van-cell-group>
       <van-field value="{{ form.userName.value }}" id="userName" clearable label="用户名" placeholder="请输入用户名" error-message="{{ form.userName.valid?'':'手机号码输入错误' }}" bind:clear="clear" bind:blur="valid" />
@@ -19,7 +20,7 @@
   <view class='cm_menus'>
     <van-button size="normal" block custom-class='cm_btn' bind:click="login" loading="{{loading}}">登录</van-button>
   </view>
-
+  <!-- </form> -->
 </view>
 
 <van-popup show="{{ show }}" overlay="{{ true }}" bind:close="onClose" custom-class="authrize">
@@ -29,17 +30,10 @@
     <van-button size="normal" block open-type="getUserInfo" custom-class='cm_btn' bindgetuserinfo="bindGetUserInfo">立即授权</van-button>
   </view>
 </van-popup>
-<van-popup show="{{ showModalStatus }}" center bind:close="hideModal" custom-style="background:transparent!important">
- <view  animation="{{animationData}}" class="" wx:if="{{showModalStatus}}" >    
-      <view style='' class='arreBox'>
-         <image src='../../static/img/qf.png' class='bg' mode="scaleToFill"></image>
-         <view class="title">授权已过期！</view>
-         <view class="text">请联系平台管理员</view>
-         <view  class='cm_menus'>
-            <van-button size="normal" block  custom-class='cm_btn' bind:click="hideModal">确定</van-button>
-         </view>
-        
-      </view>     
+<van-popup show="{{ showModalStatus }}" bind:close="hideModal" custom-style="background:transparent!important">
+ <view  animation="{{animationData}}" class="" wx:if="{{showModalStatus}}" >
+      <view style='width:260rpx;height:260rpx;background:red' class=''>弹窗内容</view>
+      <!-- <button bindtap='hideModal'>close</button> -->
   </view>
 </van-popup>
 <van-dialog id="van-dialog" />
